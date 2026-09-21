@@ -1,0 +1,10 @@
+.env
+*.pdf
+*.db
+__pycache__/
+audio/
+book_pages/
+book_thumbnails/
+sample_pages/
+*.png
+*.jpg

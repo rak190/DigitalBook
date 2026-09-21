@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English File Pre-Intermediate - Oxford Interactive Digital Bookshelf</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230284c7'><path d='M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z'/></svg>">
+</head>
+<body>
+
+  <!-- Minimalistic Oxford Navigation Header -->
+  <header class="app-header">
+    <div class="brand-section">
+      <div class="brand-logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+        </svg>
+        <span class="brand-name">English File</span>
+        <span class="brand-badge">Pre-Int</span>
+      </div>
+      <div id="current-unit-pill" class="current-unit-pill" title="Current Unit">
+        [1A] Are you? Can you? Do you? Did you?
+      </div>
+    </div>
+
+    <!-- Page Navigation & Teacher Quick Jump -->
+    <div class="nav-controls">
+      <div class="nav-button-cluster">
+        <button id="first-page-btn" class="btn-icon" title="First page (Cover)">⏮</button>
+        <button id="prev-page-btn" class="btn-icon" title="Previous page (Left Arrow)">◀</button>
+        
+        <div class="page-input-wrapper">
+          <span class="page-label">Page</span>
+          <input type="number" id="page-num-input" min="1" max="169" value="7">
+          <span id="total-pages-span">/ 169</span>
+          <span id="book-page-badge" class="book-page-badge" title="Printed Book Page Number">(Book p.6)</span>
+        </div>
+
+        <button id="next-page-btn" class="btn-icon" title="Next page (Right Arrow)">▶</button>
+        <button id="last-page-btn" class="btn-icon" title="Last page">⏭</button>
+        <button id="bookmark-toggle-btn" class="btn-icon" title="Bookmark this page">🔖</button>
+      </div>
+
+      <!-- Teacher Quick-Jump Component -->
+      <div class="teacher-jump-bar" id="teacher-jump-bar" title="Teacher Quick-Jump by Book Page">
+        <span class="jump-label">Book p.</span>
+        <input type="number" id="teacher-book-jump-input" min="1" max="168" placeholder="6" style="width: 44px;" title="Type printed Student's Book page number and press Enter">
+        <button id="teacher-book-jump-btn" class="btn-jump-go" title="Jump to Book page">↵</button>
+        <div class="jump-shortcuts">
+          <button class="jump-pill" data-target-page="127" title="Jump to Grammar Bank (p.126)">📚 Grammar</button>
+          <button class="jump-pill" data-target-page="151" title="Jump to Vocabulary Bank (p.150)">🔤 Vocab</button>
+          <button class="jump-pill" data-target-page="167" title="Jump to Sound Bank (p.166)">🔊 Sounds</button>
+          <button id="teacher-return-unit-btn" class="jump-pill highlight" title="Jump back to current Unit">🎯 Unit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header Tools & Panel Toggles -->
+    <div class="header-right-tools">
+      <div class="mode-toggles-cluster">
+        <button id="toggle-class-mode-btn" class="tool-tab-btn class-mode-btn" title="Online Class Split-Screen Mode">
+          <span class="btn-icon-part">💻</span> <span class="btn-label-part">Class</span>
+        </button>
+        <button id="toggle-clean-mode-btn" class="tool-tab-btn clean-mode-btn" title="Screen Sharing Clean Mode (Hide typed answers & keys)">
+          <span class="btn-icon-part">👁️</span> <span class="btn-label-part">Hide Answers</span>
+        </button>
+        <button id="toggle-focus-mode-btn" class="tool-tab-btn focus-mode-btn" title="Focus Presentation Mode (Hide toolbars)">
+          <span class="btn-icon-part">🔲</span> <span class="btn-label-part">Focus</span>
+        </button>
+        <button id="toggle-floating-audio-btn" class="tool-tab-btn" title="Floating Draggable Audio Player">
+          <span class="btn-icon-part">🎧</span> <span class="btn-label-part">Player</span>
+        </button>
+      </div>
+
+      <div class="panels-toggles-cluster">
+        <button id="toggle-exercises-btn" class="tool-tab-btn" title="Interactive Exercises Panel">
+          <span class="btn-icon-part">✍️</span> <span class="btn-label-part">Exercises</span>
+        </button>
+        <button id="toggle-audio-btn" class="tool-tab-btn" title="Audio Listening Tracks & Scripts">
+          <span class="btn-icon-part">🎧</span> <span class="btn-label-part">Audio</span>
+        </button>
+        <button id="toggle-vocab-btn" class="tool-tab-btn" title="Vocabulary & Flashcards">
+          <span class="btn-icon-part">🔤</span> <span class="btn-label-part">Vocab</span>
+        </button>
+        <button id="toggle-notes-btn" class="tool-tab-btn" title="Study Notes & Bookmarks">
+          <span class="btn-icon-part">📝</span> <span class="btn-label-part">Notes</span>
+        </button>
+        <button id="toggle-toc-btn" class="tool-tab-btn" title="Table of Contents">
+          <span class="btn-icon-part">📑</span> <span class="btn-label-part">TOC</span>
+        </button>
+        <button id="toggle-thumbs-btn" class="tool-tab-btn" title="Page Thumbnails">
+          <span class="btn-icon-part">🗂</span> <span class="btn-label-part">Pages</span>
+        </button>
+      </div>
+
+      <div class="utility-toggles-cluster">
+        <button id="pronounce-selection-btn" class="btn-icon" title="Pronounce selected text (TTS)">
+          🔊
+        </button>
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Dark/Light Mode">
+          ☀️
+        </button>
+        <button id="fullscreen-btn" class="btn-icon" title="Fullscreen">
+          ⛶
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Modern Floating Collapsible Left Toolbar (Glassmorphism) -->
+  <aside id="floating-tools-bar" class="floating-left-toolbar glass-panel" aria-label="Book Annotations & Zoom Toolbar">
+    <div class="toolbar-drag-header" id="toolbar-drag-handle">
+      <span class="toolbar-header-title">Tools</span>
+      <button id="toolbar-collapse-toggle" class="toolbar-mini-btn" title="Collapse / Expand Toolbar">◀</button>
+    </div>
+
+    <!-- Tool Mode Buttons -->
+    <div class="toolbar-tools-list">
+      <button class="tool-mode-btn active" data-mode="read" title="Navigate & Pan (H)">
+        <span class="tool-btn-icon">✋</span>
+        <span class="tool-btn-label">Pan</span>
+      </button>
+      <button class="tool-mode-btn" data-mode="pen" title="Freehand Pen (Draw, Circle, Underline)">
+        <span class="tool-btn-icon">✏️</span>
+        <span class="tool-btn-label">Pen</span>
+      </button>
+      <button class="tool-mode-btn" data-mode="highlighter" title="Text Highlighter">
+        <span class="tool-btn-icon">🖍</span>
+        <span class="tool-btn-label">Highlight</span>
+      </button>
+      <button class="tool-mode-btn" data-mode="eraser" title="Erase strokes">
+        <span class="tool-btn-icon">🧹</span>
+        <span class="tool-btn-label">Eraser</span>
+      </button>
+      <button class="tool-mode-btn" data-mode="textbox" title="Click anywhere to write an answer or note">
+        <span class="tool-btn-icon">💬</span>
+        <span class="tool-btn-label">Type</span>
+      </button>
+      <button class="tool-mode-btn" data-mode="stickynote" title="Place a movable Sticky Note">
+        <span class="tool-btn-icon">📌</span>
+        <span class="tool-btn-label">Sticky</span>
+      </button>
+      <button id="add-blank-tool-btn" class="tool-mode-btn" data-mode="blank" title="Add an interactive fill-in blank to any exercise on the page">
+        <span class="tool-btn-icon">➕</span>
+        <span class="tool-btn-label">Blank</span>
+      </button>
+    </div>
+
+    <!-- Pen & Drawing Options Flyout -->
+    <div id="pen-options-bar" class="pen-options-bar" style="display: none;">
+      <div class="color-dot active" data-color="#0284c7" style="background: #0284c7;" title="Blue"></div>
+      <div class="color-dot" data-color="#ef4444" style="background: #ef4444;" title="Red"></div>
+      <div class="color-dot" data-color="#10b981" style="background: #10b981;" title="Green"></div>
+      <div class="color-dot" data-color="#0f172a" style="background: #0f172a;" title="Black"></div>
+      <div class="color-dot" data-color="#8b5cf6" style="background: #8b5cf6;" title="Purple"></div>
+      <input type="range" id="stroke-width-slider" min="1" max="10" value="3" style="width: 55px;" title="Stroke thickness">
+      <button id="undo-btn" class="btn-icon mini" title="Undo (Ctrl+Z)">↩</button>
+      <button id="redo-btn" class="btn-icon mini" title="Redo">↪</button>
+      <button id="clear-annotations-btn" class="btn-icon mini" title="Clear drawings on page">🗑</button>
+    </div>
+
+    <div class="toolbar-divider"></div>
+
+    <!-- Zoom & Spread Controls -->
+    <div class="toolbar-zoom-group">
+      <div class="zoom-main-row">
+        <button id="zoom-in-btn" class="toolbar-mini-btn" title="Zoom In (+)">+</button>
+        <span id="zoom-level-text" class="zoom-display-text">100%</span>
+        <button id="zoom-out-btn" class="toolbar-mini-btn" title="Zoom Out (−)">−</button>
+      </div>
+      <div class="zoom-secondary-row">
+        <button id="zoom-fit-btn" class="toolbar-mini-btn" title="Fit to screen width">↔</button>
+        <button id="zoom-reset-btn" class="toolbar-mini-btn" title="Reset Zoom (100%)">1:1</button>
+        <button id="view-mode-btn" class="toolbar-mini-btn" title="Toggle Single / Two-Page Spread">📖</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Contextual Floating Exercise Action Bar -->
+  <div id="floating-exercise-bar" class="floating-exercise-bar glass-panel" aria-label="Exercise Action Bar">
+    <button id="check-answers-btn" class="btn-exercise-action btn-check" title="Verify all fill-in answers on this page">
+      <span class="action-icon">✓</span> Check Answers
+    </button>
+    <button id="ai-tutor-btn" class="btn-exercise-action btn-ai" title="Ask Gemini AI Tutor to evaluate answers and explain grammar">
+      <span class="action-icon">🤖</span> Ask AI Tutor
+    </button>
+    <button id="reveal-answers-btn" class="btn-exercise-action btn-secondary" title="Show Answer Key solutions">
+      <span class="action-icon">💡</span> Show Answers
+    </button>
+    <button id="reset-answers-btn" class="btn-exercise-action btn-secondary" title="Reset page answers">
+      <span class="action-icon">🔄</span> Reset
+    </button>
+  </div>
+
+  <!-- Main Viewport Workspace -->
+  <main class="app-workspace">
+    <!-- Viewport Scrolling Container -->
+    <div id="viewport-container" class="viewport-container">
+      <div id="book-spread-container" class="book-spread-container">
+        <!-- Rendered dynamically by viewer.js -->
+      </div>
+    </div>
+
+    <!-- Consolidated Unified Side Panel Drawers (Docked on Right) -->
+    <div id="unified-drawer-container" class="unified-drawer-container">
+    
+    <!-- Drawer: Interactive Exercises -->
+    <aside id="drawer-exercises" class="sidebar-panel">
+      <div class="panel-header">
+        <div class="unified-tabs-bar">
+          <button class="unified-tab-btn active" data-drawer="drawer-exercises">✍️ Exercises</button>
+          <button class="unified-tab-btn" data-drawer="drawer-audio">🎧 Audio</button>
+          <button class="unified-tab-btn" data-drawer="drawer-vocab">🔤 Vocab</button>
+          <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
+          <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
+          <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+        </div>
+        <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
+      </div>
+      <div class="panel-body" id="side-exercises-content">
+        <!-- Loaded dynamically for current page -->
+      </div>
+    </aside>
+
+    <!-- Drawer: Audio Listening Tracks & Scripts -->
+    <aside id="drawer-audio" class="sidebar-panel">
+      <div class="panel-header">
+        <div class="unified-tabs-bar">
+          <button class="unified-tab-btn" data-drawer="drawer-exercises">✍️ Exercises</button>
+          <button class="unified-tab-btn active" data-drawer="drawer-audio">🎧 Audio</button>
+          <button class="unified-tab-btn" data-drawer="drawer-vocab">🔤 Vocab</button>
+          <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
+          <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
+          <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+        </div>
+        <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
+      </div>
+      <div class="panel-body">
+        <div class="audio-panel-card">
+          <div class="audio-panel-card-title">Audio Player (British English)</div>
+          <div style="margin-bottom: 8px;">
+            <select id="audio-track-select" class="toc-search-input" style="width: 100%;">
+              <!-- Populated by audio.js -->
+            </select>
+          </div>
+          <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+            <button id="play-track-btn" class="btn-primary" style="flex: 1;">▶ Play Track</button>
+            <button id="stop-track-btn" class="btn-outline">⏹ Stop</button>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-secondary);">
+            <span>Speed: <strong id="audio-rate-label">0.9x</strong></span>
+            <input type="range" id="audio-rate-slider" min="0.7" max="1.3" step="0.1" value="0.9" style="width: 110px;">
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span style="font-weight: 700; font-size: 0.85rem;">Listening Script Text</span>
+          <button class="btn-outline" style="font-size: 0.75rem; padding: 3px 8px;" onclick="window.viewer.goToPage(121)">📖 Book Scripts (p.121)</button>
+        </div>
+        <div id="listening-script-display" class="listening-script-box">
+Select an audio track above to read along and listen.
+        </div>
+      </div>
+    </aside>
+
+    <!-- Drawer: Vocabulary Bank & Flashcards -->
+    <aside id="drawer-vocab" class="sidebar-panel">
+      <div class="panel-header">
+        <div class="unified-tabs-bar">
+          <button class="unified-tab-btn" data-drawer="drawer-exercises">✍️ Exercises</button>
+          <button class="unified-tab-btn" data-drawer="drawer-audio">🎧 Audio</button>
+          <button class="unified-tab-btn active" data-drawer="drawer-vocab">🔤 Vocab</button>
+          <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
+          <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
+          <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+        </div>
+        <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
+      </div>
+      <div class="panel-body">
+        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+          <button id="start-flashcards-btn" class="btn-primary" style="flex: 1;">
+            📇 Flashcard Study
+          </button>
+          <button id="show-add-vocab-btn" class="btn-outline" title="Add new word">
+            + New Word
+          </button>
+        </div>
+
+        <!-- Add word form -->
+        <div id="add-vocab-form-container" style="display: none; background: var(--bg-surface); padding: 12px; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-bottom: 12px;">
+          <input type="text" id="new-vocab-word" class="toc-search-input" placeholder="English Word / Phrase" style="margin-bottom: 6px;">
+          <input type="text" id="new-vocab-pos" class="toc-search-input" placeholder="Part of Speech (noun, verb, adj)" style="margin-bottom: 6px;">
+          <input type="text" id="new-vocab-def" class="toc-search-input" placeholder="Definition / Vietnamese Meaning" style="margin-bottom: 6px;">
+          <input type="text" id="new-vocab-ex" class="toc-search-input" placeholder="Example sentence" style="margin-bottom: 6px;">
+          <input type="text" id="new-vocab-cat" class="toc-search-input" placeholder="Category (e.g. Unit 1, Travel)" style="margin-bottom: 8px;">
+          <button id="save-new-vocab-btn" class="btn-success" style="width: 100%;">Save to Vocabulary</button>
+        </div>
+
+        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+          <input type="text" id="vocab-search-input" class="toc-search-input" placeholder="Search words...">
+          <select id="vocab-category-select" class="toc-search-input" style="width: 140px;"></select>
+        </div>
+
+        <div id="vocab-list-container">
+          <!-- Vocabulary cards -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- Drawer: Personal Notes & Bookmarks -->
+    <aside id="drawer-notes" class="sidebar-panel">
+      <div class="panel-header">
+        <div class="unified-tabs-bar">
+          <button class="unified-tab-btn" data-drawer="drawer-exercises">✍️ Exercises</button>
+          <button class="unified-tab-btn" data-drawer="drawer-audio">🎧 Audio</button>
+          <button class="unified-tab-btn" data-drawer="drawer-vocab">🔤 Vocab</button>
+          <button class="unified-tab-btn active" data-drawer="drawer-notes">📝 Notes</button>
+          <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
+          <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+        </div>
+        <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
+      </div>
+      <div class="panel-body">
+        <!-- New Note input -->
+        <div style="background: var(--bg-surface); padding: 12px; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-bottom: 16px;">
+          <div style="font-weight: 700; font-size: 0.85rem; margin-bottom: 6px;">Add Study Note</div>
+          <input type="text" id="new-note-title" class="toc-search-input" placeholder="Note Title (e.g. Grammar Rule)" style="margin-bottom: 6px;">
+          <textarea id="new-note-content" class="toc-search-input" rows="3" placeholder="Write your notes here..." style="resize: vertical; margin-bottom: 8px; font-family: inherit;"></textarea>
+          <button id="save-new-note-btn" class="btn-primary" style="width: 100%;">Save Note</button>
+        </div>
+
+        <div style="font-weight: 700; font-size: 0.85rem; margin-bottom: 8px;">📑 Bookmarked Pages</div>
+        <div id="bookmarks-list-container" style="margin-bottom: 16px;"></div>
+
+        <div style="font-weight: 700; font-size: 0.85rem; margin-bottom: 8px;">📋 Study Notes</div>
+        <div id="notes-list-container"></div>
+
+        <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+          <div style="font-weight: 700; font-size: 0.85rem; margin-bottom: 8px;">Backup & Data</div>
+          <div style="display: flex; gap: 8px;">
+            <button id="export-data-btn" class="btn-outline" style="flex: 1;">💾 Export Backup</button>
+            <label class="btn-outline" style="flex: 1; text-align: center; cursor: pointer;">
+              📂 Restore
+              <input type="file" id="import-file-input" accept=".json" style="display: none;">
+            </label>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Drawer: Table of Contents -->
+    <aside id="drawer-toc" class="sidebar-panel">
+      <div class="panel-header">
+        <div class="unified-tabs-bar">
+          <button class="unified-tab-btn" data-drawer="drawer-exercises">✍️ Exercises</button>
+          <button class="unified-tab-btn" data-drawer="drawer-audio">🎧 Audio</button>
+          <button class="unified-tab-btn" data-drawer="drawer-vocab">🔤 Vocab</button>
+          <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
+          <button class="unified-tab-btn active" data-drawer="drawer-toc">📑 TOC</button>
+          <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+        </div>
+        <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
+      </div>
+      <div class="panel-body">
+        <div class="toc-search-box">
+          <input type="text" id="toc-search" class="toc-search-input" placeholder="Search units, grammar, vocabulary...">
+        </div>
+        <div id="toc-list-container">
+          <!-- Loaded from server TOC -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- Drawer: Page Thumbnails -->
+    <aside id="drawer-thumbs" class="sidebar-panel">
+      <div class="panel-header">
+        <div class="unified-tabs-bar">
+          <button class="unified-tab-btn" data-drawer="drawer-exercises">✍️ Exercises</button>
+          <button class="unified-tab-btn" data-drawer="drawer-audio">🎧 Audio</button>
+          <button class="unified-tab-btn" data-drawer="drawer-vocab">🔤 Vocab</button>
+          <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
+          <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
+          <button class="unified-tab-btn active" data-drawer="drawer-thumbs">🗂 Pages</button>
+        </div>
+        <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
+      </div>
+      <div class="panel-body">
+        <div id="thumbnails-grid-container" class="thumbnails-grid">
+          <!-- 169 thumbnails rendered here -->
+        </div>
+      </div>
+    </aside>
+    </div>
+
+    <!-- Floating Speaking Voice Recorder Widget -->
+    <div class="floating-recorder" id="speaking-recorder-widget" title="Speaking Practice Voice Studio">
+      <div id="record-pulse-indicator" class="record-pulse" style="display: none;"></div>
+      <button id="record-toggle-btn" class="btn-outline" style="border: none; padding: 4px 8px; font-size: 0.85rem;">
+        🎙 Record Speaking
+      </button>
+      <span id="record-timer" style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">00:00</span>
+      <button id="play-recording-btn" class="btn-icon" style="width: 28px; height: 28px;" disabled title="Play your recorded answer">
+        ▶
+      </button>
+    </div>
+  </main>
+
+  <!-- Add Blank Modal -->
+  <div id="add-blank-modal-backdrop" class="modal-backdrop" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 style="font-size:1.1rem; color:var(--primary); font-weight:700;">➕ Place Interactive Blank</h3>
+        <button id="close-add-blank-modal-btn" class="btn-icon">✕</button>
+      </div>
+      <div class="modal-body" style="display:flex; flex-direction:column; gap:10px; padding:16px 0;">
+        <div>
+          <label style="font-size:0.8rem; font-weight:600; display:block; margin-bottom:4px;">Question Label / Number:</label>
+          <input type="text" id="blank-modal-label" class="toc-search-input" placeholder="e.g. Q1, Ex 2a.1" value="Q">
+        </div>
+        <div>
+          <label style="font-size:0.8rem; font-weight:600; display:block; margin-bottom:4px;">Correct Answer(s) (comma-separated for alternatives):</label>
+          <input type="text" id="blank-modal-answer" class="toc-search-input" placeholder="e.g. live, have got">
+        </div>
+        <div>
+          <label style="font-size:0.8rem; font-weight:600; display:block; margin-bottom:4px;">Hint (optional):</label>
+          <input type="text" id="blank-modal-hint" class="toc-search-input" placeholder="e.g. verb for residing">
+        </div>
+        <div>
+          <label style="font-size:0.8rem; font-weight:600; display:block; margin-bottom:4px;">Input Placeholder:</label>
+          <input type="text" id="blank-modal-placeholder" class="toc-search-input" value="...">
+        </div>
+      </div>
+      <div class="modal-footer" style="display:flex; justify-content:flex-end; gap:8px;">
+        <button id="cancel-add-blank-btn" class="btn-outline">Cancel</button>
+        <button id="confirm-add-blank-btn" class="btn-primary">Add Blank</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flashcards Study Modal -->
+  <div id="flashcard-modal-backdrop" class="flashcard-modal-backdrop">
+    <div class="flashcard-container">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; color: white;">
+        <span id="fc-counter" style="font-weight: 700;">1 / 10</span>
+        <button id="close-flashcards-btn" class="btn-icon" style="color: white; border-color: rgba(255,255,255,0.3);">✕</button>
+      </div>
+
+      <div id="flashcard-inner" class="flashcard-inner" title="Click to flip card">
+        <div class="flashcard-front">
+          <div id="fc-word" style="font-size: 1.8rem; font-weight: 800; color: var(--primary); margin-bottom: 8px;">Word</div>
+          <div id="fc-phonetic" style="font-size: 1.1rem; color: var(--text-secondary); font-family: monospace; margin-bottom: 8px;">/phonetic/</div>
+          <div id="fc-pos" style="font-size: 0.85rem; font-style: italic; color: var(--text-muted); margin-bottom: 16px;">noun</div>
+          <button class="btn-icon" onclick="event.stopPropagation(); window.audioManager.speakText(document.getElementById('fc-word').textContent)" title="Hear Pronunciation">🔊</button>
+          <div style="margin-top: 16px; font-size: 0.75rem; color: var(--text-muted);">Click to flip definition ↺</div>
+        </div>
+        <div class="flashcard-back">
+          <div id="fc-definition" style="font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-bottom: 12px; line-height: 1.4;">Definition</div>
+          <div id="fc-example" style="font-size: 0.95rem; font-style: italic; color: var(--primary-dark); line-height: 1.4;">"Example"</div>
+          <div style="margin-top: 20px; font-size: 0.75rem; color: var(--text-muted);">Click to flip back ↺</div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+        <button id="flashcard-prev-btn" class="btn-outline" style="color: white; border-color: rgba(255,255,255,0.4);">◀ Previous</button>
+        <button id="flashcard-shuffle-btn" class="btn-outline" style="color: white; border-color: rgba(255,255,255,0.4);">🔀 Shuffle</button>
+        <button id="flashcard-next-btn" class="btn-outline" style="color: white; border-color: rgba(255,255,255,0.4);">Next ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exit Focus Mode Floating Button -->
+  <button id="exit-focus-btn" class="exit-focus-btn" style="display: none;" title="Exit Focus Mode (Esc)">
+    ✕ Exit Focus Mode
+  </button>
+
+  <!-- Floating Draggable Audio Player Widget -->
+  <div id="floating-audio-widget" class="floating-audio-widget" style="display: none;">
+    <div class="audio-widget-header" id="floating-audio-header">
+      <div class="widget-title">
+        <span>🎧 EF Audio Player</span>
+        <span id="audio-source-badge" class="audio-badge tts">TTS Fallback</span>
+      </div>
+      <div class="widget-actions">
+        <button id="float-audio-dock-btn" class="widget-btn" title="Dock / Undock">📌</button>
+        <button id="float-audio-min-btn" class="widget-btn" title="Minimize / Expand">−</button>
+        <button id="float-audio-close-btn" class="widget-btn" title="Close">✕</button>
+      </div>
+    </div>
+    <div class="audio-widget-body" id="floating-audio-body">
+      <select id="float-audio-track-select" class="toc-search-input float-track-select"></select>
+      
+      <!-- Scrubbing & Time -->
+      <div class="audio-seek-row">
+        <span id="float-audio-current-time">0:00</span>
+        <input type="range" id="float-audio-seekbar" min="0" max="100" value="0" step="0.1" style="flex: 1; cursor: pointer;">
+        <span id="float-audio-duration">0:00</span>
+      </div>
+
+      <!-- Controls -->
+      <div class="audio-controls-row">
+        <button id="float-audio-prev-track" class="btn-icon" style="font-size: 0.9rem;" title="Previous Track">⏮</button>
+        <button id="float-audio-play-btn" class="btn-play-pause" title="Play / Pause">▶</button>
+        <button id="float-audio-next-track" class="btn-icon" style="font-size: 0.9rem;" title="Next Track">⏭</button>
+        
+        <!-- Speed presets -->
+        <div class="audio-speed-group">
+          <button class="speed-btn" data-speed="0.8">0.8x</button>
+          <button class="speed-btn" data-speed="0.9">0.9x</button>
+          <button class="speed-btn active" data-speed="1.0">1.0x</button>
+          <button class="speed-btn" data-speed="1.2">1.2x</button>
+        </div>
+      </div>
+
+      <div class="audio-widget-footer">
+        <button id="open-audio-uploader-btn" class="btn-link">📁 Upload Real MP3s</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Dropzone Modal -->
+  <div id="audio-dropzone-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-dialog audio-modal">
+      <div class="modal-header">
+        <h3 style="color: var(--primary); font-weight: 700;">🎵 Authentic Audio Track Manager</h3>
+        <button id="close-audio-modal-btn" class="btn-icon">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="audio-drop-area" class="audio-drop-area">
+          <div class="drop-icon" style="font-size: 2.2rem; margin-bottom: 8px;">📤</div>
+          <p style="font-weight: 600; margin-bottom: 4px;">Drag & Drop official Oxford English File MP3s here</p>
+          <span style="font-size: 0.78rem; color: var(--text-muted);">Auto-normalizes filenames like 1.2.mp3, EF4_1.2.mp3, Track 02.mp3</span>
+          <input type="file" id="audio-file-input" multiple accept=".mp3,.wav,.m4a" style="display: none;">
+          <div style="margin-top: 12px;">
+            <button id="browse-audio-btn" class="btn-primary">Browse Files from Computer</button>
+          </div>
+        </div>
+
+        <div id="upload-progress-container" style="display: none; margin: 12px 0;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 4px;">
+            <span>Uploading tracks...</span>
+            <span id="upload-progress-percent">0%</span>
+          </div>
+          <div style="height: 6px; background: var(--border-color); border-radius: 3px; overflow: hidden;">
+            <div id="upload-progress-bar" style="height: 100%; width: 0%; background: var(--accent-green); transition: width 0.2s;"></div>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <strong style="font-size: 0.85rem;">Audio Tracks Readiness Checklist</strong>
+            <span id="audio-checklist-summary" style="font-size: 0.75rem; color: var(--text-secondary);">Loading status...</span>
+          </div>
+          <div id="audio-tracks-checklist" class="audio-tracks-checklist" style="max-height: 220px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 8px; background: var(--bg-surface);">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.75rem; color: var(--text-muted);">Files saved to d:\DigitalTextbook\audio</span>
+        <button id="done-audio-modal-btn" class="btn-primary">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gemini AI Tutor Modal -->
+  <div id="ai-tutor-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-dialog ai-modal" style="max-width: 580px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 1.4rem;">🤖</span>
+          <h3 style="color: var(--primary); font-weight: 700; font-size: 1.1rem;">Gemini AI ESL Tutor</h3>
+          <span id="ai-mode-badge" class="brand-badge" style="background: #10b981; font-size: 0.7rem;">Gemini 3.6 Flash</span>
+        </div>
+        <button id="close-ai-modal-btn" class="btn-icon">✕</button>
+      </div>
+      <div class="modal-body" id="ai-tutor-content">
+        <div id="ai-tutor-loading" style="display: none; text-align: center; padding: 28px;">
+          <div class="spinner" style="margin: 0 auto 12px auto; width: 36px; height: 36px; border: 3px solid var(--border-color); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
+          <p style="font-weight: 600; color: var(--text-primary);">Analyzing your answers with Gemini AI Tutor...</p>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Checking grammar rules, phrasing, and vocabulary precision</span>
+        </div>
+        <div id="ai-tutor-results">
+          <div id="ai-summary-card" class="ai-summary-card" style="background: var(--primary-light); border-left: 4px solid var(--primary); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 12px;">
+            <div style="font-weight: 700; color: var(--primary-dark); font-size: 0.9rem; margin-bottom: 4px;">Teacher Evaluation</div>
+            <div id="ai-summary-text" style="font-size: 0.85rem; line-height: 1.4; color: var(--text-primary);"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <strong style="font-size: 0.85rem;">Detailed Feedback Per Exercise</strong>
+            <span id="ai-score-badge" style="font-weight: 700; font-size: 0.85rem; color: var(--primary);">Score: 100%</span>
+          </div>
+          <div id="ai-evaluations-list" style="max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.75rem; color: var(--text-muted);">Oxford English File 4th Ed Pre-Intermediate AI Companion</span>
+        <button id="dismiss-ai-modal-btn" class="btn-primary">Continue Practice</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/viewer.js"></script>
+  <script src="js/annotations.js"></script>
+  <script src="js/exercises.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/vocabulary.js"></script>
+  <script src="js/notes.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
