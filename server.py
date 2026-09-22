@@ -1124,6 +1124,16 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
         path = parsed.path
         query = urllib.parse.parse_qs(parsed.query)
 
+        # Handle /DigitalBook base path for GitHub Pages compatibility
+        if path == "/DigitalBook" or path == "/DigitalBook/":
+            self.path = "/index.html"
+            return super().do_GET()
+        if path.startswith("/DigitalBook/"):
+            self.path = self.path.replace("/DigitalBook", "", 1)
+            parsed = urllib.parse.urlparse(self.path)
+            path = parsed.path
+            query = urllib.parse.parse_qs(parsed.query)
+
         # 1. API: Book Info & TOC
         # Content APIs & Global Search
         if path == "/api/content/textbook":

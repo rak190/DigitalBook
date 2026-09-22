@@ -118,7 +118,7 @@ export const PageView: React.FC<PageViewProps> = ({
           </div>
         ) : (
           <img
-            src={`/book_pages/page_${pageNum}.jpg`}
+            src={`${import.meta.env.BASE_URL}book_pages/page_${pageNum}.jpg`}
             alt={pageMeta?.title || `Page ${pageNum}`}
             className="w-auto h-auto max-h-[85vh] max-w-[85vw] object-contain block pointer-events-none"
             loading="eager"

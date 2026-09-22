@@ -108,7 +108,7 @@ export function useAudioPlayer() {
       srcUrl = URL.createObjectURL(customBlob);
     } else {
       // Normal path: /audio/<filename> or /audio/<trackId>.mp3
-      srcUrl = `/audio/${track.filename.endsWith('.mp3') ? track.filename : `${track.filename}.mp3`}`;
+      srcUrl = `${import.meta.env.BASE_URL}audio/${track.filename.endsWith('.mp3') ? track.filename : `${track.filename}.mp3`}`;
     }
 
     const meta = dataService.getAudioTrack(track.trackId);

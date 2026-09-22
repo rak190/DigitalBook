@@ -43,12 +43,32 @@ export const ReaderShell: React.FC = () => {
   const pageExercises = dataService.getExercisesForPage(currentPage);
   const totalPages = 169;
 
+  // Sync URL hash for deep linking (e.g. #page=7)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const parseHash = () => {
+      const match = window.location.hash.match(/(?:page=|\b)(\d+)\b/);
+      if (match && match[1]) {
+        const p = parseInt(match[1], 10);
+        if (p >= 1 && p <= totalPages) {
+          setCurrentPage(p);
+        }
+      }
+    };
+    parseHash();
+    window.addEventListener('hashchange', parseHash);
+    return () => window.removeEventListener('hashchange', parseHash);
+  }, [totalPages]);
+
   // Handle page changes
   const handlePageChange = useCallback((pageNum: number) => {
     const validPage = Math.max(1, Math.min(pageNum, totalPages));
     setCurrentPage(validPage);
     StorageService.saveLastPage(validPage);
     setActiveExerciseId(undefined);
+    if (typeof window !== 'undefined' && window.location.hash !== `#page=${validPage}`) {
+      window.history.replaceState(null, '', `#page=${validPage}`);
+    }
   }, [totalPages]);
 
   // Handle zoom changes
