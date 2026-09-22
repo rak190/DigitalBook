@@ -9,6 +9,10 @@ const STORAGE_KEYS = {
   ZOOM: 'digital_textbook_zoom_v2',
 };
 
+const isBrowser = typeof window !== 'undefined';
+const hasLocalStorage = isBrowser && typeof window.localStorage !== 'undefined';
+const hasIndexedDB = isBrowser && typeof window.indexedDB !== 'undefined';
+
 // IndexedDB Helper for audio and voice practice
 class MediaStorageDB {
   private dbName = 'digital_textbook_media_db';
@@ -17,6 +21,9 @@ class MediaStorageDB {
 
   async init(): Promise<IDBDatabase> {
     if (this.db) return this.db;
+    if (!hasIndexedDB) {
+      return Promise.reject(new Error('IndexedDB not supported in current environment'));
+    }
     return new Promise((resolve, reject) => {
       const req = indexedDB.open(this.dbName, this.version);
       req.onupgradeneeded = () => {
@@ -101,6 +108,7 @@ export const mediaDB = new MediaStorageDB();
 export class StorageService {
   // Answers
   static getAnswers(): Record<string, ExerciseAnswer> {
+    if (!hasLocalStorage) return {};
     try {
       const raw = localStorage.getItem(STORAGE_KEYS.ANSWERS);
       return raw ? JSON.parse(raw) : {};
@@ -110,6 +118,7 @@ export class StorageService {
   }
 
   static saveAnswers(answers: Record<string, ExerciseAnswer>): void {
+    if (!hasLocalStorage) return;
     try {
       localStorage.setItem(STORAGE_KEYS.ANSWERS, JSON.stringify(answers));
     } catch (e) {
@@ -119,6 +128,7 @@ export class StorageService {
 
   // Bookmarks
   static getBookmarks(): UserBookmark[] {
+    if (!hasLocalStorage) return [];
     try {
       const raw = localStorage.getItem(STORAGE_KEYS.BOOKMARKS);
       return raw ? JSON.parse(raw) : [];
@@ -128,6 +138,7 @@ export class StorageService {
   }
 
   static saveBookmarks(bookmarks: UserBookmark[]): void {
+    if (!hasLocalStorage) return;
     try {
       localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(bookmarks));
     } catch (e) {
@@ -137,6 +148,7 @@ export class StorageService {
 
   // Notes
   static getNotes(): UserNote[] {
+    if (!hasLocalStorage) return [];
     try {
       const raw = localStorage.getItem(STORAGE_KEYS.NOTES);
       return raw ? JSON.parse(raw) : [];
@@ -146,6 +158,7 @@ export class StorageService {
   }
 
   static saveNotes(notes: UserNote[]): void {
+    if (!hasLocalStorage) return;
     try {
       localStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(notes));
     } catch (e) {
@@ -155,6 +168,7 @@ export class StorageService {
 
   // Last Page
   static getLastPage(): number {
+    if (!hasLocalStorage) return 7;
     try {
       const val = localStorage.getItem(STORAGE_KEYS.LAST_PAGE);
       return val ? parseInt(val, 10) : 7; // Default to Unit 1A page 7
@@ -164,6 +178,7 @@ export class StorageService {
   }
 
   static saveLastPage(pageNum: number): void {
+    if (!hasLocalStorage) return;
     try {
       localStorage.setItem(STORAGE_KEYS.LAST_PAGE, pageNum.toString());
     } catch {}
@@ -171,6 +186,7 @@ export class StorageService {
 
   // Theme
   static getTheme(): ThemeMode {
+    if (!hasLocalStorage) return 'dark';
     try {
       return (localStorage.getItem(STORAGE_KEYS.THEME) as ThemeMode) || 'dark';
     } catch {
@@ -179,6 +195,7 @@ export class StorageService {
   }
 
   static saveTheme(theme: ThemeMode): void {
+    if (!hasLocalStorage) return;
     try {
       localStorage.setItem(STORAGE_KEYS.THEME, theme);
     } catch {}
@@ -186,6 +203,7 @@ export class StorageService {
 
   // Zoom
   static getZoom(): number {
+    if (!hasLocalStorage) return 100;
     try {
       const val = localStorage.getItem(STORAGE_KEYS.ZOOM);
       return val ? parseFloat(val) : 100;
@@ -195,6 +213,7 @@ export class StorageService {
   }
 
   static saveZoom(zoom: number): void {
+    if (!hasLocalStorage) return;
     try {
       localStorage.setItem(STORAGE_KEYS.ZOOM, zoom.toString());
     } catch {}
@@ -239,6 +258,7 @@ export class StorageService {
   }
 
   static clearAllData(): void {
+    if (!hasLocalStorage) return;
     localStorage.removeItem(STORAGE_KEYS.ANSWERS);
     localStorage.removeItem(STORAGE_KEYS.BOOKMARKS);
     localStorage.removeItem(STORAGE_KEYS.NOTES);

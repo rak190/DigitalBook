@@ -51,7 +51,7 @@ export function useAudioPlayer() {
       audio.removeEventListener('loadedmetadata', onLoadedMetadata);
       audio.removeEventListener('ended', onEnded);
       audio.removeEventListener('error', onError);
-      if ('speechSynthesis' in window) {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
         window.speechSynthesis.cancel();
       }
     };
@@ -59,7 +59,7 @@ export function useAudioPlayer() {
 
   // Fallback to Web Speech API TTS
   const fallbackToTTS = useCallback((track: ActiveTrack) => {
-    if (!('speechSynthesis' in window)) {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
       setIsPlaying(false);
       return;
     }
@@ -96,7 +96,9 @@ export function useAudioPlayer() {
 
   // Play a track
   const playTrack = useCallback(async (track: { trackId: string; title: string; filename: string; page?: number; transcript?: string }) => {
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
 
     // Check IndexedDB for custom uploaded audio first
     const customBlob = await mediaDB.getCustomAudio(track.trackId);
@@ -134,7 +136,7 @@ export function useAudioPlayer() {
 
   // Speak raw text directly
   const speakText = useCallback((text: string) => {
-    if (!('speechSynthesis' in window)) return;
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = playbackRate;
@@ -160,15 +162,17 @@ export function useAudioPlayer() {
     if (!activeTrack) return;
 
     if (activeTrack.isTTS) {
-      if (isPlaying) {
-        window.speechSynthesis.pause();
-        setIsPlaying(false);
-      } else {
-        if (window.speechSynthesis.paused) {
-          window.speechSynthesis.resume();
-          setIsPlaying(true);
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        if (isPlaying) {
+          window.speechSynthesis.pause();
+          setIsPlaying(false);
         } else {
-          fallbackToTTS(activeTrack);
+          if (window.speechSynthesis.paused) {
+            window.speechSynthesis.resume();
+            setIsPlaying(true);
+          } else {
+            fallbackToTTS(activeTrack);
+          }
         }
       }
       return;
@@ -208,7 +212,9 @@ export function useAudioPlayer() {
 
   const closePlayer = useCallback(() => {
     if (audioRef.current) audioRef.current.pause();
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
     setIsPlaying(false);
     setActiveTrack(null);
   }, []);

@@ -144,7 +144,7 @@ export const ReaderShell: React.FC = () => {
             onSelectPage={(pageNum) => {
               handlePageChange(pageNum);
               // Auto-close on mobile
-              if (window.innerWidth < 768) setIsSidebarOpen(false);
+              if (typeof window !== 'undefined' && window.innerWidth < 768) setIsSidebarOpen(false);
             }}
             onClose={() => setIsSidebarOpen(false)}
           />
