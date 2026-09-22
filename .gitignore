@@ -8,3 +8,6 @@ book_thumbnails/
 sample_pages/
 *.png
 *.jpg
+node_modules/
+dist/
+*.tsbuildinfo

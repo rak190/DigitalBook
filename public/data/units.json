@@ -1,0 +1,574 @@
+{
+  "units": [
+    {
+      "id": "u1",
+      "unitNumber": 1,
+      "title": "Getting to know you",
+      "lessons": [
+        {
+          "id": "1A",
+          "title": "Are you? Can you? Do you? Did you?",
+          "page": 7,
+          "bookPage": 6,
+          "grammar": "word order in questions",
+          "vocabulary": "common verb phrases",
+          "pronunciation": "the alphabet"
+        },
+        {
+          "id": "1B",
+          "title": "The perfect date?",
+          "page": 9,
+          "bookPage": 8,
+          "grammar": "present simple",
+          "vocabulary": "describing people: appearance and personality",
+          "pronunciation": "final -s and -es"
+        },
+        {
+          "id": "1C",
+          "title": "The Remake Project",
+          "page": 11,
+          "bookPage": 10,
+          "grammar": "present continuous",
+          "vocabulary": "clothes, prepositions of place",
+          "pronunciation": "/ə/ and /ɜː/"
+        }
+      ],
+      "practical": {
+        "id": "PE1",
+        "title": "Episode 1: Calling reception",
+        "page": 13,
+        "bookPage": 12,
+        "focus": "hotel problems",
+        "pronunciation": "sentence rhythm"
+      },
+      "review": null
+    },
+    {
+      "id": "u2",
+      "unitNumber": 2,
+      "title": "Past experiences",
+      "lessons": [
+        {
+          "id": "2A",
+          "title": "OMG! Where's my passport?",
+          "page": 15,
+          "bookPage": 14,
+          "grammar": "past simple: regular and irregular verbs",
+          "vocabulary": "holidays",
+          "pronunciation": "regular verbs: -ed endings"
+        },
+        {
+          "id": "2B",
+          "title": "That's me in the picture!",
+          "page": 17,
+          "bookPage": 16,
+          "grammar": "past continuous",
+          "vocabulary": "prepositions of time and place: at, in, on",
+          "pronunciation": "weak forms: was, were"
+        },
+        {
+          "id": "2C",
+          "title": "One dark October evening",
+          "page": 19,
+          "bookPage": 18,
+          "grammar": "time sequencers and connectors",
+          "vocabulary": "verb phrases",
+          "pronunciation": "word stress"
+        }
+      ],
+      "practical": null,
+      "review": {
+        "id": "RC1_2",
+        "title": "Revise and Check 1&2",
+        "page": 21,
+        "bookPage": 20
+      }
+    },
+    {
+      "id": "u3",
+      "unitNumber": 3,
+      "title": "Future plans and predictions",
+      "lessons": [
+        {
+          "id": "3A",
+          "title": "A TripAside",
+          "page": 23,
+          "bookPage": 22,
+          "grammar": "be going to (plans and predictions)",
+          "vocabulary": "airports",
+          "pronunciation": "the letter g"
+        },
+        {
+          "id": "3B",
+          "title": "Put it in your calendar!",
+          "page": 25,
+          "bookPage": 24,
+          "grammar": "present continuous (future arrangements)",
+          "vocabulary": "verbs + prepositions (arrive in, etc.)",
+          "pronunciation": "linking"
+        },
+        {
+          "id": "3C",
+          "title": "Word games",
+          "page": 27,
+          "bookPage": 26,
+          "grammar": "defining relative clauses",
+          "vocabulary": "paraphrasing",
+          "pronunciation": "silent e"
+        }
+      ],
+      "practical": {
+        "id": "PE2",
+        "title": "Episode 2: At the restaurant",
+        "page": 29,
+        "bookPage": 28,
+        "focus": "ordering a meal",
+        "pronunciation": "understanding fast speech"
+      },
+      "review": null
+    },
+    {
+      "id": "u4",
+      "unitNumber": 4,
+      "title": "Present perfect and shopping",
+      "lessons": [
+        {
+          "id": "4A",
+          "title": "Who does what?",
+          "page": 31,
+          "bookPage": 30,
+          "grammar": "present perfect + yet, just, already",
+          "vocabulary": "housework, make or do?",
+          "pronunciation": "the letters y and j"
+        },
+        {
+          "id": "4B",
+          "title": "In your basket",
+          "page": 33,
+          "bookPage": 32,
+          "grammar": "present perfect or past simple? (1)",
+          "vocabulary": "shopping",
+          "pronunciation": "c and ch"
+        },
+        {
+          "id": "4C",
+          "title": "#greatweekend",
+          "page": 35,
+          "bookPage": 34,
+          "grammar": "something, anything, nothing, etc.",
+          "vocabulary": "adjectives ending -ed and -ing",
+          "pronunciation": "/e/, /əʊ/, and /ʌ/"
+        }
+      ],
+      "practical": null,
+      "review": {
+        "id": "RC3_4",
+        "title": "Revise and Check 3&4",
+        "page": 37,
+        "bookPage": 36
+      }
+    },
+    {
+      "id": "u5",
+      "unitNumber": 5,
+      "title": "Comparisons and lifestyle",
+      "lessons": [
+        {
+          "id": "5A",
+          "title": "I want it NOW!",
+          "page": 39,
+          "bookPage": 38,
+          "grammar": "comparative adjectives and adverbs, as...as",
+          "vocabulary": "types of numbers",
+          "pronunciation": "/ə/"
+        },
+        {
+          "id": "5B",
+          "title": "Twelve lost wallets",
+          "page": 41,
+          "bookPage": 40,
+          "grammar": "superlatives (+ ever + present perfect)",
+          "vocabulary": "describing a town or city",
+          "pronunciation": "sentence stress"
+        },
+        {
+          "id": "5C",
+          "title": "How much is enough?",
+          "page": 43,
+          "bookPage": 42,
+          "grammar": "quantifiers, too, (not) enough",
+          "vocabulary": "health and the body",
+          "pronunciation": "/ʌ/"
+        }
+      ],
+      "practical": {
+        "id": "PE3",
+        "title": "Episode 3: Taking something back to a shop",
+        "page": 45,
+        "bookPage": 44,
+        "focus": "shopping problems",
+        "pronunciation": "taking things back"
+      },
+      "review": null
+    },
+    {
+      "id": "u6",
+      "unitNumber": 6,
+      "title": "Will and future choices",
+      "lessons": [
+        {
+          "id": "6A",
+          "title": "Think positive - or negative?",
+          "page": 47,
+          "bookPage": 46,
+          "grammar": "will / won't (predictions)",
+          "vocabulary": "opposite verbs",
+          "pronunciation": "'ll, won't"
+        },
+        {
+          "id": "6B",
+          "title": "I'll always love you",
+          "page": 49,
+          "bookPage": 48,
+          "grammar": "will / won't / shall (other uses)",
+          "vocabulary": "verb + back",
+          "pronunciation": "word stress: two-syllable verbs"
+        },
+        {
+          "id": "6C",
+          "title": "The meaning of dreaming",
+          "page": 51,
+          "bookPage": 50,
+          "grammar": "review of verb forms: present, past, and future",
+          "vocabulary": "modifiers",
+          "pronunciation": "the letters ea"
+        }
+      ],
+      "practical": null,
+      "review": {
+        "id": "RC5_6",
+        "title": "Revise and Check 5&6",
+        "page": 53,
+        "bookPage": 52
+      }
+    },
+    {
+      "id": "u7",
+      "unitNumber": 7,
+      "title": "Rules and obligations",
+      "lessons": [
+        {
+          "id": "7A",
+          "title": "First day nerves",
+          "page": 55,
+          "bookPage": 54,
+          "grammar": "uses of the infinitive with to",
+          "vocabulary": "verbs + infinitive: try to, forget to",
+          "pronunciation": "weak form of to, linking"
+        },
+        {
+          "id": "7B",
+          "title": "Happiness is...",
+          "page": 57,
+          "bookPage": 56,
+          "grammar": "uses of the gerund (verb + -ing)",
+          "vocabulary": "verbs + gerund",
+          "pronunciation": "-ing, the letter o"
+        },
+        {
+          "id": "7C",
+          "title": "Could you pass the test?",
+          "page": 59,
+          "bookPage": 58,
+          "grammar": "have to, don't have to, must, mustn't",
+          "vocabulary": "adjectives + prepositions: afraid of",
+          "pronunciation": "stress on prepositions"
+        }
+      ],
+      "practical": {
+        "id": "PE4",
+        "title": "Episode 4: Going to a pharmacy",
+        "page": 61,
+        "bookPage": 60,
+        "focus": "health problems",
+        "pronunciation": "feeling ill"
+      },
+      "review": null
+    },
+    {
+      "id": "u8",
+      "unitNumber": 8,
+      "title": "Conditionals and advice",
+      "lessons": [
+        {
+          "id": "8A",
+          "title": "Should I stay or should I go?",
+          "page": 63,
+          "bookPage": 62,
+          "grammar": "should",
+          "vocabulary": "get",
+          "pronunciation": "/ʊ/ and /uː/"
+        },
+        {
+          "id": "8B",
+          "title": "Murphy's Law",
+          "page": 65,
+          "bookPage": 64,
+          "grammar": "if + present, + will + infinitive (first conditional)",
+          "vocabulary": "confusing verbs",
+          "pronunciation": "homophones"
+        },
+        {
+          "id": "8C",
+          "title": "Who is Vivienne?",
+          "page": 67,
+          "bookPage": 66,
+          "grammar": "possessive pronouns",
+          "vocabulary": "adverbs of manner",
+          "pronunciation": "reading aloud"
+        }
+      ],
+      "practical": null,
+      "review": {
+        "id": "RC7_8",
+        "title": "Revise and Check 7&8",
+        "page": 69,
+        "bookPage": 68
+      }
+    },
+    {
+      "id": "u9",
+      "unitNumber": 9,
+      "title": "Hypotheticals and fears",
+      "lessons": [
+        {
+          "id": "9A",
+          "title": "Beware of the dog",
+          "page": 71,
+          "bookPage": 70,
+          "grammar": "if + past, would + infinitive (second conditional)",
+          "vocabulary": "animals and insects",
+          "pronunciation": "word stress"
+        },
+        {
+          "id": "9B",
+          "title": "Fearof.net",
+          "page": 73,
+          "bookPage": 72,
+          "grammar": "present perfect + for and since",
+          "vocabulary": "words related to fear",
+          "pronunciation": "sentence stress"
+        },
+        {
+          "id": "9C",
+          "title": "Scream queens",
+          "page": 75,
+          "bookPage": 74,
+          "grammar": "present perfect or past simple? (2)",
+          "vocabulary": "biographies",
+          "pronunciation": "word stress, /ɔː/"
+        }
+      ],
+      "practical": {
+        "id": "PE5",
+        "title": "Episode 5: Asking how to get there",
+        "page": 77,
+        "bookPage": 76,
+        "focus": "directions",
+        "pronunciation": "asking for directions"
+      },
+      "review": null
+    },
+    {
+      "id": "u10",
+      "unitNumber": 10,
+      "title": "Movement and Inventions",
+      "lessons": [
+        {
+          "id": "10A",
+          "title": "Into the net",
+          "page": 79,
+          "bookPage": 78,
+          "grammar": "expressing movement",
+          "vocabulary": "sports, expressing movement",
+          "pronunciation": "word stress"
+        },
+        {
+          "id": "10B",
+          "title": "Early birds",
+          "page": 81,
+          "bookPage": 80,
+          "grammar": "word order of phrasal verbs",
+          "vocabulary": "phrasal verbs",
+          "pronunciation": "linking"
+        },
+        {
+          "id": "10C",
+          "title": "International inventions",
+          "page": 83,
+          "bookPage": 82,
+          "grammar": "the passive",
+          "vocabulary": "people from different countries",
+          "pronunciation": "/ʃ/, /tʃ/, and /dʒ/"
+        }
+      ],
+      "practical": null,
+      "review": {
+        "id": "RC9_10",
+        "title": "Revise and Check 9&10",
+        "page": 85,
+        "bookPage": 84
+      }
+    },
+    {
+      "id": "u11",
+      "unitNumber": 11,
+      "title": "Memories and Decisions",
+      "lessons": [
+        {
+          "id": "11A",
+          "title": "Ask the teacher",
+          "page": 87,
+          "bookPage": 86,
+          "grammar": "used to",
+          "vocabulary": "school subjects",
+          "pronunciation": "used to / didn't use to"
+        },
+        {
+          "id": "11B",
+          "title": "Help! I can't decide!",
+          "page": 89,
+          "bookPage": 88,
+          "grammar": "might",
+          "vocabulary": "word building: noun formation",
+          "pronunciation": "diphthongs"
+        },
+        {
+          "id": "11C",
+          "title": "Twinstrangers.net",
+          "page": 91,
+          "bookPage": 90,
+          "grammar": "so, neither + auxiliaries",
+          "vocabulary": "similarities and differences",
+          "pronunciation": "/ð/ and /θ/"
+        }
+      ],
+      "practical": {
+        "id": "PE6",
+        "title": "Episode 6: On the phone",
+        "page": 93,
+        "bookPage": 92,
+        "focus": "phone conversations",
+        "pronunciation": "leaving messages"
+      },
+      "review": null
+    },
+    {
+      "id": "u12",
+      "unitNumber": 12,
+      "title": "Stories and General Knowledge",
+      "lessons": [
+        {
+          "id": "12A",
+          "title": "Unbelievable!",
+          "page": 95,
+          "bookPage": 94,
+          "grammar": "past perfect",
+          "vocabulary": "time expressions",
+          "pronunciation": "the letter i"
+        },
+        {
+          "id": "12B",
+          "title": "Think before you speak",
+          "page": 97,
+          "bookPage": 96,
+          "grammar": "reported speech",
+          "vocabulary": "say or tell?",
+          "pronunciation": "double consonants"
+        },
+        {
+          "id": "12C",
+          "title": "The English File quiz",
+          "page": 99,
+          "bookPage": 98,
+          "grammar": "questions without auxiliaries",
+          "vocabulary": "revision of question words",
+          "pronunciation": "question words"
+        }
+      ],
+      "practical": null,
+      "review": {
+        "id": "RC11_12",
+        "title": "Revise and Check 11&12",
+        "page": 101,
+        "bookPage": 100
+      }
+    }
+  ],
+  "referenceBanks": [
+    {
+      "id": "comm",
+      "title": "Communication",
+      "startPage": 103,
+      "endPage": 113,
+      "startBookPage": 102,
+      "endBookPage": 112
+    },
+    {
+      "id": "writing",
+      "title": "Writing",
+      "startPage": 114,
+      "endPage": 120,
+      "startBookPage": 113,
+      "endBookPage": 119
+    },
+    {
+      "id": "listening",
+      "title": "Listening Scripts",
+      "startPage": 121,
+      "endPage": 126,
+      "startBookPage": 120,
+      "endBookPage": 125
+    },
+    {
+      "id": "grammar",
+      "title": "Grammar Bank",
+      "startPage": 127,
+      "endPage": 150,
+      "startBookPage": 126,
+      "endBookPage": 149
+    },
+    {
+      "id": "vocab",
+      "title": "Vocabulary Bank",
+      "startPage": 151,
+      "endPage": 164,
+      "startBookPage": 150,
+      "endBookPage": 163
+    },
+    {
+      "id": "irregular",
+      "title": "Irregular Verbs",
+      "startPage": 165,
+      "endPage": 165,
+      "startBookPage": 164,
+      "endBookPage": 164
+    },
+    {
+      "id": "appendix",
+      "title": "Appendix",
+      "startPage": 166,
+      "endPage": 166,
+      "startBookPage": 165,
+      "endBookPage": 165
+    },
+    {
+      "id": "sounds",
+      "title": "Sound Bank",
+      "startPage": 167,
+      "endPage": 169,
+      "startBookPage": 166,
+      "endBookPage": 168
+    }
+  ]
+}

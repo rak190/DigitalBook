@@ -31,7 +31,8 @@ except Exception:
 
 PORT = 8000
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PUBLIC_DIR = os.path.join(BASE_DIR, "public")
+DIST_DIR = os.path.join(BASE_DIR, "dist")
+PUBLIC_DIR = DIST_DIR if os.path.exists(os.path.join(DIST_DIR, "index.html")) else os.path.join(BASE_DIR, "public")
 PAGES_DIR = os.path.join(BASE_DIR, "book_pages")
 THUMBS_DIR = os.path.join(BASE_DIR, "book_thumbnails")
 AUDIO_DIR = os.path.join(BASE_DIR, "audio")

@@ -1,0 +1,4523 @@
+{
+  "p7_1": {
+    "exerciseId": "p7_1",
+    "label": "Q3",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "live"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Where do you reside/stay?",
+    "explanation": "Where do you live?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_2": {
+    "exerciseId": "p7_2",
+    "label": "Q4",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "live"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "In a house or flat?",
+    "explanation": "Do you live in a house or a flat?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_3": {
+    "exerciseId": "p7_3",
+    "label": "Q5",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "have",
+      "have got"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Possession of siblings",
+    "explanation": "Do you have any brothers and sisters?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_4": {
+    "exerciseId": "p7_4",
+    "label": "Q6",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "have",
+      "keep",
+      "have got"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Possession of animals",
+    "explanation": "Do you have any pets?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_5": {
+    "exerciseId": "p7_5",
+    "label": "Q7",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "do"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Job or occupation",
+    "explanation": "What do you do? (means what is your job)",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_6": {
+    "exerciseId": "p7_6",
+    "label": "Q8",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "get",
+      "wake"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Rising from bed",
+    "explanation": "What time do you get up during the week?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_7": {
+    "exerciseId": "p7_7",
+    "label": "Q9",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "have",
+      "eat"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Eating lunch",
+    "explanation": "Where do you usually have/eat lunch?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_8": {
+    "exerciseId": "p7_8",
+    "label": "Q10",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "go"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Going to sleep",
+    "explanation": "What time do you usually go to bed?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_9": {
+    "exerciseId": "p7_9",
+    "label": "Q11",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "learn",
+      "study"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Acquiring language",
+    "explanation": "Where did you learn/study English before?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_10": {
+    "exerciseId": "p7_10",
+    "label": "Q12",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "speak",
+      "talk"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Language ability",
+    "explanation": "Can you speak any other languages?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_11": {
+    "exerciseId": "p7_11",
+    "label": "Q13",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "listen"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Hearing music with attention",
+    "explanation": "What kind of music do you listen to?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_12": {
+    "exerciseId": "p7_12",
+    "label": "Q14",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "watch",
+      "see"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Viewing TV",
+    "explanation": "What TV programmes or series do you watch?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_13": {
+    "exerciseId": "p7_13",
+    "label": "Q15",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "do",
+      "play"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Sport activity",
+    "explanation": "Do you do any sport or exercise?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_14": {
+    "exerciseId": "p7_14",
+    "label": "Q16",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "read"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Perusing text",
+    "explanation": "What kind of books or magazines do you read?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_15": {
+    "exerciseId": "p7_15",
+    "label": "Q17",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "go"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Visiting the cinema",
+    "explanation": "How often do you go to the cinema?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p7_16": {
+    "exerciseId": "p7_16",
+    "label": "Q18",
+    "pageNum": 7,
+    "acceptedAnswers": [
+      "do"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Action or activity",
+    "explanation": "What did you do last weekend?",
+    "source": "Unit 1A Ex 1a"
+  },
+  "p8_1": {
+    "exerciseId": "p8_1",
+    "label": "Ex 2a.2",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "Where does your father work?",
+      "Where does your father work"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Use does + subject + infinitive",
+    "explanation": "In English present simple questions with other verbs, use do/does + subject + infinitive",
+    "source": "Unit 1A Grammar 2a"
+  },
+  "p8_2": {
+    "exerciseId": "p8_2",
+    "label": "Ex 2a.5",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "Do you have cereal for breakfast?",
+      "Do you have cereal for breakfast"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Use do + subject + have",
+    "explanation": "For meals and habits, we use \"Do you have...\" not \"Have you...\"",
+    "source": "Unit 1A Grammar 2a"
+  },
+  "p8_3": {
+    "exerciseId": "p8_3",
+    "label": "Ex 2a.6",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "Where did you go for your last holiday?",
+      "Where did you go for your last holiday"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Use did + subject + base verb",
+    "explanation": "In past simple questions, use did + subject + base verb (go, not went)",
+    "source": "Unit 1A Grammar 2a"
+  },
+  "p8_4": {
+    "exerciseId": "p8_4",
+    "label": "4a.2 Postcode",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "SE21 8GP",
+      "se21 8gp"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Postcode in South London",
+    "explanation": "SE21 8GP",
+    "source": "Unit 1A Listening 4a"
+  },
+  "p8_5": {
+    "exerciseId": "p8_5",
+    "label": "4a.3 Phone",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "020 7946 0922",
+      "07700 900543",
+      "02079460922"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Phone number",
+    "explanation": "Phone number from extract",
+    "source": "Unit 1A Listening 4a"
+  },
+  "p8_6": {
+    "exerciseId": "p8_6",
+    "label": "4a.4 Email",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "wayne.roberts@gmail.com",
+      "wayne.roberts@hotmail.com"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Email address",
+    "explanation": "Email address from conversation",
+    "source": "Unit 1A Listening 4a"
+  },
+  "p8_7": {
+    "exerciseId": "p8_7",
+    "label": "4a.5 Surname",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "Roberts",
+      "roberts"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Wayne's family surname",
+    "explanation": "Roberts",
+    "source": "Unit 1A Listening 4a"
+  },
+  "p8_8": {
+    "exerciseId": "p8_8",
+    "label": "4a.6 Address",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "14 Dangerford Road",
+      "14 Dangerford Rd"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Delivery street address",
+    "explanation": "14 Dangerford Road",
+    "source": "Unit 1A Listening 4a"
+  },
+  "p8_9": {
+    "exerciseId": "p8_9",
+    "label": "4b.a Buying",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "2"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Extract 2: Buying a sofa",
+    "explanation": "Extract 2",
+    "source": "Unit 1A Listening 4b"
+  },
+  "p8_10": {
+    "exerciseId": "p8_10",
+    "label": "4b.c Help",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "5"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Extract 5: Trying to get help",
+    "explanation": "Extract 5",
+    "source": "Unit 1A Listening 4b"
+  },
+  "p8_11": {
+    "exerciseId": "p8_11",
+    "label": "4b.d Directions",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "3"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Extract 3: Giving directions",
+    "explanation": "Extract 3",
+    "source": "Unit 1A Listening 4b"
+  },
+  "p8_12": {
+    "exerciseId": "p8_12",
+    "label": "4b.e Information",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "6"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Extract 6: Giving class information",
+    "explanation": "Extract 6",
+    "source": "Unit 1A Listening 4b"
+  },
+  "p8_13": {
+    "exerciseId": "p8_13",
+    "label": "4b.f Restaurant",
+    "pageNum": 8,
+    "acceptedAnswers": [
+      "4"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Extract 4: Arriving at restaurant",
+    "explanation": "Extract 4",
+    "source": "Unit 1A Listening 4b"
+  },
+  "p8_14": {
+    "exerciseId": "p8_14",
+    "label": "First Name",
+    "pageNum": 8,
+    "acceptedAnswers": [],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "self-check",
+    "hint": "Your given name",
+    "explanation": "Enter your personal first name",
+    "source": "Student Info Form"
+  },
+  "p8_15": {
+    "exerciseId": "p8_15",
+    "label": "Surname",
+    "pageNum": 8,
+    "acceptedAnswers": [],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "self-check",
+    "hint": "Your family name",
+    "explanation": "Enter your family surname",
+    "source": "Student Info Form"
+  },
+  "p8_16": {
+    "exerciseId": "p8_16",
+    "label": "Address",
+    "pageNum": 8,
+    "acceptedAnswers": [],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "self-check",
+    "hint": "Street address",
+    "explanation": "Enter your street address",
+    "source": "Student Info Form"
+  },
+  "p8_17": {
+    "exerciseId": "p8_17",
+    "label": "Postcode",
+    "pageNum": 8,
+    "acceptedAnswers": [],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "self-check",
+    "hint": "Postal code",
+    "explanation": "Enter postal code",
+    "source": "Student Info Form"
+  },
+  "p8_18": {
+    "exerciseId": "p8_18",
+    "label": "Phone",
+    "pageNum": 8,
+    "acceptedAnswers": [],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "self-check",
+    "hint": "Telephone number",
+    "explanation": "Enter contact phone number",
+    "source": "Student Info Form"
+  },
+  "p8_19": {
+    "exerciseId": "p8_19",
+    "label": "Email",
+    "pageNum": 8,
+    "acceptedAnswers": [],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "self-check",
+    "hint": "Email address",
+    "explanation": "Enter contact email address",
+    "source": "Student Info Form"
+  },
+  "p9_1": {
+    "exerciseId": "p9_1",
+    "label": "1B.1a Father",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "3",
+      "Photo 3"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Woman 3 with lovely warm smile",
+    "explanation": "Charlotte describes her father with a lovely warm smile (Photo 3).",
+    "source": "Unit 1B Ex 1a"
+  },
+  "p9_2": {
+    "exerciseId": "p9_2",
+    "label": "1B.1d Age",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "52",
+      "52 years old"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Clint is 52 years old",
+    "explanation": "52",
+    "source": "Unit 1B Ex 1d"
+  },
+  "p9_3": {
+    "exerciseId": "p9_3",
+    "label": "1B.1d Job",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "businessman",
+      "business man"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Clint Bouchez is a businessman",
+    "explanation": "businessman",
+    "source": "Unit 1B Ex 1d"
+  },
+  "p9_4": {
+    "exerciseId": "p9_4",
+    "label": "1B.1d Status",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "divorced"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Divorced ten years ago",
+    "explanation": "divorced",
+    "source": "Unit 1B Ex 1d"
+  },
+  "p9_5": {
+    "exerciseId": "p9_5",
+    "label": "1B.1d Personality",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "warm, generous, funny",
+      "warm",
+      "generous",
+      "funny",
+      "romantic"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Charlotte's description of Clint's personality",
+    "explanation": "warm, generous, funny",
+    "source": "Unit 1B Ex 1d"
+  },
+  "p9_6": {
+    "exerciseId": "p9_6",
+    "label": "1B.1d Partner",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "independent, funny, clever",
+      "businesswoman",
+      "independent"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Someone who is independent, funny, and clever",
+    "explanation": "independent, funny, clever",
+    "source": "Unit 1B Ex 1d"
+  },
+  "p9_7": {
+    "exerciseId": "p9_7",
+    "label": "1B.1b Height",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "medium height",
+      "medium-height",
+      "average height"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Not tall, not short",
+    "explanation": "Charlotte says: My dad is medium height.",
+    "source": "Unit 1B Ex 1b"
+  },
+  "p9_8": {
+    "exerciseId": "p9_8",
+    "label": "1B.1b Hair",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "short dark curly hair",
+      "curly hair",
+      "short curly hair",
+      "dark curly hair"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Texture and length",
+    "explanation": "Charlotte says he has short dark curly hair.",
+    "source": "Unit 1B Ex 1b"
+  },
+  "p9_9": {
+    "exerciseId": "p9_9",
+    "label": "1B.1b Weight",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "a bit overweight",
+      "overweight"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Slightly heavy",
+    "explanation": "Charlotte says: a bit overweight.",
+    "source": "Unit 1B Ex 1b"
+  },
+  "p9_10": {
+    "exerciseId": "p9_10",
+    "label": "1B.1b Smile",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "a lovely warm smile",
+      "lovely warm smile",
+      "warm smile"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Kind facial expression",
+    "explanation": "Charlotte says: with brown eyes and a lovely warm smile.",
+    "source": "Unit 1B Ex 1b"
+  },
+  "p9_11": {
+    "exerciseId": "p9_11",
+    "label": "1B.1f Q1",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "funny"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "A person who makes you laugh is funny",
+    "explanation": "funny",
+    "source": "Unit 1B Ex 1f"
+  },
+  "p9_12": {
+    "exerciseId": "p9_12",
+    "label": "1B.1f Q2",
+    "pageNum": 9,
+    "acceptedAnswers": [
+      "fun"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "A person who you can have a good time with is fun",
+    "explanation": "fun",
+    "source": "Unit 1B Ex 1f"
+  },
+  "p10_1": {
+    "exerciseId": "p10_1",
+    "label": "1B.2a (+) He",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "needs"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "3rd person singular adds -s",
+    "explanation": "He needs a new partner.",
+    "source": "Unit 1B Grammar 2a"
+  },
+  "p10_2": {
+    "exerciseId": "p10_2",
+    "label": "1B.2a (-) She",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "doesn't want",
+      "does not want",
+      "doesn't"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "3rd person negative uses does not / doesn't",
+    "explanation": "She doesn't want her dad to end up alone.",
+    "source": "Unit 1B Grammar 2a"
+  },
+  "p10_3": {
+    "exerciseId": "p10_3",
+    "label": "1B.2a (?) you",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "do"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Question auxiliary with you",
+    "explanation": "What kind of person do you want to meet?",
+    "source": "Unit 1B Grammar 2a"
+  },
+  "p10_4": {
+    "exerciseId": "p10_4",
+    "label": "1B.2a (?) he",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "does"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Question auxiliary with he",
+    "explanation": "What kind of person does he want to meet?",
+    "source": "Unit 1B Grammar 2a"
+  },
+  "p10_5": {
+    "exerciseId": "p10_5",
+    "label": "1B.2b 1",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "A",
+      "a"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Adverbs of frequency go before the main verb",
+    "explanation": "A (They often go out together.)",
+    "source": "Unit 1B Grammar 2b"
+  },
+  "p10_6": {
+    "exerciseId": "p10_6",
+    "label": "1B.2b 2",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "B",
+      "b"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Adverbs of frequency go after the verb be",
+    "explanation": "B (He's always the one who pays.)",
+    "source": "Unit 1B Grammar 2b"
+  },
+  "p10_7": {
+    "exerciseId": "p10_7",
+    "label": "1B.4c 1",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "J",
+      "j",
+      "John"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "John: tall, dark, and handsome",
+    "explanation": "J (John)",
+    "source": "Unit 1B Listening 4c"
+  },
+  "p10_8": {
+    "exerciseId": "p10_8",
+    "label": "1B.4c 2",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "S",
+      "s",
+      "Sebastian"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Sebastian: very tall",
+    "explanation": "S (Sebastian)",
+    "source": "Unit 1B Listening 4c"
+  },
+  "p10_9": {
+    "exerciseId": "p10_9",
+    "label": "1B.4c 3",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "J",
+      "j",
+      "John"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "John: he is a teacher",
+    "explanation": "J (John)",
+    "source": "Unit 1B Listening 4c"
+  },
+  "p10_10": {
+    "exerciseId": "p10_10",
+    "label": "1B.4c 4",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "S",
+      "s",
+      "Sebastian"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Sebastian: from Germany, lives in Dublin",
+    "explanation": "S (Sebastian)",
+    "source": "Unit 1B Listening 4c"
+  },
+  "p10_11": {
+    "exerciseId": "p10_11",
+    "label": "1B.4c 5",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "J",
+      "j",
+      "John"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "John: there isn't a spark",
+    "explanation": "J (John)",
+    "source": "Unit 1B Listening 4c"
+  },
+  "p10_12": {
+    "exerciseId": "p10_12",
+    "label": "1B.4c 6",
+    "pageNum": 10,
+    "acceptedAnswers": [
+      "S",
+      "s",
+      "Sebastian"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Sebastian: a real gentleman",
+    "explanation": "S (Sebastian)",
+    "source": "Unit 1B Listening 4c"
+  },
+  "p11_1": {
+    "exerciseId": "p11_1",
+    "label": "1C.1b 1 Apron",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "W",
+      "w"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Woman wears blue apron",
+    "explanation": "W (Woman)",
+    "source": "Unit 1C Ex 1b"
+  },
+  "p11_2": {
+    "exerciseId": "p11_2",
+    "label": "1C.1b 2 Trousers",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "M",
+      "m"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Man wears blue trousers",
+    "explanation": "M (Man)",
+    "source": "Unit 1C Ex 1b"
+  },
+  "p11_3": {
+    "exerciseId": "p11_3",
+    "label": "1C.1b 3 Skirt",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "W",
+      "w"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Woman wears brown skirt",
+    "explanation": "W (Woman)",
+    "source": "Unit 1C Ex 1b"
+  },
+  "p11_4": {
+    "exerciseId": "p11_4",
+    "label": "1C.1b 4 Blouse",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "W",
+      "w"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Woman wears yellow and green blouse",
+    "explanation": "W (Woman)",
+    "source": "Unit 1C Ex 1b"
+  },
+  "p11_5": {
+    "exerciseId": "p11_5",
+    "label": "1C.1b 5 T-shirt",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "M",
+      "m"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Man wears yellow T-shirt",
+    "explanation": "M (Man)",
+    "source": "Unit 1C Ex 1b"
+  },
+  "p11_6": {
+    "exerciseId": "p11_6",
+    "label": "1C.1b 6 Cap",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "W",
+      "w"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Woman wears white cap",
+    "explanation": "W (Woman)",
+    "source": "Unit 1C Ex 1b"
+  },
+  "p11_7": {
+    "exerciseId": "p11_7",
+    "label": "1C.3a 1",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "They're",
+      "They are"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Plural pronoun + continuous",
+    "explanation": "They're wearing yellow and blue clothes.",
+    "source": "Unit 1C Ex 3a"
+  },
+  "p11_8": {
+    "exerciseId": "p11_8",
+    "label": "1C.3a 2",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "She's",
+      "She is"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Female singular pronoun",
+    "explanation": "She's wearing a cap.",
+    "source": "Unit 1C Ex 3a"
+  },
+  "p11_9": {
+    "exerciseId": "p11_9",
+    "label": "1C.3a 3",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "He's",
+      "He is"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Male singular pronoun",
+    "explanation": "He's pouring milk from a bottle.",
+    "source": "Unit 1C Ex 3a"
+  },
+  "p11_10": {
+    "exerciseId": "p11_10",
+    "label": "1C.3a 4",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "She's",
+      "She is"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Female singular pronoun",
+    "explanation": "She's pouring milk from a jug.",
+    "source": "Unit 1C Ex 3a"
+  },
+  "p11_11": {
+    "exerciseId": "p11_11",
+    "label": "1C.3a 5",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "They're",
+      "She's",
+      "He's",
+      "They are"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Looking at the milk",
+    "explanation": "They're looking at the milk.",
+    "source": "Unit 1C Ex 3a"
+  },
+  "p11_12": {
+    "exerciseId": "p11_12",
+    "label": "1C.3a 6",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "She's",
+      "She is"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Female singular pronoun",
+    "explanation": "She's standing near a window.",
+    "source": "Unit 1C Ex 3a"
+  },
+  "p11_13": {
+    "exerciseId": "p11_13",
+    "label": "1C.3b 1",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "isn't wearing",
+      "is not wearing"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Action happening right now in photo",
+    "explanation": "In the photo the man isn't wearing a cap.",
+    "source": "Unit 1C Ex 3b"
+  },
+  "p11_14": {
+    "exerciseId": "p11_14",
+    "label": "1C.3b 2",
+    "pageNum": 11,
+    "acceptedAnswers": [
+      "wear"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Habitual action with often uses present simple",
+    "explanation": "People often wear aprons in the kitchen.",
+    "source": "Unit 1C Ex 3b"
+  },
+  "p12_1": {
+    "exerciseId": "p12_1",
+    "label": "1C.4a 1",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "b",
+      "17th"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Vermeer lived in the 17th century",
+    "explanation": "b (17th)",
+    "source": "Unit 1C Listening 4a"
+  },
+  "p12_2": {
+    "exerciseId": "p12_2",
+    "label": "1C.4a 2",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "a",
+      "Holland"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Vermeer was from Holland",
+    "explanation": "a (Holland)",
+    "source": "Unit 1C Listening 4a"
+  },
+  "p12_3": {
+    "exerciseId": "p12_3",
+    "label": "1C.4a 3",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "a",
+      "everyday scenes"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "He painted everyday scenes",
+    "explanation": "a (everyday scenes)",
+    "source": "Unit 1C Listening 4a"
+  },
+  "p12_4": {
+    "exerciseId": "p12_4",
+    "label": "1C.4a 4",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "c",
+      "a pudding",
+      "pudding"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "The milkmaid is probably making a pudding",
+    "explanation": "c (a pudding)",
+    "source": "Unit 1C Listening 4a"
+  },
+  "p12_5": {
+    "exerciseId": "p12_5",
+    "label": "1C.4a 5",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "b",
+      "34"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "34 of Vermeer's paintings exist today",
+    "explanation": "b (34)",
+    "source": "Unit 1C Listening 4a"
+  },
+  "p12_6": {
+    "exerciseId": "p12_6",
+    "label": "1C.4a 6",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "b",
+      "Because some of the paints were very expensive"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Paints were expensive (e.g. lapis lazuli)",
+    "explanation": "b (expensive paints)",
+    "source": "Unit 1C Listening 4a"
+  },
+  "p12_7": {
+    "exerciseId": "p12_7",
+    "label": "1C.5a 2",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "in front of"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Position in front of him",
+    "explanation": "There's a table in front of him.",
+    "source": "Unit 1C Ex 5a"
+  },
+  "p12_8": {
+    "exerciseId": "p12_8",
+    "label": "1C.5a 3",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "On",
+      "on"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Surface preposition",
+    "explanation": "On the table there are some eggs...",
+    "source": "Unit 1C Ex 5a"
+  },
+  "p12_9": {
+    "exerciseId": "p12_9",
+    "label": "1C.5a 4a",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "in the middle of",
+      "in the center of"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Central position",
+    "explanation": "The bread is in the middle of the table.",
+    "source": "Unit 1C Ex 5a"
+  },
+  "p12_10": {
+    "exerciseId": "p12_10",
+    "label": "1C.5a 4b",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "between"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "In the middle of two items",
+    "explanation": "It's between the eggs and the strawberries.",
+    "source": "Unit 1C Ex 5a"
+  },
+  "p12_11": {
+    "exerciseId": "p12_11",
+    "label": "1C.5a 5",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "under",
+      "underneath",
+      "beneath"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Below the bread",
+    "explanation": "There's a board under the bread.",
+    "source": "Unit 1C Ex 5a"
+  },
+  "p12_12": {
+    "exerciseId": "p12_12",
+    "label": "1C.5a 6",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "Behind",
+      "behind"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "At the back of the man",
+    "explanation": "Behind the man, there's an old washing machine.",
+    "source": "Unit 1C Ex 5a"
+  },
+  "p12_13": {
+    "exerciseId": "p12_13",
+    "label": "1C.5a 7",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "on the left of",
+      "on the left"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Position on the left side",
+    "explanation": "There's a window on the left of the photo.",
+    "source": "Unit 1C Ex 5a"
+  },
+  "p12_14": {
+    "exerciseId": "p12_14",
+    "label": "1C.5a 8",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "In the corner",
+      "in the corner"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Corner of the room",
+    "explanation": "In the corner of the room there's a sink.",
+    "source": "Unit 1C Ex 5a"
+  },
+  "p12_15": {
+    "exerciseId": "p12_15",
+    "label": "1C.5a 9a",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "on"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "On the wall",
+    "explanation": "There's a flower on the wall...",
+    "source": "Unit 1C Ex 5a"
+  },
+  "p12_16": {
+    "exerciseId": "p12_16",
+    "label": "1C.5a 9b",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "above",
+      "over"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Higher than the sink",
+    "explanation": "...above the sink.",
+    "source": "Unit 1C Ex 5a"
+  },
+  "p12_17": {
+    "exerciseId": "p12_17",
+    "label": "1C.5a 10",
+    "pageNum": 12,
+    "acceptedAnswers": [
+      "next to",
+      "beside"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Beside the window",
+    "explanation": "The sink is next to the window.",
+    "source": "Unit 1C Ex 5a"
+  },
+  "p15_1": {
+    "exerciseId": "p15_1",
+    "label": "2A.1b 1",
+    "pageNum": 15,
+    "acceptedAnswers": [
+      "went",
+      "go"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "go abroad",
+    "explanation": "went",
+    "source": "Unit 2A Holidays"
+  },
+  "p15_2": {
+    "exerciseId": "p15_2",
+    "label": "2A.1b 2",
+    "pageNum": 15,
+    "acceptedAnswers": [
+      "stayed",
+      "stay"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "stay in a hotel",
+    "explanation": "stayed",
+    "source": "Unit 2A Holidays"
+  },
+  "p15_3": {
+    "exerciseId": "p15_3",
+    "label": "2A.1b 3",
+    "pageNum": 15,
+    "acceptedAnswers": [
+      "booked",
+      "book"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "book flights online",
+    "explanation": "booked",
+    "source": "Unit 2A Holidays"
+  },
+  "p15_4": {
+    "exerciseId": "p15_4",
+    "label": "2A.1b 4",
+    "pageNum": 15,
+    "acceptedAnswers": [
+      "hired",
+      "hire"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "hire a car",
+    "explanation": "hired",
+    "source": "Unit 2A Holidays"
+  },
+  "p15_5": {
+    "exerciseId": "p15_5",
+    "label": "2A.1b 5",
+    "pageNum": 15,
+    "acceptedAnswers": [
+      "took",
+      "take"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "take photos",
+    "explanation": "took",
+    "source": "Unit 2A Holidays"
+  },
+  "p15_6": {
+    "exerciseId": "p15_6",
+    "label": "2A.1b 6",
+    "pageNum": 15,
+    "acceptedAnswers": [
+      "sunbathed",
+      "sunbathe"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "sunbathe on the beach",
+    "explanation": "sunbathed",
+    "source": "Unit 2A Holidays"
+  },
+  "p15_7": {
+    "exerciseId": "p15_7",
+    "label": "2A.2a 1",
+    "pageNum": 15,
+    "acceptedAnswers": [
+      "went"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Past simple of go",
+    "explanation": "went",
+    "source": "Unit 2A Grammar"
+  },
+  "p15_8": {
+    "exerciseId": "p15_8",
+    "label": "2A.2a 2",
+    "pageNum": 15,
+    "acceptedAnswers": [
+      "stayed"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Past simple of stay",
+    "explanation": "stayed",
+    "source": "Unit 2A Grammar"
+  },
+  "p15_9": {
+    "exerciseId": "p15_9",
+    "label": "2A.2a 3",
+    "pageNum": 15,
+    "acceptedAnswers": [
+      "was"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Past simple of be (singular)",
+    "explanation": "was",
+    "source": "Unit 2A Grammar"
+  },
+  "p15_10": {
+    "exerciseId": "p15_10",
+    "label": "2A.2a 4",
+    "pageNum": 15,
+    "acceptedAnswers": [
+      "didn't like",
+      "did not like"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Negative past simple",
+    "explanation": "didn't like",
+    "source": "Unit 2A Grammar"
+  },
+  "p17_1": {
+    "exerciseId": "p17_1",
+    "label": "2B.1 1",
+    "pageNum": 17,
+    "acceptedAnswers": [
+      "in"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "in the street / in Prague",
+    "explanation": "in",
+    "source": "Unit 2B Prepositions"
+  },
+  "p17_2": {
+    "exerciseId": "p17_2",
+    "label": "2B.1 2",
+    "pageNum": 17,
+    "acceptedAnswers": [
+      "at"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "at the station / at the hotel",
+    "explanation": "at",
+    "source": "Unit 2B Prepositions"
+  },
+  "p17_3": {
+    "exerciseId": "p17_3",
+    "label": "2B.1 3",
+    "pageNum": 17,
+    "acceptedAnswers": [
+      "on"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "on a bus / on the train",
+    "explanation": "on",
+    "source": "Unit 2B Prepositions"
+  },
+  "p17_4": {
+    "exerciseId": "p17_4",
+    "label": "2B.2 1",
+    "pageNum": 17,
+    "acceptedAnswers": [
+      "was walking"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Past continuous: was + walking",
+    "explanation": "was walking",
+    "source": "Unit 2B Grammar"
+  },
+  "p17_5": {
+    "exerciseId": "p17_5",
+    "label": "2B.2 2",
+    "pageNum": 17,
+    "acceptedAnswers": [
+      "were sitting"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Past continuous: were + sitting",
+    "explanation": "were sitting",
+    "source": "Unit 2B Grammar"
+  },
+  "p17_6": {
+    "exerciseId": "p17_6",
+    "label": "2B.2 3",
+    "pageNum": 17,
+    "acceptedAnswers": [
+      "was shining"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "The sun was shining",
+    "explanation": "was shining",
+    "source": "Unit 2B Grammar"
+  },
+  "p19_1": {
+    "exerciseId": "p19_1",
+    "label": "2C.1 1",
+    "pageNum": 19,
+    "acceptedAnswers": [
+      "because"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Gives a reason",
+    "explanation": "because",
+    "source": "Unit 2C Connectors"
+  },
+  "p19_2": {
+    "exerciseId": "p19_2",
+    "label": "2C.1 2",
+    "pageNum": 19,
+    "acceptedAnswers": [
+      "so"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Gives a result",
+    "explanation": "so",
+    "source": "Unit 2C Connectors"
+  },
+  "p19_3": {
+    "exerciseId": "p19_3",
+    "label": "2C.1 3",
+    "pageNum": 19,
+    "acceptedAnswers": [
+      "although"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Shows contrast",
+    "explanation": "although",
+    "source": "Unit 2C Connectors"
+  },
+  "p19_4": {
+    "exerciseId": "p19_4",
+    "label": "2C.1 4",
+    "pageNum": 19,
+    "acceptedAnswers": [
+      "but"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Shows contrast",
+    "explanation": "but",
+    "source": "Unit 2C Connectors"
+  },
+  "p21_1": {
+    "exerciseId": "p21_1",
+    "label": "RC1.1",
+    "pageNum": 21,
+    "acceptedAnswers": [
+      "were",
+      "c"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Where were you born?",
+    "explanation": "were",
+    "source": "Revise & Check 1&2"
+  },
+  "p21_2": {
+    "exerciseId": "p21_2",
+    "label": "RC1.2",
+    "pageNum": 21,
+    "acceptedAnswers": [
+      "Does",
+      "b"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Does your brother speak French?",
+    "explanation": "Does",
+    "source": "Revise & Check 1&2"
+  },
+  "p21_3": {
+    "exerciseId": "p21_3",
+    "label": "RC1.3",
+    "pageNum": 21,
+    "acceptedAnswers": [
+      "were you doing",
+      "a"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "What were you doing at 8.00?",
+    "explanation": "were you doing",
+    "source": "Revise & Check 1&2"
+  },
+  "p21_4": {
+    "exerciseId": "p21_4",
+    "label": "RC1.4",
+    "pageNum": 21,
+    "acceptedAnswers": [
+      "hardly ever",
+      "b"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "We hardly ever go to the cinema",
+    "explanation": "hardly ever",
+    "source": "Revise & Check 1&2"
+  },
+  "p21_5": {
+    "exerciseId": "p21_5",
+    "label": "RC1.5",
+    "pageNum": 21,
+    "acceptedAnswers": [
+      "are you",
+      "a"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Why are you wearing a heavy coat?",
+    "explanation": "are you",
+    "source": "Revise & Check 1&2"
+  },
+  "p23_1": {
+    "exerciseId": "p23_1",
+    "label": "3A.1 1",
+    "pageNum": 23,
+    "acceptedAnswers": [
+      "terminal"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Building at airport",
+    "explanation": "terminal",
+    "source": "Unit 3A Vocabulary"
+  },
+  "p23_2": {
+    "exerciseId": "p23_2",
+    "label": "3A.1 2",
+    "pageNum": 23,
+    "acceptedAnswers": [
+      "gate"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Exit to aircraft",
+    "explanation": "gate",
+    "source": "Unit 3A Vocabulary"
+  },
+  "p23_3": {
+    "exerciseId": "p23_3",
+    "label": "3A.1 3",
+    "pageNum": 23,
+    "acceptedAnswers": [
+      "check-in",
+      "check in"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Where you show tickets and drop bags",
+    "explanation": "check-in",
+    "source": "Unit 3A Vocabulary"
+  },
+  "p23_4": {
+    "exerciseId": "p23_4",
+    "label": "3A.2 1",
+    "pageNum": 23,
+    "acceptedAnswers": [
+      "'m going to meet",
+      "am going to meet"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Plan with be going to",
+    "explanation": "'m going to meet",
+    "source": "Unit 3A Grammar"
+  },
+  "p23_5": {
+    "exerciseId": "p23_5",
+    "label": "3A.2 2",
+    "pageNum": 23,
+    "acceptedAnswers": [
+      "'s going to land",
+      "is going to land"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Prediction with evidence",
+    "explanation": "'s going to land",
+    "source": "Unit 3A Grammar"
+  },
+  "p25_1": {
+    "exerciseId": "p25_1",
+    "label": "3B.1 1",
+    "pageNum": 25,
+    "acceptedAnswers": [
+      "'m seeing",
+      "am seeing"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Definite future arrangement",
+    "explanation": "'m seeing",
+    "source": "Unit 3B Grammar"
+  },
+  "p25_2": {
+    "exerciseId": "p25_2",
+    "label": "3B.1 2",
+    "pageNum": 25,
+    "acceptedAnswers": [
+      "are you leaving"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Question about future arrangement",
+    "explanation": "are you leaving",
+    "source": "Unit 3B Grammar"
+  },
+  "p27_1": {
+    "exerciseId": "p27_1",
+    "label": "3C.1 1",
+    "pageNum": 27,
+    "acceptedAnswers": [
+      "who",
+      "that"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Refers to a person",
+    "explanation": "who",
+    "source": "Unit 3C Relative Clauses"
+  },
+  "p27_2": {
+    "exerciseId": "p27_2",
+    "label": "3C.1 2",
+    "pageNum": 27,
+    "acceptedAnswers": [
+      "which",
+      "that"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Refers to a thing",
+    "explanation": "which",
+    "source": "Unit 3C Relative Clauses"
+  },
+  "p27_3": {
+    "exerciseId": "p27_3",
+    "label": "3C.1 3",
+    "pageNum": 27,
+    "acceptedAnswers": [
+      "where"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Refers to a place",
+    "explanation": "where",
+    "source": "Unit 3C Relative Clauses"
+  },
+  "p128_1": {
+    "exerciseId": "p128_1",
+    "label": "1A.a 1",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Where can we park?",
+      "Where can we park"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "can before we",
+    "explanation": "Where can we park?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_2": {
+    "exerciseId": "p128_2",
+    "label": "1A.a 2",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "How old are you?",
+      "How old are you"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "old after How",
+    "explanation": "How old are you?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_3": {
+    "exerciseId": "p128_3",
+    "label": "1A.a 3",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Does the class finish at 8.00?",
+      "Does the class finish at 8:00?"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "the class after Does",
+    "explanation": "Does the class finish at 8.00?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_4": {
+    "exerciseId": "p128_4",
+    "label": "1A.a 4",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Where do your friends live?",
+      "Where do your friends live"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "live at the end",
+    "explanation": "Where do your friends live?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_5": {
+    "exerciseId": "p128_5",
+    "label": "1A.a 5",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Why didn't you answer my email?",
+      "Why didn't you answer my email"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "didn't before you",
+    "explanation": "Why didn't you answer my email?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_6": {
+    "exerciseId": "p128_6",
+    "label": "1A.a 6",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Do you often go to the cinema?",
+      "Do you often go to the cinema"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "go after often",
+    "explanation": "Do you often go to the cinema?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_7": {
+    "exerciseId": "p128_7",
+    "label": "1A.a 7",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "What does this word mean?",
+      "What does this word mean"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "does after What",
+    "explanation": "What does this word mean?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_8": {
+    "exerciseId": "p128_8",
+    "label": "1A.a 8",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "What time did your friends arrive?",
+      "What time did your friends arrive"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "your friends after did",
+    "explanation": "What time did your friends arrive?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_9": {
+    "exerciseId": "p128_9",
+    "label": "1A.a 9",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Who are you talking to?",
+      "Who are you talking to"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "to at the end",
+    "explanation": "Who are you talking to?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_10": {
+    "exerciseId": "p128_10",
+    "label": "1A.a 10",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Where were you last night?",
+      "Where were you last night"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "you after were",
+    "explanation": "Where were you last night?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_11": {
+    "exerciseId": "p128_11",
+    "label": "1A.b 1",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Do you have a car?",
+      "Do you have a car"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Start with Do",
+    "explanation": "Do you have a car?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_12": {
+    "exerciseId": "p128_12",
+    "label": "1A.b 2",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Where was your brother born?",
+      "Where was your brother born"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Where + was + subject + born",
+    "explanation": "Where was your brother born?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_13": {
+    "exerciseId": "p128_13",
+    "label": "1A.b 3",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "How often does he phone you?",
+      "How often does he phone you"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "How often + does + he + phone you",
+    "explanation": "How often does he phone you?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_14": {
+    "exerciseId": "p128_14",
+    "label": "1A.b 4",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "What time does their flight arrive?",
+      "What time does their flight arrive"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "What time + does + their flight + arrive",
+    "explanation": "What time does their flight arrive?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_15": {
+    "exerciseId": "p128_15",
+    "label": "1A.b 5",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Is your girlfriend from Brazil?",
+      "Is your girlfriend from Brazil"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Is + subject + from Brazil",
+    "explanation": "Is your girlfriend from Brazil?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_16": {
+    "exerciseId": "p128_16",
+    "label": "1A.b 6",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "How many languages can you speak?",
+      "How many languages can you speak"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "How many languages + can + you + speak",
+    "explanation": "How many languages can you speak?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_17": {
+    "exerciseId": "p128_17",
+    "label": "1A.b 7",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "How was the party?",
+      "How was the party"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "How + was + the party",
+    "explanation": "How was the party?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_18": {
+    "exerciseId": "p128_18",
+    "label": "1A.b 8",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Where did you go last summer?",
+      "Where did you go last summer"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Where + did + you + go + last summer",
+    "explanation": "Where did you go last summer?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_19": {
+    "exerciseId": "p128_19",
+    "label": "1A.b 9",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Is there a doctor here?",
+      "Is there a doctor here"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Is there + a doctor + here",
+    "explanation": "Is there a doctor here?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_20": {
+    "exerciseId": "p128_20",
+    "label": "1A.b 10",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Did you come to school by bus?",
+      "Did you come to school by bus"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Did + you + come to school + by bus",
+    "explanation": "Did you come to school by bus?",
+    "source": "Grammar Bank 1A"
+  },
+  "p128_21": {
+    "exerciseId": "p128_21",
+    "label": "1B.a 1",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Does Anna like music?",
+      "Does Anna like music"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "question 3rd person singular",
+    "explanation": "Does Anna like music?",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_22": {
+    "exerciseId": "p128_22",
+    "label": "1B.a 2",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "My sister has a lot of hobbies.",
+      "My sister has a lot of hobbies"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "positive 3rd person have -> has",
+    "explanation": "My sister has a lot of hobbies.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_23": {
+    "exerciseId": "p128_23",
+    "label": "1B.a 3",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "I don't get on very well with my parents.",
+      "I do not get on very well with my parents."
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "negative with I",
+    "explanation": "I don't get on very well with my parents.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_24": {
+    "exerciseId": "p128_24",
+    "label": "1B.a 4",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "My brother studies English at university.",
+      "My brother studies English at university"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "study -> studies",
+    "explanation": "My brother studies English at university.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_25": {
+    "exerciseId": "p128_25",
+    "label": "1B.a 5",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "My neighbours don't have any children.",
+      "My neighbours do not have any children."
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "negative with plural",
+    "explanation": "My neighbours don't have any children.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_26": {
+    "exerciseId": "p128_26",
+    "label": "1B.a 6",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "What time does the film start?",
+      "What time does the film start"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "question with 3rd person singular",
+    "explanation": "What time does the film start?",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_27": {
+    "exerciseId": "p128_27",
+    "label": "1B.a 7",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "He goes out twice a week.",
+      "He goes out twice a week"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "go -> goes",
+    "explanation": "He goes out twice a week.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_28": {
+    "exerciseId": "p128_28",
+    "label": "1B.a 8",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "We don't often talk about politics.",
+      "We do not often talk about politics."
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "negative adverb position",
+    "explanation": "We don't often talk about politics.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_29": {
+    "exerciseId": "p128_29",
+    "label": "1B.a 9",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "How often do you see your brother?",
+      "How often do you see your brother"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "question with you",
+    "explanation": "How often do you see your brother?",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_30": {
+    "exerciseId": "p128_30",
+    "label": "1B.a 10",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Sally doesn't go on Facebook very much.",
+      "Sally does not go on Facebook very much."
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "negative 3rd person",
+    "explanation": "Sally doesn't go on Facebook very much.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_31": {
+    "exerciseId": "p128_31",
+    "label": "1B.b 1",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "I always go to bed before 11.00.",
+      "I always go to bed before 11:00."
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "always before main verb",
+    "explanation": "I always go to bed before 11.00.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_32": {
+    "exerciseId": "p128_32",
+    "label": "1B.b 2",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Kate hardly ever sees her family.",
+      "Kate hardly ever sees her family"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "hardly ever before sees",
+    "explanation": "Kate hardly ever sees her family.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_33": {
+    "exerciseId": "p128_33",
+    "label": "1B.b 3",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "We never go shopping on Saturdays.",
+      "We never go shopping on Saturdays"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "never before go",
+    "explanation": "We never go shopping on Saturdays.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_34": {
+    "exerciseId": "p128_34",
+    "label": "1B.b 4",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "I go to the dentist's twice a year.",
+      "I go to the dentist's twice a year"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "frequency phrase at end",
+    "explanation": "I go to the dentist's twice a year.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_35": {
+    "exerciseId": "p128_35",
+    "label": "1B.b 5",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "They sometimes have breakfast in bed.",
+      "They sometimes have breakfast in bed"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "sometimes before have",
+    "explanation": "They sometimes have breakfast in bed.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_36": {
+    "exerciseId": "p128_36",
+    "label": "1B.b 6",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "I usually listen to the radio in the car.",
+      "I usually listen to the radio in the car"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "usually before listen",
+    "explanation": "I usually listen to the radio in the car.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_37": {
+    "exerciseId": "p128_37",
+    "label": "1B.b 7",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Alan runs in the park every day.",
+      "Alan runs in the park every day"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "every day at the end",
+    "explanation": "Alan runs in the park every day.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_38": {
+    "exerciseId": "p128_38",
+    "label": "1B.b 8",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Sam is often late for work.",
+      "Sam is often late for work"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "often after is (verb be)",
+    "explanation": "Sam is often late for work.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_39": {
+    "exerciseId": "p128_39",
+    "label": "1B.b 9",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "John doesn't often go to the theatre.",
+      "John does not often go to the theatre."
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "often between negative auxiliary and verb",
+    "explanation": "John doesn't often go to the theatre.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_40": {
+    "exerciseId": "p128_40",
+    "label": "1B.b 10",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "I visit my mum once a month.",
+      "I visit my mum once a month"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "frequency phrase at end",
+    "explanation": "I visit my mum once a month.",
+    "source": "Grammar Bank 1B"
+  },
+  "p128_41": {
+    "exerciseId": "p128_41",
+    "label": "1C.a 1",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Oliver's wearing a suit today!",
+      "Oliver is wearing a suit today!"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "continuous of wear",
+    "explanation": "Oliver's wearing a suit today!",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_42": {
+    "exerciseId": "p128_42",
+    "label": "1C.a 2",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Why are you wearing a coat?",
+      "Why are you wearing a coat"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "question continuous",
+    "explanation": "Why are you wearing a coat?",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_43": {
+    "exerciseId": "p128_43",
+    "label": "1C.a 3",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Jane isn't sitting in her usual place today.",
+      "Jane is not sitting in her usual place today."
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "negative continuous sit -> sitting",
+    "explanation": "Jane isn't sitting in her usual place today.",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_44": {
+    "exerciseId": "p128_44",
+    "label": "1C.a 4",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "You're standing on my foot!",
+      "You are standing on my foot!"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "continuous of stand",
+    "explanation": "You're standing on my foot!",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_45": {
+    "exerciseId": "p128_45",
+    "label": "1C.a 5",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "What book are you reading?",
+      "What book are you reading"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "question continuous",
+    "explanation": "What book are you reading?",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_46": {
+    "exerciseId": "p128_46",
+    "label": "1C.a 6",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "We're renting a small flat at the moment.",
+      "We are renting a small flat at the moment."
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "continuous of rent",
+    "explanation": "We're renting a small flat at the moment.",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_47": {
+    "exerciseId": "p128_47",
+    "label": "1C.a 7",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Is she wearing make-up?",
+      "Is she wearing make-up"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "question with she",
+    "explanation": "Is she wearing make-up?",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_48": {
+    "exerciseId": "p128_48",
+    "label": "1C.a 8",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "I'm planning a trip to the USA.",
+      "I am planning a trip to the USA."
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "plan -> planning",
+    "explanation": "I'm planning a trip to the USA.",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_49": {
+    "exerciseId": "p128_49",
+    "label": "1C.a 9",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "Is your brother working in London this week?",
+      "Is your brother working in London this week"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "question continuous",
+    "explanation": "Is your brother working in London this week?",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_50": {
+    "exerciseId": "p128_50",
+    "label": "1C.a 10",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "They aren't getting on very well at the moment.",
+      "They are not getting on very well at the moment."
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "negative continuous get -> getting",
+    "explanation": "They aren't getting on very well at the moment.",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_51": {
+    "exerciseId": "p128_51",
+    "label": "1C.b 1",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "doesn't bite",
+      "does not bite"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "habitual negative present simple",
+    "explanation": "He doesn't bite.",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_52": {
+    "exerciseId": "p128_52",
+    "label": "1C.b 2",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "are you wearing",
+      "'s raining",
+      "is raining"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "continuous right now",
+    "explanation": "are you wearing",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_53": {
+    "exerciseId": "p128_53",
+    "label": "1C.b 3",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "'m not listening",
+      "am not listening",
+      "not listening"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "negative continuous of listen",
+    "explanation": "'m not listening",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_54": {
+    "exerciseId": "p128_54",
+    "label": "1C.b 4",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "need"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "state verb need is not used in continuous",
+    "explanation": "need",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_55": {
+    "exerciseId": "p128_55",
+    "label": "1C.b 5",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "'s putting",
+      "is putting"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "continuous right now put -> putting",
+    "explanation": "'s putting",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_56": {
+    "exerciseId": "p128_56",
+    "label": "1C.b 6",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "do you usually cook",
+      "cook"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "habitual routine with usually",
+    "explanation": "do you usually cook",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_57": {
+    "exerciseId": "p128_57",
+    "label": "1C.b 7",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "are you doing",
+      "'m waiting",
+      "am waiting"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "continuous action right now",
+    "explanation": "are you doing",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_58": {
+    "exerciseId": "p128_58",
+    "label": "1C.b 8",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "drink",
+      "want"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "habitual routine drink / state want",
+    "explanation": "drink",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_59": {
+    "exerciseId": "p128_59",
+    "label": "1C.b 9",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "works"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "permanent routine present simple work -> works",
+    "explanation": "works",
+    "source": "Grammar Bank 1C"
+  },
+  "p128_60": {
+    "exerciseId": "p128_60",
+    "label": "1C.b 10",
+    "pageNum": 128,
+    "acceptedAnswers": [
+      "lives",
+      "'s working",
+      "is working"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "lives permanently, is working temporarily",
+    "explanation": "lives",
+    "source": "Grammar Bank 1C"
+  },
+  "p129_1": {
+    "exerciseId": "p129_1",
+    "label": "2A.rule1 Irregular",
+    "pageNum": 129,
+    "acceptedAnswers": [
+      "went"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Past simple of go",
+    "explanation": "went",
+    "source": "Grammar Bank 2A"
+  },
+  "p129_2": {
+    "exerciseId": "p129_2",
+    "label": "2A.rule2 Regular",
+    "pageNum": 129,
+    "acceptedAnswers": [
+      "stayed"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Past simple of stay",
+    "explanation": "stayed",
+    "source": "Grammar Bank 2A"
+  },
+  "p129_3": {
+    "exerciseId": "p129_3",
+    "label": "2B.rule1 Continuous",
+    "pageNum": 129,
+    "acceptedAnswers": [
+      "was walking",
+      "were singing"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Past continuous: was/were + -ing",
+    "explanation": "was walking",
+    "source": "Grammar Bank 2B"
+  },
+  "p129_4": {
+    "exerciseId": "p129_4",
+    "label": "2C.rule1 Connector",
+    "pageNum": 129,
+    "acceptedAnswers": [
+      "because",
+      "so",
+      "although",
+      "but"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Time sequencers & connectors",
+    "explanation": "because",
+    "source": "Grammar Bank 2C"
+  },
+  "p130_1": {
+    "exerciseId": "p130_1",
+    "label": "2A.a 1",
+    "pageNum": 130,
+    "acceptedAnswers": [
+      "did you go",
+      "Where did you go"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Past simple question: did + subject + base verb",
+    "explanation": "did you go",
+    "source": "Grammar Bank 2A"
+  },
+  "p130_2": {
+    "exerciseId": "p130_2",
+    "label": "2A.a 2",
+    "pageNum": 130,
+    "acceptedAnswers": [
+      "was"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "It was great",
+    "explanation": "was",
+    "source": "Grammar Bank 2A"
+  },
+  "p130_3": {
+    "exerciseId": "p130_3",
+    "label": "2A.a 3",
+    "pageNum": 130,
+    "acceptedAnswers": [
+      "stayed"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "We stayed at a hotel",
+    "explanation": "stayed",
+    "source": "Grammar Bank 2A"
+  },
+  "p130_4": {
+    "exerciseId": "p130_4",
+    "label": "2A.a 4",
+    "pageNum": 130,
+    "acceptedAnswers": [
+      "did you do"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "What did you do during the day?",
+    "explanation": "did you do",
+    "source": "Grammar Bank 2A"
+  },
+  "p130_5": {
+    "exerciseId": "p130_5",
+    "label": "2B.a 1",
+    "pageNum": 130,
+    "acceptedAnswers": [
+      "was walking"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Past continuous action in progress",
+    "explanation": "was walking",
+    "source": "Grammar Bank 2B"
+  },
+  "p130_6": {
+    "exerciseId": "p130_6",
+    "label": "2B.a 2",
+    "pageNum": 130,
+    "acceptedAnswers": [
+      "met"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Completed past simple action",
+    "explanation": "met",
+    "source": "Grammar Bank 2B"
+  },
+  "p130_7": {
+    "exerciseId": "p130_7",
+    "label": "2C.a 1",
+    "pageNum": 130,
+    "acceptedAnswers": [
+      "because"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Gives a reason",
+    "explanation": "because",
+    "source": "Grammar Bank 2C"
+  },
+  "p130_8": {
+    "exerciseId": "p130_8",
+    "label": "2C.a 2",
+    "pageNum": 130,
+    "acceptedAnswers": [
+      "although"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Shows contrast",
+    "explanation": "although",
+    "source": "Grammar Bank 2C"
+  },
+  "p151_1": {
+    "exerciseId": "p151_1",
+    "label": "Q2.1 Adj",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "friendly"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Open and warm",
+    "explanation": "friendly",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_2": {
+    "exerciseId": "p151_2",
+    "label": "Q2.1 Opp",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "unfriendly"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Opposite of friendly",
+    "explanation": "unfriendly",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_3": {
+    "exerciseId": "p151_3",
+    "label": "Q2.2 Adj",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "talkative"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Talks a lot",
+    "explanation": "talkative",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_4": {
+    "exerciseId": "p151_4",
+    "label": "Q2.2 Opp",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "quiet"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Opposite of talkative",
+    "explanation": "quiet",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_5": {
+    "exerciseId": "p151_5",
+    "label": "Q2.3 Adj",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "generous"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Likes giving things",
+    "explanation": "generous",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_6": {
+    "exerciseId": "p151_6",
+    "label": "Q2.3 Opp",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "mean"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Opposite of generous",
+    "explanation": "mean",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_7": {
+    "exerciseId": "p151_7",
+    "label": "Q2.4 Adj",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "kind"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Friendly and good to other people",
+    "explanation": "kind",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_8": {
+    "exerciseId": "p151_8",
+    "label": "Q2.4 Opp",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "unkind"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Opposite of kind",
+    "explanation": "unkind",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_9": {
+    "exerciseId": "p151_9",
+    "label": "Q2.5 Adj",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "lazy"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Does not want to work",
+    "explanation": "lazy",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_10": {
+    "exerciseId": "p151_10",
+    "label": "Q2.5 Opp",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "hard-working",
+      "hardworking"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Opposite of lazy",
+    "explanation": "hard-working",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_11": {
+    "exerciseId": "p151_11",
+    "label": "Q2.6 Adj",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "funny"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Makes people laugh",
+    "explanation": "funny",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_12": {
+    "exerciseId": "p151_12",
+    "label": "Q2.6 Opp",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "serious"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Opposite of funny",
+    "explanation": "serious",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_13": {
+    "exerciseId": "p151_13",
+    "label": "Q2.7 Adj",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "clever"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Quick at learning",
+    "explanation": "clever",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_14": {
+    "exerciseId": "p151_14",
+    "label": "Q2.7 Opp",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "stupid"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Opposite of clever",
+    "explanation": "stupid",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_15": {
+    "exerciseId": "p151_15",
+    "label": "Q2.8 Adj",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "shy"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Cannot talk easily to strangers",
+    "explanation": "shy",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_16": {
+    "exerciseId": "p151_16",
+    "label": "Q2.8 Opp",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "extrovert"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Opposite of shy",
+    "explanation": "extrovert",
+    "source": "Vocab Bank Personality"
+  },
+  "p151_17": {
+    "exerciseId": "p151_17",
+    "label": "1.1 Curly",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "2"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 2: curly red hair",
+    "explanation": "2",
+    "source": "Vocab Bank Appearance"
+  },
+  "p151_18": {
+    "exerciseId": "p151_18",
+    "label": "1.2 Straight",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "3"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 3: long straight hair",
+    "explanation": "3",
+    "source": "Vocab Bank Appearance"
+  },
+  "p151_19": {
+    "exerciseId": "p151_19",
+    "label": "1.4 Blonde",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "6"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 6: short blonde hair",
+    "explanation": "6",
+    "source": "Vocab Bank Appearance"
+  },
+  "p151_20": {
+    "exerciseId": "p151_20",
+    "label": "1.5 Beard",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "5"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 5: beard and moustache",
+    "explanation": "5",
+    "source": "Vocab Bank Appearance"
+  },
+  "p151_21": {
+    "exerciseId": "p151_21",
+    "label": "1.6 Bald",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "4"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 4: bald",
+    "explanation": "4",
+    "source": "Vocab Bank Appearance"
+  },
+  "p151_22": {
+    "exerciseId": "p151_22",
+    "label": "1.7 Tall/thin",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "7"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 7: tall and thin",
+    "explanation": "7",
+    "source": "Vocab Bank Appearance"
+  },
+  "p151_23": {
+    "exerciseId": "p151_23",
+    "label": "1.8 Medium/slim",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "9"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 9: medium height and very slim",
+    "explanation": "9",
+    "source": "Vocab Bank Appearance"
+  },
+  "p151_24": {
+    "exerciseId": "p151_24",
+    "label": "1.9 Overweight",
+    "pageNum": 151,
+    "acceptedAnswers": [
+      "8"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 8: short and overweight",
+    "explanation": "8",
+    "source": "Vocab Bank Appearance"
+  },
+  "p152_1": {
+    "exerciseId": "p152_1",
+    "label": "Wear 11",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "11",
+      "blouse"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 11: blouse",
+    "explanation": "11",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_2": {
+    "exerciseId": "p152_2",
+    "label": "Wear 13",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "13",
+      "cardigan"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 13: cardigan",
+    "explanation": "13",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_3": {
+    "exerciseId": "p152_3",
+    "label": "Wear 3",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "3",
+      "coat"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 3: coat",
+    "explanation": "3",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_4": {
+    "exerciseId": "p152_4",
+    "label": "Wear 2",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "2",
+      "dress"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 2: dress",
+    "explanation": "2",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_5": {
+    "exerciseId": "p152_5",
+    "label": "Wear 9",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "9",
+      "jacket"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 9: jacket",
+    "explanation": "9",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_6": {
+    "exerciseId": "p152_6",
+    "label": "Wear 5",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "5",
+      "jeans"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 5: jeans",
+    "explanation": "5",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_7": {
+    "exerciseId": "p152_7",
+    "label": "Wear 14",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "14",
+      "leggings"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 14: leggings",
+    "explanation": "14",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_8": {
+    "exerciseId": "p152_8",
+    "label": "Wear 18",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "18",
+      "pyjamas"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 18: pyjamas",
+    "explanation": "18",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_9": {
+    "exerciseId": "p152_9",
+    "label": "Wear 8",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "8",
+      "shirt"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 8: shirt",
+    "explanation": "8",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_10": {
+    "exerciseId": "p152_10",
+    "label": "Wear 6",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "6",
+      "skirt"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 6: skirt",
+    "explanation": "6",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_11": {
+    "exerciseId": "p152_11",
+    "label": "Wear 20",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "20",
+      "socks"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 20: socks",
+    "explanation": "20",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_12": {
+    "exerciseId": "p152_12",
+    "label": "Wear 7",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "7",
+      "suit"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 7: suit",
+    "explanation": "7",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_13": {
+    "exerciseId": "p152_13",
+    "label": "Wear 16",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "16",
+      "sweater"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 16: sweater",
+    "explanation": "16",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_14": {
+    "exerciseId": "p152_14",
+    "label": "Wear 19",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "19",
+      "tights"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 19: tights",
+    "explanation": "19",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_15": {
+    "exerciseId": "p152_15",
+    "label": "Wear 4",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "4",
+      "top"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 4: top",
+    "explanation": "4",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_16": {
+    "exerciseId": "p152_16",
+    "label": "Wear 10",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "10",
+      "tracksuit"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 10: tracksuit",
+    "explanation": "10",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_17": {
+    "exerciseId": "p152_17",
+    "label": "Wear 12",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "12",
+      "trousers"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 12: trousers",
+    "explanation": "12",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_18": {
+    "exerciseId": "p152_18",
+    "label": "Wear 15",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "15",
+      "T-shirt",
+      "t-shirt"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 15: T-shirt",
+    "explanation": "15",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_19": {
+    "exerciseId": "p152_19",
+    "label": "Wear 17",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "17",
+      "underwear"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 17: underwear",
+    "explanation": "17",
+    "source": "Vocab Bank Clothes"
+  },
+  "p152_20": {
+    "exerciseId": "p152_20",
+    "label": "Wear 24",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "24",
+      "boots"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 24: boots",
+    "explanation": "24",
+    "source": "Vocab Bank Footwear"
+  },
+  "p152_21": {
+    "exerciseId": "p152_21",
+    "label": "Wear 25",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "25",
+      "flip-flops"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 25: flip-flops",
+    "explanation": "25",
+    "source": "Vocab Bank Footwear"
+  },
+  "p152_22": {
+    "exerciseId": "p152_22",
+    "label": "Wear 22",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "22",
+      "sandals"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 22: sandals",
+    "explanation": "22",
+    "source": "Vocab Bank Footwear"
+  },
+  "p152_23": {
+    "exerciseId": "p152_23",
+    "label": "Wear 23",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "23",
+      "shoes"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 23: shoes",
+    "explanation": "23",
+    "source": "Vocab Bank Footwear"
+  },
+  "p152_24": {
+    "exerciseId": "p152_24",
+    "label": "Wear 21",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "21",
+      "trainers"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 21: trainers",
+    "explanation": "21",
+    "source": "Vocab Bank Footwear"
+  },
+  "p152_25": {
+    "exerciseId": "p152_25",
+    "label": "Wear 26",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "26",
+      "belt"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 26: belt",
+    "explanation": "26",
+    "source": "Vocab Bank Accessories"
+  },
+  "p152_26": {
+    "exerciseId": "p152_26",
+    "label": "Wear 30",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "30",
+      "cap"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 30: cap",
+    "explanation": "30",
+    "source": "Vocab Bank Accessories"
+  },
+  "p152_27": {
+    "exerciseId": "p152_27",
+    "label": "Wear 31",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "31",
+      "hat"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 31: hat",
+    "explanation": "31",
+    "source": "Vocab Bank Accessories"
+  },
+  "p152_28": {
+    "exerciseId": "p152_28",
+    "label": "Wear 28",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "28",
+      "gloves"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 28: gloves",
+    "explanation": "28",
+    "source": "Vocab Bank Accessories"
+  },
+  "p152_29": {
+    "exerciseId": "p152_29",
+    "label": "Wear 29",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "29",
+      "scarf"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 29: scarf",
+    "explanation": "29",
+    "source": "Vocab Bank Accessories"
+  },
+  "p152_30": {
+    "exerciseId": "p152_30",
+    "label": "Wear 27",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "27",
+      "tie"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 27: tie",
+    "explanation": "27",
+    "source": "Vocab Bank Accessories"
+  },
+  "p152_31": {
+    "exerciseId": "p152_31",
+    "label": "Wear 33",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "33",
+      "bracelet"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 33: bracelet",
+    "explanation": "33",
+    "source": "Vocab Bank Jewellery"
+  },
+  "p152_32": {
+    "exerciseId": "p152_32",
+    "label": "Wear 32",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "32",
+      "earrings"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 32: earrings",
+    "explanation": "32",
+    "source": "Vocab Bank Jewellery"
+  },
+  "p152_33": {
+    "exerciseId": "p152_33",
+    "label": "Wear 35",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "35",
+      "necklace"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 35: necklace",
+    "explanation": "35",
+    "source": "Vocab Bank Jewellery"
+  },
+  "p152_34": {
+    "exerciseId": "p152_34",
+    "label": "Wear 34",
+    "pageNum": 152,
+    "acceptedAnswers": [
+      "34",
+      "ring"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 34: ring",
+    "explanation": "34",
+    "source": "Vocab Bank Jewellery"
+  },
+  "p153_1": {
+    "exerciseId": "p153_1",
+    "label": "Go 7",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "7",
+      "go abroad"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 7: go abroad",
+    "explanation": "7",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_2": {
+    "exerciseId": "p153_2",
+    "label": "Go 10",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "10",
+      "go away for the weekend"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 10: go away for the weekend",
+    "explanation": "10",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_3": {
+    "exerciseId": "p153_3",
+    "label": "Go 4",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "4",
+      "go by bus"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 4: go by bus",
+    "explanation": "4",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_4": {
+    "exerciseId": "p153_4",
+    "label": "Go 8",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "8",
+      "go camping"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 8: go camping",
+    "explanation": "8",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_5": {
+    "exerciseId": "p153_5",
+    "label": "Go 9",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "9",
+      "go for a walk"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 9: go for a walk",
+    "explanation": "9",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_6": {
+    "exerciseId": "p153_6",
+    "label": "Go 5",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "5",
+      "go on holiday"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 5: go on holiday",
+    "explanation": "5",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_7": {
+    "exerciseId": "p153_7",
+    "label": "Go 3",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "3",
+      "go out at night"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 3: go out at night",
+    "explanation": "3",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_8": {
+    "exerciseId": "p153_8",
+    "label": "Go 6",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "6",
+      "go skiing"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 6: go skiing",
+    "explanation": "6",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_9": {
+    "exerciseId": "p153_9",
+    "label": "Go 2",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "2",
+      "go swimming"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Photo 2: go swimming",
+    "explanation": "2",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_10": {
+    "exerciseId": "p153_10",
+    "label": "Holiday take",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "take"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "take photos",
+    "explanation": "take",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_11": {
+    "exerciseId": "p153_11",
+    "label": "Holiday buy",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "buy"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "buy souvenirs",
+    "explanation": "buy",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_12": {
+    "exerciseId": "p153_12",
+    "label": "Holiday sunbathe",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "sunbathe"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "sunbathe on the beach",
+    "explanation": "sunbathe",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_13": {
+    "exerciseId": "p153_13",
+    "label": "Holiday have",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "have"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "have a good time",
+    "explanation": "have",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_14": {
+    "exerciseId": "p153_14",
+    "label": "Holiday spend",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "spend"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "spend money",
+    "explanation": "spend",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_15": {
+    "exerciseId": "p153_15",
+    "label": "Holiday rent",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "rent"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "rent an apartment",
+    "explanation": "rent",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_16": {
+    "exerciseId": "p153_16",
+    "label": "Holiday hire",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "hire"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "hire a bicycle",
+    "explanation": "hire",
+    "source": "Vocab Bank Holidays"
+  },
+  "p153_17": {
+    "exerciseId": "p153_17",
+    "label": "Holiday book",
+    "pageNum": 153,
+    "acceptedAnswers": [
+      "book"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "book a flight online",
+    "explanation": "book",
+    "source": "Vocab Bank Holidays"
+  },
+  "p154_1": {
+    "exerciseId": "p154_1",
+    "label": "Prep 1",
+    "pageNum": 154,
+    "acceptedAnswers": [
+      "in"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "in a room / in a building",
+    "explanation": "in",
+    "source": "Vocab Bank Prepositions"
+  },
+  "p154_2": {
+    "exerciseId": "p154_2",
+    "label": "Prep 2",
+    "pageNum": 154,
+    "acceptedAnswers": [
+      "on"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "on a table / on the wall",
+    "explanation": "on",
+    "source": "Vocab Bank Prepositions"
+  },
+  "p154_3": {
+    "exerciseId": "p154_3",
+    "label": "Prep 3",
+    "pageNum": 154,
+    "acceptedAnswers": [
+      "at"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "at the bus stop / at home",
+    "explanation": "at",
+    "source": "Vocab Bank Prepositions"
+  },
+  "p154_4": {
+    "exerciseId": "p154_4",
+    "label": "Prep 4",
+    "pageNum": 154,
+    "acceptedAnswers": [
+      "under"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "under the bed",
+    "explanation": "under",
+    "source": "Vocab Bank Prepositions"
+  },
+  "p154_5": {
+    "exerciseId": "p154_5",
+    "label": "Prep 5",
+    "pageNum": 154,
+    "acceptedAnswers": [
+      "into"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "into the shop",
+    "explanation": "into",
+    "source": "Vocab Bank Prepositions"
+  },
+  "p154_6": {
+    "exerciseId": "p154_6",
+    "label": "Prep 6",
+    "pageNum": 154,
+    "acceptedAnswers": [
+      "out of"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "out of the car",
+    "explanation": "out of",
+    "source": "Vocab Bank Prepositions"
+  },
+  "p155_1": {
+    "exerciseId": "p155_1",
+    "label": "MakeDo 1",
+    "pageNum": 155,
+    "acceptedAnswers": [
+      "do"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "do the washing-up",
+    "explanation": "do",
+    "source": "Vocab Bank Housework"
+  },
+  "p155_2": {
+    "exerciseId": "p155_2",
+    "label": "MakeDo 2",
+    "pageNum": 155,
+    "acceptedAnswers": [
+      "make"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "make the bed",
+    "explanation": "make",
+    "source": "Vocab Bank Housework"
+  },
+  "p155_3": {
+    "exerciseId": "p155_3",
+    "label": "MakeDo 3",
+    "pageNum": 155,
+    "acceptedAnswers": [
+      "do"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "do homework",
+    "explanation": "do",
+    "source": "Vocab Bank Housework"
+  },
+  "p155_4": {
+    "exerciseId": "p155_4",
+    "label": "MakeDo 4",
+    "pageNum": 155,
+    "acceptedAnswers": [
+      "make"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "make a mistake",
+    "explanation": "make",
+    "source": "Vocab Bank Housework"
+  },
+  "p155_5": {
+    "exerciseId": "p155_5",
+    "label": "MakeDo 5",
+    "pageNum": 155,
+    "acceptedAnswers": [
+      "do"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "do exercise / sport",
+    "explanation": "do",
+    "source": "Vocab Bank Housework"
+  },
+  "p155_6": {
+    "exerciseId": "p155_6",
+    "label": "MakeDo 6",
+    "pageNum": 155,
+    "acceptedAnswers": [
+      "make"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "make noise",
+    "explanation": "make",
+    "source": "Vocab Bank Housework"
+  },
+  "p156_1": {
+    "exerciseId": "p156_1",
+    "label": "Shop 1",
+    "pageNum": 156,
+    "acceptedAnswers": [
+      "basket"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Handheld shopping container",
+    "explanation": "basket",
+    "source": "Vocab Bank Shopping"
+  },
+  "p156_2": {
+    "exerciseId": "p156_2",
+    "label": "Shop 2",
+    "pageNum": 156,
+    "acceptedAnswers": [
+      "trolley",
+      "cart"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Wheeled shopping container",
+    "explanation": "trolley",
+    "source": "Vocab Bank Shopping"
+  },
+  "p156_3": {
+    "exerciseId": "p156_3",
+    "label": "Shop 3",
+    "pageNum": 156,
+    "acceptedAnswers": [
+      "receipt"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Proof of purchase",
+    "explanation": "receipt",
+    "source": "Vocab Bank Shopping"
+  },
+  "p156_4": {
+    "exerciseId": "p156_4",
+    "label": "Shop 4",
+    "pageNum": 156,
+    "acceptedAnswers": [
+      "checkout"
+    ],
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "ignorePunctuation": true,
+    "grading": "exact",
+    "hint": "Where you pay in a supermarket",
+    "explanation": "checkout",
+    "source": "Vocab Bank Shopping"
+  }
+}

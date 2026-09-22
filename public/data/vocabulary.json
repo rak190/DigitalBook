@@ -1,0 +1,362 @@
+[
+  {
+    "word": "appearance",
+    "pos": "noun",
+    "phonetic": "/əˈpɪərəns/",
+    "definition": "The way that someone or something looks.",
+    "example": "She has a very youthful appearance.",
+    "page": 8,
+    "category": "Describing People"
+  },
+  {
+    "word": "personality",
+    "pos": "noun",
+    "phonetic": "/ˌpɜːsəˈnæləti/",
+    "definition": "The various aspects of a person's character that combine to make them different.",
+    "example": "He has an outgoing and friendly personality.",
+    "page": 8,
+    "category": "Describing People"
+  },
+  {
+    "word": "straight hair",
+    "pos": "phrase",
+    "phonetic": "/streɪt heə/",
+    "definition": "Hair that has no curves, waves, or curls.",
+    "example": "She has long straight dark hair.",
+    "page": 8,
+    "category": "Appearance"
+  },
+  {
+    "word": "curly hair",
+    "pos": "phrase",
+    "phonetic": "/ˈkɜːli heə/",
+    "definition": "Hair that grows in curls or spirals.",
+    "example": "He has short curly brown hair.",
+    "page": 8,
+    "category": "Appearance"
+  },
+  {
+    "word": "wavy hair",
+    "pos": "phrase",
+    "phonetic": "/ˈweɪvi heə/",
+    "definition": "Hair having gentle curves.",
+    "example": "She has blonde wavy hair.",
+    "page": 8,
+    "category": "Appearance"
+  },
+  {
+    "word": "beard",
+    "pos": "noun",
+    "phonetic": "/bɪəd/",
+    "definition": "Hair that grows on the chin and cheeks of a man's face.",
+    "example": "He grew a thick beard over the winter.",
+    "page": 8,
+    "category": "Appearance"
+  },
+  {
+    "word": "moustache",
+    "pos": "noun",
+    "phonetic": "/məˈstɑːʃ/",
+    "definition": "Hair that grows on a man's upper lip.",
+    "example": "He has a neatly trimmed moustache.",
+    "page": 8,
+    "category": "Appearance"
+  },
+  {
+    "word": "overweight",
+    "pos": "adjective",
+    "phonetic": "/ˌəʊvəˈweɪt/",
+    "definition": "Too heavy or fat; above a normal or desirable weight.",
+    "example": "A bit overweight.",
+    "page": 8,
+    "category": "Appearance"
+  },
+  {
+    "word": "slim",
+    "pos": "adjective",
+    "phonetic": "/slɪm/",
+    "definition": "Attractively thin.",
+    "example": "She is tall and slim.",
+    "page": 8,
+    "category": "Appearance"
+  },
+  {
+    "word": "bald",
+    "pos": "adjective",
+    "phonetic": "/bɔːld/",
+    "definition": "Having little or no hair on the head.",
+    "example": "My grandfather is completely bald.",
+    "page": 8,
+    "category": "Appearance"
+  },
+  {
+    "word": "friendly",
+    "pos": "adjective",
+    "phonetic": "/ˈfrendli/",
+    "definition": "Behaving in a kind and pleasant way.",
+    "example": "The hotel staff were polite and friendly.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "unfriendly",
+    "pos": "adjective",
+    "phonetic": "/ʌnˈfrendli/",
+    "definition": "Not kind or pleasant; hostile.",
+    "example": "The clerk was cold and unfriendly.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "talkative",
+    "pos": "adjective",
+    "phonetic": "/ˈtɔːkətɪv/",
+    "definition": "Liking to talk a lot.",
+    "example": "She is very talkative and easy to talk with.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "quiet",
+    "pos": "adjective",
+    "phonetic": "/ˈkwaɪət/",
+    "definition": "Making little noise; speaking little.",
+    "example": "He is quiet and thoughtful.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "generous",
+    "pos": "adjective",
+    "phonetic": "/ˈdʒenərəs/",
+    "definition": "Giving or willing to give freely; not mean.",
+    "example": "It was very generous of you to pay for dinner.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "mean",
+    "pos": "adjective",
+    "phonetic": "/miːn/",
+    "definition": "Not willing to give or share things, especially money.",
+    "example": "He's too mean to buy a round of drinks.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "funny",
+    "pos": "adjective",
+    "phonetic": "/ˈfʌni/",
+    "definition": "Making you laugh; amusing.",
+    "example": "He told a very funny joke yesterday.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "serious",
+    "pos": "adjective",
+    "phonetic": "/ˈsɪəriəs/",
+    "definition": "Thinking about things in a careful way and not laughing much.",
+    "example": "You need to be serious when taking an exam.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "lazy",
+    "pos": "adjective",
+    "phonetic": "/ˈleɪzi/",
+    "definition": "Unwilling to work or use energy.",
+    "example": "Get out of bed, you lazy boy!",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "hard-working",
+    "pos": "adjective",
+    "phonetic": "/ˌhɑːd ˈwɜːkɪŋ/",
+    "definition": "Putting a lot of effort into a job and doing it well.",
+    "example": "She is a hard-working student who always does her homework.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "shy",
+    "pos": "adjective",
+    "phonetic": "/ʃaɪ/",
+    "definition": "Nervous or embarrassed about meeting and speaking to other people.",
+    "example": "He was too shy to speak to the girl.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "extrovert",
+    "pos": "noun",
+    "phonetic": "/ˈekstrəvɜːt/",
+    "definition": "A lively and confident person who enjoys being with other people.",
+    "example": "As an extrovert, she loves meeting new people at parties.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "clever",
+    "pos": "adjective",
+    "phonetic": "/ˈklevə/",
+    "definition": "Quick at learning and understanding things.",
+    "example": "She's very clever at mathematics.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "kind",
+    "pos": "adjective",
+    "phonetic": "/kaɪnd/",
+    "definition": "Caring about others; friendly and generous.",
+    "example": "Thank you for your kind help.",
+    "page": 9,
+    "category": "Personality"
+  },
+  {
+    "word": "cardigan",
+    "pos": "noun",
+    "phonetic": "/ˈkɑːdɪɡən/",
+    "definition": "A knitted jacket that fastens up the front with buttons.",
+    "example": "She put on a warm woollen cardigan.",
+    "page": 11,
+    "category": "Clothes"
+  },
+  {
+    "word": "coat",
+    "pos": "noun",
+    "phonetic": "/kəʊt/",
+    "definition": "An outer garment with sleeves, worn outdoors.",
+    "example": "Don't forget your winter coat!",
+    "page": 11,
+    "category": "Clothes"
+  },
+  {
+    "word": "suit",
+    "pos": "noun",
+    "phonetic": "/suːt/",
+    "definition": "A set of clothes made of the same fabric, typically a jacket and trousers or a skirt.",
+    "example": "He wore a navy blue suit to the interview.",
+    "page": 11,
+    "category": "Clothes"
+  },
+  {
+    "word": "tracksuit",
+    "pos": "noun",
+    "phonetic": "/ˈtræksuːt/",
+    "definition": "A loose, warm set of clothes with trousers and a top, worn for exercise.",
+    "example": "He goes jogging in a grey tracksuit.",
+    "page": 11,
+    "category": "Clothes"
+  },
+  {
+    "word": "trainers",
+    "pos": "noun (plural)",
+    "phonetic": "/ˈtreɪnəz/",
+    "definition": "Soft athletic shoes suitable for sports (US: sneakers).",
+    "example": "I need a new pair of running trainers.",
+    "page": 11,
+    "category": "Clothes"
+  },
+  {
+    "word": "flip-flops",
+    "pos": "noun (plural)",
+    "phonetic": "/ˈflɪp flɒps/",
+    "definition": "Light sandals, typically made of plastic or rubber, with a thong between the big toe and the second toe.",
+    "example": "She wore flip-flops to the beach.",
+    "page": 11,
+    "category": "Clothes"
+  },
+  {
+    "word": "flight",
+    "pos": "noun",
+    "phonetic": "/flaɪt/",
+    "definition": "A journey in an aircraft.",
+    "example": "Our flight to London was delayed by two hours.",
+    "page": 15,
+    "category": "Holidays"
+  },
+  {
+    "word": "luggage",
+    "pos": "noun",
+    "phonetic": "/ˈlʌɡɪdʒ/",
+    "definition": "Bags, cases, etc. that you take with you when travelling.",
+    "example": "You can leave your luggage at the hotel reception.",
+    "page": 15,
+    "category": "Holidays"
+  },
+  {
+    "word": "boarding pass",
+    "pos": "noun",
+    "phonetic": "/ˈbɔːdɪŋ pɑːs/",
+    "definition": "A card that a passenger must have to be allowed on a plane or ship.",
+    "example": "Please show your passport and boarding pass at gate 4.",
+    "page": 15,
+    "category": "Holidays"
+  },
+  {
+    "word": "passport",
+    "pos": "noun",
+    "phonetic": "/ˈpɑːspɔːt/",
+    "definition": "An official document that identifies you as a citizen of a particular country.",
+    "example": "Don't forget to pack your passport before leaving!",
+    "page": 15,
+    "category": "Holidays"
+  },
+  {
+    "word": "souvenir",
+    "pos": "noun",
+    "phonetic": "/ˌsuːvəˈnɪə/",
+    "definition": "A thing that is kept as a reminder of a person, place, or event.",
+    "example": "We bought some fridge magnets as souvenirs.",
+    "page": 15,
+    "category": "Holidays"
+  },
+  {
+    "word": "sunbathe",
+    "pos": "verb",
+    "phonetic": "/ˈsʌnbeɪð/",
+    "definition": "Sit or lie in the sun, especially to get a tan.",
+    "example": "We spent the afternoon sunbathing on the beach.",
+    "page": 15,
+    "category": "Holidays"
+  },
+  {
+    "word": "hire",
+    "pos": "verb",
+    "phonetic": "/ˈhaɪə/",
+    "definition": "Pay money to borrow something for a short time.",
+    "example": "We decided to hire bicycles for the weekend.",
+    "page": 15,
+    "category": "Holidays"
+  },
+  {
+    "word": "delay",
+    "pos": "noun / verb",
+    "phonetic": "/dɪˈleɪ/",
+    "definition": "A period of time by which something is late or postponed.",
+    "example": "There is a 30-minute delay on the train service.",
+    "page": 23,
+    "category": "Airports"
+  },
+  {
+    "word": "gate",
+    "pos": "noun",
+    "phonetic": "/ɡeɪt/",
+    "definition": "An exit from an airport building to an aircraft.",
+    "example": "Flight BA142 is now boarding at Gate 12.",
+    "page": 23,
+    "category": "Airports"
+  },
+  {
+    "word": "terminal",
+    "pos": "noun",
+    "phonetic": "/ˈtɜːmɪnl/",
+    "definition": "A building at an airport where passengers arrive and depart.",
+    "example": "All international flights depart from Terminal 2.",
+    "page": 23,
+    "category": "Airports"
+  }
+]
