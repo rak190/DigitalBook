@@ -184,6 +184,20 @@ export const ExercisePanel: React.FC<ExercisePanelProps> = ({
                     <span className="text-xs font-semibold text-slate-300">
                       {ex.unitRef || 'Practice Task'}
                     </span>
+                    {ex.audioTrack && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onPlayAudioTrack && onPlayAudioTrack(ex.audioTrack!, `Track ${ex.audioTrack}`);
+                        }}
+                        className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 border border-emerald-500/30 flex items-center gap-1 transition-all ml-1 shadow-sm"
+                        title={`Listen to Audio Track ${ex.audioTrack}`}
+                      >
+                        <Volume2 className="w-3 h-3" />
+                        <span>{ex.audioTrack}</span>
+                      </button>
+                    )}
                   </div>
 
                   {evaluation && (

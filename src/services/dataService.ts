@@ -93,6 +93,11 @@ class DataService {
     return this.audioTracks.filter(track => track.page === pdfPage);
   }
 
+  public getAudioTrack(trackId: string): AudioTrackMeta | undefined {
+    const clean = trackId.trim();
+    return this.audioTracks.find(t => t.id === clean || t.filename === clean || t.filename === `${clean}.mp3`);
+  }
+
   public getAllAudioTracks(): AudioTrackMeta[] {
     return this.audioTracks;
   }

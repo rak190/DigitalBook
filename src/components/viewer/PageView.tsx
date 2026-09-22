@@ -10,6 +10,7 @@ interface PageViewProps {
   answers: Record<string, ExerciseAnswer>;
   onAnswerChange: (exerciseId: string, pageId: number, value: string) => void;
   onSelectExercise?: (exerciseId: string) => void;
+  onPlayAudioTrack?: (trackId: string, title: string) => void;
   activeExerciseId?: string;
   isCleanMode?: boolean;
 }
@@ -21,6 +22,7 @@ export const PageView: React.FC<PageViewProps> = ({
   answers,
   onAnswerChange,
   onSelectExercise,
+  onPlayAudioTrack,
   activeExerciseId,
   isCleanMode = false,
 }) => {
@@ -61,6 +63,7 @@ export const PageView: React.FC<PageViewProps> = ({
             answers={answers}
             onAnswerChange={(exId, val) => onAnswerChange(exId, leftPageNum, val)}
             onSelectExercise={onSelectExercise}
+            onPlayAudioTrack={onPlayAudioTrack}
             activeExerciseId={activeExerciseId}
             isCleanMode={isCleanMode}
           />
@@ -80,6 +83,7 @@ export const PageView: React.FC<PageViewProps> = ({
               answers={answers}
               onAnswerChange={(exId, val) => onAnswerChange(exId, rightPageNum, val)}
               onSelectExercise={onSelectExercise}
+              onPlayAudioTrack={onPlayAudioTrack}
               activeExerciseId={activeExerciseId}
               isCleanMode={isCleanMode}
             />

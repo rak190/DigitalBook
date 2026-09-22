@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { mediaDB } from '../services/storage';
+import { dataService } from '../services/dataService';
 
 export interface ActiveTrack {
   trackId: string;
@@ -108,8 +109,12 @@ export function useAudioPlayer() {
       srcUrl = `/audio/${track.filename.endsWith('.mp3') ? track.filename : `${track.filename}.mp3`}`;
     }
 
+    const meta = dataService.getAudioTrack(track.trackId);
+    const transcriptText = track.transcript || meta?.script || meta?.transcript || '';
+
     const newTrack: ActiveTrack = {
       ...track,
+      transcript: transcriptText,
       isTTS: false,
     };
     setActiveTrack(newTrack);

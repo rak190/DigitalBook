@@ -6,6 +6,7 @@ interface PageOverlayProps {
   answers: Record<string, ExerciseAnswer>;
   onAnswerChange: (exerciseId: string, value: string) => void;
   onSelectExercise?: (exerciseId: string) => void;
+  onPlayAudioTrack?: (trackId: string, title: string) => void;
   activeExerciseId?: string;
   isCleanMode?: boolean; // Screen sharing mode to hide answers
 }
@@ -15,6 +16,7 @@ export const PageOverlay: React.FC<PageOverlayProps> = ({
   answers,
   onAnswerChange,
   onSelectExercise,
+  onPlayAudioTrack,
   activeExerciseId,
   isCleanMode = false,
 }) => {
@@ -56,6 +58,21 @@ export const PageOverlay: React.FC<PageOverlayProps> = ({
             <span className="opacity-0 group-hover:opacity-100 pointer-events-none absolute -top-5 left-0 px-1.5 py-0.5 text-[10px] font-bold bg-slate-900/90 text-sky-300 rounded shadow transition-opacity duration-150 whitespace-nowrap z-20">
               {ex.label}
             </span>
+
+            {/* Direct on-page audio trigger badge */}
+            {ex.audioTrack && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onPlayAudioTrack && onPlayAudioTrack(ex.audioTrack!, `Track ${ex.audioTrack}`);
+                }}
+                className="absolute -right-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center text-[10px] shadow transition-transform hover:scale-110 z-20 cursor-pointer"
+                title={`Listen to Audio Track ${ex.audioTrack}`}
+              >
+                🎧
+              </button>
+            )}
           </div>
         );
       })}

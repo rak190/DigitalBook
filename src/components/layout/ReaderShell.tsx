@@ -163,6 +163,14 @@ export const ReaderShell: React.FC = () => {
             setActiveExerciseId(id);
             if (!isPanelOpen) setIsPanelOpen(true);
           }}
+          onPlayAudioTrack={(trackId, title) => {
+            audioPlayer.playTrack({
+              trackId,
+              title,
+              filename: trackId,
+              page: currentPage,
+            });
+          }}
           activeExerciseId={activeExerciseId}
           isCleanMode={isCleanMode}
         />
