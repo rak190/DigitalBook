@@ -118,6 +118,28 @@ export function useBookProgress() {
     });
   }, [persistAnswers]);
 
+  const retryMistakes = useCallback((exercises: ExerciseItem[]) => {
+    setAnswers(prev => {
+      const next = { ...prev };
+      exercises.forEach(ex => {
+        if (evaluations[ex.id] && !evaluations[ex.id].isCorrect && !evaluations[ex.id].isSelfCheck) {
+          delete next[ex.id];
+        }
+      });
+      persistAnswers(next);
+      return next;
+    });
+    setEvaluations(prev => {
+      const next = { ...prev };
+      exercises.forEach(ex => {
+        if (evaluations[ex.id] && !evaluations[ex.id].isCorrect && !evaluations[ex.id].isSelfCheck) {
+          delete next[ex.id];
+        }
+      });
+      return next;
+    });
+  }, [evaluations, persistAnswers]);
+
   const resetPageAnswers = useCallback((exercises: ExerciseItem[]) => {
     setAnswers(prev => {
       const next = { ...prev };
@@ -207,6 +229,7 @@ export function useBookProgress() {
     saveStatus,
     setAnswerValue,
     checkAnswers,
+    retryMistakes,
     resetExercise,
     resetPageAnswers,
     resetAllProgress,

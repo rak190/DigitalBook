@@ -16,6 +16,7 @@ interface ExercisePanelProps {
   evaluations: Record<string, AnswerEvaluation>;
   onAnswerChange: (exerciseId: string, value: string | string[]) => void;
   onCheckAnswers: () => void;
+  onRetryMistakes?: () => void;
   onResetPage: () => void;
   onPlayAudioTrack?: (trackId: string, title: string) => void;
   onClose: () => void;
@@ -30,6 +31,7 @@ export const ExercisePanel: React.FC<ExercisePanelProps> = ({
   evaluations,
   onAnswerChange,
   onCheckAnswers,
+  onRetryMistakes,
   onResetPage,
   onPlayAudioTrack,
   onClose,
@@ -38,6 +40,12 @@ export const ExercisePanel: React.FC<ExercisePanelProps> = ({
 }) => {
   const [showAnswerKey, setShowAnswerKey] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [filterMistakes, setFilterMistakes] = useState(false);
+  const [expandedHints, setExpandedHints] = useState<Record<string, boolean>>({});
+
+  const toggleHint = (key: string) => {
+    setExpandedHints(prev => ({ ...prev, [key]: !prev[key] }));
+  };
 
   // Group exercises by unitRef or section
   const hasEvaluations = Object.keys(evaluations).length > 0;
@@ -45,6 +53,11 @@ export const ExercisePanel: React.FC<ExercisePanelProps> = ({
   const correctCount = autoGradedEvals.filter(e => e.isCorrect).length;
   const totalAutoGraded = autoGradedEvals.length;
   const scorePercent = totalAutoGraded > 0 ? Math.round((correctCount / totalAutoGraded) * 100) : null;
+  const mistakeCount = totalAutoGraded - correctCount;
+
+  const displayedExercises = filterMistakes
+    ? exercises.filter(ex => evaluations[ex.id] && !evaluations[ex.id].isCorrect && !evaluations[ex.id].isSelfCheck)
+    : exercises;
 
   return (
     <aside className="w-80 md:w-96 bg-slateDark-900 border-l border-slate-800 flex flex-col h-full shadow-2xl z-20 flex-shrink-0 animate-in slide-in-from-right duration-200">
@@ -124,7 +137,7 @@ export const ExercisePanel: React.FC<ExercisePanelProps> = ({
 
       {/* Score Summary Card (Shown when checked) */}
       {hasEvaluations && (
-        <div className="p-3 mx-4 my-3 rounded-xl border bg-slate-800/80 border-slate-700 shadow-sm">
+        <div className="p-3.5 mx-4 my-3 rounded-xl border bg-slate-800/90 border-slate-700 shadow-md space-y-2.5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className={`p-1.5 rounded-lg ${
@@ -141,26 +154,72 @@ export const ExercisePanel: React.FC<ExercisePanelProps> = ({
             </div>
             <button
               onClick={() => setShowAnswerKey(!showAnswerKey)}
-              className="text-xs text-sky-400 hover:text-sky-300 flex items-center gap-1 font-medium"
+              className="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-700 hover:bg-slate-600 text-sky-300 flex items-center gap-1.5 transition-colors shadow-sm"
+              title="Show or hide correct answer keys"
             >
               {showAnswerKey ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-              {showAnswerKey ? 'Hide Key' : 'Show Key'}
+              <span>{showAnswerKey ? 'Hide Key' : 'Show Key'}</span>
             </button>
           </div>
+
+          {/* Review Mistakes & Try Again Actions */}
+          {totalAutoGraded > 0 && mistakeCount > 0 && (
+            <div className="flex items-center gap-2 pt-1 border-t border-slate-700/60">
+              <button
+                onClick={() => setFilterMistakes(!filterMistakes)}
+                className={`flex-1 py-1.5 px-2 text-[11px] font-semibold rounded-lg border transition-colors flex items-center justify-center gap-1.5 ${
+                  filterMistakes
+                    ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
+                    : 'bg-slate-850 hover:bg-slate-750 text-slate-300 border-slate-700'
+                }`}
+              >
+                <AlertCircle className="w-3.5 h-3.5 text-amber-400" />
+                <span>{filterMistakes ? 'Show All Exercises' : `Review Mistakes (${mistakeCount})`}</span>
+              </button>
+
+              {onRetryMistakes && (
+                <button
+                  onClick={() => {
+                    onRetryMistakes();
+                    setFilterMistakes(false);
+                  }}
+                  className="flex-1 py-1.5 px-2 text-[11px] font-semibold rounded-lg bg-sky-600/80 hover:bg-sky-600 text-white flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                  title="Clear incorrect answers to try again"
+                >
+                  <RefreshCw className="w-3.5 h-3.5" />
+                  <span>Try Again</span>
+                </button>
+              )}
+            </div>
+          )}
         </div>
       )}
 
       {/* Exercises List */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {exercises.length === 0 ? (
+        {displayedExercises.length === 0 ? (
           <div className="text-center py-12 px-4 text-slate-400 space-y-3">
-            <p className="text-sm font-medium text-slate-300">Textbook Reading & Lesson Page</p>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              This page contains introductory text, vocabulary references, or listening passages. Use the top navigation or audio badges to study.
-            </p>
+            {filterMistakes ? (
+              <>
+                <p className="text-sm font-semibold text-emerald-400">No mistakes to review!</p>
+                <button
+                  onClick={() => setFilterMistakes(false)}
+                  className="text-xs text-sky-400 underline hover:text-sky-300"
+                >
+                  Show all exercises
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="text-sm font-medium text-slate-300">Textbook Reading & Lesson Page</p>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  This page contains introductory text, vocabulary references, or listening passages. Use the top navigation or audio badges to study.
+                </p>
+              </>
+            )}
           </div>
         ) : (
-          exercises.map((ex) => {
+          displayedExercises.map((ex) => {
             const userVal = answers[ex.id]?.value || '';
             const evaluation = evaluations[ex.id];
             const isSelected = activeExerciseId === ex.id;
@@ -221,9 +280,29 @@ export const ExercisePanel: React.FC<ExercisePanelProps> = ({
 
                 {/* Question / Explanation hint if available */}
                 {ex.explanation && (
-                  <p className="text-xs text-slate-400 mb-2.5 leading-snug">
+                  <p className="text-xs text-slate-400 mb-2 leading-snug">
                     {ex.explanation}
                   </p>
+                )}
+
+                {/* Optional Hint Toggle */}
+                {ex.hint && (
+                  <div className="mb-2.5">
+                    <button
+                      type="button"
+                      onClick={() => toggleHint(`hint_${ex.id}`)}
+                      className="text-[11px] text-amber-400 hover:text-amber-300 flex items-center gap-1 font-medium transition-colors"
+                    >
+                      <span>💡</span>
+                      <span>{expandedHints[`hint_${ex.id}`] ? 'Hide Hint' : 'Show Hint'}</span>
+                    </button>
+                    {expandedHints[`hint_${ex.id}`] && (
+                      <div className="mt-1 p-2 rounded bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-200 animate-in fade-in duration-100">
+                        <span className="font-semibold text-amber-400">Hint: </span>
+                        <span>{ex.hint}</span>
+                      </div>
+                    )}
+                  </div>
                 )}
 
                 {/* Input Renderers */}
@@ -313,12 +392,22 @@ export const ExercisePanel: React.FC<ExercisePanelProps> = ({
                 )}
 
                 {/* Answer Key Reveal (When toggled) */}
-                {showAnswerKey && ex.acceptedAnswers && ex.acceptedAnswers.length > 0 && (
-                  <div className="mt-2.5 p-2 rounded bg-amber-500/10 border border-amber-500/20 text-xs">
-                    <span className="font-semibold text-amber-400">Answer Key: </span>
-                    <span className="text-amber-200 font-mono">
-                      {ex.acceptedAnswers.join(' / ')}
-                    </span>
+                {showAnswerKey && (
+                  <div className="mt-2.5 p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-xs space-y-1 animate-in fade-in duration-150">
+                    <div className="font-bold text-amber-400 text-[11px] uppercase tracking-wider">
+                      {ex.gradingType === 'self_check' || ex.fieldType === 'textarea' || ex.fieldType === 'speaking'
+                        ? 'Possible Answer / Reference'
+                        : 'Answer Key'}
+                    </div>
+                    {ex.acceptedAnswers && ex.acceptedAnswers.length > 0 ? (
+                      <div className="text-amber-200 font-mono font-medium">
+                        {ex.acceptedAnswers.join('  /  ')}
+                      </div>
+                    ) : (
+                      <div className="text-slate-400 italic text-[11px]">
+                        Self-check activity. Check lesson discussion or audio transcript.
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

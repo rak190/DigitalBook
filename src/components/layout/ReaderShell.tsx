@@ -29,6 +29,7 @@ export const ReaderShell: React.FC = () => {
     saveStatus,
     setAnswerValue,
     checkAnswers,
+    retryMistakes,
     resetPageAnswers,
     resetAllProgress,
     isBookmarked,
@@ -187,6 +188,7 @@ export const ReaderShell: React.FC = () => {
               setAnswerValue(exId, currentPage, exItem?.unitRef || 'Unit', val);
             }}
             onCheckAnswers={() => checkAnswers(pageExercises)}
+            onRetryMistakes={() => retryMistakes(pageExercises)}
             onResetPage={() => resetPageAnswers(pageExercises)}
             onPlayAudioTrack={(trackId, title) => {
               audioPlayer.playTrack({
