@@ -62,6 +62,23 @@ export const ExercisePanel: React.FC<ExercisePanelProps> = ({
           <h2 className="text-sm font-bold text-white mt-1 line-clamp-1">
             {pageMeta.title}
           </h2>
+          {exercises.length > 0 && (
+            <div className="mt-2 flex items-center gap-2">
+              <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-sky-500 rounded-full transition-all duration-300"
+                  style={{
+                    width: `${Math.round(
+                      (exercises.filter((ex) => answers[ex.id]?.isCompleted).length / exercises.length) * 100
+                    )}%`,
+                  }}
+                />
+              </div>
+              <span className="text-[10px] font-mono text-slate-400 flex-shrink-0">
+                {exercises.filter((ex) => answers[ex.id]?.isCompleted).length}/{exercises.length}
+              </span>
+            </div>
+          )}
         </div>
         <button
           onClick={onClose}

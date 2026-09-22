@@ -17,12 +17,15 @@ import {
   BookMarked,
   SidebarClose,
   SidebarOpen,
+  Check,
+  Loader2,
 } from 'lucide-react';
 
 interface TopBarProps {
   pageMeta: PageMeta;
   currentPage: number;
   totalPages: number;
+  saveStatus?: 'saved' | 'saving';
   onPageChange: (page: number) => void;
   zoom: number;
   onZoomChange: (zoom: number) => void;
@@ -45,6 +48,7 @@ export const TopBar: React.FC<TopBarProps> = ({
   pageMeta,
   currentPage,
   totalPages,
+  saveStatus = 'saved',
   onPageChange,
   zoom,
   onZoomChange,
@@ -105,6 +109,19 @@ export const TopBar: React.FC<TopBarProps> = ({
           </span>
           <span className="hidden md:inline-block text-xs font-mono text-slate-400 flex-shrink-0">
             (Book p.{pageMeta.bookPage})
+          </span>
+          <span className="hidden xl:inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700/60 ml-1">
+            {saveStatus === 'saving' ? (
+              <>
+                <Loader2 className="w-3 h-3 text-amber-400 animate-spin" />
+                <span className="text-amber-400">Saving...</span>
+              </>
+            ) : (
+              <>
+                <Check className="w-3 h-3 text-emerald-400" />
+                <span className="text-emerald-400">Saved</span>
+              </>
+            )}
           </span>
         </div>
       </div>

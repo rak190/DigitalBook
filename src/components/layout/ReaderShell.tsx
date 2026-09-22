@@ -26,6 +26,7 @@ export const ReaderShell: React.FC = () => {
   const {
     answers,
     evaluations,
+    saveStatus,
     setAnswerValue,
     checkAnswers,
     resetPageAnswers,
@@ -112,6 +113,7 @@ export const ReaderShell: React.FC = () => {
         pageMeta={pageMeta}
         currentPage={currentPage}
         totalPages={totalPages}
+        saveStatus={saveStatus}
         onPageChange={handlePageChange}
         zoom={zoom}
         onZoomChange={handleZoomChange}

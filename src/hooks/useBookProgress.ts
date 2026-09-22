@@ -172,6 +172,28 @@ export function useBookProgress() {
     return notes.find(n => n.pageNum === pageNum)?.content || '';
   }, [notes]);
 
+  const getPageProgress = useCallback((pageExercises: ExerciseItem[]) => {
+    const total = pageExercises.length;
+    if (total === 0) return { total: 0, completed: 0, percentage: 0 };
+    const completed = pageExercises.filter(ex => answers[ex.id]?.isCompleted).length;
+    return {
+      total,
+      completed,
+      percentage: Math.round((completed / total) * 100),
+    };
+  }, [answers]);
+
+  const getOverallStats = useCallback(() => {
+    const allAnswerItems = Object.values(answers);
+    const completedCount = allAnswerItems.filter(a => a.isCompleted).length;
+    return {
+      totalAnswered: allAnswerItems.length,
+      completedCount,
+      bookmarksCount: bookmarks.length,
+      notesCount: notes.length,
+    };
+  }, [answers, bookmarks, notes]);
+
   // Cleanup timeout
   useEffect(() => {
     return () => {
@@ -188,6 +210,8 @@ export function useBookProgress() {
     resetExercise,
     resetPageAnswers,
     resetAllProgress,
+    getPageProgress,
+    getOverallStats,
     bookmarks,
     toggleBookmark,
     isBookmarked,
