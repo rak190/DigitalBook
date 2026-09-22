@@ -30,7 +30,9 @@ export function useBookProgress() {
         pageId,
         unitId,
         value,
+        answer: value,
         isCompleted,
+        completed: isCompleted,
         lastUpdated: Date.now(),
       };
       const next = { ...prev, [exerciseId]: updatedItem };

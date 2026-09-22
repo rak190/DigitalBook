@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { PageMeta, ExerciseItem, ExerciseAnswer, AnswerEvaluation } from '../../types';
 import { GapFillInput } from '../exercises/GapFillInput';
 import { SingleChoice } from '../exercises/SingleChoice';
+import { MultiChoice } from '../exercises/MultiChoice';
+import { DropdownChoice } from '../exercises/DropdownChoice';
 import { FreeResponseArea } from '../exercises/FreeResponseArea';
 import { MatchingExercise } from '../exercises/MatchingExercise';
+import { FormTable } from '../exercises/FormTable';
 import { CheckCircle2, AlertCircle, RefreshCw, Eye, EyeOff, Volume2, Sparkles, X } from 'lucide-react';
 
 interface ExercisePanelProps {
@@ -11,7 +14,7 @@ interface ExercisePanelProps {
   exercises: ExerciseItem[];
   answers: Record<string, ExerciseAnswer>;
   evaluations: Record<string, AnswerEvaluation>;
-  onAnswerChange: (exerciseId: string, value: string) => void;
+  onAnswerChange: (exerciseId: string, value: string | string[]) => void;
   onCheckAnswers: () => void;
   onResetPage: () => void;
   onPlayAudioTrack?: (trackId: string, title: string) => void;
@@ -211,6 +214,47 @@ export const ExercisePanel: React.FC<ExercisePanelProps> = ({
                     selected={typeof userVal === 'string' ? userVal : ''}
                     onSelect={(val) => onAnswerChange(ex.id, val)}
                     evaluation={evaluation}
+                  />
+                )}
+
+                {ex.fieldType === 'multi_choice' && ex.options && (
+                  <MultiChoice
+                    id={`panel-multi-${ex.id}`}
+                    options={ex.options}
+                    selected={Array.isArray(userVal) ? userVal : (typeof userVal === 'string' && userVal ? [userVal] : [])}
+                    onToggle={(opt) => {
+                      const cur = Array.isArray(userVal) ? [...userVal] : (typeof userVal === 'string' && userVal ? [userVal] : []);
+                      const next = cur.includes(opt) ? cur.filter(o => o !== opt) : [...cur, opt];
+                      onAnswerChange(ex.id, next);
+                    }}
+                    evaluation={evaluation}
+                  />
+                )}
+
+                {ex.fieldType === 'dropdown' && ex.options && (
+                  <DropdownChoice
+                    id={`panel-dropdown-${ex.id}`}
+                    options={ex.options}
+                    selected={typeof userVal === 'string' ? userVal : ''}
+                    onChange={(val) => onAnswerChange(ex.id, val)}
+                    evaluation={evaluation}
+                    className="w-full"
+                  />
+                )}
+
+                {ex.fieldType === 'table' && ex.tableHeaders && ex.tableRows && (
+                  <FormTable
+                    headers={ex.tableHeaders}
+                    rows={ex.tableRows}
+                    userValues={typeof userVal === 'string' ? (() => {
+                      try { return JSON.parse(userVal); } catch { return {}; }
+                    })() : {}}
+                    onCellChange={(cellKey, val) => {
+                      let curObj: Record<string, string> = {};
+                      try { curObj = typeof userVal === 'string' ? JSON.parse(userVal) : {}; } catch {}
+                      curObj[cellKey] = val;
+                      onAnswerChange(ex.id, JSON.stringify(curObj));
+                    }}
                   />
                 )}
 

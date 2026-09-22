@@ -51,7 +51,9 @@ export interface ExerciseAnswer {
   pageId: number;
   exerciseId: string;
   value: string | string[];
+  answer: string | string[]; // alias for value
   isCompleted: boolean;
+  completed: boolean; // alias for isCompleted
   lastUpdated: number;
 }
 
