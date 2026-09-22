@@ -92,9 +92,18 @@
         <button id="toggle-thumbs-btn" class="tool-tab-btn" title="Page Thumbnails">
           <span class="btn-icon-part">🗂</span> <span class="btn-label-part">Pages</span>
         </button>
+        <button id="toggle-progress-btn" class="tool-tab-btn" title="Learning Progress & Stats">
+          <span class="btn-icon-part">📊</span> <span class="btn-label-part">Progress</span>
+        </button>
+        <button id="toggle-mistakes-btn" class="tool-tab-btn" title="Mistake Review Studio">
+          <span class="btn-icon-part">❌</span> <span class="btn-label-part">Mistakes</span>
+        </button>
       </div>
 
       <div class="utility-toggles-cluster">
+        <button id="global-search-btn" class="btn-icon" title="Global Textbook Search (Ctrl+K or /)">
+          🔍
+        </button>
         <button id="pronounce-selection-btn" class="btn-icon" title="Pronounce selected text (TTS)">
           🔊
         </button>
@@ -145,6 +154,10 @@
         <span class="tool-btn-icon">➕</span>
         <span class="tool-btn-label">Blank</span>
       </button>
+      <button id="calibrate-tool-btn" class="tool-mode-btn" data-mode="calibrate" title="Visual Calibration & Authoring Tool (Edit on-page coordinates)">
+        <span class="tool-btn-icon">📐</span>
+        <span class="tool-btn-label">Calibrate</span>
+      </button>
     </div>
 
     <!-- Pen & Drawing Options Flyout -->
@@ -173,6 +186,16 @@
         <button id="zoom-fit-btn" class="toolbar-mini-btn" title="Fit to screen width">↔</button>
         <button id="zoom-reset-btn" class="toolbar-mini-btn" title="Reset Zoom (100%)">1:1</button>
         <button id="view-mode-btn" class="toolbar-mini-btn" title="Toggle Single / Two-Page Spread">📖</button>
+      </div>
+      <div class="zoom-preset-row" style="margin-top: 4px; display: flex; justify-content: center;">
+        <select id="zoom-preset-select" class="toolbar-mini-select" title="Preset Zoom Scale" style="width: 100%; font-size: 0.72rem; padding: 2px; border-radius: 4px; background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color);">
+          <option value="0.75">75%</option>
+          <option value="1.0" selected>100% (Fit)</option>
+          <option value="1.25">125%</option>
+          <option value="1.5">150%</option>
+          <option value="1.75">175%</option>
+          <option value="2.0">200%</option>
+        </select>
       </div>
     </div>
   </aside>
@@ -215,6 +238,8 @@
           <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
           <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
           <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+          <button class="unified-tab-btn" data-drawer="drawer-progress">📊 Progress</button>
+          <button class="unified-tab-btn" data-drawer="drawer-mistakes">❌ Mistakes</button>
         </div>
         <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
       </div>
@@ -233,6 +258,8 @@
           <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
           <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
           <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+          <button class="unified-tab-btn" data-drawer="drawer-progress">📊 Progress</button>
+          <button class="unified-tab-btn" data-drawer="drawer-mistakes">❌ Mistakes</button>
         </div>
         <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
       </div>
@@ -244,8 +271,10 @@
               <!-- Populated by audio.js -->
             </select>
           </div>
-          <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+          <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+            <button id="skip-back-10-btn" class="btn-outline" style="padding: 6px 10px;" title="Rewind 10 seconds">⏪ 10s</button>
             <button id="play-track-btn" class="btn-primary" style="flex: 1;">▶ Play Track</button>
+            <button id="skip-fwd-10-btn" class="btn-outline" style="padding: 6px 10px;" title="Forward 10 seconds">⏩ 10s</button>
             <button id="stop-track-btn" class="btn-outline">⏹ Stop</button>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-secondary);">
@@ -261,6 +290,21 @@
         <div id="listening-script-display" class="listening-script-box">
 Select an audio track above to read along and listen.
         </div>
+
+        <div class="audio-panel-card" style="margin-top: 14px;">
+          <div class="audio-panel-card-title">🎙 Speaking Practice Voice Studio</div>
+          <p style="font-size:0.75rem; color:var(--text-secondary); margin-bottom:8px;">Record your answers and speaking exercises to compare against native audio models.</p>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+            <button id="drawer-record-toggle-btn" class="btn-outline" style="flex:1; font-size:0.85rem; padding:6px 10px;">
+              🎙 Record Answer
+            </button>
+            <span id="drawer-record-timer" style="font-size:0.85rem; font-weight:700; font-family:monospace; min-width:44px;">00:00</span>
+            <button id="drawer-play-recording-btn" class="btn-icon" style="width:32px; height:32px;" disabled title="Play recording">▶</button>
+          </div>
+          <div id="drawer-recordings-list" style="max-height:120px; overflow-y:auto; display:flex; flex-direction:column; gap:4px;">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
       </div>
     </aside>
 
@@ -274,6 +318,8 @@ Select an audio track above to read along and listen.
           <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
           <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
           <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+          <button class="unified-tab-btn" data-drawer="drawer-progress">📊 Progress</button>
+          <button class="unified-tab-btn" data-drawer="drawer-mistakes">❌ Mistakes</button>
         </div>
         <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
       </div>
@@ -318,6 +364,8 @@ Select an audio track above to read along and listen.
           <button class="unified-tab-btn active" data-drawer="drawer-notes">📝 Notes</button>
           <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
           <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+          <button class="unified-tab-btn" data-drawer="drawer-progress">📊 Progress</button>
+          <button class="unified-tab-btn" data-drawer="drawer-mistakes">❌ Mistakes</button>
         </div>
         <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
       </div>
@@ -345,6 +393,7 @@ Select an audio track above to read along and listen.
               <input type="file" id="import-file-input" accept=".json" style="display: none;">
             </label>
           </div>
+          <button id="reset-study-data-btn" class="btn-outline" style="width: 100%; margin-top: 8px; color: #ef4444; border-color: rgba(239,68,68,0.4);">⚠️ Reset All Study Data</button>
         </div>
       </div>
     </aside>
@@ -359,6 +408,8 @@ Select an audio track above to read along and listen.
           <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
           <button class="unified-tab-btn active" data-drawer="drawer-toc">📑 TOC</button>
           <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+          <button class="unified-tab-btn" data-drawer="drawer-progress">📊 Progress</button>
+          <button class="unified-tab-btn" data-drawer="drawer-mistakes">❌ Mistakes</button>
         </div>
         <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
       </div>
@@ -382,12 +433,116 @@ Select an audio track above to read along and listen.
           <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
           <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
           <button class="unified-tab-btn active" data-drawer="drawer-thumbs">🗂 Pages</button>
+          <button class="unified-tab-btn" data-drawer="drawer-progress">📊 Progress</button>
+          <button class="unified-tab-btn" data-drawer="drawer-mistakes">❌ Mistakes</button>
         </div>
         <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
       </div>
       <div class="panel-body">
         <div id="thumbnails-grid-container" class="thumbnails-grid">
           <!-- 169 thumbnails rendered here -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- Drawer: Learning Progress & Accuracy -->
+    <aside id="drawer-progress" class="sidebar-panel">
+      <div class="panel-header">
+        <div class="unified-tabs-bar">
+          <button class="unified-tab-btn" data-drawer="drawer-exercises">✍️ Exercises</button>
+          <button class="unified-tab-btn" data-drawer="drawer-audio">🎧 Audio</button>
+          <button class="unified-tab-btn" data-drawer="drawer-vocab">🔤 Vocab</button>
+          <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
+          <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
+          <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+          <button class="unified-tab-btn active" data-drawer="drawer-progress">📊 Progress</button>
+          <button class="unified-tab-btn" data-drawer="drawer-mistakes">❌ Mistakes</button>
+        </div>
+        <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
+      </div>
+      <div class="panel-body">
+        <div class="progress-dashboard-container">
+          <!-- Continue Studying Card -->
+          <div class="progress-hero-card" id="progress-continue-card" style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(99, 102, 241, 0.15)); border: 1px solid var(--primary); border-radius: var(--radius-md); padding: 14px; margin-bottom: 16px;">
+            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; color: var(--primary);">🎯 Continue Studying</div>
+            <div id="progress-last-page-text" style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 10px;">Pick up right where you left off.</div>
+            <button id="resume-study-btn" class="btn-primary" style="width: 100%;">▶ Resume Last Studied Page</button>
+          </div>
+
+          <!-- Key Metrics Grid -->
+          <div class="metrics-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px;">
+            <div class="metric-card" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 10px; text-align: center;">
+              <div class="metric-val" id="metric-completion" style="font-size: 1.4rem; font-weight: 800; color: var(--primary);">0%</div>
+              <div class="metric-label" style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 6px;">Book Completion</div>
+              <div class="progress-mini-bar" style="height: 4px; background: var(--border-color); border-radius: 2px; overflow: hidden;"><div class="progress-mini-fill" id="metric-completion-fill" style="width: 0%; height: 100%; background: var(--primary); transition: width 0.3s;"></div></div>
+            </div>
+            <div class="metric-card" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 10px; text-align: center;">
+              <div class="metric-val" id="metric-accuracy" style="font-size: 1.4rem; font-weight: 800; color: #10b981;">0%</div>
+              <div class="metric-label" style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 6px;">Average Accuracy</div>
+              <div class="progress-mini-bar" style="height: 4px; background: var(--border-color); border-radius: 2px; overflow: hidden;"><div class="progress-mini-fill" id="metric-accuracy-fill" style="width: 0%; height: 100%; background: #10b981; transition: width 0.3s;"></div></div>
+            </div>
+            <div class="metric-card" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 10px; text-align: center;">
+              <div class="metric-val" id="metric-pages" style="font-size: 1.2rem; font-weight: 800; color: var(--text-primary);">0 / 169</div>
+              <div class="metric-label" style="font-size: 0.72rem; color: var(--text-muted);">Pages Studied</div>
+            </div>
+            <div class="metric-card" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 10px; text-align: center;">
+              <div class="metric-val" id="metric-questions" style="font-size: 1.2rem; font-weight: 800; color: var(--text-primary);">0</div>
+              <div class="metric-label" style="font-size: 0.72rem; color: var(--text-muted);">Exercises Solved</div>
+            </div>
+            <div class="metric-card" id="metric-mistakes-card" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 10px; text-align: center; cursor: pointer;" title="Click to view mistakes">
+              <div class="metric-val" id="metric-mistakes" style="font-size: 1.2rem; font-weight: 800; color: #ef4444;">0</div>
+              <div class="metric-label" style="font-size: 0.72rem; color: var(--text-muted);">Unresolved Mistakes ↗</div>
+            </div>
+            <div class="metric-card" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 10px; text-align: center;">
+              <div class="metric-val" id="metric-time" style="font-size: 1.2rem; font-weight: 800; color: var(--text-primary);">0m</div>
+              <div class="metric-label" style="font-size: 0.72rem; color: var(--text-muted);">Study Time</div>
+            </div>
+          </div>
+
+          <!-- Units Overview Checklist -->
+          <div style="margin-top: 16px;">
+            <div style="font-weight: 700; font-size: 0.85rem; margin-bottom: 8px;">📚 Units Mastery Checklist</div>
+            <div id="units-progress-list" class="units-progress-list" style="max-height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px;">
+              <!-- Populated dynamically by app.js -->
+            </div>
+          </div>
+
+          <!-- Reset Progress Action -->
+          <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border-color); text-align: center;">
+            <button id="reset-progress-btn" class="btn-outline" style="color: #ef4444; border-color: rgba(239,68,68,0.4); font-size: 0.78rem;">
+              🗑 Reset All Study Progress
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Drawer: Mistakes Review Studio -->
+    <aside id="drawer-mistakes" class="sidebar-panel">
+      <div class="panel-header">
+        <div class="unified-tabs-bar">
+          <button class="unified-tab-btn" data-drawer="drawer-exercises">✍️ Exercises</button>
+          <button class="unified-tab-btn" data-drawer="drawer-audio">🎧 Audio</button>
+          <button class="unified-tab-btn" data-drawer="drawer-vocab">🔤 Vocab</button>
+          <button class="unified-tab-btn" data-drawer="drawer-notes">📝 Notes</button>
+          <button class="unified-tab-btn" data-drawer="drawer-toc">📑 TOC</button>
+          <button class="unified-tab-btn" data-drawer="drawer-thumbs">🗂 Pages</button>
+          <button class="unified-tab-btn" data-drawer="drawer-progress">📊 Progress</button>
+          <button class="unified-tab-btn active" data-drawer="drawer-mistakes">❌ Mistakes</button>
+        </div>
+        <button class="btn-icon close-drawer-btn" title="Close Panel">✕</button>
+      </div>
+      <div class="panel-body">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <div>
+            <strong style="font-size: 0.88rem;">Mistake Review Studio</strong>
+            <div id="mistakes-count-badge" style="font-size: 0.75rem; color: var(--text-secondary);">Loading mistakes...</div>
+          </div>
+          <button id="refresh-mistakes-btn" class="btn-outline" style="font-size: 0.75rem; padding: 3px 8px;">🔄 Refresh</button>
+        </div>
+
+        <div id="mistakes-list-container" class="mistakes-list" style="display: flex; flex-direction: column; gap: 8px;">
+          <!-- Populated dynamically -->
         </div>
       </div>
     </aside>
@@ -597,6 +752,152 @@ Select an audio track above to read along and listen.
       <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
         <span style="font-size: 0.75rem; color: var(--text-muted);">Oxford English File 4th Ed Pre-Intermediate AI Companion</span>
         <button id="dismiss-ai-modal-btn" class="btn-primary">Continue Practice</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Continue Studying Quick Banner -->
+  <div id="continue-studying-banner" class="continue-studying-banner" style="display: none;">
+    <div class="banner-inner">
+      <span class="banner-icon">📖</span>
+      <span id="continue-banner-text" class="banner-text">Welcome back! Continue studying on <strong>Page 7</strong>?</span>
+      <div class="banner-actions">
+        <button id="continue-banner-resume-btn" class="btn-primary mini">Resume</button>
+        <button id="continue-banner-dismiss-btn" class="btn-icon mini">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual Calibration & Authoring Modal -->
+  <div id="calibration-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-dialog" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3 style="color: var(--primary); font-weight: 700; font-size: 1.1rem;">📐 Exercise Overlay Calibration</h3>
+        <button id="close-calibration-modal-btn" class="btn-icon">✕</button>
+      </div>
+      <div class="modal-body" style="display:flex; flex-direction:column; gap:10px; padding:14px 0;">
+        <input type="hidden" id="calib-id" value="">
+        <input type="hidden" id="calib-page-num" value="">
+        
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <div>
+            <label style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:3px;">Question Label:</label>
+            <input type="text" id="calib-label" class="toc-search-input" placeholder="e.g. 1a, Q1">
+          </div>
+          <div>
+            <label style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:3px;">Field Type:</label>
+            <select id="calib-field-type" class="toc-search-input">
+              <option value="text">Text Input (Inline)</option>
+              <option value="textarea">Textarea (Long Answer)</option>
+              <option value="dropdown">Dropdown (Select Option)</option>
+              <option value="self_check">Self-Check / Possible Answer</option>
+              <option value="radio">Radio Choice</option>
+              <option value="checkbox">Checkbox</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:3px;">Correct Answer(s) (comma-separated):</label>
+          <input type="text" id="calib-answers" class="toc-search-input" placeholder="e.g. live, does live">
+        </div>
+
+        <div id="calib-options-row">
+          <label style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:3px;">Options (for Dropdown/Radio, comma-separated):</label>
+          <input type="text" id="calib-options" class="toc-search-input" placeholder="e.g. was, were, been">
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <div>
+            <label style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:3px;">Grading Policy:</label>
+            <select id="calib-grading-type" class="toc-search-input">
+              <option value="exact">Exact (Case/Punctuation tolerant)</option>
+              <option value="self-check">Self-Check (Open-Ended / Personal)</option>
+              <option value="regex">Regex / Pattern</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:3px;">Audio Track (optional):</label>
+            <input type="text" id="calib-audio-track" class="toc-search-input" placeholder="e.g. 1.2">
+          </div>
+        </div>
+
+        <div>
+          <label style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:3px;">Sample / Model Answer (for open-ended):</label>
+          <input type="text" id="calib-sample-answer" class="toc-search-input" placeholder="e.g. I have been living here for 3 years.">
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <div>
+            <label style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:3px;">Hint:</label>
+            <input type="text" id="calib-hint" class="toc-search-input" placeholder="e.g. Use present simple">
+          </div>
+          <div>
+            <label style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:3px;">Explanation / Rule:</label>
+            <input type="text" id="calib-explanation" class="toc-search-input" placeholder="e.g. Rule 1A: Auxiliary do">
+          </div>
+        </div>
+
+        <!-- Coordinates calibration fields -->
+        <div style="background:var(--bg-surface); padding:10px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+          <div style="font-weight:700; font-size:0.78rem; margin-bottom:6px; color:var(--primary);">Normalized % Coordinates (0 - 100%)</div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px;">
+            <div>
+              <label style="font-size:0.7rem; color:var(--text-muted);">X (%):</label>
+              <input type="number" id="calib-x" step="0.1" class="toc-search-input" style="padding:4px;">
+            </div>
+            <div>
+              <label style="font-size:0.7rem; color:var(--text-muted);">Y (%):</label>
+              <input type="number" id="calib-y" step="0.1" class="toc-search-input" style="padding:4px;">
+            </div>
+            <div>
+              <label style="font-size:0.7rem; color:var(--text-muted);">Width (%):</label>
+              <input type="number" id="calib-w" step="0.1" class="toc-search-input" style="padding:4px;">
+            </div>
+            <div>
+              <label style="font-size:0.7rem; color:var(--text-muted);">Height (%):</label>
+              <input type="number" id="calib-h" step="0.1" class="toc-search-input" style="padding:4px;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
+        <button id="delete-calibration-btn" class="btn-outline" style="color:#ef4444; border-color:rgba(239,68,68,0.4);">🗑 Delete</button>
+        <div style="display:flex; gap:8px;">
+          <button id="cancel-calibration-btn" class="btn-outline">Cancel</button>
+          <button id="save-calibration-btn" class="btn-primary">Save Overlay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Search Modal (Ctrl+K or /) -->
+  <div id="global-search-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-dialog search-modal" style="max-width: 650px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px; flex: 1;">
+          <span style="font-size: 1.2rem;">🔍</span>
+          <input type="text" id="global-search-input" class="toc-search-input" placeholder="Search textbook (units, grammar, vocab, exercises, notes)..." style="width: 100%; font-size: 1rem;">
+        </div>
+        <button id="close-search-modal-btn" class="btn-icon">✕</button>
+      </div>
+      <div class="modal-body" style="padding: 12px 0;">
+        <div class="search-filter-pills" style="display: flex; gap: 6px; margin-bottom: 12px; padding: 0 4px;">
+          <button class="search-pill active" data-filter="all">All</button>
+          <button class="search-pill" data-filter="unit">Units</button>
+          <button class="search-pill" data-filter="exercise">Exercises</button>
+          <button class="search-pill" data-filter="vocab">Vocabulary</button>
+          <button class="search-pill" data-filter="note">Notes & Bookmarks</button>
+        </div>
+        <div id="global-search-results" class="global-search-results" style="max-height: 380px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px;">
+          <div style="text-align: center; color: var(--text-muted); padding: 30px 10px;">
+            Type at least 2 characters to search across the complete Oxford English File textbook.
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted);">
+        <span>Tip: Use <kbd>Enter</kbd> to jump to item, <kbd>Esc</kbd> to close</span>
+        <span id="search-results-counter">0 results</span>
       </div>
     </div>
   </div>

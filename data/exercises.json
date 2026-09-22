@@ -1,0 +1,5675 @@
+[
+  {
+    "id": "p7_1",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q3",
+    "fieldType": "text",
+    "x": 21.9,
+    "y": 48.4,
+    "width": 8.2,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Where do you reside/stay?",
+    "explanation": "Where do you live?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "live"
+    ]
+  },
+  {
+    "id": "p7_2",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q4",
+    "fieldType": "text",
+    "x": 16.4,
+    "y": 50.6,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "In a house or flat?",
+    "explanation": "Do you live in a house or a flat?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "live"
+    ]
+  },
+  {
+    "id": "p7_3",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q5",
+    "fieldType": "text",
+    "x": 16.4,
+    "y": 54.5,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Possession of siblings",
+    "explanation": "Do you have any brothers and sisters?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "have",
+      "have got"
+    ]
+  },
+  {
+    "id": "p7_4",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q6",
+    "fieldType": "text",
+    "x": 16.4,
+    "y": 58.5,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Possession of animals",
+    "explanation": "Do you have any pets?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "have",
+      "keep",
+      "have got"
+    ]
+  },
+  {
+    "id": "p7_5",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q7",
+    "fieldType": "text",
+    "x": 49.5,
+    "y": 44.1,
+    "width": 8.2,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Job or occupation",
+    "explanation": "What do you do? (means what is your job)",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "do"
+    ]
+  },
+  {
+    "id": "p7_6",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q8",
+    "fieldType": "text",
+    "x": 53.4,
+    "y": 46.3,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Rising from bed",
+    "explanation": "What time do you get up during the week?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "get",
+      "wake"
+    ]
+  },
+  {
+    "id": "p7_7",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q9",
+    "fieldType": "text",
+    "x": 38.9,
+    "y": 52.0,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Eating lunch",
+    "explanation": "Where do you usually have/eat lunch?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "have",
+      "eat"
+    ]
+  },
+  {
+    "id": "p7_8",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q10",
+    "fieldType": "text",
+    "x": 38.9,
+    "y": 55.9,
+    "width": 8.0,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Going to sleep",
+    "explanation": "What time do you usually go to bed?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "go"
+    ]
+  },
+  {
+    "id": "p7_9",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q11",
+    "fieldType": "text",
+    "x": 50.8,
+    "y": 58.1,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Acquiring language",
+    "explanation": "Where did you learn/study English before?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "learn",
+      "study"
+    ]
+  },
+  {
+    "id": "p7_10",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q12",
+    "fieldType": "text",
+    "x": 46.1,
+    "y": 62.0,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Language ability",
+    "explanation": "Can you speak any other languages?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "speak",
+      "talk"
+    ]
+  },
+  {
+    "id": "p7_11",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q13",
+    "fieldType": "text",
+    "x": 67.4,
+    "y": 45.9,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Hearing music with attention",
+    "explanation": "What kind of music do you listen to?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "listen"
+    ]
+  },
+  {
+    "id": "p7_12",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q14",
+    "fieldType": "text",
+    "x": 78.2,
+    "y": 49.8,
+    "width": 8.2,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Viewing TV",
+    "explanation": "What TV programmes or series do you watch?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "watch",
+      "see"
+    ]
+  },
+  {
+    "id": "p7_13",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q15",
+    "fieldType": "text",
+    "x": 73.4,
+    "y": 52.0,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Sport activity",
+    "explanation": "Do you do any sport or exercise?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "do",
+      "play"
+    ]
+  },
+  {
+    "id": "p7_14",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q16",
+    "fieldType": "text",
+    "x": 67.4,
+    "y": 59.5,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Perusing text",
+    "explanation": "What kind of books or magazines do you read?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "read"
+    ]
+  },
+  {
+    "id": "p7_15",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q17",
+    "fieldType": "text",
+    "x": 81.8,
+    "y": 61.6,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Visiting the cinema",
+    "explanation": "How often do you go to the cinema?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "go"
+    ]
+  },
+  {
+    "id": "p7_16",
+    "pageNum": 7,
+    "bookPage": 6,
+    "label": "Q18",
+    "fieldType": "text",
+    "x": 78.4,
+    "y": 65.6,
+    "width": 8.1,
+    "height": 2.0,
+    "placeholder": "verb",
+    "hint": "Action or activity",
+    "explanation": "What did you do last weekend?",
+    "unitRef": "Unit 1A Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "do"
+    ]
+  },
+  {
+    "id": "p8_1",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "Ex 2a.2",
+    "fieldType": "text",
+    "x": 9.0,
+    "y": 16.1,
+    "width": 30.0,
+    "height": 1.8,
+    "placeholder": "Rewrite: Where does your father work?",
+    "hint": "Use does + subject + infinitive",
+    "explanation": "In English present simple questions with other verbs, use do/does + subject + infinitive",
+    "unitRef": "Unit 1A Grammar 2a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Where does your father work?",
+      "Where does your father work"
+    ]
+  },
+  {
+    "id": "p8_2",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "Ex 2a.5",
+    "fieldType": "text",
+    "x": 9.0,
+    "y": 21.6,
+    "width": 30.0,
+    "height": 1.8,
+    "placeholder": "Rewrite: Do you have cereal for breakfast?",
+    "hint": "Use do + subject + have",
+    "explanation": "For meals and habits, we use \"Do you have...\" not \"Have you...\"",
+    "unitRef": "Unit 1A Grammar 2a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Do you have cereal for breakfast?",
+      "Do you have cereal for breakfast"
+    ]
+  },
+  {
+    "id": "p8_3",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "Ex 2a.6",
+    "fieldType": "text",
+    "x": 9.0,
+    "y": 23.0,
+    "width": 30.0,
+    "height": 1.8,
+    "placeholder": "Rewrite: Where did you go for your last holiday?",
+    "hint": "Use did + subject + base verb",
+    "explanation": "In past simple questions, use did + subject + base verb (go, not went)",
+    "unitRef": "Unit 1A Grammar 2a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Where did you go for your last holiday?",
+      "Where did you go for your last holiday"
+    ]
+  },
+  {
+    "id": "p8_4",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "4a.2 Postcode",
+    "fieldType": "text",
+    "x": 53.5,
+    "y": 65.2,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "SE21 8GP",
+    "hint": "Postcode in South London",
+    "explanation": "SE21 8GP",
+    "unitRef": "Unit 1A Listening 4a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "SE21 8GP",
+      "se21 8gp"
+    ]
+  },
+  {
+    "id": "p8_5",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "4a.3 Phone",
+    "fieldType": "text",
+    "x": 53.5,
+    "y": 67.1,
+    "width": 15.0,
+    "height": 1.8,
+    "placeholder": "Phone number...",
+    "hint": "Phone number",
+    "explanation": "Phone number from extract",
+    "unitRef": "Unit 1A Listening 4a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "020 7946 0922",
+      "07700 900543",
+      "02079460922"
+    ]
+  },
+  {
+    "id": "p8_6",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "4a.4 Email",
+    "fieldType": "text",
+    "x": 78.0,
+    "y": 63.3,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "Email address...",
+    "hint": "Email address",
+    "explanation": "Email address from conversation",
+    "unitRef": "Unit 1A Listening 4a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "wayne.roberts@gmail.com",
+      "wayne.roberts@hotmail.com"
+    ]
+  },
+  {
+    "id": "p8_7",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "4a.5 Surname",
+    "fieldType": "text",
+    "x": 78.0,
+    "y": 65.2,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "Roberts",
+    "hint": "Wayne's family surname",
+    "explanation": "Roberts",
+    "unitRef": "Unit 1A Listening 4a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Roberts",
+      "roberts"
+    ]
+  },
+  {
+    "id": "p8_8",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "4a.6 Address",
+    "fieldType": "text",
+    "x": 78.0,
+    "y": 67.1,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "14 Dangerford Road",
+    "hint": "Delivery street address",
+    "explanation": "14 Dangerford Road",
+    "unitRef": "Unit 1A Listening 4a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "14 Dangerford Road",
+      "14 Dangerford Rd"
+    ]
+  },
+  {
+    "id": "p8_9",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "4b.a Buying",
+    "fieldType": "text",
+    "x": 47.0,
+    "y": 73.0,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "1-6",
+    "hint": "Extract 2: Buying a sofa",
+    "explanation": "Extract 2",
+    "unitRef": "Unit 1A Listening 4b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "2"
+    ]
+  },
+  {
+    "id": "p8_10",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "4b.c Help",
+    "fieldType": "text",
+    "x": 47.0,
+    "y": 76.5,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "1-6",
+    "hint": "Extract 5: Trying to get help",
+    "explanation": "Extract 5",
+    "unitRef": "Unit 1A Listening 4b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "5"
+    ]
+  },
+  {
+    "id": "p8_11",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "4b.d Directions",
+    "fieldType": "text",
+    "x": 68.0,
+    "y": 73.0,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "1-6",
+    "hint": "Extract 3: Giving directions",
+    "explanation": "Extract 3",
+    "unitRef": "Unit 1A Listening 4b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "3"
+    ]
+  },
+  {
+    "id": "p8_12",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "4b.e Information",
+    "fieldType": "text",
+    "x": 68.0,
+    "y": 74.8,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "1-6",
+    "hint": "Extract 6: Giving class information",
+    "explanation": "Extract 6",
+    "unitRef": "Unit 1A Listening 4b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "6"
+    ]
+  },
+  {
+    "id": "p8_13",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "4b.f Restaurant",
+    "fieldType": "text",
+    "x": 68.0,
+    "y": 76.5,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "1-6",
+    "hint": "Extract 4: Arriving at restaurant",
+    "explanation": "Extract 4",
+    "unitRef": "Unit 1A Listening 4b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "4"
+    ]
+  },
+  {
+    "id": "p8_14",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "First Name",
+    "fieldType": "text",
+    "x": 53.5,
+    "y": 87.2,
+    "width": 20.0,
+    "height": 1.8,
+    "placeholder": "First name",
+    "hint": "Your given name",
+    "explanation": "Enter your personal first name",
+    "unitRef": "Student Info Form",
+    "gradingType": "self-check",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "p8_15",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "Surname",
+    "fieldType": "text",
+    "x": 75.0,
+    "y": 87.2,
+    "width": 17.5,
+    "height": 1.8,
+    "placeholder": "Surname",
+    "hint": "Your family name",
+    "explanation": "Enter your family surname",
+    "unitRef": "Student Info Form",
+    "gradingType": "self-check",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "p8_16",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "Address",
+    "fieldType": "text",
+    "x": 53.5,
+    "y": 89.4,
+    "width": 23.0,
+    "height": 1.8,
+    "placeholder": "Address",
+    "hint": "Street address",
+    "explanation": "Enter your street address",
+    "unitRef": "Student Info Form",
+    "gradingType": "self-check",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "p8_17",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "Postcode",
+    "fieldType": "text",
+    "x": 83.5,
+    "y": 89.4,
+    "width": 9.0,
+    "height": 1.8,
+    "placeholder": "Postcode",
+    "hint": "Postal code",
+    "explanation": "Enter postal code",
+    "unitRef": "Student Info Form",
+    "gradingType": "self-check",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "p8_18",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "Phone",
+    "fieldType": "text",
+    "x": 53.5,
+    "y": 91.2,
+    "width": 19.5,
+    "height": 1.8,
+    "placeholder": "Phone number",
+    "hint": "Telephone number",
+    "explanation": "Enter contact phone number",
+    "unitRef": "Student Info Form",
+    "gradingType": "self-check",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "p8_19",
+    "pageNum": 8,
+    "bookPage": 7,
+    "label": "Email",
+    "fieldType": "text",
+    "x": 75.0,
+    "y": 91.2,
+    "width": 17.5,
+    "height": 1.8,
+    "placeholder": "Email address",
+    "hint": "Email address",
+    "explanation": "Enter contact email address",
+    "unitRef": "Student Info Form",
+    "gradingType": "self-check",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "p9_1",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1a Father",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 36.5,
+    "width": 15.0,
+    "height": 2.0,
+    "placeholder": "Photo 1, 2, or 3",
+    "hint": "Woman 3 with lovely warm smile",
+    "explanation": "Charlotte describes her father with a lovely warm smile (Photo 3).",
+    "unitRef": "Unit 1B Ex 1a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "3",
+      "Photo 3"
+    ]
+  },
+  {
+    "id": "p9_2",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1d Age",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 43.5,
+    "width": 6.0,
+    "height": 1.8,
+    "placeholder": "52",
+    "hint": "Clint is 52 years old",
+    "explanation": "52",
+    "unitRef": "Unit 1B Ex 1d",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "52",
+      "52 years old"
+    ]
+  },
+  {
+    "id": "p9_3",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1d Job",
+    "fieldType": "text",
+    "x": 18.5,
+    "y": 43.5,
+    "width": 13.0,
+    "height": 1.8,
+    "placeholder": "businessman",
+    "hint": "Clint Bouchez is a businessman",
+    "explanation": "businessman",
+    "unitRef": "Unit 1B Ex 1d",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "businessman",
+      "business man"
+    ]
+  },
+  {
+    "id": "p9_4",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1d Status",
+    "fieldType": "text",
+    "x": 33.0,
+    "y": 43.5,
+    "width": 9.0,
+    "height": 1.8,
+    "placeholder": "divorced",
+    "hint": "Divorced ten years ago",
+    "explanation": "divorced",
+    "unitRef": "Unit 1B Ex 1d",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "divorced"
+    ]
+  },
+  {
+    "id": "p9_5",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1d Personality",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 45.5,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "warm, generous, funny",
+    "hint": "Charlotte's description of Clint's personality",
+    "explanation": "warm, generous, funny",
+    "unitRef": "Unit 1B Ex 1d",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "warm, generous, funny",
+      "warm",
+      "generous",
+      "funny",
+      "romantic"
+    ]
+  },
+  {
+    "id": "p9_6",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1d Partner",
+    "fieldType": "text",
+    "x": 29.0,
+    "y": 45.5,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "independent, funny, clever",
+    "hint": "Someone who is independent, funny, and clever",
+    "explanation": "independent, funny, clever",
+    "unitRef": "Unit 1B Ex 1d",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "independent, funny, clever",
+      "businesswoman",
+      "independent"
+    ]
+  },
+  {
+    "id": "p9_7",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1b Height",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 47.0,
+    "width": 20.0,
+    "height": 2.0,
+    "placeholder": "Height...",
+    "hint": "Not tall, not short",
+    "explanation": "Charlotte says: My dad is medium height.",
+    "unitRef": "Unit 1B Ex 1b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "medium height",
+      "medium-height",
+      "average height"
+    ]
+  },
+  {
+    "id": "p9_8",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1b Hair",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 50.0,
+    "width": 20.0,
+    "height": 2.0,
+    "placeholder": "Hair...",
+    "hint": "Texture and length",
+    "explanation": "Charlotte says he has short dark curly hair.",
+    "unitRef": "Unit 1B Ex 1b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "short dark curly hair",
+      "curly hair",
+      "short curly hair",
+      "dark curly hair"
+    ]
+  },
+  {
+    "id": "p9_9",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1b Weight",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 53.0,
+    "width": 20.0,
+    "height": 2.0,
+    "placeholder": "Weight...",
+    "hint": "Slightly heavy",
+    "explanation": "Charlotte says: a bit overweight.",
+    "unitRef": "Unit 1B Ex 1b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "a bit overweight",
+      "overweight"
+    ]
+  },
+  {
+    "id": "p9_10",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1b Smile",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 56.0,
+    "width": 20.0,
+    "height": 2.0,
+    "placeholder": "Smile...",
+    "hint": "Kind facial expression",
+    "explanation": "Charlotte says: with brown eyes and a lovely warm smile.",
+    "unitRef": "Unit 1B Ex 1b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "a lovely warm smile",
+      "lovely warm smile",
+      "warm smile"
+    ]
+  },
+  {
+    "id": "p9_11",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1f Q1",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 69.0,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "funny",
+    "hint": "A person who makes you laugh is funny",
+    "explanation": "funny",
+    "unitRef": "Unit 1B Ex 1f",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "funny"
+    ]
+  },
+  {
+    "id": "p9_12",
+    "pageNum": 9,
+    "bookPage": 8,
+    "label": "1B.1f Q2",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 72.0,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "fun",
+    "hint": "A person who you can have a good time with is fun",
+    "explanation": "fun",
+    "unitRef": "Unit 1B Ex 1f",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "fun"
+    ]
+  },
+  {
+    "id": "p10_1",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.2a (+) He",
+    "fieldType": "text",
+    "x": 27.0,
+    "y": 13.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "needs",
+    "hint": "3rd person singular adds -s",
+    "explanation": "He needs a new partner.",
+    "unitRef": "Unit 1B Grammar 2a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "needs"
+    ]
+  },
+  {
+    "id": "p10_2",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.2a (-) She",
+    "fieldType": "text",
+    "x": 27.0,
+    "y": 17.5,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "doesn't want",
+    "hint": "3rd person negative uses does not / doesn't",
+    "explanation": "She doesn't want her dad to end up alone.",
+    "unitRef": "Unit 1B Grammar 2a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "doesn't want",
+      "does not want",
+      "doesn't"
+    ]
+  },
+  {
+    "id": "p10_3",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.2a (?) you",
+    "fieldType": "text",
+    "x": 16.5,
+    "y": 24.5,
+    "width": 7.0,
+    "height": 1.8,
+    "placeholder": "do",
+    "hint": "Question auxiliary with you",
+    "explanation": "What kind of person do you want to meet?",
+    "unitRef": "Unit 1B Grammar 2a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "do"
+    ]
+  },
+  {
+    "id": "p10_4",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.2a (?) he",
+    "fieldType": "text",
+    "x": 31.0,
+    "y": 24.5,
+    "width": 7.0,
+    "height": 1.8,
+    "placeholder": "does",
+    "hint": "Question auxiliary with he",
+    "explanation": "What kind of person does he want to meet?",
+    "unitRef": "Unit 1B Grammar 2a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "does"
+    ]
+  },
+  {
+    "id": "p10_5",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.2b 1",
+    "fieldType": "text",
+    "x": 11.0,
+    "y": 30.5,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "A/B",
+    "hint": "Adverbs of frequency go before the main verb",
+    "explanation": "A (They often go out together.)",
+    "unitRef": "Unit 1B Grammar 2b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "A",
+      "a"
+    ]
+  },
+  {
+    "id": "p10_6",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.2b 2",
+    "fieldType": "text",
+    "x": 11.0,
+    "y": 34.0,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "A/B",
+    "hint": "Adverbs of frequency go after the verb be",
+    "explanation": "B (He's always the one who pays.)",
+    "unitRef": "Unit 1B Grammar 2b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "B",
+      "b"
+    ]
+  },
+  {
+    "id": "p10_7",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.4c 1",
+    "fieldType": "text",
+    "x": 49.0,
+    "y": 36.5,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "J/S",
+    "hint": "John: tall, dark, and handsome",
+    "explanation": "J (John)",
+    "unitRef": "Unit 1B Listening 4c",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "J",
+      "j",
+      "John"
+    ]
+  },
+  {
+    "id": "p10_8",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.4c 2",
+    "fieldType": "text",
+    "x": 49.0,
+    "y": 39.5,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "J/S",
+    "hint": "Sebastian: very tall",
+    "explanation": "S (Sebastian)",
+    "unitRef": "Unit 1B Listening 4c",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "S",
+      "s",
+      "Sebastian"
+    ]
+  },
+  {
+    "id": "p10_9",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.4c 3",
+    "fieldType": "text",
+    "x": 49.0,
+    "y": 41.5,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "J/S",
+    "hint": "John: he is a teacher",
+    "explanation": "J (John)",
+    "unitRef": "Unit 1B Listening 4c",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "J",
+      "j",
+      "John"
+    ]
+  },
+  {
+    "id": "p10_10",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.4c 4",
+    "fieldType": "text",
+    "x": 74.0,
+    "y": 36.5,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "J/S",
+    "hint": "Sebastian: from Germany, lives in Dublin",
+    "explanation": "S (Sebastian)",
+    "unitRef": "Unit 1B Listening 4c",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "S",
+      "s",
+      "Sebastian"
+    ]
+  },
+  {
+    "id": "p10_11",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.4c 5",
+    "fieldType": "text",
+    "x": 74.0,
+    "y": 39.5,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "J/S",
+    "hint": "John: there isn't a spark",
+    "explanation": "J (John)",
+    "unitRef": "Unit 1B Listening 4c",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "J",
+      "j",
+      "John"
+    ]
+  },
+  {
+    "id": "p10_12",
+    "pageNum": 10,
+    "bookPage": 9,
+    "label": "1B.4c 6",
+    "fieldType": "text",
+    "x": 74.0,
+    "y": 41.5,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "J/S",
+    "hint": "Sebastian: a real gentleman",
+    "explanation": "S (Sebastian)",
+    "unitRef": "Unit 1B Listening 4c",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "S",
+      "s",
+      "Sebastian"
+    ]
+  },
+  {
+    "id": "p11_1",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.1b 1 Apron",
+    "fieldType": "text",
+    "x": 11.0,
+    "y": 26.8,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "W/M",
+    "hint": "Woman wears blue apron",
+    "explanation": "W (Woman)",
+    "unitRef": "Unit 1C Ex 1b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "W",
+      "w"
+    ]
+  },
+  {
+    "id": "p11_2",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.1b 2 Trousers",
+    "fieldType": "text",
+    "x": 11.0,
+    "y": 28.8,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "W/M",
+    "hint": "Man wears blue trousers",
+    "explanation": "M (Man)",
+    "unitRef": "Unit 1C Ex 1b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "M",
+      "m"
+    ]
+  },
+  {
+    "id": "p11_3",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.1b 3 Skirt",
+    "fieldType": "text",
+    "x": 11.0,
+    "y": 30.8,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "W/M",
+    "hint": "Woman wears brown skirt",
+    "explanation": "W (Woman)",
+    "unitRef": "Unit 1C Ex 1b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "W",
+      "w"
+    ]
+  },
+  {
+    "id": "p11_4",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.1b 4 Blouse",
+    "fieldType": "text",
+    "x": 11.0,
+    "y": 32.8,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "W/M",
+    "hint": "Woman wears yellow and green blouse",
+    "explanation": "W (Woman)",
+    "unitRef": "Unit 1C Ex 1b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "W",
+      "w"
+    ]
+  },
+  {
+    "id": "p11_5",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.1b 5 T-shirt",
+    "fieldType": "text",
+    "x": 11.0,
+    "y": 34.8,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "W/M",
+    "hint": "Man wears yellow T-shirt",
+    "explanation": "M (Man)",
+    "unitRef": "Unit 1C Ex 1b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "M",
+      "m"
+    ]
+  },
+  {
+    "id": "p11_6",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.1b 6 Cap",
+    "fieldType": "text",
+    "x": 11.0,
+    "y": 36.8,
+    "width": 5.0,
+    "height": 1.8,
+    "placeholder": "W/M",
+    "hint": "Woman wears white cap",
+    "explanation": "W (Woman)",
+    "unitRef": "Unit 1C Ex 1b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "W",
+      "w"
+    ]
+  },
+  {
+    "id": "p11_7",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.3a 1",
+    "fieldType": "text",
+    "x": 56.0,
+    "y": 21.0,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "They're",
+    "hint": "Plural pronoun + continuous",
+    "explanation": "They're wearing yellow and blue clothes.",
+    "unitRef": "Unit 1C Ex 3a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "They're",
+      "They are"
+    ]
+  },
+  {
+    "id": "p11_8",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.3a 2",
+    "fieldType": "text",
+    "x": 56.0,
+    "y": 22.8,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "She's",
+    "hint": "Female singular pronoun",
+    "explanation": "She's wearing a cap.",
+    "unitRef": "Unit 1C Ex 3a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "She's",
+      "She is"
+    ]
+  },
+  {
+    "id": "p11_9",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.3a 3",
+    "fieldType": "text",
+    "x": 56.0,
+    "y": 24.6,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "He's",
+    "hint": "Male singular pronoun",
+    "explanation": "He's pouring milk from a bottle.",
+    "unitRef": "Unit 1C Ex 3a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "He's",
+      "He is"
+    ]
+  },
+  {
+    "id": "p11_10",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.3a 4",
+    "fieldType": "text",
+    "x": 56.0,
+    "y": 26.4,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "She's",
+    "hint": "Female singular pronoun",
+    "explanation": "She's pouring milk from a jug.",
+    "unitRef": "Unit 1C Ex 3a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "She's",
+      "She is"
+    ]
+  },
+  {
+    "id": "p11_11",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.3a 5",
+    "fieldType": "text",
+    "x": 56.0,
+    "y": 28.2,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "They're",
+    "hint": "Looking at the milk",
+    "explanation": "They're looking at the milk.",
+    "unitRef": "Unit 1C Ex 3a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "They're",
+      "She's",
+      "He's",
+      "They are"
+    ]
+  },
+  {
+    "id": "p11_12",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.3a 6",
+    "fieldType": "text",
+    "x": 56.0,
+    "y": 30.0,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "She's",
+    "hint": "Female singular pronoun",
+    "explanation": "She's standing near a window.",
+    "unitRef": "Unit 1C Ex 3a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "She's",
+      "She is"
+    ]
+  },
+  {
+    "id": "p11_13",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.3b 1",
+    "fieldType": "text",
+    "x": 70.0,
+    "y": 35.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "isn't wearing",
+    "hint": "Action happening right now in photo",
+    "explanation": "In the photo the man isn't wearing a cap.",
+    "unitRef": "Unit 1C Ex 3b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "isn't wearing",
+      "is not wearing"
+    ]
+  },
+  {
+    "id": "p11_14",
+    "pageNum": 11,
+    "bookPage": 10,
+    "label": "1C.3b 2",
+    "fieldType": "text",
+    "x": 64.0,
+    "y": 37.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "wear",
+    "hint": "Habitual action with often uses present simple",
+    "explanation": "People often wear aprons in the kitchen.",
+    "unitRef": "Unit 1C Ex 3b",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "wear"
+    ]
+  },
+  {
+    "id": "p12_1",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.4a 1",
+    "fieldType": "text",
+    "x": 9.0,
+    "y": 14.2,
+    "width": 6.0,
+    "height": 1.8,
+    "placeholder": "a/b/c",
+    "hint": "Vermeer lived in the 17th century",
+    "explanation": "b (17th)",
+    "unitRef": "Unit 1C Listening 4a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "b",
+      "17th"
+    ]
+  },
+  {
+    "id": "p12_2",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.4a 2",
+    "fieldType": "text",
+    "x": 9.0,
+    "y": 17.2,
+    "width": 6.0,
+    "height": 1.8,
+    "placeholder": "a/b/c",
+    "hint": "Vermeer was from Holland",
+    "explanation": "a (Holland)",
+    "unitRef": "Unit 1C Listening 4a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "a",
+      "Holland"
+    ]
+  },
+  {
+    "id": "p12_3",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.4a 3",
+    "fieldType": "text",
+    "x": 9.0,
+    "y": 20.5,
+    "width": 6.0,
+    "height": 1.8,
+    "placeholder": "a/b/c",
+    "hint": "He painted everyday scenes",
+    "explanation": "a (everyday scenes)",
+    "unitRef": "Unit 1C Listening 4a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "a",
+      "everyday scenes"
+    ]
+  },
+  {
+    "id": "p12_4",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.4a 4",
+    "fieldType": "text",
+    "x": 9.0,
+    "y": 25.2,
+    "width": 6.0,
+    "height": 1.8,
+    "placeholder": "a/b/c",
+    "hint": "The milkmaid is probably making a pudding",
+    "explanation": "c (a pudding)",
+    "unitRef": "Unit 1C Listening 4a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "c",
+      "a pudding",
+      "pudding"
+    ]
+  },
+  {
+    "id": "p12_5",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.4a 5",
+    "fieldType": "text",
+    "x": 9.0,
+    "y": 28.2,
+    "width": 6.0,
+    "height": 1.8,
+    "placeholder": "a/b/c",
+    "hint": "34 of Vermeer's paintings exist today",
+    "explanation": "b (34)",
+    "unitRef": "Unit 1C Listening 4a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "b",
+      "34"
+    ]
+  },
+  {
+    "id": "p12_6",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.4a 6",
+    "fieldType": "text",
+    "x": 9.0,
+    "y": 32.2,
+    "width": 6.0,
+    "height": 1.8,
+    "placeholder": "a/b/c",
+    "hint": "Paints were expensive (e.g. lapis lazuli)",
+    "explanation": "b (expensive paints)",
+    "unitRef": "Unit 1C Listening 4a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "b",
+      "Because some of the paints were very expensive"
+    ]
+  },
+  {
+    "id": "p12_7",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.5a 2",
+    "fieldType": "text",
+    "x": 67.0,
+    "y": 18.3,
+    "width": 13.0,
+    "height": 1.8,
+    "placeholder": "in front of",
+    "hint": "Position in front of him",
+    "explanation": "There's a table in front of him.",
+    "unitRef": "Unit 1C Ex 5a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "in front of"
+    ]
+  },
+  {
+    "id": "p12_8",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.5a 3",
+    "fieldType": "text",
+    "x": 54.5,
+    "y": 20.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "On",
+    "hint": "Surface preposition",
+    "explanation": "On the table there are some eggs...",
+    "unitRef": "Unit 1C Ex 5a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "On",
+      "on"
+    ]
+  },
+  {
+    "id": "p12_9",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.5a 4a",
+    "fieldType": "text",
+    "x": 65.0,
+    "y": 23.3,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "in the middle of",
+    "hint": "Central position",
+    "explanation": "The bread is in the middle of the table.",
+    "unitRef": "Unit 1C Ex 5a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "in the middle of",
+      "in the center of"
+    ]
+  },
+  {
+    "id": "p12_10",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.5a 4b",
+    "fieldType": "text",
+    "x": 82.0,
+    "y": 23.3,
+    "width": 11.0,
+    "height": 1.8,
+    "placeholder": "between",
+    "hint": "In the middle of two items",
+    "explanation": "It's between the eggs and the strawberries.",
+    "unitRef": "Unit 1C Ex 5a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "between"
+    ]
+  },
+  {
+    "id": "p12_11",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.5a 5",
+    "fieldType": "text",
+    "x": 66.5,
+    "y": 26.3,
+    "width": 11.0,
+    "height": 1.8,
+    "placeholder": "under",
+    "hint": "Below the bread",
+    "explanation": "There's a board under the bread.",
+    "unitRef": "Unit 1C Ex 5a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "under",
+      "underneath",
+      "beneath"
+    ]
+  },
+  {
+    "id": "p12_12",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.5a 6",
+    "fieldType": "text",
+    "x": 54.5,
+    "y": 28.0,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "Behind",
+    "hint": "At the back of the man",
+    "explanation": "Behind the man, there's an old washing machine.",
+    "unitRef": "Unit 1C Ex 5a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Behind",
+      "behind"
+    ]
+  },
+  {
+    "id": "p12_13",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.5a 7",
+    "fieldType": "text",
+    "x": 68.5,
+    "y": 29.7,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "on the left of",
+    "hint": "Position on the left side",
+    "explanation": "There's a window on the left of the photo.",
+    "unitRef": "Unit 1C Ex 5a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "on the left of",
+      "on the left"
+    ]
+  },
+  {
+    "id": "p12_14",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.5a 8",
+    "fieldType": "text",
+    "x": 54.5,
+    "y": 31.4,
+    "width": 13.0,
+    "height": 1.8,
+    "placeholder": "In the corner",
+    "hint": "Corner of the room",
+    "explanation": "In the corner of the room there's a sink.",
+    "unitRef": "Unit 1C Ex 5a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "In the corner",
+      "in the corner"
+    ]
+  },
+  {
+    "id": "p12_15",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.5a 9a",
+    "fieldType": "text",
+    "x": 70.0,
+    "y": 34.3,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "on",
+    "hint": "On the wall",
+    "explanation": "There's a flower on the wall...",
+    "unitRef": "Unit 1C Ex 5a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "on"
+    ]
+  },
+  {
+    "id": "p12_16",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.5a 9b",
+    "fieldType": "text",
+    "x": 83.5,
+    "y": 34.3,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "above",
+    "hint": "Higher than the sink",
+    "explanation": "...above the sink.",
+    "unitRef": "Unit 1C Ex 5a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "above",
+      "over"
+    ]
+  },
+  {
+    "id": "p12_17",
+    "pageNum": 12,
+    "bookPage": 11,
+    "label": "1C.5a 10",
+    "fieldType": "text",
+    "x": 63.5,
+    "y": 36.0,
+    "width": 11.0,
+    "height": 1.8,
+    "placeholder": "next to",
+    "hint": "Beside the window",
+    "explanation": "The sink is next to the window.",
+    "unitRef": "Unit 1C Ex 5a",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "next to",
+      "beside"
+    ]
+  },
+  {
+    "id": "p15_1",
+    "pageNum": 15,
+    "bookPage": 14,
+    "label": "2A.1b 1",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 32.0,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "verb",
+    "hint": "go abroad",
+    "explanation": "went",
+    "unitRef": "Unit 2A Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "went",
+      "go"
+    ]
+  },
+  {
+    "id": "p15_2",
+    "pageNum": 15,
+    "bookPage": 14,
+    "label": "2A.1b 2",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 34.5,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "verb",
+    "hint": "stay in a hotel",
+    "explanation": "stayed",
+    "unitRef": "Unit 2A Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "stayed",
+      "stay"
+    ]
+  },
+  {
+    "id": "p15_3",
+    "pageNum": 15,
+    "bookPage": 14,
+    "label": "2A.1b 3",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 37.0,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "verb",
+    "hint": "book flights online",
+    "explanation": "booked",
+    "unitRef": "Unit 2A Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "booked",
+      "book"
+    ]
+  },
+  {
+    "id": "p15_4",
+    "pageNum": 15,
+    "bookPage": 14,
+    "label": "2A.1b 4",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 39.5,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "verb",
+    "hint": "hire a car",
+    "explanation": "hired",
+    "unitRef": "Unit 2A Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "hired",
+      "hire"
+    ]
+  },
+  {
+    "id": "p15_5",
+    "pageNum": 15,
+    "bookPage": 14,
+    "label": "2A.1b 5",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 42.0,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "verb",
+    "hint": "take photos",
+    "explanation": "took",
+    "unitRef": "Unit 2A Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "took",
+      "take"
+    ]
+  },
+  {
+    "id": "p15_6",
+    "pageNum": 15,
+    "bookPage": 14,
+    "label": "2A.1b 6",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 44.5,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "verb",
+    "hint": "sunbathe on the beach",
+    "explanation": "sunbathed",
+    "unitRef": "Unit 2A Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "sunbathed",
+      "sunbathe"
+    ]
+  },
+  {
+    "id": "p15_7",
+    "pageNum": 15,
+    "bookPage": 14,
+    "label": "2A.2a 1",
+    "fieldType": "text",
+    "x": 55.0,
+    "y": 48.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "Past verb",
+    "hint": "Past simple of go",
+    "explanation": "went",
+    "unitRef": "Unit 2A Grammar",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "went"
+    ]
+  },
+  {
+    "id": "p15_8",
+    "pageNum": 15,
+    "bookPage": 14,
+    "label": "2A.2a 2",
+    "fieldType": "text",
+    "x": 55.0,
+    "y": 50.5,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "Past verb",
+    "hint": "Past simple of stay",
+    "explanation": "stayed",
+    "unitRef": "Unit 2A Grammar",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "stayed"
+    ]
+  },
+  {
+    "id": "p15_9",
+    "pageNum": 15,
+    "bookPage": 14,
+    "label": "2A.2a 3",
+    "fieldType": "text",
+    "x": 55.0,
+    "y": 53.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "Past verb",
+    "hint": "Past simple of be (singular)",
+    "explanation": "was",
+    "unitRef": "Unit 2A Grammar",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "was"
+    ]
+  },
+  {
+    "id": "p15_10",
+    "pageNum": 15,
+    "bookPage": 14,
+    "label": "2A.2a 4",
+    "fieldType": "text",
+    "x": 55.0,
+    "y": 55.5,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "Past verb",
+    "hint": "Negative past simple",
+    "explanation": "didn't like",
+    "unitRef": "Unit 2A Grammar",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "didn't like",
+      "did not like"
+    ]
+  },
+  {
+    "id": "p17_1",
+    "pageNum": 17,
+    "bookPage": 16,
+    "label": "2B.1 1",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 28.0,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "at/in/on",
+    "hint": "in the street / in Prague",
+    "explanation": "in",
+    "unitRef": "Unit 2B Prepositions",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "in"
+    ]
+  },
+  {
+    "id": "p17_2",
+    "pageNum": 17,
+    "bookPage": 16,
+    "label": "2B.1 2",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 31.0,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "at/in/on",
+    "hint": "at the station / at the hotel",
+    "explanation": "at",
+    "unitRef": "Unit 2B Prepositions",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "at"
+    ]
+  },
+  {
+    "id": "p17_3",
+    "pageNum": 17,
+    "bookPage": 16,
+    "label": "2B.1 3",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 34.0,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "at/in/on",
+    "hint": "on a bus / on the train",
+    "explanation": "on",
+    "unitRef": "Unit 2B Prepositions",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "on"
+    ]
+  },
+  {
+    "id": "p17_4",
+    "pageNum": 17,
+    "bookPage": 16,
+    "label": "2B.2 1",
+    "fieldType": "text",
+    "x": 54.0,
+    "y": 45.0,
+    "width": 18.0,
+    "height": 1.8,
+    "placeholder": "was walking",
+    "hint": "Past continuous: was + walking",
+    "explanation": "was walking",
+    "unitRef": "Unit 2B Grammar",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "was walking"
+    ]
+  },
+  {
+    "id": "p17_5",
+    "pageNum": 17,
+    "bookPage": 16,
+    "label": "2B.2 2",
+    "fieldType": "text",
+    "x": 54.0,
+    "y": 48.0,
+    "width": 18.0,
+    "height": 1.8,
+    "placeholder": "were sitting",
+    "hint": "Past continuous: were + sitting",
+    "explanation": "were sitting",
+    "unitRef": "Unit 2B Grammar",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "were sitting"
+    ]
+  },
+  {
+    "id": "p17_6",
+    "pageNum": 17,
+    "bookPage": 16,
+    "label": "2B.2 3",
+    "fieldType": "text",
+    "x": 54.0,
+    "y": 51.0,
+    "width": 18.0,
+    "height": 1.8,
+    "placeholder": "was shining",
+    "hint": "The sun was shining",
+    "explanation": "was shining",
+    "unitRef": "Unit 2B Grammar",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "was shining"
+    ]
+  },
+  {
+    "id": "p19_1",
+    "pageNum": 19,
+    "bookPage": 18,
+    "label": "2C.1 1",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 30.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "connector",
+    "hint": "Gives a reason",
+    "explanation": "because",
+    "unitRef": "Unit 2C Connectors",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "because"
+    ]
+  },
+  {
+    "id": "p19_2",
+    "pageNum": 19,
+    "bookPage": 18,
+    "label": "2C.1 2",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 33.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "connector",
+    "hint": "Gives a result",
+    "explanation": "so",
+    "unitRef": "Unit 2C Connectors",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "so"
+    ]
+  },
+  {
+    "id": "p19_3",
+    "pageNum": 19,
+    "bookPage": 18,
+    "label": "2C.1 3",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 36.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "connector",
+    "hint": "Shows contrast",
+    "explanation": "although",
+    "unitRef": "Unit 2C Connectors",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "although"
+    ]
+  },
+  {
+    "id": "p19_4",
+    "pageNum": 19,
+    "bookPage": 18,
+    "label": "2C.1 4",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 39.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "connector",
+    "hint": "Shows contrast",
+    "explanation": "but",
+    "unitRef": "Unit 2C Connectors",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "but"
+    ]
+  },
+  {
+    "id": "p21_1",
+    "pageNum": 21,
+    "bookPage": 20,
+    "label": "RC1.1",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 20.0,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "a/b/c",
+    "hint": "Where were you born?",
+    "explanation": "were",
+    "unitRef": "Revise & Check 1&2",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "were",
+      "c"
+    ]
+  },
+  {
+    "id": "p21_2",
+    "pageNum": 21,
+    "bookPage": 20,
+    "label": "RC1.2",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 23.5,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "a/b/c",
+    "hint": "Does your brother speak French?",
+    "explanation": "Does",
+    "unitRef": "Revise & Check 1&2",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Does",
+      "b"
+    ]
+  },
+  {
+    "id": "p21_3",
+    "pageNum": 21,
+    "bookPage": 20,
+    "label": "RC1.3",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 27.0,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "a/b/c",
+    "hint": "What were you doing at 8.00?",
+    "explanation": "were you doing",
+    "unitRef": "Revise & Check 1&2",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "were you doing",
+      "a"
+    ]
+  },
+  {
+    "id": "p21_4",
+    "pageNum": 21,
+    "bookPage": 20,
+    "label": "RC1.4",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 30.5,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "a/b/c",
+    "hint": "We hardly ever go to the cinema",
+    "explanation": "hardly ever",
+    "unitRef": "Revise & Check 1&2",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "hardly ever",
+      "b"
+    ]
+  },
+  {
+    "id": "p21_5",
+    "pageNum": 21,
+    "bookPage": 20,
+    "label": "RC1.5",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 34.0,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "a/b/c",
+    "hint": "Why are you wearing a heavy coat?",
+    "explanation": "are you",
+    "unitRef": "Revise & Check 1&2",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "are you",
+      "a"
+    ]
+  },
+  {
+    "id": "p23_1",
+    "pageNum": 23,
+    "bookPage": 22,
+    "label": "3A.1 1",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 35.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "terminal",
+    "hint": "Building at airport",
+    "explanation": "terminal",
+    "unitRef": "Unit 3A Vocabulary",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "terminal"
+    ]
+  },
+  {
+    "id": "p23_2",
+    "pageNum": 23,
+    "bookPage": 22,
+    "label": "3A.1 2",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 38.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "gate",
+    "hint": "Exit to aircraft",
+    "explanation": "gate",
+    "unitRef": "Unit 3A Vocabulary",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "gate"
+    ]
+  },
+  {
+    "id": "p23_3",
+    "pageNum": 23,
+    "bookPage": 22,
+    "label": "3A.1 3",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 41.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "check-in",
+    "hint": "Where you show tickets and drop bags",
+    "explanation": "check-in",
+    "unitRef": "Unit 3A Vocabulary",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "check-in",
+      "check in"
+    ]
+  },
+  {
+    "id": "p23_4",
+    "pageNum": 23,
+    "bookPage": 22,
+    "label": "3A.2 1",
+    "fieldType": "text",
+    "x": 55.0,
+    "y": 45.0,
+    "width": 18.0,
+    "height": 1.8,
+    "placeholder": "'m going to meet",
+    "hint": "Plan with be going to",
+    "explanation": "'m going to meet",
+    "unitRef": "Unit 3A Grammar",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "'m going to meet",
+      "am going to meet"
+    ]
+  },
+  {
+    "id": "p23_5",
+    "pageNum": 23,
+    "bookPage": 22,
+    "label": "3A.2 2",
+    "fieldType": "text",
+    "x": 55.0,
+    "y": 48.0,
+    "width": 18.0,
+    "height": 1.8,
+    "placeholder": "'s going to land",
+    "hint": "Prediction with evidence",
+    "explanation": "'s going to land",
+    "unitRef": "Unit 3A Grammar",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "'s going to land",
+      "is going to land"
+    ]
+  },
+  {
+    "id": "p25_1",
+    "pageNum": 25,
+    "bookPage": 24,
+    "label": "3B.1 1",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 35.0,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "'m seeing",
+    "hint": "Definite future arrangement",
+    "explanation": "'m seeing",
+    "unitRef": "Unit 3B Grammar",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "'m seeing",
+      "am seeing"
+    ]
+  },
+  {
+    "id": "p25_2",
+    "pageNum": 25,
+    "bookPage": 24,
+    "label": "3B.1 2",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 38.0,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "are you leaving",
+    "hint": "Question about future arrangement",
+    "explanation": "are you leaving",
+    "unitRef": "Unit 3B Grammar",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "are you leaving"
+    ]
+  },
+  {
+    "id": "p27_1",
+    "pageNum": 27,
+    "bookPage": 26,
+    "label": "3C.1 1",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 35.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "who/which/where",
+    "hint": "Refers to a person",
+    "explanation": "who",
+    "unitRef": "Unit 3C Relative Clauses",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "who",
+      "that"
+    ]
+  },
+  {
+    "id": "p27_2",
+    "pageNum": 27,
+    "bookPage": 26,
+    "label": "3C.1 2",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 38.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "who/which/where",
+    "hint": "Refers to a thing",
+    "explanation": "which",
+    "unitRef": "Unit 3C Relative Clauses",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "which",
+      "that"
+    ]
+  },
+  {
+    "id": "p27_3",
+    "pageNum": 27,
+    "bookPage": 26,
+    "label": "3C.1 3",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 41.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "who/which/where",
+    "hint": "Refers to a place",
+    "explanation": "where",
+    "unitRef": "Unit 3C Relative Clauses",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "where"
+    ]
+  },
+  {
+    "id": "p128_1",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.a 1",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 12.0,
+    "width": 23.5,
+    "height": 1.8,
+    "placeholder": "Where can we park?",
+    "hint": "can before we",
+    "explanation": "Where can we park?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Where can we park?",
+      "Where can we park"
+    ]
+  },
+  {
+    "id": "p128_2",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.a 2",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 13.8,
+    "width": 23.5,
+    "height": 1.8,
+    "placeholder": "How old are you?",
+    "hint": "old after How",
+    "explanation": "How old are you?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "How old are you?",
+      "How old are you"
+    ]
+  },
+  {
+    "id": "p128_3",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.a 3",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 15.6,
+    "width": 23.5,
+    "height": 1.8,
+    "placeholder": "Does the class finish at 8.00?",
+    "hint": "the class after Does",
+    "explanation": "Does the class finish at 8.00?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Does the class finish at 8.00?",
+      "Does the class finish at 8:00?"
+    ]
+  },
+  {
+    "id": "p128_4",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.a 4",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 17.4,
+    "width": 23.5,
+    "height": 1.8,
+    "placeholder": "Where do your friends live?",
+    "hint": "live at the end",
+    "explanation": "Where do your friends live?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Where do your friends live?",
+      "Where do your friends live"
+    ]
+  },
+  {
+    "id": "p128_5",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.a 5",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 19.2,
+    "width": 23.5,
+    "height": 1.8,
+    "placeholder": "Why didn't you answer my email?",
+    "hint": "didn't before you",
+    "explanation": "Why didn't you answer my email?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Why didn't you answer my email?",
+      "Why didn't you answer my email"
+    ]
+  },
+  {
+    "id": "p128_6",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.a 6",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 21.0,
+    "width": 23.5,
+    "height": 1.8,
+    "placeholder": "Do you often go to the cinema?",
+    "hint": "go after often",
+    "explanation": "Do you often go to the cinema?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Do you often go to the cinema?",
+      "Do you often go to the cinema"
+    ]
+  },
+  {
+    "id": "p128_7",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.a 7",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 22.8,
+    "width": 23.5,
+    "height": 1.8,
+    "placeholder": "What does this word mean?",
+    "hint": "does after What",
+    "explanation": "What does this word mean?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "What does this word mean?",
+      "What does this word mean"
+    ]
+  },
+  {
+    "id": "p128_8",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.a 8",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 24.6,
+    "width": 23.5,
+    "height": 1.8,
+    "placeholder": "What time did your friends arrive?",
+    "hint": "your friends after did",
+    "explanation": "What time did your friends arrive?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "What time did your friends arrive?",
+      "What time did your friends arrive"
+    ]
+  },
+  {
+    "id": "p128_9",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.a 9",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 26.4,
+    "width": 23.5,
+    "height": 1.8,
+    "placeholder": "Who are you talking to?",
+    "hint": "to at the end",
+    "explanation": "Who are you talking to?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Who are you talking to?",
+      "Who are you talking to"
+    ]
+  },
+  {
+    "id": "p128_10",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.a 10",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 28.2,
+    "width": 23.5,
+    "height": 1.8,
+    "placeholder": "Where were you last night?",
+    "hint": "you after were",
+    "explanation": "Where were you last night?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Where were you last night?",
+      "Where were you last night"
+    ]
+  },
+  {
+    "id": "p128_11",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.b 1",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 12.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "Do you have a car?",
+    "hint": "Start with Do",
+    "explanation": "Do you have a car?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Do you have a car?",
+      "Do you have a car"
+    ]
+  },
+  {
+    "id": "p128_12",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.b 2",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 13.8,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "Where was your brother born?",
+    "hint": "Where + was + subject + born",
+    "explanation": "Where was your brother born?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Where was your brother born?",
+      "Where was your brother born"
+    ]
+  },
+  {
+    "id": "p128_13",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.b 3",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 15.6,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "How often does he phone you?",
+    "hint": "How often + does + he + phone you",
+    "explanation": "How often does he phone you?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "How often does he phone you?",
+      "How often does he phone you"
+    ]
+  },
+  {
+    "id": "p128_14",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.b 4",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 17.4,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "What time does their flight arrive?",
+    "hint": "What time + does + their flight + arrive",
+    "explanation": "What time does their flight arrive?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "What time does their flight arrive?",
+      "What time does their flight arrive"
+    ]
+  },
+  {
+    "id": "p128_15",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.b 5",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 19.2,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "Is your girlfriend from Brazil?",
+    "hint": "Is + subject + from Brazil",
+    "explanation": "Is your girlfriend from Brazil?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Is your girlfriend from Brazil?",
+      "Is your girlfriend from Brazil"
+    ]
+  },
+  {
+    "id": "p128_16",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.b 6",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 21.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "How many languages can you speak?",
+    "hint": "How many languages + can + you + speak",
+    "explanation": "How many languages can you speak?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "How many languages can you speak?",
+      "How many languages can you speak"
+    ]
+  },
+  {
+    "id": "p128_17",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.b 7",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 22.8,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "How was the party?",
+    "hint": "How + was + the party",
+    "explanation": "How was the party?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "How was the party?",
+      "How was the party"
+    ]
+  },
+  {
+    "id": "p128_18",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.b 8",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 24.6,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "Where did you go last summer?",
+    "hint": "Where + did + you + go + last summer",
+    "explanation": "Where did you go last summer?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Where did you go last summer?",
+      "Where did you go last summer"
+    ]
+  },
+  {
+    "id": "p128_19",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.b 9",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 26.4,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "Is there a doctor here?",
+    "hint": "Is there + a doctor + here",
+    "explanation": "Is there a doctor here?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Is there a doctor here?",
+      "Is there a doctor here"
+    ]
+  },
+  {
+    "id": "p128_20",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1A.b 10",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 28.2,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "Did you come to school by bus?",
+    "hint": "Did + you + come to school + by bus",
+    "explanation": "Did you come to school by bus?",
+    "unitRef": "Grammar Bank 1A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Did you come to school by bus?",
+      "Did you come to school by bus"
+    ]
+  },
+  {
+    "id": "p128_21",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.a 1",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 39.5,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "Does Anna like music?",
+    "hint": "question 3rd person singular",
+    "explanation": "Does Anna like music?",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Does Anna like music?",
+      "Does Anna like music"
+    ]
+  },
+  {
+    "id": "p128_22",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.a 2",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 41.5,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "My sister has a lot of hobbies.",
+    "hint": "positive 3rd person have -> has",
+    "explanation": "My sister has a lot of hobbies.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "My sister has a lot of hobbies.",
+      "My sister has a lot of hobbies"
+    ]
+  },
+  {
+    "id": "p128_23",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.a 3",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 43.5,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "I don't get on very well with my parents.",
+    "hint": "negative with I",
+    "explanation": "I don't get on very well with my parents.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "I don't get on very well with my parents.",
+      "I do not get on very well with my parents."
+    ]
+  },
+  {
+    "id": "p128_24",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.a 4",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 45.5,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "My brother studies English at university.",
+    "hint": "study -> studies",
+    "explanation": "My brother studies English at university.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "My brother studies English at university.",
+      "My brother studies English at university"
+    ]
+  },
+  {
+    "id": "p128_25",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.a 5",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 47.5,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "My neighbours don't have any children.",
+    "hint": "negative with plural",
+    "explanation": "My neighbours don't have any children.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "My neighbours don't have any children.",
+      "My neighbours do not have any children."
+    ]
+  },
+  {
+    "id": "p128_26",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.a 6",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 49.5,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "What time does the film start?",
+    "hint": "question with 3rd person singular",
+    "explanation": "What time does the film start?",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "What time does the film start?",
+      "What time does the film start"
+    ]
+  },
+  {
+    "id": "p128_27",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.a 7",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 51.5,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "He goes out twice a week.",
+    "hint": "go -> goes",
+    "explanation": "He goes out twice a week.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "He goes out twice a week.",
+      "He goes out twice a week"
+    ]
+  },
+  {
+    "id": "p128_28",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.a 8",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 53.5,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "We don't often talk about politics.",
+    "hint": "negative adverb position",
+    "explanation": "We don't often talk about politics.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "We don't often talk about politics.",
+      "We do not often talk about politics."
+    ]
+  },
+  {
+    "id": "p128_29",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.a 9",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 55.5,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "How often do you see your brother?",
+    "hint": "question with you",
+    "explanation": "How often do you see your brother?",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "How often do you see your brother?",
+      "How often do you see your brother"
+    ]
+  },
+  {
+    "id": "p128_30",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.a 10",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 57.5,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "Sally doesn't go on Facebook very much.",
+    "hint": "negative 3rd person",
+    "explanation": "Sally doesn't go on Facebook very much.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Sally doesn't go on Facebook very much.",
+      "Sally does not go on Facebook very much."
+    ]
+  },
+  {
+    "id": "p128_31",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.b 1",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 39.5,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "I always go to bed before 11.00.",
+    "hint": "always before main verb",
+    "explanation": "I always go to bed before 11.00.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "I always go to bed before 11.00.",
+      "I always go to bed before 11:00."
+    ]
+  },
+  {
+    "id": "p128_32",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.b 2",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 41.5,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "Kate hardly ever sees her family.",
+    "hint": "hardly ever before sees",
+    "explanation": "Kate hardly ever sees her family.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Kate hardly ever sees her family.",
+      "Kate hardly ever sees her family"
+    ]
+  },
+  {
+    "id": "p128_33",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.b 3",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 43.5,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "We never go shopping on Saturdays.",
+    "hint": "never before go",
+    "explanation": "We never go shopping on Saturdays.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "We never go shopping on Saturdays.",
+      "We never go shopping on Saturdays"
+    ]
+  },
+  {
+    "id": "p128_34",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.b 4",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 45.5,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "I go to the dentist's twice a year.",
+    "hint": "frequency phrase at end",
+    "explanation": "I go to the dentist's twice a year.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "I go to the dentist's twice a year.",
+      "I go to the dentist's twice a year"
+    ]
+  },
+  {
+    "id": "p128_35",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.b 5",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 47.5,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "They sometimes have breakfast in bed.",
+    "hint": "sometimes before have",
+    "explanation": "They sometimes have breakfast in bed.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "They sometimes have breakfast in bed.",
+      "They sometimes have breakfast in bed"
+    ]
+  },
+  {
+    "id": "p128_36",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.b 6",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 49.5,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "I usually listen to the radio in the car.",
+    "hint": "usually before listen",
+    "explanation": "I usually listen to the radio in the car.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "I usually listen to the radio in the car.",
+      "I usually listen to the radio in the car"
+    ]
+  },
+  {
+    "id": "p128_37",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.b 7",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 51.5,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "Alan runs in the park every day.",
+    "hint": "every day at the end",
+    "explanation": "Alan runs in the park every day.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Alan runs in the park every day.",
+      "Alan runs in the park every day"
+    ]
+  },
+  {
+    "id": "p128_38",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.b 8",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 53.5,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "Sam is often late for work.",
+    "hint": "often after is (verb be)",
+    "explanation": "Sam is often late for work.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Sam is often late for work.",
+      "Sam is often late for work"
+    ]
+  },
+  {
+    "id": "p128_39",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.b 9",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 55.5,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "John doesn't often go to the theatre.",
+    "hint": "often between negative auxiliary and verb",
+    "explanation": "John doesn't often go to the theatre.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "John doesn't often go to the theatre.",
+      "John does not often go to the theatre."
+    ]
+  },
+  {
+    "id": "p128_40",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1B.b 10",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 57.5,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "I visit my mum once a month.",
+    "hint": "frequency phrase at end",
+    "explanation": "I visit my mum once a month.",
+    "unitRef": "Grammar Bank 1B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "I visit my mum once a month.",
+      "I visit my mum once a month"
+    ]
+  },
+  {
+    "id": "p128_41",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.a 1",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 71.0,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "Oliver's wearing a suit today!",
+    "hint": "continuous of wear",
+    "explanation": "Oliver's wearing a suit today!",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Oliver's wearing a suit today!",
+      "Oliver is wearing a suit today!"
+    ]
+  },
+  {
+    "id": "p128_42",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.a 2",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 73.0,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "It's hot. Why are you wearing a coat?",
+    "hint": "question continuous",
+    "explanation": "Why are you wearing a coat?",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Why are you wearing a coat?",
+      "Why are you wearing a coat"
+    ]
+  },
+  {
+    "id": "p128_43",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.a 3",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 75.0,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "Jane isn't sitting in her usual place today.",
+    "hint": "negative continuous sit -> sitting",
+    "explanation": "Jane isn't sitting in her usual place today.",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Jane isn't sitting in her usual place today.",
+      "Jane is not sitting in her usual place today."
+    ]
+  },
+  {
+    "id": "p128_44",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.a 4",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 77.0,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "Hey! You're standing on my foot!",
+    "hint": "continuous of stand",
+    "explanation": "You're standing on my foot!",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "You're standing on my foot!",
+      "You are standing on my foot!"
+    ]
+  },
+  {
+    "id": "p128_45",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.a 5",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 79.0,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "What book are you reading?",
+    "hint": "question continuous",
+    "explanation": "What book are you reading?",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "What book are you reading?",
+      "What book are you reading"
+    ]
+  },
+  {
+    "id": "p128_46",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.a 6",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 81.0,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "We're renting a small flat at the moment.",
+    "hint": "continuous of rent",
+    "explanation": "We're renting a small flat at the moment.",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "We're renting a small flat at the moment.",
+      "We are renting a small flat at the moment."
+    ]
+  },
+  {
+    "id": "p128_47",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.a 7",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 83.0,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "Is she wearing make-up?",
+    "hint": "question with she",
+    "explanation": "Is she wearing make-up?",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Is she wearing make-up?",
+      "Is she wearing make-up"
+    ]
+  },
+  {
+    "id": "p128_48",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.a 8",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 85.0,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "I'm planning a trip to the USA.",
+    "hint": "plan -> planning",
+    "explanation": "I'm planning a trip to the USA.",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "I'm planning a trip to the USA.",
+      "I am planning a trip to the USA."
+    ]
+  },
+  {
+    "id": "p128_49",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.a 9",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 87.0,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "Is your brother working in London this week?",
+    "hint": "question continuous",
+    "explanation": "Is your brother working in London this week?",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "Is your brother working in London this week?",
+      "Is your brother working in London this week"
+    ]
+  },
+  {
+    "id": "p128_50",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.a 10",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 89.0,
+    "width": 26.0,
+    "height": 1.8,
+    "placeholder": "They aren't getting on very well at the moment.",
+    "hint": "negative continuous get -> getting",
+    "explanation": "They aren't getting on very well at the moment.",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "They aren't getting on very well at the moment.",
+      "They are not getting on very well at the moment."
+    ]
+  },
+  {
+    "id": "p128_51",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.b 1",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 71.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "doesn't bite",
+    "hint": "habitual negative present simple",
+    "explanation": "He doesn't bite.",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "doesn't bite",
+      "does not bite"
+    ]
+  },
+  {
+    "id": "p128_52",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.b 2",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 73.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "are you wearing",
+    "hint": "continuous right now",
+    "explanation": "are you wearing",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "are you wearing",
+      "'s raining",
+      "is raining"
+    ]
+  },
+  {
+    "id": "p128_53",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.b 3",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 75.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "'m not listening",
+    "hint": "negative continuous of listen",
+    "explanation": "'m not listening",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "'m not listening",
+      "am not listening",
+      "not listening"
+    ]
+  },
+  {
+    "id": "p128_54",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.b 4",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 77.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "need",
+    "hint": "state verb need is not used in continuous",
+    "explanation": "need",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "need"
+    ]
+  },
+  {
+    "id": "p128_55",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.b 5",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 79.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "'s putting",
+    "hint": "continuous right now put -> putting",
+    "explanation": "'s putting",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "'s putting",
+      "is putting"
+    ]
+  },
+  {
+    "id": "p128_56",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.b 6",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 81.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "do you usually cook",
+    "hint": "habitual routine with usually",
+    "explanation": "do you usually cook",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "do you usually cook",
+      "cook"
+    ]
+  },
+  {
+    "id": "p128_57",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.b 7",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 83.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "are you doing",
+    "hint": "continuous action right now",
+    "explanation": "are you doing",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "are you doing",
+      "'m waiting",
+      "am waiting"
+    ]
+  },
+  {
+    "id": "p128_58",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.b 8",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 85.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "drink",
+    "hint": "habitual routine drink / state want",
+    "explanation": "drink",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "drink",
+      "want"
+    ]
+  },
+  {
+    "id": "p128_59",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.b 9",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 87.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "works",
+    "hint": "permanent routine present simple work -> works",
+    "explanation": "works",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "works"
+    ]
+  },
+  {
+    "id": "p128_60",
+    "pageNum": 128,
+    "bookPage": 127,
+    "label": "1C.b 10",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 89.0,
+    "width": 36.0,
+    "height": 1.8,
+    "placeholder": "lives",
+    "hint": "lives permanently, is working temporarily",
+    "explanation": "lives",
+    "unitRef": "Grammar Bank 1C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "lives",
+      "'s working",
+      "is working"
+    ]
+  },
+  {
+    "id": "p129_1",
+    "pageNum": 129,
+    "bookPage": 128,
+    "label": "2A.rule1 Irregular",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 14.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "went",
+    "hint": "Past simple of go",
+    "explanation": "went",
+    "unitRef": "Grammar Bank 2A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "went"
+    ]
+  },
+  {
+    "id": "p129_2",
+    "pageNum": 129,
+    "bookPage": 128,
+    "label": "2A.rule2 Regular",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 16.5,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "stayed",
+    "hint": "Past simple of stay",
+    "explanation": "stayed",
+    "unitRef": "Grammar Bank 2A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "stayed"
+    ]
+  },
+  {
+    "id": "p129_3",
+    "pageNum": 129,
+    "bookPage": 128,
+    "label": "2B.rule1 Continuous",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 40.0,
+    "width": 18.0,
+    "height": 1.8,
+    "placeholder": "was walking",
+    "hint": "Past continuous: was/were + -ing",
+    "explanation": "was walking",
+    "unitRef": "Grammar Bank 2B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "was walking",
+      "were singing"
+    ]
+  },
+  {
+    "id": "p129_4",
+    "pageNum": 129,
+    "bookPage": 128,
+    "label": "2C.rule1 Connector",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 66.0,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "because",
+    "hint": "Time sequencers & connectors",
+    "explanation": "because",
+    "unitRef": "Grammar Bank 2C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "because",
+      "so",
+      "although",
+      "but"
+    ]
+  },
+  {
+    "id": "p130_1",
+    "pageNum": 130,
+    "bookPage": 129,
+    "label": "2A.a 1",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 12.0,
+    "width": 24.0,
+    "height": 1.8,
+    "placeholder": "did you go",
+    "hint": "Past simple question: did + subject + base verb",
+    "explanation": "did you go",
+    "unitRef": "Grammar Bank 2A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "did you go",
+      "Where did you go"
+    ]
+  },
+  {
+    "id": "p130_2",
+    "pageNum": 130,
+    "bookPage": 129,
+    "label": "2A.a 2",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 14.0,
+    "width": 24.0,
+    "height": 1.8,
+    "placeholder": "was",
+    "hint": "It was great",
+    "explanation": "was",
+    "unitRef": "Grammar Bank 2A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "was"
+    ]
+  },
+  {
+    "id": "p130_3",
+    "pageNum": 130,
+    "bookPage": 129,
+    "label": "2A.a 3",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 16.0,
+    "width": 24.0,
+    "height": 1.8,
+    "placeholder": "stayed",
+    "hint": "We stayed at a hotel",
+    "explanation": "stayed",
+    "unitRef": "Grammar Bank 2A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "stayed"
+    ]
+  },
+  {
+    "id": "p130_4",
+    "pageNum": 130,
+    "bookPage": 129,
+    "label": "2A.a 4",
+    "fieldType": "text",
+    "x": 11.5,
+    "y": 18.0,
+    "width": 24.0,
+    "height": 1.8,
+    "placeholder": "did you do",
+    "hint": "What did you do during the day?",
+    "explanation": "did you do",
+    "unitRef": "Grammar Bank 2A",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "did you do"
+    ]
+  },
+  {
+    "id": "p130_5",
+    "pageNum": 130,
+    "bookPage": 129,
+    "label": "2B.a 1",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 12.0,
+    "width": 24.0,
+    "height": 1.8,
+    "placeholder": "was walking",
+    "hint": "Past continuous action in progress",
+    "explanation": "was walking",
+    "unitRef": "Grammar Bank 2B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "was walking"
+    ]
+  },
+  {
+    "id": "p130_6",
+    "pageNum": 130,
+    "bookPage": 129,
+    "label": "2B.a 2",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 14.0,
+    "width": 24.0,
+    "height": 1.8,
+    "placeholder": "met",
+    "hint": "Completed past simple action",
+    "explanation": "met",
+    "unitRef": "Grammar Bank 2B",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "met"
+    ]
+  },
+  {
+    "id": "p130_7",
+    "pageNum": 130,
+    "bookPage": 129,
+    "label": "2C.a 1",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 45.0,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "because",
+    "hint": "Gives a reason",
+    "explanation": "because",
+    "unitRef": "Grammar Bank 2C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "because"
+    ]
+  },
+  {
+    "id": "p130_8",
+    "pageNum": 130,
+    "bookPage": 129,
+    "label": "2C.a 2",
+    "fieldType": "text",
+    "x": 56.5,
+    "y": 47.5,
+    "width": 16.0,
+    "height": 1.8,
+    "placeholder": "although",
+    "hint": "Shows contrast",
+    "explanation": "although",
+    "unitRef": "Grammar Bank 2C",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "although"
+    ]
+  },
+  {
+    "id": "p151_1",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.1 Adj",
+    "fieldType": "text",
+    "x": 76.8,
+    "y": 29.0,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "adjective",
+    "hint": "Open and warm",
+    "explanation": "friendly",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "friendly"
+    ]
+  },
+  {
+    "id": "p151_2",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.1 Opp",
+    "fieldType": "text",
+    "x": 85.9,
+    "y": 29.0,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "opposite",
+    "hint": "Opposite of friendly",
+    "explanation": "unfriendly",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "unfriendly"
+    ]
+  },
+  {
+    "id": "p151_3",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.2 Adj",
+    "fieldType": "text",
+    "x": 76.8,
+    "y": 32.7,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "adjective",
+    "hint": "Talks a lot",
+    "explanation": "talkative",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "talkative"
+    ]
+  },
+  {
+    "id": "p151_4",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.2 Opp",
+    "fieldType": "text",
+    "x": 85.9,
+    "y": 32.7,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "opposite",
+    "hint": "Opposite of talkative",
+    "explanation": "quiet",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "quiet"
+    ]
+  },
+  {
+    "id": "p151_5",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.3 Adj",
+    "fieldType": "text",
+    "x": 76.8,
+    "y": 38.6,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "adjective",
+    "hint": "Likes giving things",
+    "explanation": "generous",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "generous"
+    ]
+  },
+  {
+    "id": "p151_6",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.3 Opp",
+    "fieldType": "text",
+    "x": 85.9,
+    "y": 38.6,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "opposite",
+    "hint": "Opposite of generous",
+    "explanation": "mean",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "mean"
+    ]
+  },
+  {
+    "id": "p151_7",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.4 Adj",
+    "fieldType": "text",
+    "x": 76.8,
+    "y": 40.8,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "adjective",
+    "hint": "Friendly and good to other people",
+    "explanation": "kind",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "kind"
+    ]
+  },
+  {
+    "id": "p151_8",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.4 Opp",
+    "fieldType": "text",
+    "x": 85.9,
+    "y": 40.8,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "opposite",
+    "hint": "Opposite of kind",
+    "explanation": "unkind",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "unkind"
+    ]
+  },
+  {
+    "id": "p151_9",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.5 Adj",
+    "fieldType": "text",
+    "x": 76.7,
+    "y": 44.5,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "adjective",
+    "hint": "Does not want to work",
+    "explanation": "lazy",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "lazy"
+    ]
+  },
+  {
+    "id": "p151_10",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.5 Opp",
+    "fieldType": "text",
+    "x": 85.9,
+    "y": 44.5,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "opposite",
+    "hint": "Opposite of lazy",
+    "explanation": "hard-working",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "hard-working",
+      "hardworking"
+    ]
+  },
+  {
+    "id": "p151_11",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.6 Adj",
+    "fieldType": "text",
+    "x": 76.7,
+    "y": 47.0,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "adjective",
+    "hint": "Makes people laugh",
+    "explanation": "funny",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "funny"
+    ]
+  },
+  {
+    "id": "p151_12",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.6 Opp",
+    "fieldType": "text",
+    "x": 85.9,
+    "y": 47.0,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "opposite",
+    "hint": "Opposite of funny",
+    "explanation": "serious",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "serious"
+    ]
+  },
+  {
+    "id": "p151_13",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.7 Adj",
+    "fieldType": "text",
+    "x": 76.7,
+    "y": 49.5,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "adjective",
+    "hint": "Quick at learning",
+    "explanation": "clever",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "clever"
+    ]
+  },
+  {
+    "id": "p151_14",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.7 Opp",
+    "fieldType": "text",
+    "x": 85.9,
+    "y": 49.5,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "opposite",
+    "hint": "Opposite of clever",
+    "explanation": "stupid",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "stupid"
+    ]
+  },
+  {
+    "id": "p151_15",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.8 Adj",
+    "fieldType": "text",
+    "x": 76.7,
+    "y": 52.0,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "adjective",
+    "hint": "Cannot talk easily to strangers",
+    "explanation": "shy",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "shy"
+    ]
+  },
+  {
+    "id": "p151_16",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "Q2.8 Opp",
+    "fieldType": "text",
+    "x": 85.9,
+    "y": 52.0,
+    "width": 7.5,
+    "height": 1.8,
+    "placeholder": "opposite",
+    "hint": "Opposite of shy",
+    "explanation": "extrovert",
+    "unitRef": "Vocab Bank Personality",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "extrovert"
+    ]
+  },
+  {
+    "id": "p151_17",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "1.1 Curly",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 46.5,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 2: curly red hair",
+    "explanation": "2",
+    "unitRef": "Vocab Bank Appearance",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "2"
+    ]
+  },
+  {
+    "id": "p151_18",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "1.2 Straight",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 48.5,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 3: long straight hair",
+    "explanation": "3",
+    "unitRef": "Vocab Bank Appearance",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "3"
+    ]
+  },
+  {
+    "id": "p151_19",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "1.4 Blonde",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 52.5,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 6: short blonde hair",
+    "explanation": "6",
+    "unitRef": "Vocab Bank Appearance",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "6"
+    ]
+  },
+  {
+    "id": "p151_20",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "1.5 Beard",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 55.0,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 5: beard and moustache",
+    "explanation": "5",
+    "unitRef": "Vocab Bank Appearance",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "5"
+    ]
+  },
+  {
+    "id": "p151_21",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "1.6 Bald",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 57.0,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 4: bald",
+    "explanation": "4",
+    "unitRef": "Vocab Bank Appearance",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "4"
+    ]
+  },
+  {
+    "id": "p151_22",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "1.7 Tall/thin",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 59.0,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 7: tall and thin",
+    "explanation": "7",
+    "unitRef": "Vocab Bank Appearance",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "7"
+    ]
+  },
+  {
+    "id": "p151_23",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "1.8 Medium/slim",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 61.0,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 9: medium height and very slim",
+    "explanation": "9",
+    "unitRef": "Vocab Bank Appearance",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "9"
+    ]
+  },
+  {
+    "id": "p151_24",
+    "pageNum": 151,
+    "bookPage": 150,
+    "label": "1.9 Overweight",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 63.0,
+    "width": 3.5,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 8: short and overweight",
+    "explanation": "8",
+    "unitRef": "Vocab Bank Appearance",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "8"
+    ]
+  },
+  {
+    "id": "p152_1",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 11",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 14.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 11: blouse",
+    "explanation": "11",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "11",
+      "blouse"
+    ]
+  },
+  {
+    "id": "p152_2",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 13",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 16.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 13: cardigan",
+    "explanation": "13",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "13",
+      "cardigan"
+    ]
+  },
+  {
+    "id": "p152_3",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 3",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 18.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 3: coat",
+    "explanation": "3",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "3",
+      "coat"
+    ]
+  },
+  {
+    "id": "p152_4",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 2",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 20.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 2: dress",
+    "explanation": "2",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "2",
+      "dress"
+    ]
+  },
+  {
+    "id": "p152_5",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 9",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 22.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 9: jacket",
+    "explanation": "9",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "9",
+      "jacket"
+    ]
+  },
+  {
+    "id": "p152_6",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 5",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 24.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 5: jeans",
+    "explanation": "5",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "5",
+      "jeans"
+    ]
+  },
+  {
+    "id": "p152_7",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 14",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 26.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 14: leggings",
+    "explanation": "14",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "14",
+      "leggings"
+    ]
+  },
+  {
+    "id": "p152_8",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 18",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 28.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 18: pyjamas",
+    "explanation": "18",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "18",
+      "pyjamas"
+    ]
+  },
+  {
+    "id": "p152_9",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 8",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 30.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 8: shirt",
+    "explanation": "8",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "8",
+      "shirt"
+    ]
+  },
+  {
+    "id": "p152_10",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 6",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 34.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 6: skirt",
+    "explanation": "6",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "6",
+      "skirt"
+    ]
+  },
+  {
+    "id": "p152_11",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 20",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 36.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 20: socks",
+    "explanation": "20",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "20",
+      "socks"
+    ]
+  },
+  {
+    "id": "p152_12",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 7",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 38.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 7: suit",
+    "explanation": "7",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "7",
+      "suit"
+    ]
+  },
+  {
+    "id": "p152_13",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 16",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 40.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 16: sweater",
+    "explanation": "16",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "16",
+      "sweater"
+    ]
+  },
+  {
+    "id": "p152_14",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 19",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 42.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 19: tights",
+    "explanation": "19",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "19",
+      "tights"
+    ]
+  },
+  {
+    "id": "p152_15",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 4",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 44.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 4: top",
+    "explanation": "4",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "4",
+      "top"
+    ]
+  },
+  {
+    "id": "p152_16",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 10",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 46.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 10: tracksuit",
+    "explanation": "10",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "10",
+      "tracksuit"
+    ]
+  },
+  {
+    "id": "p152_17",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 12",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 48.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 12: trousers",
+    "explanation": "12",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "12",
+      "trousers"
+    ]
+  },
+  {
+    "id": "p152_18",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 15",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 50.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 15: T-shirt",
+    "explanation": "15",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "15",
+      "T-shirt",
+      "t-shirt"
+    ]
+  },
+  {
+    "id": "p152_19",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 17",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 52.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 17: underwear",
+    "explanation": "17",
+    "unitRef": "Vocab Bank Clothes",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "17",
+      "underwear"
+    ]
+  },
+  {
+    "id": "p152_20",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 24",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 56.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 24: boots",
+    "explanation": "24",
+    "unitRef": "Vocab Bank Footwear",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "24",
+      "boots"
+    ]
+  },
+  {
+    "id": "p152_21",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 25",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 58.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 25: flip-flops",
+    "explanation": "25",
+    "unitRef": "Vocab Bank Footwear",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "25",
+      "flip-flops"
+    ]
+  },
+  {
+    "id": "p152_22",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 22",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 60.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 22: sandals",
+    "explanation": "22",
+    "unitRef": "Vocab Bank Footwear",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "22",
+      "sandals"
+    ]
+  },
+  {
+    "id": "p152_23",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 23",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 62.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 23: shoes",
+    "explanation": "23",
+    "unitRef": "Vocab Bank Footwear",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "23",
+      "shoes"
+    ]
+  },
+  {
+    "id": "p152_24",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 21",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 64.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 21: trainers",
+    "explanation": "21",
+    "unitRef": "Vocab Bank Footwear",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "21",
+      "trainers"
+    ]
+  },
+  {
+    "id": "p152_25",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 26",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 68.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 26: belt",
+    "explanation": "26",
+    "unitRef": "Vocab Bank Accessories",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "26",
+      "belt"
+    ]
+  },
+  {
+    "id": "p152_26",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 30",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 70.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 30: cap",
+    "explanation": "30",
+    "unitRef": "Vocab Bank Accessories",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "30",
+      "cap"
+    ]
+  },
+  {
+    "id": "p152_27",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 31",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 72.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 31: hat",
+    "explanation": "31",
+    "unitRef": "Vocab Bank Accessories",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "31",
+      "hat"
+    ]
+  },
+  {
+    "id": "p152_28",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 28",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 74.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 28: gloves",
+    "explanation": "28",
+    "unitRef": "Vocab Bank Accessories",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "28",
+      "gloves"
+    ]
+  },
+  {
+    "id": "p152_29",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 29",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 76.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 29: scarf",
+    "explanation": "29",
+    "unitRef": "Vocab Bank Accessories",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "29",
+      "scarf"
+    ]
+  },
+  {
+    "id": "p152_30",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 27",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 78.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 27: tie",
+    "explanation": "27",
+    "unitRef": "Vocab Bank Accessories",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "27",
+      "tie"
+    ]
+  },
+  {
+    "id": "p152_31",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 33",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 82.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 33: bracelet",
+    "explanation": "33",
+    "unitRef": "Vocab Bank Jewellery",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "33",
+      "bracelet"
+    ]
+  },
+  {
+    "id": "p152_32",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 32",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 84.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 32: earrings",
+    "explanation": "32",
+    "unitRef": "Vocab Bank Jewellery",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "32",
+      "earrings"
+    ]
+  },
+  {
+    "id": "p152_33",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 35",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 86.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 35: necklace",
+    "explanation": "35",
+    "unitRef": "Vocab Bank Jewellery",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "35",
+      "necklace"
+    ]
+  },
+  {
+    "id": "p152_34",
+    "pageNum": 152,
+    "bookPage": 151,
+    "label": "Wear 34",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 88.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo",
+    "hint": "Photo 34: ring",
+    "explanation": "34",
+    "unitRef": "Vocab Bank Jewellery",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "34",
+      "ring"
+    ]
+  },
+  {
+    "id": "p153_1",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Go 7",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 73.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 7: go abroad",
+    "explanation": "7",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "7",
+      "go abroad"
+    ]
+  },
+  {
+    "id": "p153_2",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Go 10",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 75.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 10: go away for the weekend",
+    "explanation": "10",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "10",
+      "go away for the weekend"
+    ]
+  },
+  {
+    "id": "p153_3",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Go 4",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 77.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 4: go by bus",
+    "explanation": "4",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "4",
+      "go by bus"
+    ]
+  },
+  {
+    "id": "p153_4",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Go 8",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 79.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 8: go camping",
+    "explanation": "8",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "8",
+      "go camping"
+    ]
+  },
+  {
+    "id": "p153_5",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Go 9",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 81.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 9: go for a walk",
+    "explanation": "9",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "9",
+      "go for a walk"
+    ]
+  },
+  {
+    "id": "p153_6",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Go 5",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 83.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 5: go on holiday",
+    "explanation": "5",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "5",
+      "go on holiday"
+    ]
+  },
+  {
+    "id": "p153_7",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Go 3",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 85.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 3: go out at night",
+    "explanation": "3",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "3",
+      "go out at night"
+    ]
+  },
+  {
+    "id": "p153_8",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Go 6",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 89.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 6: go skiing",
+    "explanation": "6",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "6",
+      "go skiing"
+    ]
+  },
+  {
+    "id": "p153_9",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Go 2",
+    "fieldType": "text",
+    "x": 8.5,
+    "y": 91.0,
+    "width": 3.8,
+    "height": 1.8,
+    "placeholder": "Photo #",
+    "hint": "Photo 2: go swimming",
+    "explanation": "2",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "2",
+      "go swimming"
+    ]
+  },
+  {
+    "id": "p153_10",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Holiday take",
+    "fieldType": "text",
+    "x": 46.5,
+    "y": 24.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "take",
+    "hint": "take photos",
+    "explanation": "take",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "take"
+    ]
+  },
+  {
+    "id": "p153_11",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Holiday buy",
+    "fieldType": "text",
+    "x": 46.5,
+    "y": 26.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "buy",
+    "hint": "buy souvenirs",
+    "explanation": "buy",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "buy"
+    ]
+  },
+  {
+    "id": "p153_12",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Holiday sunbathe",
+    "fieldType": "text",
+    "x": 46.5,
+    "y": 28.0,
+    "width": 12.0,
+    "height": 1.8,
+    "placeholder": "sunbathe",
+    "hint": "sunbathe on the beach",
+    "explanation": "sunbathe",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "sunbathe"
+    ]
+  },
+  {
+    "id": "p153_13",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Holiday have",
+    "fieldType": "text",
+    "x": 46.5,
+    "y": 30.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "have",
+    "hint": "have a good time",
+    "explanation": "have",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "have"
+    ]
+  },
+  {
+    "id": "p153_14",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Holiday spend",
+    "fieldType": "text",
+    "x": 71.0,
+    "y": 21.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "spend",
+    "hint": "spend money",
+    "explanation": "spend",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "spend"
+    ]
+  },
+  {
+    "id": "p153_15",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Holiday rent",
+    "fieldType": "text",
+    "x": 71.0,
+    "y": 23.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "rent",
+    "hint": "rent an apartment",
+    "explanation": "rent",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "rent"
+    ]
+  },
+  {
+    "id": "p153_16",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Holiday hire",
+    "fieldType": "text",
+    "x": 71.0,
+    "y": 25.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "hire",
+    "hint": "hire a bicycle",
+    "explanation": "hire",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "hire"
+    ]
+  },
+  {
+    "id": "p153_17",
+    "pageNum": 153,
+    "bookPage": 152,
+    "label": "Holiday book",
+    "fieldType": "text",
+    "x": 71.0,
+    "y": 27.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "book",
+    "hint": "book a flight online",
+    "explanation": "book",
+    "unitRef": "Vocab Bank Holidays",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "book"
+    ]
+  },
+  {
+    "id": "p154_1",
+    "pageNum": 154,
+    "bookPage": 153,
+    "label": "Prep 1",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 25.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "prep",
+    "hint": "in a room / in a building",
+    "explanation": "in",
+    "unitRef": "Vocab Bank Prepositions",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "in"
+    ]
+  },
+  {
+    "id": "p154_2",
+    "pageNum": 154,
+    "bookPage": 153,
+    "label": "Prep 2",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 28.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "prep",
+    "hint": "on a table / on the wall",
+    "explanation": "on",
+    "unitRef": "Vocab Bank Prepositions",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "on"
+    ]
+  },
+  {
+    "id": "p154_3",
+    "pageNum": 154,
+    "bookPage": 153,
+    "label": "Prep 3",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 31.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "prep",
+    "hint": "at the bus stop / at home",
+    "explanation": "at",
+    "unitRef": "Vocab Bank Prepositions",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "at"
+    ]
+  },
+  {
+    "id": "p154_4",
+    "pageNum": 154,
+    "bookPage": 153,
+    "label": "Prep 4",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 34.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "prep",
+    "hint": "under the bed",
+    "explanation": "under",
+    "unitRef": "Vocab Bank Prepositions",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "under"
+    ]
+  },
+  {
+    "id": "p154_5",
+    "pageNum": 154,
+    "bookPage": 153,
+    "label": "Prep 5",
+    "fieldType": "text",
+    "x": 55.0,
+    "y": 25.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "prep",
+    "hint": "into the shop",
+    "explanation": "into",
+    "unitRef": "Vocab Bank Prepositions",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "into"
+    ]
+  },
+  {
+    "id": "p154_6",
+    "pageNum": 154,
+    "bookPage": 153,
+    "label": "Prep 6",
+    "fieldType": "text",
+    "x": 55.0,
+    "y": 28.0,
+    "width": 10.0,
+    "height": 1.8,
+    "placeholder": "prep",
+    "hint": "out of the car",
+    "explanation": "out of",
+    "unitRef": "Vocab Bank Prepositions",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "out of"
+    ]
+  },
+  {
+    "id": "p155_1",
+    "pageNum": 155,
+    "bookPage": 154,
+    "label": "MakeDo 1",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 24.0,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "make/do",
+    "hint": "do the washing-up",
+    "explanation": "do",
+    "unitRef": "Vocab Bank Housework",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "do"
+    ]
+  },
+  {
+    "id": "p155_2",
+    "pageNum": 155,
+    "bookPage": 154,
+    "label": "MakeDo 2",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 27.0,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "make/do",
+    "hint": "make the bed",
+    "explanation": "make",
+    "unitRef": "Vocab Bank Housework",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "make"
+    ]
+  },
+  {
+    "id": "p155_3",
+    "pageNum": 155,
+    "bookPage": 154,
+    "label": "MakeDo 3",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 30.0,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "make/do",
+    "hint": "do homework",
+    "explanation": "do",
+    "unitRef": "Vocab Bank Housework",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "do"
+    ]
+  },
+  {
+    "id": "p155_4",
+    "pageNum": 155,
+    "bookPage": 154,
+    "label": "MakeDo 4",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 33.0,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "make/do",
+    "hint": "make a mistake",
+    "explanation": "make",
+    "unitRef": "Vocab Bank Housework",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "make"
+    ]
+  },
+  {
+    "id": "p155_5",
+    "pageNum": 155,
+    "bookPage": 154,
+    "label": "MakeDo 5",
+    "fieldType": "text",
+    "x": 55.0,
+    "y": 24.0,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "make/do",
+    "hint": "do exercise / sport",
+    "explanation": "do",
+    "unitRef": "Vocab Bank Housework",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "do"
+    ]
+  },
+  {
+    "id": "p155_6",
+    "pageNum": 155,
+    "bookPage": 154,
+    "label": "MakeDo 6",
+    "fieldType": "text",
+    "x": 55.0,
+    "y": 27.0,
+    "width": 8.0,
+    "height": 1.8,
+    "placeholder": "make/do",
+    "hint": "make noise",
+    "explanation": "make",
+    "unitRef": "Vocab Bank Housework",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "make"
+    ]
+  },
+  {
+    "id": "p156_1",
+    "pageNum": 156,
+    "bookPage": 155,
+    "label": "Shop 1",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 25.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "basket",
+    "hint": "Handheld shopping container",
+    "explanation": "basket",
+    "unitRef": "Vocab Bank Shopping",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "basket"
+    ]
+  },
+  {
+    "id": "p156_2",
+    "pageNum": 156,
+    "bookPage": 155,
+    "label": "Shop 2",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 28.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "trolley",
+    "hint": "Wheeled shopping container",
+    "explanation": "trolley",
+    "unitRef": "Vocab Bank Shopping",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "trolley",
+      "cart"
+    ]
+  },
+  {
+    "id": "p156_3",
+    "pageNum": 156,
+    "bookPage": 155,
+    "label": "Shop 3",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 31.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "receipt",
+    "hint": "Proof of purchase",
+    "explanation": "receipt",
+    "unitRef": "Vocab Bank Shopping",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "receipt"
+    ]
+  },
+  {
+    "id": "p156_4",
+    "pageNum": 156,
+    "bookPage": 155,
+    "label": "Shop 4",
+    "fieldType": "text",
+    "x": 10.0,
+    "y": 34.0,
+    "width": 14.0,
+    "height": 1.8,
+    "placeholder": "checkout",
+    "hint": "Where you pay in a supermarket",
+    "explanation": "checkout",
+    "unitRef": "Vocab Bank Shopping",
+    "gradingType": "exact",
+    "acceptedAnswers": [
+      "checkout"
+    ]
+  }
+]

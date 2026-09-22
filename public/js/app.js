@@ -50,12 +50,17 @@ class DigitalTextbookApp {
       // 4. Load initial data
       window.vocabManager.loadVocabulary();
       window.notesManager.loadNotesAndBookmarks();
+      this.loadProgress();
+      this.loadMistakes();
 
       // 5. Initial render of viewer
       window.viewer.goToPage(7); // Start on Unit 1A (book page 6)
 
       // 6. Setup global UI bindings
       this.initUIBindings();
+
+      // 7. Check last studied page
+      this.checkContinueStudying();
 
     } catch (err) {
       console.error('Failed to initialize app:', err);
@@ -147,7 +152,9 @@ class DigitalTextbookApp {
       { id: 'toggle-exercises-btn', drawer: 'drawer-exercises' },
       { id: 'toggle-vocab-btn', drawer: 'drawer-vocab' },
       { id: 'toggle-audio-btn', drawer: 'drawer-audio' },
-      { id: 'toggle-notes-btn', drawer: 'drawer-notes' }
+      { id: 'toggle-notes-btn', drawer: 'drawer-notes' },
+      { id: 'toggle-progress-btn', drawer: 'drawer-progress' },
+      { id: 'toggle-mistakes-btn', drawer: 'drawer-mistakes' }
     ];
 
     drawerButtons.forEach(({ id, drawer }) => {
@@ -181,6 +188,85 @@ class DigitalTextbookApp {
       });
     });
 
+    // Progress & Mistakes Dashboard bindings
+    document.getElementById('metric-mistakes-card')?.addEventListener('click', () => {
+      this.toggleDrawer('drawer-mistakes', 'toggle-mistakes-btn');
+    });
+    document.getElementById('refresh-mistakes-btn')?.addEventListener('click', () => {
+      this.loadMistakes();
+    });
+    const resumeHandler = () => {
+      const p = (this.progressData && this.progressData.lastStudiedPage) || 7;
+      if (window.viewer) window.viewer.goToPage(p);
+      const banner = document.getElementById('continue-studying-banner');
+      if (banner) banner.style.display = 'none';
+      this.showToast(`Resumed studying on Page ${p}`);
+    };
+    document.getElementById('resume-study-btn')?.addEventListener('click', resumeHandler);
+    document.getElementById('continue-banner-resume-btn')?.addEventListener('click', resumeHandler);
+    document.getElementById('continue-banner-dismiss-btn')?.addEventListener('click', () => {
+      const banner = document.getElementById('continue-studying-banner');
+      if (banner) banner.style.display = 'none';
+      sessionStorage.setItem('dismissed_continue_banner', '1');
+    });
+    document.getElementById('reset-progress-btn')?.addEventListener('click', () => {
+      this.resetProgress();
+    });
+    document.getElementById('reset-study-data-btn')?.addEventListener('click', () => {
+      this.resetProgress();
+    });
+
+    // Zoom preset selector
+    document.getElementById('zoom-preset-select')?.addEventListener('change', (e) => {
+      const val = parseFloat(e.target.value);
+      if (!isNaN(val) && window.viewer) {
+        window.viewer.setZoom(val);
+      }
+    });
+
+    // Global Search bindings
+    document.getElementById('global-search-btn')?.addEventListener('click', () => {
+      this.openGlobalSearch();
+    });
+    document.getElementById('close-search-modal-btn')?.addEventListener('click', () => {
+      this.closeGlobalSearch();
+    });
+    let searchDebounce = null;
+    document.getElementById('global-search-input')?.addEventListener('input', (e) => {
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(() => {
+        this.executeGlobalSearch(e.target.value.trim());
+      }, 250);
+    });
+    document.querySelectorAll('.search-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.search-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        this.activeSearchFilter = pill.dataset.filter;
+        this.renderFilteredSearchResults();
+      });
+    });
+
+    // Global keyboard shortcuts
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        this.openGlobalSearch();
+        return;
+      }
+      if (e.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName) && !document.activeElement.isContentEditable) {
+        e.preventDefault();
+        this.openGlobalSearch();
+        return;
+      }
+      if (e.key === 'Escape') {
+        const searchModal = document.getElementById('global-search-modal');
+        if (searchModal && searchModal.style.display === 'flex') {
+          this.closeGlobalSearch();
+        }
+      }
+    });
+
     // TTS on text selection
     document.getElementById('pronounce-selection-btn')?.addEventListener('click', () => {
       window.audioManager.speakSelection();
@@ -197,6 +283,7 @@ class DigitalTextbookApp {
   }
 
   setToolMode(mode) {
+    const prevMode = this.currentTool;
     this.currentTool = mode;
     document.querySelectorAll('.tool-mode-btn').forEach(b => {
       b.classList.toggle('active', b.dataset.mode === mode);
@@ -206,6 +293,19 @@ class DigitalTextbookApp {
 
     if (window.exercisesManager) {
       window.exercisesManager.setAddBlankMode(mode === 'blank');
+    }
+
+    if (mode === 'calibrate') {
+      document.getElementById('viewport-container')?.classList.add('calibration-mode-active');
+      this.showToast('📐 Calibration Mode: Click any blank to edit coords, or click & drag on page to place a new blank');
+      if (window.viewer && window.exercisesManager) {
+        window.exercisesManager.loadPageOverlays(window.viewer.currentPage);
+      }
+    } else {
+      document.getElementById('viewport-container')?.classList.remove('calibration-mode-active');
+      if (prevMode === 'calibrate' && window.viewer && window.exercisesManager) {
+        window.exercisesManager.loadPageOverlays(window.viewer.currentPage);
+      }
     }
 
     if (mode === 'read') {
@@ -521,6 +621,272 @@ class DigitalTextbookApp {
       }
     } catch (err) {
       alert('Import failed: ' + err);
+    }
+  }
+
+  async checkContinueStudying() {
+    try {
+      const res = await fetch('/api/progress');
+      const data = await res.json();
+      this.progressData = data;
+      const lastP = data.lastStudiedPage;
+      if (lastP && lastP > 1 && !sessionStorage.getItem('dismissed_continue_banner')) {
+        const banner = document.getElementById('continue-studying-banner');
+        const text = document.getElementById('continue-banner-text');
+        if (banner && text) {
+          const matched = this.findTocForPage(lastP);
+          const title = matched ? ` (${matched.title})` : '';
+          text.innerHTML = `Welcome back! Continue studying on <strong>Page ${lastP}</strong>${title}?`;
+          banner.style.display = 'block';
+        }
+      }
+    } catch (e) {
+      console.error('Check continue studying error:', e);
+    }
+  }
+
+  async loadProgress() {
+    try {
+      const res = await fetch('/api/progress');
+      const data = await res.json();
+      this.progressData = data;
+
+      const completionEl = document.getElementById('metric-completion');
+      const completionFill = document.getElementById('metric-completion-fill');
+      if (completionEl) completionEl.textContent = `${data.bookCompletion || 0}%`;
+      if (completionFill) completionFill.style.width = `${Math.min(100, data.bookCompletion || 0)}%`;
+
+      const accEl = document.getElementById('metric-accuracy');
+      const accFill = document.getElementById('metric-accuracy-fill');
+      if (accEl) accEl.textContent = `${data.accuracy || 0}%`;
+      if (accFill) accFill.style.width = `${Math.min(100, data.accuracy || 0)}%`;
+
+      const pagesEl = document.getElementById('metric-pages');
+      if (pagesEl) pagesEl.textContent = `${data.visitedPages || 0} / 169`;
+
+      const qEl = document.getElementById('metric-questions');
+      if (qEl) qEl.textContent = `${data.totalQuestionsAttempted || 0}`;
+
+      const mEl = document.getElementById('metric-mistakes');
+      if (mEl) mEl.textContent = `${data.unresolvedMistakes || 0}`;
+
+      const timeEl = document.getElementById('metric-time');
+      if (timeEl) {
+        const sec = data.timeSpentSec || 0;
+        const mins = Math.floor(sec / 60);
+        timeEl.textContent = mins > 60 ? `${Math.floor(mins / 60)}h ${mins % 60}m` : `${mins}m`;
+      }
+
+      const lastPText = document.getElementById('progress-last-page-text');
+      if (lastPText) {
+        const matched = this.findTocForPage(data.lastStudiedPage || 7);
+        const title = matched ? matched.title : `Page ${data.lastStudiedPage || 7}`;
+        lastPText.textContent = `Last studied: Page ${data.lastStudiedPage || 7} — ${title}`;
+      }
+
+      this.renderUnitsProgressList();
+    } catch (err) {
+      console.error('Failed to load progress:', err);
+    }
+  }
+
+  renderUnitsProgressList() {
+    const list = document.getElementById('units-progress-list');
+    if (!list || !this.bookInfo || !this.bookInfo.toc) return;
+
+    const units = this.bookInfo.toc.filter(item => item.unit || item.type === 'bank');
+    let html = '';
+    units.forEach(u => {
+      html += `
+        <div class="unit-progress-item" onclick="window.viewer.goToPage(${u.page})">
+          <div class="unit-progress-info">
+            <span class="unit-progress-title">${u.section || u.unit || 'Bank'}: ${u.title}</span>
+            <span class="unit-progress-desc">Textbook p.${u.bookPage} (PDF p.${u.page})</span>
+          </div>
+          <button class="btn-outline" style="font-size:0.72rem; padding:2px 6px;">Jump ➔</button>
+        </div>
+      `;
+    });
+    list.innerHTML = html;
+  }
+
+  async loadMistakes() {
+    try {
+      const res = await fetch('/api/mistakes');
+      const list = await res.json();
+      const container = document.getElementById('mistakes-list-container');
+      const badge = document.getElementById('mistakes-count-badge');
+      if (badge) {
+        badge.textContent = `${list.length} item${list.length === 1 ? '' : 's'} to review`;
+      }
+
+      if (!container) return;
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:32px 16px; color:var(--text-muted);">
+            <div style="font-size:2.5rem; margin-bottom:8px;">🎉</div>
+            <p style="font-weight:600; margin-bottom:4px;">No Unresolved Mistakes!</p>
+            <p style="font-size:0.8rem;">Every exercise item you answered has been verified correct.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      list.forEach(m => {
+        html += `
+          <div class="mistake-card" id="mistake-card-${m.id}">
+            <div class="mistake-header">
+              <span class="mistake-tag">Page ${m.page_num} — ${m.question_label || 'Exercise'}</span>
+              <span style="font-size:0.7rem; color:var(--text-muted);">${m.created_at ? new Date(m.created_at).toLocaleDateString() : ''}</span>
+            </div>
+            <div class="mistake-answers-row">
+              <div>Your answer: <span class="student-ans">${m.student_answer || '(empty)'}</span></div>
+              <div>Correct answer: <span class="correct-ans">${m.correct_answer || ''}</span></div>
+            </div>
+            ${m.explanation ? `<div style="font-size:0.78rem; color:var(--text-secondary);">${m.explanation}</div>` : ''}
+            <div class="mistake-actions">
+              <button class="btn-outline mini" onclick="window.viewer.goToPage(${m.page_num})">📖 Go to Page</button>
+              <button class="btn-success mini" onclick="window.app.resolveMistake(${m.id})">✓ Mark Resolved</button>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    } catch (err) {
+      console.error('Failed to load mistakes:', err);
+    }
+  }
+
+  async resolveMistake(mId) {
+    try {
+      const res = await fetch(`/api/mistakes/${mId}/resolve`, { method: 'POST' });
+      const data = await res.json();
+      if (data.status === 'success') {
+        const card = document.getElementById(`mistake-card-${mId}`);
+        if (card) card.remove();
+        this.loadProgress();
+        this.loadMistakes();
+        this.showToast('Mistake marked as resolved!');
+      }
+    } catch (err) {
+      console.error('Failed to resolve mistake:', err);
+    }
+  }
+
+  async resetProgress() {
+    if (!confirm('Are you sure you want to reset ALL study progress, answers, mistakes, notes, bookmarks, custom blanks, and recordings? This cannot be undone.')) return;
+    try {
+      const res = await fetch('/api/reset-data', { method: 'POST' });
+      const data = await res.json();
+      if (data.status === 'success') {
+        this.showToast('All study data reset successfully.');
+        this.loadProgress();
+        this.loadMistakes();
+        if (window.vocabManager) window.vocabManager.loadVocabulary();
+        if (window.notesManager) window.notesManager.loadNotesAndBookmarks();
+        if (window.viewer) {
+          const curP = window.viewer.currentPage;
+          if (window.exercisesManager) window.exercisesManager.loadPageOverlays(curP);
+          if (window.audioManager) window.audioManager.loadPageRecordings(curP);
+          if (window.annotationsManager) window.annotationsManager.loadAnnotations(curP);
+        }
+      } else {
+        alert('Reset failed: ' + (data.error || 'Unknown error'));
+      }
+    } catch (err) {
+      alert('Reset failed: ' + err);
+    }
+  }
+
+  openGlobalSearch() {
+    const modal = document.getElementById('global-search-modal');
+    const input = document.getElementById('global-search-input');
+    if (modal) {
+      modal.style.display = 'flex';
+      if (input) {
+        input.value = '';
+        setTimeout(() => input.focus(), 50);
+      }
+      this.executeGlobalSearch('');
+    }
+  }
+
+  closeGlobalSearch() {
+    const modal = document.getElementById('global-search-modal');
+    if (modal) modal.style.display = 'none';
+  }
+
+  async executeGlobalSearch(q) {
+    const container = document.getElementById('global-search-results');
+    const counter = document.getElementById('search-results-counter');
+    if (!container) return;
+
+    if (!q || q.length < 2) {
+      container.innerHTML = `
+        <div style="text-align: center; color: var(--text-muted); padding: 30px 10px;">
+          Type at least 2 characters to search across the complete Oxford English File textbook.
+        </div>
+      `;
+      if (counter) counter.textContent = '0 results';
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+      const data = await res.json();
+      const results = data.results || [];
+      this.currentSearchResults = results;
+      this.renderFilteredSearchResults();
+    } catch (e) {
+      container.innerHTML = `<p style="color:var(--text-muted); text-align:center; padding:20px;">Search failed.</p>`;
+    }
+  }
+
+  renderFilteredSearchResults() {
+    const container = document.getElementById('global-search-results');
+    const counter = document.getElementById('search-results-counter');
+    if (!container) return;
+
+    const filter = this.activeSearchFilter || 'all';
+    let filtered = this.currentSearchResults || [];
+    if (filter !== 'all') {
+      filtered = filtered.filter(r => r.type === filter);
+    }
+
+    if (counter) counter.textContent = `${filtered.length} result${filtered.length === 1 ? '' : 's'}`;
+
+    if (filtered.length === 0) {
+      container.innerHTML = `<div style="text-align:center; padding:28px; color:var(--text-muted);">No matching results found.</div>`;
+      return;
+    }
+
+    let html = '';
+    filtered.forEach(item => {
+      let badgeClass = 'badge-unit';
+      if (item.type === 'vocab') badgeClass = 'badge-vocab';
+      else if (item.type === 'exercise') badgeClass = 'badge-exercise';
+      else if (item.type === 'note' || item.type === 'bookmark') badgeClass = 'badge-note';
+
+      html += `
+        <div class="search-result-card" onclick="window.app.onSearchResultClick(${item.pageNum})">
+          <div class="search-result-header">
+            <span class="search-badge ${badgeClass}">${item.category || item.type}</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">Book p.${item.bookPage} (Page ${item.pageNum})</span>
+          </div>
+          <div class="search-title">${item.title}</div>
+          <div class="search-snippet">${item.snippet || ''}</div>
+        </div>
+      `;
+    });
+    container.innerHTML = html;
+  }
+
+  onSearchResultClick(pageNum) {
+    this.closeGlobalSearch();
+    if (window.viewer) {
+      window.viewer.goToPage(pageNum);
+      this.showToast(`Jumped to Page ${pageNum}`);
     }
   }
 }

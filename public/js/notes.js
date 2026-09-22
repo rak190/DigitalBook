@@ -21,6 +21,17 @@ class NotesManager {
     document.getElementById('save-new-note-btn')?.addEventListener('click', () => {
       this.saveNote();
     });
+
+    // Backup & Restore buttons
+    document.getElementById('export-data-btn')?.addEventListener('click', () => {
+      if (window.app && typeof window.app.exportUserData === 'function') window.app.exportUserData();
+    });
+    document.getElementById('import-file-input')?.addEventListener('change', (e) => {
+      if (window.app && typeof window.app.importUserData === 'function') window.app.importUserData(e);
+    });
+    document.getElementById('reset-study-data-btn')?.addEventListener('click', () => {
+      if (window.app && typeof window.app.resetProgress === 'function') window.app.resetProgress();
+    });
   }
 
   async loadNotesAndBookmarks() {

@@ -1,7 +1,7 @@
 """
 Digital Textbook Database Layer
 Handles SQLite persistence for annotations, interactive exercise blanks,
-vocabulary items, study notes, bookmarks, and learning progress.
+vocabulary items, study notes, bookmarks, study progress, and mistake review.
 """
 
 import sqlite3
@@ -46,9 +46,27 @@ def init_db():
         correct_answers TEXT,
         hint TEXT,
         explanation TEXT,
-        unit_ref TEXT
+        unit_ref TEXT,
+        options TEXT,
+        grading_type TEXT DEFAULT 'exact',
+        sample_answer TEXT,
+        audio_track TEXT,
+        is_default INTEGER DEFAULT 1
     )
     """)
+
+    # Migrations for existing database schemas
+    for col_def in [
+        ("options", "TEXT"),
+        ("grading_type", "TEXT DEFAULT 'exact'"),
+        ("sample_answer", "TEXT"),
+        ("audio_track", "TEXT"),
+        ("is_default", "INTEGER DEFAULT 1")
+    ]:
+        try:
+            cursor.execute(f"ALTER TABLE page_overlays ADD COLUMN {col_def[0]} {col_def[1]}")
+        except sqlite3.OperationalError:
+            pass  # Column already exists
     
     # 3. User Page Answers (user-filled answers for overlay fields and exercises)
     cursor.execute("""
@@ -97,9 +115,14 @@ def init_db():
         page_num INTEGER PRIMARY KEY,
         title TEXT,
         tags TEXT,
+        notes TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     """)
+    try:
+        cursor.execute("ALTER TABLE bookmarks ADD COLUMN notes TEXT")
+    except sqlite3.OperationalError:
+        pass
     
     # 7. Study Progress (reading history & exercise completion)
     cursor.execute("""
@@ -107,7 +130,50 @@ def init_db():
         page_num INTEGER PRIMARY KEY,
         completed INTEGER DEFAULT 0,
         time_spent_sec INTEGER DEFAULT 0,
-        last_visited TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        last_visited TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        accuracy REAL DEFAULT 0,
+        mistakes_count INTEGER DEFAULT 0,
+        exercises_attempted INTEGER DEFAULT 0
+    )
+    """)
+    for col_def in [
+        ("accuracy", "REAL DEFAULT 0"),
+        ("mistakes_count", "INTEGER DEFAULT 0"),
+        ("exercises_attempted", "INTEGER DEFAULT 0")
+    ]:
+        try:
+            cursor.execute(f"ALTER TABLE study_progress ADD COLUMN {col_def[0]} {col_def[1]}")
+        except sqlite3.OperationalError:
+            pass
+
+    # 8. Study Mistakes (Mistake Review tracking)
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS study_mistakes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        page_num INTEGER NOT NULL,
+        overlay_id INTEGER,
+        label TEXT,
+        student_answer TEXT,
+        correct_answer TEXT,
+        explanation TEXT,
+        hint TEXT,
+        unit_ref TEXT,
+        resolved INTEGER DEFAULT 0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+
+    # 9. User Audio Practice Recordings
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS user_recordings (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        page_num INTEGER NOT NULL,
+        exercise_id TEXT,
+        title TEXT,
+        audio_data TEXT,
+        duration_sec INTEGER DEFAULT 0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     """)
     
@@ -124,46 +190,35 @@ def seed_initial_data():
     # Check if vocabulary is seeded
     cursor.execute("SELECT COUNT(*) as count FROM vocabulary")
     if cursor.fetchone()["count"] == 0:
-        seed_vocab = [
-            ("appearance", "noun", "The way that someone or something looks on the outside.", "She has a very youthful appearance.", "/əˈpɪərəns/", 8, "Describing People"),
-            ("personality", "noun", "The various aspects of a person's character that combine to make them different.", "He has an outgoing and friendly personality.", "/ˌpɜːsəˈnæləti/", 8, "Describing People"),
-            ("straight hair", "phrase", "Hair that has no curves, waves, or curls.", "She has long straight dark hair.", "/streɪt heə/", 8, "Appearance"),
-            ("curly hair", "phrase", "Hair that grows in curls or spirals.", "He has short curly brown hair.", "/ˈkɜːli heə/", 8, "Appearance"),
-            ("wavy hair", "phrase", "Hair having gentle curves.", "She has blonde wavy hair.", "/ˈweɪvi heə/", 8, "Appearance"),
-            ("beard", "noun", "Hair that grows on the chin and cheeks of a man's face.", "He grew a thick beard over the winter.", "/bɪəd/", 8, "Appearance"),
-            ("moustache", "noun", "Hair that grows on a man's upper lip.", "He has a neatly trimmed moustache.", "/məˈstɑːʃ/", 8, "Appearance"),
-            ("extrovert", "noun", "A lively and confident person who enjoys being with other people.", "As an extrovert, she loves meeting new people at parties.", "/ˈekstrəvɜːt/", 9, "Personality"),
-            ("introvert", "noun", "A quiet person who is more interested in their own thoughts and feelings.", "He is an introvert who prefers reading alone.", "/ˈɪntrəvɜːt/", 9, "Personality"),
-            ("generous", "adjective", "Giving or willing to give freely; not mean.", "It was very generous of you to pay for dinner.", "/ˈdʒenərəs/", 9, "Personality"),
-            ("mean", "adjective", "Not willing to give or share things, especially money.", "He's too mean to buy a round of drinks.", "/miːn/", 9, "Personality"),
-            ("talkative", "adjective", "Liking to talk a lot.", "She is very talkative and easy to talk with.", "/ˈtɔːkətɪv/", 9, "Personality"),
-            ("shy", "adjective", "Nervous or embarrassed about meeting and speaking to other people.", "He was too shy to speak to the girl.", "/ʃaɪ/", 9, "Personality"),
-            ("lazy", "adjective", "Unwilling to work or use energy.", "Get out of bed, you lazy boy!", "/ˈleɪzi/", 9, "Personality"),
-            ("hard-working", "adjective", "Putting a lot of effort into a job and doing it well.", "She is a hard-working student who always does her homework.", "/ˌhɑːd ˈwɜːkɪŋ/", 9, "Personality"),
-            ("funny", "adjective", "Making you laugh; amusing.", "He told a very funny joke yesterday.", "/ˈfʌni/", 9, "Personality"),
-            ("serious", "adjective", "Thinking about things in a careful way and not laughing much.", "You need to be serious when taking an exam.", "/ˈsɪəriəs/", 9, "Personality"),
-            ("friendly", "adjective", "Behaving in a kind and pleasant way.", "The hotel staff were polite and friendly.", "/ˈfrendli/", 9, "Personality"),
-            ("unfriendly", "adjective", "Not kind or pleasant.", "The clerk was cold and unfriendly.", "/ʌnˈfrendli/", 9, "Personality"),
-            ("flight", "noun", "A journey in an aircraft.", "Our flight to London was delayed by two hours.", "/flaɪt/", 14, "Holidays"),
-            ("luggage", "noun", "Bags, cases, etc. that you take with you when travelling.", "You can leave your luggage at the hotel reception.", "/ˈlʌɡɪdʒ/", 14, "Holidays"),
-            ("boarding pass", "noun", "A card that a passenger must have to be allowed on a plane or ship.", "Please show your passport and boarding pass at gate 4.", "/ˈbɔːdɪŋ pɑːs/", 14, "Holidays"),
-            ("passport", "noun", "An official document that identifies you as a citizen of a particular country.", "Don't forget to pack your passport before leaving!", "/ˈpɑːspɔːt/", 14, "Holidays"),
-            ("delay", "noun / verb", "A period of time by which something is late or postponed.", "There is a 30-minute delay on the train service.", "/dɪˈleɪ/", 22, "Travel"),
-            ("gate", "noun", "An exit from an airport building to an aircraft.", "Flight BA142 is now boarding at Gate 12.", "/ɡeɪt/", 22, "Airports"),
-            ("terminal", "noun", "A building at an airport where passengers arrive and depart.", "All international flights depart from Terminal 2.", "/ˈtɜːmɪnl/", 22, "Airports")
-        ]
+        # Load from data/vocabulary.json if exists
+        v_path = os.path.join(os.path.dirname(__file__), "data", "vocabulary.json")
+        if os.path.exists(v_path):
+            with open(v_path, "r", encoding="utf-8") as vf:
+                v_list = json.load(vf)
+            seed_vocab = [
+                (item["word"], item.get("pos"), item.get("definition"), item.get("example"), item.get("phonetic"), item.get("page"), item.get("category"))
+                for item in v_list
+            ]
+        else:
+            seed_vocab = [
+                ("appearance", "noun", "The way that someone or something looks on the outside.", "She has a very youthful appearance.", "/əˈpɪərəns/", 8, "Describing People"),
+                ("personality", "noun", "The various aspects of a person's character that combine to make them different.", "He has an outgoing and friendly personality.", "/ˌpɜːsəˈnæləti/", 8, "Describing People"),
+                ("friendly", "adjective", "Behaving in a kind and pleasant way.", "The hotel staff were polite and friendly.", "/ˈfrendli/", 9, "Personality"),
+                ("unfriendly", "adjective", "Not kind or pleasant.", "The clerk was cold and unfriendly.", "/ʌnˈfrendli/", 9, "Personality"),
+                ("flight", "noun", "A journey in an aircraft.", "Our flight to London was delayed by two hours.", "/flaɪt/", 14, "Holidays"),
+                ("luggage", "noun", "Bags, cases, etc. that you take with you when travelling.", "You can leave your luggage at the hotel reception.", "/ˈlʌɡɪdʒ/", 14, "Holidays")
+            ]
         cursor.executemany("""
-        INSERT INTO vocabulary (word, pos, definition, example, phonetic, page_num, category)
+        INSERT OR IGNORE INTO vocabulary (word, pos, definition, example, phonetic, page_num, category)
         VALUES (?, ?, ?, ?, ?, ?, ?)
         """, seed_vocab)
         conn.commit()
 
-    # Preloaded interactive overlays for key pages
-    refresh_default_overlays()
     conn.close()
+    # Safely seed default overlays without force-deleting user data
+    refresh_default_overlays(force=False)
 
-# Default pre-calibrated overlays covering all required units and banks
-# Default pre-calibrated overlays covering all required units and banks
+# Default pre-calibrated overlays covering units and banks
 DEFAULT_PAGE_OVERLAYS = {
     # Unit 1A (Page 7: Book page 6 - Getting To Know You)
     7: [
@@ -279,7 +334,70 @@ DEFAULT_PAGE_OVERLAYS = {
         (12, 'text', 63.5, 36.0, 11.0, 1.8, 'next to', '1C.5a 10', json.dumps(['next to', 'beside']), 'Beside the window', 'The sink is next to the window.', 'Unit 1C Ex 5a'),
     ],
 
-    # Grammar Bank 1A, 1B, 1C (Page 128: Book page 127)
+    # Unit 2A (Page 15: Book page 14 - Holidays Past Simple)
+    15: [
+        (15, 'text', 10.0, 32.0, 16.0, 1.8, 'verb', '2A.1b 1', json.dumps(['went', 'go']), 'go abroad', 'went', 'Unit 2A Holidays'),
+        (15, 'text', 10.0, 34.5, 16.0, 1.8, 'verb', '2A.1b 2', json.dumps(['stayed', 'stay']), 'stay in a hotel', 'stayed', 'Unit 2A Holidays'),
+        (15, 'text', 10.0, 37.0, 16.0, 1.8, 'verb', '2A.1b 3', json.dumps(['booked', 'book']), 'book flights online', 'booked', 'Unit 2A Holidays'),
+        (15, 'text', 10.0, 39.5, 16.0, 1.8, 'verb', '2A.1b 4', json.dumps(['hired', 'hire']), 'hire a car', 'hired', 'Unit 2A Holidays'),
+        (15, 'text', 10.0, 42.0, 16.0, 1.8, 'verb', '2A.1b 5', json.dumps(['took', 'take']), 'take photos', 'took', 'Unit 2A Holidays'),
+        (15, 'text', 10.0, 44.5, 16.0, 1.8, 'verb', '2A.1b 6', json.dumps(['sunbathed', 'sunbathe']), 'sunbathe on the beach', 'sunbathed', 'Unit 2A Holidays'),
+        (15, 'text', 55.0, 48.0, 14.0, 1.8, 'Past verb', '2A.2a 1', json.dumps(['went']), 'Past simple of go', 'went', 'Unit 2A Grammar'),
+        (15, 'text', 55.0, 50.5, 14.0, 1.8, 'Past verb', '2A.2a 2', json.dumps(['stayed']), 'Past simple of stay', 'stayed', 'Unit 2A Grammar'),
+        (15, 'text', 55.0, 53.0, 14.0, 1.8, 'Past verb', '2A.2a 3', json.dumps(['was']), 'Past simple of be (singular)', 'was', 'Unit 2A Grammar'),
+        (15, 'text', 55.0, 55.5, 14.0, 1.8, 'Past verb', '2A.2a 4', json.dumps(["didn't like", "did not like"]), 'Negative past simple', "didn't like", 'Unit 2A Grammar'),
+    ],
+
+    # Unit 2B (Page 17: Book page 16 - Past Continuous & Prepositions)
+    17: [
+        (17, 'text', 10.0, 28.0, 12.0, 1.8, 'at/in/on', '2B.1 1', json.dumps(['in']), 'in the street / in Prague', 'in', 'Unit 2B Prepositions'),
+        (17, 'text', 10.0, 31.0, 12.0, 1.8, 'at/in/on', '2B.1 2', json.dumps(['at']), 'at the station / at the hotel', 'at', 'Unit 2B Prepositions'),
+        (17, 'text', 10.0, 34.0, 12.0, 1.8, 'at/in/on', '2B.1 3', json.dumps(['on']), 'on a bus / on the train', 'on', 'Unit 2B Prepositions'),
+        (17, 'text', 54.0, 45.0, 18.0, 1.8, 'was walking', '2B.2 1', json.dumps(['was walking']), 'Past continuous: was + walking', 'was walking', 'Unit 2B Grammar'),
+        (17, 'text', 54.0, 48.0, 18.0, 1.8, 'were sitting', '2B.2 2', json.dumps(['were sitting']), 'Past continuous: were + sitting', 'were sitting', 'Unit 2B Grammar'),
+        (17, 'text', 54.0, 51.0, 18.0, 1.8, 'was shining', '2B.2 3', json.dumps(['was shining']), 'The sun was shining', 'was shining', 'Unit 2B Grammar'),
+    ],
+
+    # Unit 2C (Page 19: Book page 18 - Time Sequencers & Connectors)
+    19: [
+        (19, 'text', 10.0, 30.0, 14.0, 1.8, 'connector', '2C.1 1', json.dumps(['because']), 'Gives a reason', 'because', 'Unit 2C Connectors'),
+        (19, 'text', 10.0, 33.0, 14.0, 1.8, 'connector', '2C.1 2', json.dumps(['so']), 'Gives a result', 'so', 'Unit 2C Connectors'),
+        (19, 'text', 10.0, 36.0, 14.0, 1.8, 'connector', '2C.1 3', json.dumps(['although']), 'Shows contrast', 'although', 'Unit 2C Connectors'),
+        (19, 'text', 10.0, 39.0, 14.0, 1.8, 'connector', '2C.1 4', json.dumps(['but']), 'Shows contrast', 'but', 'Unit 2C Connectors'),
+    ],
+
+    # Revise and Check 1&2 (Page 21: Book page 20)
+    21: [
+        (21, 'text', 10.0, 20.0, 8.0, 1.8, 'a/b/c', 'RC1.1', json.dumps(['were', 'c']), 'Where were you born?', 'were', 'Revise & Check 1&2'),
+        (21, 'text', 10.0, 23.5, 8.0, 1.8, 'a/b/c', 'RC1.2', json.dumps(['Does', 'b']), 'Does your brother speak French?', 'Does', 'Revise & Check 1&2'),
+        (21, 'text', 10.0, 27.0, 8.0, 1.8, 'a/b/c', 'RC1.3', json.dumps(['were you doing', 'a']), 'What were you doing at 8.00?', 'were you doing', 'Revise & Check 1&2'),
+        (21, 'text', 10.0, 30.5, 8.0, 1.8, 'a/b/c', 'RC1.4', json.dumps(['hardly ever', 'b']), 'We hardly ever go to the cinema', 'hardly ever', 'Revise & Check 1&2'),
+        (21, 'text', 10.0, 34.0, 8.0, 1.8, 'a/b/c', 'RC1.5', json.dumps(['are you', 'a']), 'Why are you wearing a heavy coat?', 'are you', 'Revise & Check 1&2'),
+    ],
+
+    # Unit 3A (Page 23: Book page 22 - Airports & be going to)
+    23: [
+        (23, 'text', 10.0, 35.0, 14.0, 1.8, 'terminal', '3A.1 1', json.dumps(['terminal']), 'Building at airport', 'terminal', 'Unit 3A Vocabulary'),
+        (23, 'text', 10.0, 38.0, 14.0, 1.8, 'gate', '3A.1 2', json.dumps(['gate']), 'Exit to aircraft', 'gate', 'Unit 3A Vocabulary'),
+        (23, 'text', 10.0, 41.0, 14.0, 1.8, 'check-in', '3A.1 3', json.dumps(['check-in', 'check in']), 'Where you show tickets and drop bags', 'check-in', 'Unit 3A Vocabulary'),
+        (23, 'text', 55.0, 45.0, 18.0, 1.8, "'m going to meet", '3A.2 1', json.dumps(["'m going to meet", "am going to meet"]), 'Plan with be going to', "'m going to meet", 'Unit 3A Grammar'),
+        (23, 'text', 55.0, 48.0, 18.0, 1.8, "'s going to land", '3A.2 2', json.dumps(["'s going to land", "is going to land"]), 'Prediction with evidence', "'s going to land", 'Unit 3A Grammar'),
+    ],
+
+    # Unit 3B (Page 25: Book page 24 - Present continuous for future)
+    25: [
+        (25, 'text', 10.0, 35.0, 16.0, 1.8, "'m seeing", '3B.1 1', json.dumps(["'m seeing", "am seeing"]), 'Definite future arrangement', "'m seeing", 'Unit 3B Grammar'),
+        (25, 'text', 10.0, 38.0, 16.0, 1.8, 'are you leaving', '3B.1 2', json.dumps(['are you leaving']), 'Question about future arrangement', 'are you leaving', 'Unit 3B Grammar'),
+    ],
+
+    # Unit 3C (Page 27: Book page 26 - Relative clauses who, which, where)
+    27: [
+        (27, 'text', 10.0, 35.0, 10.0, 1.8, 'who/which/where', '3C.1 1', json.dumps(['who', 'that']), 'Refers to a person', 'who', 'Unit 3C Relative Clauses'),
+        (27, 'text', 10.0, 38.0, 10.0, 1.8, 'who/which/where', '3C.1 2', json.dumps(['which', 'that']), 'Refers to a thing', 'which', 'Unit 3C Relative Clauses'),
+        (27, 'text', 10.0, 41.0, 10.0, 1.8, 'who/which/where', '3C.1 3', json.dumps(['where']), 'Refers to a place', 'where', 'Unit 3C Relative Clauses'),
+    ],
+
+    # Grammar Bank 1A, 1B, 1C (Page 128: Book page 127 - 40 questions)
     128: [
         # 1A.a
         (128, 'text', 11.5, 12.0, 23.5, 1.8, 'Where can we park?', '1A.a 1', json.dumps(['Where can we park?', 'Where can we park']), 'can before we', 'Where can we park?', 'Grammar Bank 1A'),
@@ -355,6 +473,18 @@ DEFAULT_PAGE_OVERLAYS = {
         (129, 'text', 11.5, 16.5, 14.0, 1.8, 'stayed', '2A.rule2 Regular', json.dumps(['stayed']), 'Past simple of stay', 'stayed', 'Grammar Bank 2A'),
         (129, 'text', 11.5, 40.0, 18.0, 1.8, 'was walking', '2B.rule1 Continuous', json.dumps(['was walking', 'were singing']), 'Past continuous: was/were + -ing', 'was walking', 'Grammar Bank 2B'),
         (129, 'text', 56.5, 66.0, 16.0, 1.8, 'because', '2C.rule1 Connector', json.dumps(['because', 'so', 'although', 'but']), 'Time sequencers & connectors', 'because', 'Grammar Bank 2C'),
+    ],
+
+    # Grammar Bank Unit 2 Exercises (Page 130: Book page 129)
+    130: [
+        (130, 'text', 11.5, 12.0, 24.0, 1.8, 'did you go', '2A.a 1', json.dumps(['did you go', 'Where did you go']), 'Past simple question: did + subject + base verb', 'did you go', 'Grammar Bank 2A'),
+        (130, 'text', 11.5, 14.0, 24.0, 1.8, 'was', '2A.a 2', json.dumps(['was']), 'It was great', 'was', 'Grammar Bank 2A'),
+        (130, 'text', 11.5, 16.0, 24.0, 1.8, 'stayed', '2A.a 3', json.dumps(['stayed']), 'We stayed at a hotel', 'stayed', 'Grammar Bank 2A'),
+        (130, 'text', 11.5, 18.0, 24.0, 1.8, 'did you do', '2A.a 4', json.dumps(['did you do']), 'What did you do during the day?', 'did you do', 'Grammar Bank 2A'),
+        (130, 'text', 56.5, 12.0, 24.0, 1.8, 'was walking', '2B.a 1', json.dumps(['was walking']), 'Past continuous action in progress', 'was walking', 'Grammar Bank 2B'),
+        (130, 'text', 56.5, 14.0, 24.0, 1.8, 'met', '2B.a 2', json.dumps(['met']), 'Completed past simple action', 'met', 'Grammar Bank 2B'),
+        (130, 'text', 56.5, 45.0, 16.0, 1.8, 'because', '2C.a 1', json.dumps(['because']), 'Gives a reason', 'because', 'Grammar Bank 2C'),
+        (130, 'text', 56.5, 47.5, 16.0, 1.8, 'although', '2C.a 2', json.dumps(['although']), 'Shows contrast', 'although', 'Grammar Bank 2C'),
     ],
 
     # Vocabulary Bank: Describing People (Page 151: Book page 150)
@@ -446,37 +576,111 @@ DEFAULT_PAGE_OVERLAYS = {
         (153, 'text', 71.0, 23.0, 10.0, 1.8, 'rent', 'Holiday rent', json.dumps(['rent']), 'rent an apartment', 'rent', 'Vocab Bank Holidays'),
         (153, 'text', 71.0, 25.0, 10.0, 1.8, 'hire', 'Holiday hire', json.dumps(['hire']), 'hire a bicycle', 'hire', 'Vocab Bank Holidays'),
         (153, 'text', 71.0, 27.0, 10.0, 1.8, 'book', 'Holiday book', json.dumps(['book']), 'book a flight online', 'book', 'Vocab Bank Holidays'),
+    ],
+
+    # Vocabulary Bank: Prepositions (Page 154: Book page 153)
+    154: [
+        (154, 'text', 10.0, 25.0, 10.0, 1.8, 'prep', 'Prep 1', json.dumps(['in']), 'in a room / in a building', 'in', 'Vocab Bank Prepositions'),
+        (154, 'text', 10.0, 28.0, 10.0, 1.8, 'prep', 'Prep 2', json.dumps(['on']), 'on a table / on the wall', 'on', 'Vocab Bank Prepositions'),
+        (154, 'text', 10.0, 31.0, 10.0, 1.8, 'prep', 'Prep 3', json.dumps(['at']), 'at the bus stop / at home', 'at', 'Vocab Bank Prepositions'),
+        (154, 'text', 10.0, 34.0, 10.0, 1.8, 'prep', 'Prep 4', json.dumps(['under']), 'under the bed', 'under', 'Vocab Bank Prepositions'),
+        (154, 'text', 55.0, 25.0, 10.0, 1.8, 'prep', 'Prep 5', json.dumps(['into']), 'into the shop', 'into', 'Vocab Bank Prepositions'),
+        (154, 'text', 55.0, 28.0, 10.0, 1.8, 'prep', 'Prep 6', json.dumps(['out of']), 'out of the car', 'out of', 'Vocab Bank Prepositions'),
+    ],
+
+    # Vocabulary Bank: Housework, Make or Do? (Page 155: Book page 154)
+    155: [
+        (155, 'text', 10.0, 24.0, 8.0, 1.8, 'make/do', 'MakeDo 1', json.dumps(['do']), 'do the washing-up', 'do', 'Vocab Bank Housework'),
+        (155, 'text', 10.0, 27.0, 8.0, 1.8, 'make/do', 'MakeDo 2', json.dumps(['make']), 'make the bed', 'make', 'Vocab Bank Housework'),
+        (155, 'text', 10.0, 30.0, 8.0, 1.8, 'make/do', 'MakeDo 3', json.dumps(['do']), 'do homework', 'do', 'Vocab Bank Housework'),
+        (155, 'text', 10.0, 33.0, 8.0, 1.8, 'make/do', 'MakeDo 4', json.dumps(['make']), 'make a mistake', 'make', 'Vocab Bank Housework'),
+        (155, 'text', 55.0, 24.0, 8.0, 1.8, 'make/do', 'MakeDo 5', json.dumps(['do']), 'do exercise / sport', 'do', 'Vocab Bank Housework'),
+        (155, 'text', 55.0, 27.0, 8.0, 1.8, 'make/do', 'MakeDo 6', json.dumps(['make']), 'make noise', 'make', 'Vocab Bank Housework'),
+    ],
+
+    # Vocabulary Bank: Shopping (Page 156: Book page 155)
+    156: [
+        (156, 'text', 10.0, 25.0, 14.0, 1.8, 'basket', 'Shop 1', json.dumps(['basket']), 'Handheld shopping container', 'basket', 'Vocab Bank Shopping'),
+        (156, 'text', 10.0, 28.0, 14.0, 1.8, 'trolley', 'Shop 2', json.dumps(['trolley', 'cart']), 'Wheeled shopping container', 'trolley', 'Vocab Bank Shopping'),
+        (156, 'text', 10.0, 31.0, 14.0, 1.8, 'receipt', 'Shop 3', json.dumps(['receipt']), 'Proof of purchase', 'receipt', 'Vocab Bank Shopping'),
+        (156, 'text', 10.0, 34.0, 14.0, 1.8, 'checkout', 'Shop 4', json.dumps(['checkout']), 'Where you pay in a supermarket', 'checkout', 'Vocab Bank Shopping'),
     ]
 }
 
-def refresh_default_overlays(force=True):
-    """Ensure all default sets exist across every target page and maintain pixel-calibrated coordinates."""
+# Merge complete course overlays from course_content module
+try:
+    from course_content import COURSE_OVERLAYS
+    for p_id, p_ovs in COURSE_OVERLAYS.items():
+        if p_id not in DEFAULT_PAGE_OVERLAYS:
+            DEFAULT_PAGE_OVERLAYS[p_id] = p_ovs
+        else:
+            # Append non-duplicate overlays
+            DEFAULT_PAGE_OVERLAYS[p_id] = list(DEFAULT_PAGE_OVERLAYS[p_id]) + list(p_ovs)
+except Exception as _ce_err:
+    pass
+
+def refresh_default_overlays(force=False, reset_user_answers=False):
+    """
+    Ensure all default overlay sets exist across target pages.
+    CRITICAL: Does NOT destroy user answers or custom user blanks!
+    """
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    # Always purge orphaned test debris across test runs
-    cursor.execute("DELETE FROM page_overlays WHERE label IN ('Q99_Test', 'my_answer', 'Custom Blank Test') OR label LIKE 'Q99%' OR unit_ref = 'User Created' OR unit_ref LIKE '%User Blank%'")
-
     for page_num, overlays in DEFAULT_PAGE_OVERLAYS.items():
         if force:
-            cursor.execute("DELETE FROM page_overlays WHERE page_num = ?", (page_num,))
-            cursor.execute("DELETE FROM user_page_answers WHERE page_num = ?", (page_num,))
-            cursor.executemany("""
-            INSERT INTO page_overlays (page_num, field_type, x, y, width, height, placeholder, label, correct_answers, hint, explanation, unit_ref)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """, overlays)
-        else:
-            count = cursor.execute("SELECT COUNT(*) as c FROM page_overlays WHERE page_num = ?", (page_num,)).fetchone()["c"]
-            if count == 0:
+            # Only delete default overlays on this page, preserve custom user blanks!
+            cursor.execute("DELETE FROM page_overlays WHERE page_num = ? AND (is_default = 1 OR is_default IS NULL)", (page_num,))
+            if reset_user_answers:
+                cursor.execute("DELETE FROM user_page_answers WHERE page_num = ?", (page_num,))
+
+        count = cursor.execute("SELECT COUNT(*) as c FROM page_overlays WHERE page_num = ? AND (is_default = 1 OR is_default IS NULL)", (page_num,)).fetchone()["c"]
+        if count == 0:
+            formatted_items = []
+            for ov in overlays:
+                if isinstance(ov, dict):
+                    corr = json.dumps(ov.get("correct_answers", [])) if isinstance(ov.get("correct_answers"), list) else str(ov.get("correct_answers", "[]"))
+                    opts = json.dumps(ov.get("options", [])) if isinstance(ov.get("options"), list) else str(ov.get("options", "[]"))
+                    formatted_items.append((
+                        ov.get("page_num", page_num),
+                        ov.get("field_type", "text"),
+                        float(ov.get("x", 10.0)),
+                        float(ov.get("y", 10.0)),
+                        float(ov.get("width", 15.0)),
+                        float(ov.get("height", 2.0)),
+                        ov.get("placeholder", ""),
+                        ov.get("label", "Q"),
+                        corr,
+                        ov.get("hint", ""),
+                        ov.get("explanation", ""),
+                        ov.get("unit_ref", ""),
+                        opts,
+                        ov.get("grading_type", "exact"),
+                        ov.get("sample_answer", ""),
+                        ov.get("audio_track", ""),
+                        1
+                    ))
+                elif len(ov) == 12:
+                    formatted_items.append((
+                        ov[0], ov[1], ov[2], ov[3], ov[4], ov[5], ov[6], ov[7], ov[8], ov[9], ov[10], ov[11],
+                        "[]", "exact", "", "", 1
+                    ))
+                elif len(ov) >= 16:
+                    formatted_items.append((
+                        ov[0], ov[1], ov[2], ov[3], ov[4], ov[5], ov[6], ov[7], ov[8], ov[9], ov[10], ov[11],
+                        ov[12], ov[13], ov[14], ov[15], 1
+                    ))
+
+            if formatted_items:
                 cursor.executemany("""
-                INSERT INTO page_overlays (page_num, field_type, x, y, width, height, placeholder, label, correct_answers, hint, explanation, unit_ref)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, overlays)
+                INSERT INTO page_overlays (page_num, field_type, x, y, width, height, placeholder, label, correct_answers, hint, explanation, unit_ref, options, grading_type, sample_answer, audio_track, is_default)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, formatted_items)
 
     conn.commit()
     conn.close()
 
 if __name__ == '__main__':
     init_db()
-    refresh_default_overlays(force=True)
-    print("Database initialized and overlays calibrated successfully!")
+    refresh_default_overlays(force=True, reset_user_answers=False)
+    print("Database initialized and overlays calibrated successfully without destroying user answers!")

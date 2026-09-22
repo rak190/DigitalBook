@@ -153,6 +153,9 @@ def is_answer_matching(user_answer, correct_answers):
     u_exp = expand_contractions(u_norm)
     u_exp_nopunct = re.sub(r"[^\w\s]", "", u_exp).strip()
 
+    num_map = {"1":"one", "2":"two", "3":"three", "4":"four", "5":"five", "6":"six", "7":"seven", "8":"eight", "9":"nine", "10":"ten"}
+    rev_num_map = {v: k for k, v in num_map.items()}
+
     for ans in correct_answers:
         c = str(ans).strip().lower()
         if not c:
@@ -165,8 +168,18 @@ def is_answer_matching(user_answer, correct_answers):
         if (u_norm == c_norm or
             u_nopunct == c_nopunct or
             u_exp == c_exp or
-            u_exp_nopunct == c_exp_nopunct):
+            u_exp_nopunct == c_exp_nopunct or
+            num_map.get(u_norm) == c_norm or
+            rev_num_map.get(u_norm) == c_norm):
             return True
+
+        # Check options with parentheses like 'b (17th)' or 'Photo 2'
+        m_paren = re.search(r'^([a-zA-Z0-9]+)\s*\((.*?)\)$', c)
+        if m_paren:
+            opt_letter = m_paren.group(1).lower()
+            opt_val = m_paren.group(2).lower()
+            if u_norm in (opt_letter, opt_val) or u_nopunct in (opt_letter, opt_val):
+                return True
 
         # Check slash alternatives e.g. "take photos / pictures"
         if "/" in c:
@@ -973,6 +986,103 @@ TABLE_OF_CONTENTS = [
     }
 ]
 
+
+def search_textbook(query_str):
+    """Global textbook search across page titles, grammar/vocab topics, exercises, vocabulary, notes, and bookmarks."""
+    q = query_str.strip().lower()
+    if not q:
+        return []
+    results = []
+
+    # 1. Search Table of Contents / Units
+    for item in TABLE_OF_CONTENTS:
+        match_reasons = []
+        if q in item.get("title", "").lower():
+            match_reasons.append("Title")
+        if q in item.get("grammar", "").lower():
+            match_reasons.append("Grammar")
+        if q in item.get("vocabulary", "").lower():
+            match_reasons.append("Vocabulary")
+        if q in item.get("pronunciation", "").lower():
+            match_reasons.append("Pronunciation")
+        if match_reasons:
+            results.append({
+                "type": "unit",
+                "category": "Course Unit",
+                "pageNum": item["page"],
+                "bookPage": item.get("bookPage", max(1, item["page"] - 1)),
+                "title": f"{item.get('section', item.get('unit', ''))} {item['title']}",
+                "snippet": f"Matched in {', '.join(match_reasons)}: {item.get('grammar', '') or item.get('vocabulary', '') or item.get('title', '')}"
+            })
+
+    # 2. Search Database Overlays & Exercises
+    try:
+        conn = database.get_db_connection()
+        overlays = conn.execute(
+            "SELECT * FROM page_overlays WHERE label LIKE ? OR hint LIKE ? OR explanation LIKE ? OR unit_ref LIKE ? LIMIT 20",
+            (f"%{q}%", f"%{q}%", f"%{q}%", f"%{q}%")
+        ).fetchall()
+        for ov in overlays:
+            results.append({
+                "type": "exercise",
+                "category": "Exercise",
+                "pageNum": ov["page_num"],
+                "bookPage": max(1, ov["page_num"] - 1),
+                "title": f"Page {ov['page_num']} — {ov['label']} ({ov['unit_ref'] or 'Exercise'})",
+                "snippet": f"{ov['explanation'] or ov['hint'] or ov['label']}"
+            })
+
+        # 3. Search Vocabulary Bank
+        vocab_items = conn.execute(
+            "SELECT * FROM vocabulary WHERE word LIKE ? OR definition LIKE ? OR example LIKE ? LIMIT 15",
+            (f"%{q}%", f"%{q}%", f"%{q}%")
+        ).fetchall()
+        for v in vocab_items:
+            p_num = v["page_num"] or 151
+            results.append({
+                "type": "vocab",
+                "category": "Vocabulary",
+                "pageNum": p_num,
+                "bookPage": max(1, p_num - 1),
+                "title": f"{v['word']} ({v['pos'] or 'word'})",
+                "snippet": f"{v['definition']} — \"{v['example']}\""
+            })
+
+        # 4. Search Personal Notes
+        notes = conn.execute(
+            "SELECT * FROM notes WHERE title LIKE ? OR content LIKE ? LIMIT 10",
+            (f"%{q}%", f"%{q}%")
+        ).fetchall()
+        for n in notes:
+            results.append({
+                "type": "note",
+                "category": "Study Note",
+                "pageNum": n["page_num"],
+                "bookPage": max(1, n["page_num"] - 1),
+                "title": f"📝 {n['title']}",
+                "snippet": n["content"][:120]
+            })
+
+        # 5. Search Bookmarks
+        bookmarks = conn.execute(
+            "SELECT * FROM bookmarks WHERE title LIKE ? OR tags LIKE ? LIMIT 10",
+            (f"%{q}%", f"%{q}%")
+        ).fetchall()
+        for b in bookmarks:
+            results.append({
+                "type": "bookmark",
+                "category": "Bookmark",
+                "pageNum": b["page_num"],
+                "bookPage": max(1, b["page_num"] - 1),
+                "title": f"🔖 {b['title']}",
+                "snippet": f"Bookmarked page {b['page_num']}"
+            })
+        conn.close()
+    except Exception as e:
+        print("Search error:", e)
+
+    return results[:40]
+
 class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=PUBLIC_DIR, **kwargs)
@@ -1014,6 +1124,52 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
         query = urllib.parse.parse_qs(parsed.query)
 
         # 1. API: Book Info & TOC
+        # Content APIs & Global Search
+        if path == "/api/content/textbook":
+            p = os.path.join(BASE_DIR, "data", "textbook.json")
+            if os.path.exists(p):
+                with open(p, "r", encoding="utf-8") as f:
+                    return self.send_json(json.load(f))
+            return self.send_json({"totalPages": 169})
+
+        if path == "/api/content/units":
+            p = os.path.join(BASE_DIR, "data", "units.json")
+            if os.path.exists(p):
+                with open(p, "r", encoding="utf-8") as f:
+                    return self.send_json(json.load(f))
+            return self.send_json({"units": []})
+
+        if path == "/api/content/toc":
+            return self.send_json(TABLE_OF_CONTENTS)
+
+        if path.startswith("/api/content/pages/"):
+            try:
+                p_num = int(path.split("/")[-1])
+                p = os.path.join(BASE_DIR, "data", "pages.json")
+                if os.path.exists(p):
+                    with open(p, "r", encoding="utf-8") as f:
+                        pages_list = json.load(f)
+                    match = next((pg for pg in pages_list if pg["pdfPage"] == p_num), None)
+                    if match:
+                        return self.send_json(match)
+                return self.send_json({"pdfPage": p_num, "bookPage": max(1, p_num - 1)})
+            except Exception as e:
+                return self.send_json({"error": str(e)}, 500)
+
+        if path == "/api/search":
+            q = query.get("q", [""])[0]
+            results = search_textbook(q)
+            return self.send_json({"query": q, "count": len(results), "results": results})
+
+        if path == "/api/mistakes":
+            try:
+                conn = database.get_db_connection()
+                rows = conn.execute("SELECT * FROM study_mistakes WHERE resolved = 0 ORDER BY updated_at DESC LIMIT 50").fetchall()
+                conn.close()
+                return self.send_json([dict(r) for r in rows])
+            except Exception as e:
+                return self.send_json({"error": str(e)}, 500)
+
         if path == "/api/book-info":
             return self.send_json({
                 "title": "English File 4th edition Pre-Intermediate Student's Book",
@@ -1103,7 +1259,7 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
                 
                 overlays = []
                 for r in rows:
-                    overlays.append({
+                    ov_dict = {
                         "id": r["id"],
                         "page_num": r["page_num"],
                         "field_type": r["field_type"],
@@ -1116,8 +1272,14 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
                         "correct_answers": json.loads(r["correct_answers"] or "[]"),
                         "hint": r["hint"],
                         "explanation": r["explanation"],
-                        "unit_ref": r["unit_ref"]
-                    })
+                        "unit_ref": r["unit_ref"],
+                        "options": json.loads(r["options"] or "[]") if ("options" in r.keys() and r["options"]) else [],
+                        "grading_type": r["grading_type"] if "grading_type" in r.keys() else "exact",
+                        "sample_answer": r["sample_answer"] if "sample_answer" in r.keys() else "",
+                        "audio_track": r["audio_track"] if "audio_track" in r.keys() else "",
+                        "is_default": r["is_default"] if "is_default" in r.keys() else 1
+                    }
+                    overlays.append(ov_dict)
                 
                 user_answers = {}
                 score = 0
@@ -1185,6 +1347,24 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
                 total_bookmarks = conn.execute("SELECT COUNT(*) as c FROM bookmarks").fetchone()["c"]
                 annotated_pages = conn.execute("SELECT COUNT(*) as c FROM annotations WHERE (strokes != '[]' OR text_boxes != '[]' OR sticky_notes != '[]')").fetchone()["c"]
                 completed_exercises = conn.execute("SELECT COUNT(*) as c FROM user_page_answers WHERE completed = 1").fetchone()["c"]
+                
+                # Advanced learning metrics
+                visited_row = conn.execute("SELECT COUNT(DISTINCT page_num) as c, SUM(time_spent_sec) as total_time FROM study_progress").fetchone()
+                visited_pages = visited_row["c"] or 0
+                total_time_spent = visited_row["total_time"] or 0
+                
+                # Exercise performance
+                ans_stats = conn.execute("SELECT SUM(total_questions) as total_q, AVG(score) as avg_score FROM user_page_answers WHERE total_questions > 0").fetchone()
+                total_questions_attempted = ans_stats["total_q"] or 0
+                avg_accuracy = round(ans_stats["avg_score"] or 0, 1)
+                
+                # Unresolved mistakes
+                unresolved_mistakes = conn.execute("SELECT COUNT(*) as c FROM study_mistakes WHERE resolved = 0").fetchone()["c"]
+                
+                # Last visited page
+                last_p = conn.execute("SELECT page_num FROM study_progress ORDER BY last_visited DESC LIMIT 1").fetchone()
+                last_studied_page = last_p["page_num"] if last_p else 7
+
                 recent_progress = conn.execute("SELECT page_num, completed, time_spent_sec, last_visited FROM study_progress ORDER BY last_visited DESC LIMIT 10").fetchall()
                 conn.close()
 
@@ -1194,6 +1374,14 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
                     "bookmarksCount": total_bookmarks,
                     "annotatedPages": annotated_pages,
                     "completedExercises": completed_exercises,
+                    "totalPages": 169,
+                    "visitedPages": visited_pages,
+                    "bookCompletion": round((visited_pages / 169) * 100, 1),
+                    "totalQuestionsAttempted": total_questions_attempted,
+                    "accuracy": avg_accuracy,
+                    "unresolvedMistakes": unresolved_mistakes,
+                    "lastStudiedPage": last_studied_page,
+                    "timeSpentSec": total_time_spent,
                     "recent": [dict(r) for r in recent_progress]
                 })
             except Exception as e:
@@ -1208,20 +1396,43 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
                 vocab = [dict(r) for r in conn.execute("SELECT * FROM vocabulary").fetchall()]
                 notes = [dict(r) for r in conn.execute("SELECT * FROM notes").fetchall()]
                 bookmarks = [dict(r) for r in conn.execute("SELECT * FROM bookmarks").fetchall()]
-                custom_overlays = [dict(r) for r in conn.execute("SELECT * FROM page_overlays WHERE id > 40").fetchall()]
+                custom_overlays = [dict(r) for r in conn.execute("SELECT * FROM page_overlays WHERE (is_default = 0 OR is_default IS NULL)").fetchall()]
+                progress = [dict(r) for r in conn.execute("SELECT * FROM study_progress").fetchall()]
+                mistakes = [dict(r) for r in conn.execute("SELECT * FROM study_mistakes").fetchall()]
+                recordings = []
+                if conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='user_recordings'").fetchone():
+                    recordings = [dict(r) for r in conn.execute("SELECT id, page_num, exercise_id, title, duration_sec, created_at FROM user_recordings").fetchall()]
                 conn.close()
 
                 export_data = {
-                    "version": "1.0",
+                    "version": "2.0",
                     "exported_at": datetime.datetime.now().isoformat(),
+                    "textbook": "English File 4th edition Pre-Intermediate Student's Book",
                     "annotations": annotations,
                     "answers": answers,
                     "vocabulary": vocab,
                     "notes": notes,
                     "bookmarks": bookmarks,
-                    "custom_overlays": custom_overlays
+                    "custom_overlays": custom_overlays,
+                    "study_progress": progress,
+                    "study_mistakes": mistakes,
+                    "recordings": recordings
                 }
                 return self.send_json(export_data)
+            except Exception as e:
+                return self.send_json({"error": str(e)}, 500)
+
+        # 8b. API: Get User Recordings for Page
+        if path.startswith("/api/recordings/"):
+            try:
+                page_num = int(path.split("/")[-1])
+                conn = database.get_db_connection()
+                if conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='user_recordings'").fetchone():
+                    rows = conn.execute("SELECT id, page_num, exercise_id, title, audio_data, duration_sec, created_at FROM user_recordings WHERE page_num = ? ORDER BY created_at DESC", (page_num,)).fetchall()
+                    conn.close()
+                    return self.send_json([dict(r) for r in rows])
+                conn.close()
+                return self.send_json([])
             except Exception as e:
                 return self.send_json({"error": str(e)}, 500)
 
@@ -1335,6 +1546,31 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
         path = parsed.path
         body = self.parse_body()
 
+        # Mistakes resolve
+        if path.startswith("/api/mistakes/") and path.endswith("/resolve"):
+            try:
+                m_id = int(path.split("/")[3])
+                conn = database.get_db_connection()
+                conn.execute("UPDATE study_mistakes SET resolved = 1 WHERE id = ?", (m_id,))
+                conn.commit()
+                conn.close()
+                return self.send_json({"status": "success", "id": m_id})
+            except Exception as e:
+                return self.send_json({"error": str(e)}, 500)
+
+        # Reset study progress
+        if path == "/api/reset-progress":
+            try:
+                conn = database.get_db_connection()
+                conn.execute("DELETE FROM user_page_answers")
+                conn.execute("DELETE FROM study_progress")
+                conn.execute("DELETE FROM study_mistakes")
+                conn.commit()
+                conn.close()
+                return self.send_json({"status": "success", "message": "Study progress reset successfully."})
+            except Exception as e:
+                return self.send_json({"error": str(e)}, 500)
+
         # 1. API: Save Annotations for Page
         if path.startswith("/api/annotations/"):
             try:
@@ -1380,12 +1616,26 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
                     u_raw = user_answers.get(ov_id, "")
                     u_val = str(u_raw).strip()
                     
-                    if correct_list:
+                    # Handle self-check / open-ended
+                    grading = ov["grading_type"] if "grading_type" in ov.keys() else "exact"
+                    f_type = ov["field_type"] or "text"
+
+                    if correct_list and grading != "self-check" and f_type != "self_check":
                         total_gradable += 1
-                        # Flexible answer matching
                         is_correct = is_answer_matching(u_val, correct_list)
                         if is_correct:
                             correct_count += 1
+                            # Mark resolved in study_mistakes
+                            conn.execute("UPDATE study_mistakes SET resolved = 1 WHERE page_num = ? AND overlay_id = ?", (page_num, int(ov["id"])))
+                        else:
+                            # Record mistake
+                            now_m = datetime.datetime.now().isoformat()
+                            corr_str = correct_list[0] if correct_list else ""
+                            conn.execute("""
+                            INSERT INTO study_mistakes (page_num, overlay_id, label, student_answer, correct_answer, explanation, hint, unit_ref, resolved, updated_at)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0, ?)
+                            """, (page_num, int(ov["id"]), ov["label"], u_val, corr_str, ov["explanation"], ov["hint"], ov["unit_ref"], now_m))
+
                         results[ov_id] = {
                             "is_correct": is_correct,
                             "user_answer": user_answers.get(ov_id, ""),
@@ -1394,11 +1644,15 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
                             "explanation": ov["explanation"]
                         }
                     else:
-                        # Open-ended field (e.g. personal info, free practice)
+                        # Self-check / Open-ended
                         results[ov_id] = {
                             "is_correct": True,
                             "user_answer": user_answers.get(ov_id, ""),
-                            "open_ended": True
+                            "open_ended": True,
+                            "self_check": True,
+                            "sample_answer": ov["sample_answer"] if "sample_answer" in ov.keys() else "",
+                            "hint": ov["hint"],
+                            "explanation": ov["explanation"]
                         }
 
                 score_pct = round((correct_count / total_gradable * 100) if total_gradable > 0 else 100, 1)
@@ -1452,6 +1706,7 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
         if path == "/api/overlays":
             try:
                 page_num = int(body.get("page_num"))
+                field_type = body.get("field_type", "text")
                 x = float(body.get("x", 10.0))
                 y = float(body.get("y", 10.0))
                 width = float(body.get("width", 15.0))
@@ -1462,18 +1717,70 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
                 hint = body.get("hint", "")
                 explanation = body.get("explanation", "")
                 unit_ref = body.get("unit_ref", "User Created")
+                options = json.dumps(body.get("options", []))
+                grading_type = body.get("grading_type", "exact")
+                sample_answer = body.get("sample_answer", "")
+                audio_track = body.get("audio_track", "")
 
                 conn = database.get_db_connection()
                 cur = conn.cursor()
                 cur.execute("""
-                INSERT INTO page_overlays (page_num, field_type, x, y, width, height, placeholder, label, correct_answers, hint, explanation, unit_ref)
-                VALUES (?, 'text', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (page_num, x, y, width, height, placeholder, label, correct_answers, hint, explanation, unit_ref))
+                INSERT INTO page_overlays (page_num, field_type, x, y, width, height, placeholder, label, correct_answers, hint, explanation, unit_ref, options, grading_type, sample_answer, audio_track, is_default)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)
+                """, (page_num, field_type, x, y, width, height, placeholder, label, correct_answers, hint, explanation, unit_ref, options, grading_type, sample_answer, audio_track))
                 new_id = cur.lastrowid
                 conn.commit()
                 conn.close()
 
                 return self.send_json({"status": "success", "id": new_id})
+            except Exception as e:
+                return self.send_json({"error": str(e)}, 500)
+
+        # 4b. API: Update Existing Overlay Field (Calibration & editing)
+        if path.startswith("/api/overlays/") and not path.endswith("/calibrate"):
+            try:
+                ov_id = int(path.split("/")[-1])
+                conn = database.get_db_connection()
+                cur = conn.cursor()
+                existing = cur.execute("SELECT * FROM page_overlays WHERE id = ?", (ov_id,)).fetchone()
+                if not existing:
+                    conn.close()
+                    return self.send_json({"error": "Overlay not found"}, 404)
+
+                x = float(body.get("x", existing["x"]))
+                y = float(body.get("y", existing["y"]))
+                width = float(body.get("width", existing["width"]))
+                height = float(body.get("height", existing["height"]))
+                label = body.get("label", existing["label"])
+                placeholder = body.get("placeholder", existing["placeholder"])
+                hint = body.get("hint", existing["hint"])
+                explanation = body.get("explanation", existing["explanation"])
+                unit_ref = body.get("unit_ref", existing["unit_ref"])
+                field_type = body.get("field_type", existing["field_type"] if "field_type" in existing.keys() else "text")
+                grading_type = body.get("grading_type", existing["grading_type"] if "grading_type" in existing.keys() else "exact")
+                sample_answer = body.get("sample_answer", existing["sample_answer"] if "sample_answer" in existing.keys() else "")
+                audio_track = body.get("audio_track", existing["audio_track"] if "audio_track" in existing.keys() else "")
+
+                if "correct_answers" in body:
+                    correct_answers = json.dumps(body.get("correct_answers", []))
+                else:
+                    correct_answers = existing["correct_answers"]
+
+                if "options" in body:
+                    options = json.dumps(body.get("options", []))
+                else:
+                    options = existing["options"] if "options" in existing.keys() else "[]"
+
+                cur.execute("""
+                UPDATE page_overlays
+                SET x = ?, y = ?, width = ?, height = ?, label = ?, placeholder = ?, hint = ?,
+                    explanation = ?, unit_ref = ?, field_type = ?, correct_answers = ?,
+                    options = ?, grading_type = ?, sample_answer = ?, audio_track = ?
+                WHERE id = ?
+                """, (x, y, width, height, label, placeholder, hint, explanation, unit_ref, field_type, correct_answers, options, grading_type, sample_answer, audio_track, ov_id))
+                conn.commit()
+                conn.close()
+                return self.send_json({"status": "success", "id": ov_id})
             except Exception as e:
                 return self.send_json({"error": str(e)}, 500)
 
@@ -1590,8 +1897,13 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
         if path == "/api/import":
             try:
                 data = body
+                if not isinstance(data, dict):
+                    return self.send_json({"error": "Invalid backup payload format"}, 400)
+
                 conn = database.get_db_connection()
-                # Restore annotations
+                counts = {"annotations": 0, "answers": 0, "notes": 0, "bookmarks": 0, "vocabulary": 0, "overlays": 0, "progress": 0, "mistakes": 0, "recordings": 0}
+
+                # 1. Restore annotations
                 for a in data.get("annotations", []):
                     conn.execute("""
                     INSERT INTO annotations (page_num, strokes, text_boxes, sticky_notes, updated_at)
@@ -1601,13 +1913,28 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
                         text_boxes = excluded.text_boxes,
                         sticky_notes = excluded.sticky_notes,
                         updated_at = excluded.updated_at
-                    """, (a["page_num"], a["strokes"], a["text_boxes"], a["sticky_notes"], a.get("updated_at")))
+                    """, (a["page_num"], a.get("strokes", "[]"), a.get("text_boxes", "[]"), a.get("sticky_notes", "[]"), a.get("updated_at")))
+                    counts["annotations"] += 1
 
-                # Restore vocabulary
+                # 2. Restore user answers
+                for ans in data.get("answers", []):
+                    conn.execute("""
+                    INSERT INTO user_page_answers (page_num, answers, score, total_questions, completed, updated_at)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                    ON CONFLICT(page_num) DO UPDATE SET
+                        answers = excluded.answers,
+                        score = excluded.score,
+                        total_questions = excluded.total_questions,
+                        completed = excluded.completed,
+                        updated_at = excluded.updated_at
+                    """, (ans["page_num"], ans.get("answers", "{}"), ans.get("score", 0), ans.get("total_questions", 0), ans.get("completed", 1), ans.get("updated_at")))
+                    counts["answers"] += 1
+
+                # 3. Restore vocabulary
                 for v in data.get("vocabulary", []):
                     conn.execute("""
-                    INSERT INTO vocabulary (word, pos, definition, example, phonetic, page_num, category, learned)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    INSERT INTO vocabulary (word, pos, definition, example, phonetic, page_num, category, learned, review_count)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ON CONFLICT(word) DO UPDATE SET
                         pos = excluded.pos,
                         definition = excluded.definition,
@@ -1615,20 +1942,135 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
                         phonetic = excluded.phonetic,
                         page_num = excluded.page_num,
                         category = excluded.category,
-                        learned = excluded.learned
-                    """, (v["word"], v.get("pos"), v.get("definition"), v.get("example"), v.get("phonetic"), v.get("page_num"), v.get("category"), v.get("learned", 0)))
+                        learned = excluded.learned,
+                        review_count = excluded.review_count
+                    """, (v["word"], v.get("pos"), v.get("definition"), v.get("example"), v.get("phonetic"), v.get("page_num"), v.get("category"), v.get("learned", 0), v.get("review_count", 0)))
+                    counts["vocabulary"] += 1
 
-                # Restore notes
+                # 4. Restore notes
                 for n in data.get("notes", []):
-                    conn.execute("INSERT INTO notes (page_num, title, content) VALUES (?, ?, ?)", (n["page_num"], n["title"], n["content"]))
+                    exists = conn.execute("SELECT id FROM notes WHERE page_num = ? AND content = ?", (n["page_num"], n["content"])).fetchone()
+                    if not exists:
+                        conn.execute("INSERT INTO notes (page_num, title, content, created_at, updated_at) VALUES (?, ?, ?, ?, ?)",
+                                     (n["page_num"], n.get("title", ""), n["content"], n.get("created_at"), n.get("updated_at")))
+                        counts["notes"] += 1
 
-                # Restore bookmarks
+                # 5. Restore bookmarks
                 for b in data.get("bookmarks", []):
-                    conn.execute("INSERT OR REPLACE INTO bookmarks (page_num, title, tags) VALUES (?, ?, ?)", (b["page_num"], b["title"], b.get("tags", "")))
+                    conn.execute("""
+                    INSERT INTO bookmarks (page_num, title, tags, notes)
+                    VALUES (?, ?, ?, ?)
+                    ON CONFLICT(page_num) DO UPDATE SET
+                        title = excluded.title,
+                        tags = excluded.tags,
+                        notes = excluded.notes
+                    """, (b["page_num"], b.get("title", ""), b.get("tags", ""), b.get("notes", "")))
+                    counts["bookmarks"] += 1
+
+                # 6. Restore custom overlays
+                for ov in data.get("custom_overlays", []):
+                    exists = conn.execute("SELECT id FROM page_overlays WHERE page_num = ? AND label = ? AND x = ?", (ov["page_num"], ov.get("label", ""), ov["x"])).fetchone()
+                    if not exists:
+                        conn.execute("""
+                        INSERT INTO page_overlays (page_num, field_type, x, y, width, height, placeholder, label, correct_answers, hint, explanation, unit_ref, options, grading_type, sample_answer, audio_track, is_default)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)
+                        """, (ov["page_num"], ov.get("field_type", "text"), ov["x"], ov["y"], ov["width"], ov["height"],
+                              ov.get("placeholder", ""), ov.get("label", ""), ov.get("correct_answers", "[]"),
+                              ov.get("hint", ""), ov.get("explanation", ""), ov.get("unit_ref", "Imported Blank"),
+                              ov.get("options", "[]"), ov.get("grading_type", "exact"), ov.get("sample_answer", ""), ov.get("audio_track", "")))
+                        counts["overlays"] += 1
+
+                # 7. Restore study progress
+                for sp in data.get("study_progress", []):
+                    conn.execute("""
+                    INSERT INTO study_progress (page_num, completed, time_spent_sec, last_visited, accuracy, mistakes_count, exercises_attempted)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                    ON CONFLICT(page_num) DO UPDATE SET
+                        completed = excluded.completed,
+                        time_spent_sec = time_spent_sec + excluded.time_spent_sec,
+                        last_visited = excluded.last_visited,
+                        accuracy = excluded.accuracy,
+                        mistakes_count = excluded.mistakes_count,
+                        exercises_attempted = excluded.exercises_attempted
+                    """, (sp["page_num"], sp.get("completed", 0), sp.get("time_spent_sec", 0), sp.get("last_visited"), sp.get("accuracy", 0), sp.get("mistakes_count", 0), sp.get("exercises_attempted", 0)))
+                    counts["progress"] += 1
+
+                # 8. Restore study mistakes
+                for m in data.get("study_mistakes", []):
+                    exists = conn.execute("SELECT id FROM study_mistakes WHERE page_num = ? AND overlay_id = ? AND student_answer = ?", (m["page_num"], m.get("overlay_id"), m.get("student_answer", ""))).fetchone()
+                    if not exists:
+                        conn.execute("""
+                        INSERT INTO study_mistakes (page_num, overlay_id, label, student_answer, correct_answer, explanation, hint, unit_ref, resolved, created_at, updated_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        """, (m["page_num"], m.get("overlay_id"), m.get("label", ""), m.get("student_answer", ""), m.get("correct_answer", ""), m.get("explanation", ""), m.get("hint", ""), m.get("unit_ref", ""), m.get("resolved", 0), m.get("created_at"), m.get("updated_at")))
+                        counts["mistakes"] += 1
+
+                # 9. Restore recordings
+                if conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='user_recordings'").fetchone():
+                    for rec in data.get("recordings", []):
+                        conn.execute("""
+                        INSERT INTO user_recordings (page_num, exercise_id, title, audio_data, duration_sec, created_at)
+                        VALUES (?, ?, ?, ?, ?, ?)
+                        """, (rec["page_num"], rec.get("exercise_id", ""), rec.get("title", ""), rec.get("audio_data", ""), rec.get("duration_sec", 0), rec.get("created_at")))
+                        counts["recordings"] += 1
 
                 conn.commit()
                 conn.close()
-                return self.send_json({"status": "success"})
+                return self.send_json({"status": "success", "counts": counts})
+            except Exception as e:
+                return self.send_json({"error": str(e)}, 500)
+
+        # 10b. API: Reset All User Study Data
+        if path in ("/api/reset-data", "/api/reset-progress"):
+            try:
+                conn = database.get_db_connection()
+                conn.execute("DELETE FROM user_page_answers")
+                conn.execute("DELETE FROM annotations")
+                conn.execute("DELETE FROM notes")
+                conn.execute("DELETE FROM bookmarks")
+                conn.execute("DELETE FROM study_progress")
+                conn.execute("DELETE FROM study_mistakes")
+                conn.execute("DELETE FROM page_overlays WHERE (is_default = 0 OR is_default IS NULL)")
+                conn.execute("UPDATE vocabulary SET learned = 0, review_count = 0")
+                if conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='user_recordings'").fetchone():
+                    conn.execute("DELETE FROM user_recordings")
+                conn.commit()
+                conn.close()
+                return self.send_json({"status": "success", "message": "All student data reset successfully."})
+            except Exception as e:
+                return self.send_json({"error": str(e)}, 500)
+
+        # 10c. API: Resolve Study Mistake
+        if path.startswith("/api/mistakes/") and path.endswith("/resolve"):
+            try:
+                m_id = int(path.split("/")[3])
+                conn = database.get_db_connection()
+                conn.execute("UPDATE study_mistakes SET resolved = 1, updated_at = CURRENT_TIMESTAMP WHERE id = ?", (m_id,))
+                conn.commit()
+                conn.close()
+                return self.send_json({"status": "success", "id": m_id})
+            except Exception as e:
+                return self.send_json({"error": str(e)}, 500)
+
+        # 10d. API: Save Voice Recording
+        if path == "/api/recordings":
+            try:
+                page_num = int(body.get("page_num", 1))
+                exercise_id = str(body.get("exercise_id", ""))
+                title = str(body.get("title", f"Speaking Recording (p.{page_num})"))
+                audio_data = str(body.get("audio_data", ""))
+                duration_sec = int(body.get("duration_sec", 0))
+
+                conn = database.get_db_connection()
+                cur = conn.cursor()
+                cur.execute("""
+                INSERT INTO user_recordings (page_num, exercise_id, title, audio_data, duration_sec)
+                VALUES (?, ?, ?, ?, ?)
+                """, (page_num, exercise_id, title, audio_data, duration_sec))
+                rec_id = cur.lastrowid
+                conn.commit()
+                conn.close()
+                return self.send_json({"status": "success", "id": rec_id})
             except Exception as e:
                 return self.send_json({"error": str(e)}, 500)
 
@@ -1780,6 +2222,18 @@ class DigitalTextbookHandler(http.server.SimpleHTTPRequestHandler):
                 conn.commit()
                 conn.close()
                 return self.send_json({"status": "deleted", "page_num": page_num})
+            except Exception as e:
+                return self.send_json({"error": str(e)}, 500)
+
+        # 6. API: Delete recording
+        if path.startswith("/api/recordings/"):
+            try:
+                rec_id = int(path.split("/")[-1])
+                conn = database.get_db_connection()
+                conn.execute("DELETE FROM user_recordings WHERE id = ?", (rec_id,))
+                conn.commit()
+                conn.close()
+                return self.send_json({"status": "deleted", "id": rec_id})
             except Exception as e:
                 return self.send_json({"error": str(e)}, 500)
 

@@ -1,0 +1,38 @@
+{
+  "id": "english-file-4e-pre-intermediate",
+  "title": "English File Pre-Intermediate Student's Book",
+  "edition": "4th Edition",
+  "publisher": "Oxford University Press",
+  "cefrLevel": "A2-B1",
+  "totalPages": 169,
+  "firstPage": 1,
+  "lastPage": 169,
+  "pageOffset": 1,
+  "structure": {
+    "prelims": [1, 2, 3, 4, 5, 6],
+    "units": {
+      "1": { "startPage": 7, "endPage": 14, "bookPages": "6-13", "title": "Getting to know you" },
+      "2": { "startPage": 15, "endPage": 22, "bookPages": "14-21", "title": "Past experiences" },
+      "3": { "startPage": 23, "endPage": 30, "bookPages": "22-29", "title": "Future plans and predictions" },
+      "4": { "startPage": 31, "endPage": 38, "bookPages": "30-37", "title": "Present perfect and shopping" },
+      "5": { "startPage": 39, "endPage": 46, "bookPages": "38-45", "title": "Comparisons and lifestyle" },
+      "6": { "startPage": 47, "endPage": 54, "bookPages": "46-53", "title": "Will and future choices" },
+      "7": { "startPage": 55, "endPage": 62, "bookPages": "54-61", "title": "Rules and obligations" },
+      "8": { "startPage": 63, "endPage": 70, "bookPages": "62-69", "title": "Conditionals and advice" },
+      "9": { "startPage": 71, "endPage": 78, "bookPages": "70-77", "title": "Hypotheticals and fears" },
+      "10": { "startPage": 79, "endPage": 86, "bookPages": "78-85", "title": "Movement and Inventions" },
+      "11": { "startPage": 87, "endPage": 94, "bookPages": "86-93", "title": "Memories and Decisions" },
+      "12": { "startPage": 95, "endPage": 102, "bookPages": "94-101", "title": "Stories and General Knowledge" }
+    },
+    "banks": {
+      "communication": { "startPage": 103, "endPage": 113, "bookPages": "102-112", "title": "Communication" },
+      "writing": { "startPage": 114, "endPage": 120, "bookPages": "113-119", "title": "Writing" },
+      "listening": { "startPage": 121, "endPage": 126, "bookPages": "120-125", "title": "Listening Scripts" },
+      "grammar": { "startPage": 127, "endPage": 150, "bookPages": "126-149", "title": "Grammar Bank" },
+      "vocabulary": { "startPage": 151, "endPage": 164, "bookPages": "150-163", "title": "Vocabulary Bank" },
+      "irregular_verbs": { "startPage": 165, "endPage": 165, "bookPages": "164", "title": "Irregular Verbs" },
+      "appendix": { "startPage": 166, "endPage": 166, "bookPages": "165", "title": "Appendix" },
+      "sound_bank": { "startPage": 167, "endPage": 169, "bookPages": "166-168", "title": "Sound Bank" }
+    }
+  }
+}

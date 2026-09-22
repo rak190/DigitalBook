@@ -139,6 +139,11 @@ class TextbookViewer {
     if (this.zoomLevelSpan) {
       this.zoomLevelSpan.textContent = `${Math.round(this.zoomLevel * 100)}%`;
     }
+    const presetSelect = document.getElementById('zoom-preset-select');
+    if (presetSelect) {
+      const matchOpt = Array.from(presetSelect.options).find(o => Math.abs(parseFloat(o.value) - level) < 0.05);
+      if (matchOpt) presetSelect.value = matchOpt.value;
+    }
   }
 
   fitToWidth() {

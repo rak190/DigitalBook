@@ -866,6 +866,14 @@ class AudioManager {
       this.stop();
     });
 
+    document.getElementById('skip-back-10-btn')?.addEventListener('click', () => {
+      this.skipTime(-10);
+    });
+
+    document.getElementById('skip-fwd-10-btn')?.addEventListener('click', () => {
+      this.skipTime(10);
+    });
+
     rateSlider?.addEventListener('input', (e) => {
       this.setSpeed(parseFloat(e.target.value));
       if (rateLabel) rateLabel.textContent = `${this.playbackSpeed}x`;
@@ -1081,6 +1089,16 @@ class AudioManager {
     }
   }
 
+  skipTime(seconds) {
+    if (this.audioElement && !isNaN(this.audioElement.duration)) {
+      const nextTime = Math.max(0, Math.min(this.audioElement.duration, this.audioElement.currentTime + seconds));
+      this.audioElement.currentTime = nextTime;
+      if (window.app) window.app.showToast(`${seconds > 0 ? '+' : ''}${seconds}s (${Math.round(nextTime)}s)`);
+    } else {
+      if (window.app) window.app.showToast('Audio skip available during playback');
+    }
+  }
+
   // --- In-App Dropzone & MP3 Uploading ---
   initAudioDropzone() {
     const modal = document.getElementById('audio-dropzone-modal');
@@ -1273,11 +1291,19 @@ class AudioManager {
 
   // --- Voice Recorder for Speaking Practice ---
   initRecorderEvents() {
+    // Floating recorder
     document.getElementById('record-toggle-btn')?.addEventListener('click', () => {
       this.toggleRecording();
     });
-
     document.getElementById('play-recording-btn')?.addEventListener('click', () => {
+      this.playRecording();
+    });
+
+    // Drawer recorder
+    document.getElementById('drawer-record-toggle-btn')?.addEventListener('click', () => {
+      this.toggleRecording();
+    });
+    document.getElementById('drawer-play-recording-btn')?.addEventListener('click', () => {
       this.playRecording();
     });
   }
@@ -1307,7 +1333,33 @@ class AudioManager {
 
         const playBtn = document.getElementById('play-recording-btn');
         if (playBtn) playBtn.disabled = false;
-        if (window.app) window.app.showToast('Recording finished! Click play to listen.');
+        const drawerPlayBtn = document.getElementById('drawer-play-recording-btn');
+        if (drawerPlayBtn) drawerPlayBtn.disabled = false;
+        if (window.app) window.app.showToast('Recording saved! Listen or practice again.');
+
+        // Persist to server via /api/recordings
+        try {
+          const reader = new FileReader();
+          reader.readAsDataURL(audioBlob);
+          reader.onloadend = async () => {
+            const base64Data = reader.result;
+            const pNum = window.viewer ? window.viewer.currentPage : 1;
+            const elapsedSec = Math.max(1, Math.floor((Date.now() - this.recordingStartTime) / 1000));
+            await fetch('/api/recordings', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                page_num: pNum,
+                title: `Speaking Practice (p.${pNum})`,
+                audio_data: base64Data,
+                duration_sec: elapsedSec
+              })
+            });
+            this.loadPageRecordings(pNum);
+          };
+        } catch (saveErr) {
+          console.error('Error saving recording to server:', saveErr);
+        }
       };
 
       this.mediaRecorder.start();
@@ -1319,6 +1371,11 @@ class AudioManager {
         toggleBtn.innerHTML = '⏹ Stop';
         toggleBtn.classList.add('active');
       }
+      const drawerToggleBtn = document.getElementById('drawer-record-toggle-btn');
+      if (drawerToggleBtn) {
+        drawerToggleBtn.innerHTML = '⏹ Stop Recording';
+        drawerToggleBtn.classList.add('active');
+      }
 
       const pulse = document.getElementById('record-pulse-indicator');
       if (pulse) pulse.style.display = 'block';
@@ -1327,8 +1384,11 @@ class AudioManager {
         const elapsedSec = Math.floor((Date.now() - this.recordingStartTime) / 1000);
         const mins = String(Math.floor(elapsedSec / 60)).padStart(2, '0');
         const secs = String(elapsedSec % 60).padStart(2, '0');
+        const formatted = `${mins}:${secs}`;
         const timerEl = document.getElementById('record-timer');
-        if (timerEl) timerEl.textContent = `${mins}:${secs}`;
+        if (timerEl) timerEl.textContent = formatted;
+        const drawerTimerEl = document.getElementById('drawer-record-timer');
+        if (drawerTimerEl) drawerTimerEl.textContent = formatted;
       }, 500);
 
     } catch (err) {
@@ -1346,8 +1406,13 @@ class AudioManager {
 
       const toggleBtn = document.getElementById('record-toggle-btn');
       if (toggleBtn) {
-        toggleBtn.innerHTML = '🎙 Record';
+        toggleBtn.innerHTML = '🎙 Record Speaking';
         toggleBtn.classList.remove('active');
+      }
+      const drawerToggleBtn = document.getElementById('drawer-record-toggle-btn');
+      if (drawerToggleBtn) {
+        drawerToggleBtn.innerHTML = '🎙 Record Answer';
+        drawerToggleBtn.classList.remove('active');
       }
 
       const pulse = document.getElementById('record-pulse-indicator');
@@ -1359,6 +1424,57 @@ class AudioManager {
     if (!this.recordedAudioUrl) return;
     const audio = new Audio(this.recordedAudioUrl);
     audio.play();
+  }
+
+  playBase64Audio(dataUrl) {
+    if (!dataUrl) return;
+    const audio = new Audio(dataUrl);
+    audio.play();
+  }
+
+  async loadPageRecordings(pageNum) {
+    const listEl = document.getElementById('drawer-recordings-list');
+    if (!listEl) return;
+    try {
+      const res = await fetch(`/api/recordings/${pageNum}`);
+      const recordings = await res.json();
+      if (!recordings || recordings.length === 0) {
+        listEl.innerHTML = '<div style="font-size:0.75rem; color:var(--text-muted); text-align:center; padding:6px;">No recordings on this page yet.</div>';
+        return;
+      }
+      let html = '';
+      recordings.forEach(r => {
+        html += `
+          <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-surface); padding:4px 8px; border-radius:4px; border:1px solid var(--border-color); font-size:0.75rem;">
+            <div style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:140px;">
+              <strong>${r.title || 'Recording'}</strong> (${r.duration_sec || 0}s)
+            </div>
+            <div style="display:flex; gap:4px;">
+              <button class="btn-icon" style="width:22px; height:22px; font-size:10px;" title="Play" onclick="window.audioManager.playBase64Audio('${r.audio_data ? r.audio_data.replace(/'/g, "\\'") : ''}')">▶</button>
+              <button class="btn-icon" style="width:22px; height:22px; font-size:10px; color:#ef4444;" title="Delete" onclick="window.audioManager.deleteRecording(${r.id}, ${pageNum})">✕</button>
+            </div>
+          </div>
+        `;
+      });
+      listEl.innerHTML = html;
+    } catch (err) {
+      console.error('Failed to load page recordings:', err);
+    }
+  }
+
+  async deleteRecording(recId, pageNum) {
+    try {
+      await fetch(`/api/recordings/${recId}`, { method: 'DELETE' });
+      this.loadPageRecordings(pageNum);
+      if (window.app) window.app.showToast('Recording deleted.');
+    } catch (e) {
+      console.error('Delete recording error:', e);
+    }
+  }
+
+  onPageChanged(pageNum) {
+    this.updateTrackBadge();
+    this.loadPageRecordings(pageNum);
   }
 }
 

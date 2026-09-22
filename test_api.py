@@ -331,5 +331,68 @@ class DigitalTextbookServerTest(unittest.TestCase):
             data = res.json()
             self.assertTrue(len(data["overlays"]) >= 3, f"Expected at least 3 overlays on page {p}, found {len(data['overlays'])}")
 
+    def test_14_user_recordings_lifecycle(self):
+        # Create user speaking recording
+        rec_payload = {
+            "page_num": 7,
+            "exercise_id": "speaking_1",
+            "title": "Speaking Practice Test 1",
+            "audio_data": "data:audio/webm;base64,GkXfo59ChoEBQveBAULygQRC84EIQoKEd2VibUKHgQRChYECGFOAZwEAAAAAAA",
+            "duration_sec": 5
+        }
+        post_res = requests.post(f"{self.base_url}/api/recordings", json=rec_payload)
+        self.assertEqual(post_res.status_code, 200)
+        rec_id = post_res.json()["id"]
+
+        # Fetch recordings for page 7
+        get_res = requests.get(f"{self.base_url}/api/recordings/7")
+        self.assertEqual(get_res.status_code, 200)
+        recs = get_res.json()
+        self.assertTrue(any(r["id"] == rec_id for r in recs))
+
+        # Delete recording
+        del_res = requests.delete(f"{self.base_url}/api/recordings/{rec_id}")
+        self.assertEqual(del_res.status_code, 200)
+        recs_after = requests.get(f"{self.base_url}/api/recordings/7").json()
+        self.assertFalse(any(r["id"] == rec_id for r in recs_after))
+
+    def test_15_mistakes_resolve(self):
+        # Check incorrect answer to generate a mistake
+        ov_res = requests.get(f"{self.base_url}/api/overlays/7").json()
+        q3 = next(ov for ov in ov_res["overlays"] if ov["label"] == "Q3")
+        requests.post(f"{self.base_url}/api/check-answers/7", json={"answers": {str(q3["id"]): "completely_wrong_word"}})
+
+        # Verify mistake is in unresolved list
+        mistakes = requests.get(f"{self.base_url}/api/mistakes").json()
+        m_item = next((m for m in mistakes if m["overlay_id"] == q3["id"] and m["page_num"] == 7), None)
+        self.assertIsNotNone(m_item)
+
+        # Resolve mistake
+        resolve_res = requests.post(f"{self.base_url}/api/mistakes/{m_item['id']}/resolve")
+        self.assertEqual(resolve_res.status_code, 200)
+        self.assertEqual(resolve_res.json()["status"], "success")
+
+        # Verify no longer in unresolved mistakes
+        mistakes_after = requests.get(f"{self.base_url}/api/mistakes").json()
+        self.assertFalse(any(m["id"] == m_item["id"] for m in mistakes_after))
+
+    def test_16_export_import_and_reset_data(self):
+        # Export data
+        exp_res = requests.get(f"{self.base_url}/api/export")
+        self.assertEqual(exp_res.status_code, 200)
+        exp_data = exp_res.json()
+        self.assertIn("study_progress", exp_data)
+        self.assertIn("custom_overlays", exp_data)
+        self.assertIn("recordings", exp_data)
+
+        # Test reset-progress / reset-data endpoint
+        reset_res = requests.post(f"{self.base_url}/api/reset-progress")
+        self.assertEqual(reset_res.status_code, 200)
+        self.assertEqual(reset_res.json()["status"], "success")
+
+        # Confirm default overlays remain present after reset
+        p7_res = requests.get(f"{self.base_url}/api/overlays/7")
+        self.assertTrue(len(p7_res.json()["overlays"]) >= 16)
+
 if __name__ == '__main__':
     unittest.main()

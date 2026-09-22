@@ -1857,3 +1857,299 @@ body.focus-mode-active #exit-focus-btn {
 .ai-item-card.is-incorrect {
   border-left: 3px solid var(--accent-red);
 }
+
+/* =========================================
+   Calibration & Visual Authoring Mode
+   ========================================= */
+.calibration-mode-active .book-page-wrapper {
+  cursor: crosshair !important;
+}
+
+.calibration-mode-active .exercise-blank-input {
+  outline: 2px dashed #f59e0b !important;
+  background: rgba(245, 158, 11, 0.25) !important;
+  cursor: move !important;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+}
+
+.calibration-mode-active .exercise-blank-input:hover {
+  background: rgba(245, 158, 11, 0.45) !important;
+  outline: 2px solid #d97706 !important;
+}
+
+.calibration-selection-rect {
+  position: absolute;
+  border: 2px dashed #3b82f6;
+  background: rgba(59, 130, 246, 0.2);
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* =========================================
+   Continue Studying Banner
+   ========================================= */
+.continue-studying-banner {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  background: var(--bg-panel);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  padding: 8px 18px;
+  animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.continue-studying-banner .banner-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.continue-studying-banner .banner-icon {
+  font-size: 1.2rem;
+}
+
+.continue-studying-banner .banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary.mini, .btn-icon.mini {
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  height: 28px;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* =========================================
+   Global Search Modal & Pills
+   ========================================= */
+.search-pill {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.search-pill:hover {
+  color: var(--text-primary);
+  border-color: var(--primary);
+}
+
+.search-pill.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.search-result-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.search-result-card:hover {
+  background: var(--bg-surface-hover, rgba(255, 255, 255, 0.05));
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.search-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(2, 132, 199, 0.15);
+  color: var(--primary);
+}
+
+.search-badge.badge-vocab {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.search-badge.badge-exercise {
+  background: rgba(139, 92, 246, 0.15);
+  color: #8b5cf6;
+}
+
+.search-badge.badge-note {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.search-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.search-snippet {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+/* =========================================
+   Mistake Review Studio
+   ========================================= */
+.mistake-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-left: 3px solid #ef4444;
+}
+
+.mistake-card.resolved {
+  opacity: 0.6;
+  border-left-color: #10b981;
+}
+
+.mistake-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mistake-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ef4444;
+}
+
+.mistake-answers-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.82rem;
+  margin: 4px 0;
+}
+
+.student-ans {
+  color: #ef4444;
+  text-decoration: line-through;
+}
+
+.correct-ans {
+  color: #10b981;
+  font-weight: 700;
+}
+
+.mistake-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+/* =========================================
+   Units Progress Checklist
+   ========================================= */
+.unit-progress-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.unit-progress-item:hover {
+  background: var(--bg-surface-hover, rgba(255, 255, 255, 0.05));
+  border-color: var(--primary);
+}
+
+.unit-progress-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.unit-progress-title {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.unit-progress-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* =========================================
+   Rich Exercise Types on Book Page
+   ========================================= */
+textarea.exercise-blank-input {
+  resize: none;
+  font-family: inherit;
+  font-size: 0.82rem;
+  line-height: 1.25;
+  padding: 4px 6px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  border-radius: 4px;
+}
+
+select.exercise-blank-input {
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.self-check-container {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  box-shadow: var(--shadow-sm);
+  z-index: 15;
+}
+
+[data-theme="dark"] .self-check-container {
+  background: rgba(30, 41, 59, 0.96);
+}
+
+.self-check-model-text {
+  font-size: 0.75rem;
+  color: #10b981;
+  font-weight: 600;
+  margin-top: 4px;
+}
