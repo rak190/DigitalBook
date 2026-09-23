@@ -11,6 +11,15 @@ export const STORAGE_KEYS = {
   ZOOM: 'digital_textbook_zoom_v2',
 };
 
+export interface BookScopedStorage {
+  answers: Record<string, ExerciseAnswer>;
+  completedActivities: Record<string, boolean>;
+  activityProgress: Record<string, ScopedActivityState>;
+  bookmarks: UserBookmark[];
+  notes: UserNote[];
+  lastPage: number;
+}
+
 const isBrowser = typeof window !== 'undefined';
 const hasLocalStorage = isBrowser && typeof window.localStorage !== 'undefined';
 const hasIndexedDB = isBrowser && typeof window.indexedDB !== 'undefined';
@@ -108,7 +117,156 @@ class MediaStorageDB {
 export const mediaDB = new MediaStorageDB();
 
 export class StorageService {
-  // Answers
+  // Scoped Book Key
+  static getScopedKey(bookId: string): string {
+    return `digital_book_progress_${bookId}`;
+  }
+
+  // Scoped Book Data Operations
+  static getBookData(bookId: string): BookScopedStorage {
+    if (!hasLocalStorage) {
+      return { answers: {}, completedActivities: {}, activityProgress: {}, bookmarks: [], notes: [], lastPage: 1 };
+    }
+    try {
+      const key = this.getScopedKey(bookId);
+      const raw = localStorage.getItem(key);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        return {
+          answers: parsed.answers || {},
+          completedActivities: parsed.completedActivities || {},
+          activityProgress: parsed.activityProgress || {},
+          bookmarks: parsed.bookmarks || [],
+          notes: parsed.notes || [],
+          lastPage: parsed.lastPage || (bookId === 'english-file-pre-int' ? 7 : 1),
+        };
+      }
+
+      // Seed / migrate existing data for English File Pre-Intermediate
+      if (bookId === 'english-file-pre-int') {
+        const legacyAnswers = this.getAnswers();
+        const legacyActivities = this.getAllActivityProgress();
+        const legacyBookmarks = this.getBookmarks();
+        const legacyNotes = this.getNotes();
+        const legacyLastPage = this.getLastPage();
+
+        const completedMap: Record<string, boolean> = {};
+        Object.entries(legacyActivities).forEach(([actKey, val]) => {
+          if (val.isCompleted) {
+            const parts = actKey.split('_');
+            const actId = parts.slice(2).join('_');
+            if (actId) completedMap[actId] = true;
+            completedMap[actKey] = true;
+          }
+        });
+
+        const initial: BookScopedStorage = {
+          answers: legacyAnswers,
+          completedActivities: completedMap,
+          activityProgress: legacyActivities,
+          bookmarks: legacyBookmarks,
+          notes: legacyNotes,
+          lastPage: legacyLastPage,
+        };
+        this.saveBookData(bookId, initial);
+        return initial;
+      }
+
+      return { answers: {}, completedActivities: {}, activityProgress: {}, bookmarks: [], notes: [], lastPage: 1 };
+    } catch (e) {
+      console.warn(`Failed to read book progress for ${bookId}:`, e);
+      return { answers: {}, completedActivities: {}, activityProgress: {}, bookmarks: [], notes: [], lastPage: 1 };
+    }
+  }
+
+  static saveBookData(bookId: string, partial: Partial<BookScopedStorage>): void {
+    if (!hasLocalStorage) return;
+    try {
+      const current = this.getBookData(bookId);
+      const merged: BookScopedStorage = {
+        answers: partial.answers !== undefined ? partial.answers : current.answers,
+        completedActivities: partial.completedActivities !== undefined ? partial.completedActivities : current.completedActivities,
+        activityProgress: partial.activityProgress !== undefined ? partial.activityProgress : current.activityProgress,
+        bookmarks: partial.bookmarks !== undefined ? partial.bookmarks : current.bookmarks,
+        notes: partial.notes !== undefined ? partial.notes : current.notes,
+        lastPage: partial.lastPage !== undefined ? partial.lastPage : current.lastPage,
+      };
+      const key = this.getScopedKey(bookId);
+      localStorage.setItem(key, JSON.stringify(merged));
+
+      // Synchronize legacy keys for english-file-pre-int backward-compatibility
+      if (bookId === 'english-file-pre-int') {
+        if (partial.answers) this.saveAnswers(merged.answers);
+        if (partial.bookmarks) this.saveBookmarks(merged.bookmarks);
+        if (partial.notes) this.saveNotes(merged.notes);
+        if (partial.lastPage) this.saveLastPage(merged.lastPage);
+        if (partial.activityProgress) {
+          try {
+            localStorage.setItem(STORAGE_KEYS.OXFORD_ACTIVITIES, JSON.stringify(merged.activityProgress));
+          } catch {}
+        }
+      }
+    } catch (e) {
+      console.warn(`Failed to save book progress for ${bookId}:`, e);
+    }
+  }
+
+  static clearBookData(bookId: string): void {
+    if (!hasLocalStorage) return;
+    const key = this.getScopedKey(bookId);
+    localStorage.removeItem(key);
+    if (bookId === 'english-file-pre-int') {
+      this.clearAllData();
+    }
+  }
+
+  static exportBookData(bookId: string): string {
+    const data = this.getBookData(bookId);
+    const payload = {
+      bookId,
+      version: 3,
+      exportedAt: new Date().toISOString(),
+      ...data,
+    };
+    return JSON.stringify(payload, null, 2);
+  }
+
+  static importBookData(bookId: string, jsonString: string): { success: boolean; message: string } {
+    try {
+      const data = JSON.parse(jsonString);
+      if (!data || typeof data !== 'object') {
+        return { success: false, message: 'Invalid JSON file format.' };
+      }
+      const answers = data.answers || {};
+      const completedActivities = data.completedActivities || {};
+      const activityProgress = data.activityProgress || {};
+      const bookmarks = Array.isArray(data.bookmarks) ? data.bookmarks : [];
+      const notes = Array.isArray(data.notes) ? data.notes : [];
+      const lastPage = typeof data.lastPage === 'number' ? data.lastPage : 1;
+
+      this.saveBookData(bookId, {
+        answers,
+        completedActivities,
+        activityProgress,
+        bookmarks,
+        notes,
+        lastPage,
+      });
+      return { success: true, message: `Progress for ${bookId} successfully imported!` };
+    } catch (e: any) {
+      return { success: false, message: `Import error: ${e.message}` };
+    }
+  }
+
+  static getBookProgressPercent(bookId: string, totalActivities = 10): number {
+    const data = this.getBookData(bookId);
+    const actCompleted = Object.values(data.completedActivities || {}).filter(Boolean).length;
+    const ansCompleted = Object.values(data.answers || {}).filter(a => a.isCompleted).length;
+    const count = Math.max(actCompleted, ansCompleted);
+    return Math.min(100, Math.round((count / Math.max(1, totalActivities)) * 100));
+  }
+
+  // Legacy Answers methods
   static getAnswers(): Record<string, ExerciseAnswer> {
     if (!hasLocalStorage) return {};
     try {
@@ -291,5 +449,6 @@ export class StorageService {
     localStorage.removeItem(STORAGE_KEYS.ANSWERS);
     localStorage.removeItem(STORAGE_KEYS.BOOKMARKS);
     localStorage.removeItem(STORAGE_KEYS.NOTES);
+    localStorage.removeItem(STORAGE_KEYS.OXFORD_ACTIVITIES);
   }
 }

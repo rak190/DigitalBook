@@ -22,8 +22,10 @@ export function useAudioPlayer() {
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const ttsUtteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const activeTrackRef = useRef<ActiveTrack | null>(null);
+  activeTrackRef.current = activeTrack;
 
-  // Initialize Audio element
+  // Initialize Audio element once
   useEffect(() => {
     const audio = new Audio();
     audioRef.current = audio;
@@ -33,8 +35,9 @@ export function useAudioPlayer() {
     const onEnded = () => setIsPlaying(false);
     const onError = () => {
       // Audio file failed to load -> Trigger TTS fallback
-      if (activeTrack && !activeTrack.isTTS) {
-        fallbackToTTS(activeTrack);
+      const track = activeTrackRef.current;
+      if (track && !track.isTTS) {
+        fallbackToTTS(track);
       } else {
         setIsPlaying(false);
       }
@@ -55,7 +58,7 @@ export function useAudioPlayer() {
         window.speechSynthesis.cancel();
       }
     };
-  }, [activeTrack]);
+  }, []);
 
   // Fallback to Web Speech API TTS
   const fallbackToTTS = useCallback((track: ActiveTrack) => {

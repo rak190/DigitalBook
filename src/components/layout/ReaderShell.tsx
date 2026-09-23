@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { BookOpen, FileEdit } from 'lucide-react';
 import { TopBar } from './TopBar';
 import { SidebarTOC } from './SidebarTOC';
@@ -11,11 +11,40 @@ import { BackupModal } from '../tools/BackupModal';
 import { useBookProgress } from '../../hooks/useBookProgress';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import { dataService } from '../../services/dataService';
-import { ThemeMode, ViewMode } from '../../types';
+import { ThemeMode, ViewMode, ExerciseItem } from '../../types';
 import { StorageService } from '../../services/storage';
+import { getBookManifest, DEFAULT_BOOK_ID, Exercise } from '../../data/booksRegistry';
 
-export const ReaderShell: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<number>(() => StorageService.getLastPage());
+interface ReaderShellProps {
+  bookId?: string;
+  initialPage?: number;
+  onBackToBookshelf?: () => void;
+}
+
+export const ReaderShell: React.FC<ReaderShellProps> = ({
+  bookId: propBookId = DEFAULT_BOOK_ID,
+  initialPage,
+  onBackToBookshelf,
+}) => {
+  const activeManifest = useMemo(() => {
+    return getBookManifest(propBookId) || getBookManifest(DEFAULT_BOOK_ID)!;
+  }, [propBookId]);
+
+  const bookId = activeManifest.id;
+
+  const totalPages = activeManifest.totalPages;
+
+  const [currentPage, setCurrentPage] = useState<number>(() => {
+    if (initialPage && initialPage >= 1 && initialPage <= totalPages) {
+      return initialPage;
+    }
+    const saved = StorageService.getBookData(bookId).lastPage;
+    if (saved && saved >= 1 && saved <= totalPages) {
+      return saved;
+    }
+    return bookId === 'english-file-pre-int' ? 7 : 1;
+  });
+
   const [zoom, setZoom] = useState<number>(() => StorageService.getZoom());
   const [viewMode, setViewMode] = useState<ViewMode>('single');
   const [theme, setTheme] = useState<ThemeMode>(() => StorageService.getTheme());
@@ -26,22 +55,17 @@ export const ReaderShell: React.FC = () => {
   const [activeActivityId, setActiveActivityId] = useState<string | null>(null);
   const [isActivityDocked, setIsActivityDocked] = useState<boolean>(true);
   const [mobileView, setMobileView] = useState<'book' | 'exercise'>('exercise');
-  const [completedActivities, setCompletedActivities] = useState<Record<string, boolean>>(() => {
-    const all = StorageService.getAllActivityProgress();
-    const map: Record<string, boolean> = {};
-    Object.entries(all).forEach(([key, val]) => {
-      if (val.isCompleted) {
-        const parts = key.split('_');
-        const actId = parts.slice(2).join('_');
-        if (actId) map[actId] = true;
-      }
-    });
-    return map;
-  });
   const [showBackupModal, setShowBackupModal] = useState(false);
 
+  // Classroom Presentation Mode State
+  const [isPresentationMode, setIsPresentationMode] = useState(false);
+  const [showTeacherKey, setShowTeacherKey] = useState(false);
+
+  // Scoped Book Progress State
   const {
     answers,
+    completedActivities,
+    completeActivity,
     evaluations,
     saveStatus,
     setAnswerValue,
@@ -52,21 +76,29 @@ export const ReaderShell: React.FC = () => {
     isBookmarked,
     toggleBookmark,
     reloadFromStorage,
-  } = useBookProgress();
+  } = useBookProgress(bookId);
 
   const audioPlayer = useAudioPlayer();
 
-  const pageMeta = dataService.getPageMeta(currentPage);
-  const pageExercises = dataService.getExercisesForPage(currentPage);
-  const totalPages = 168;
+  // Reset page when bookId changes or initialPage changes
+  useEffect(() => {
+    const validTarget =
+      initialPage && initialPage >= 1 && initialPage <= totalPages
+        ? initialPage
+        : StorageService.getBookData(bookId).lastPage || (bookId === 'english-file-pre-int' ? 7 : 1);
+    setCurrentPage(validTarget);
+    setActiveActivityId(null);
+    setActiveExerciseId(undefined);
+  }, [bookId, initialPage, totalPages]);
 
-  // Sync URL hash for deep linking (e.g. #page=7)
+  // Deep linking sync (e.g. #/reader?book=...&page=7)
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const parseHash = () => {
-      const match = window.location.hash.match(/(?:page=|\b)(\d+)\b/);
-      if (match && match[1]) {
-        const p = parseInt(match[1], 10);
+      const hash = window.location.hash;
+      const pageMatch = hash.match(/(?:page=)(\d+)\b/);
+      if (pageMatch && pageMatch[1]) {
+        const p = parseInt(pageMatch[1], 10);
         if (p >= 1 && p <= totalPages) {
           setCurrentPage(p);
         }
@@ -78,15 +110,21 @@ export const ReaderShell: React.FC = () => {
   }, [totalPages]);
 
   // Handle page changes
-  const handlePageChange = useCallback((pageNum: number) => {
-    const validPage = Math.max(1, Math.min(pageNum, totalPages));
-    setCurrentPage(validPage);
-    StorageService.saveLastPage(validPage);
-    setActiveExerciseId(undefined);
-    if (typeof window !== 'undefined' && window.location.hash !== `#page=${validPage}`) {
-      window.history.replaceState(null, '', `#page=${validPage}`);
-    }
-  }, [totalPages]);
+  const handlePageChange = useCallback(
+    (pageNum: number) => {
+      const validPage = Math.max(1, Math.min(pageNum, totalPages));
+      setCurrentPage(validPage);
+      StorageService.saveBookData(bookId, { lastPage: validPage });
+      setActiveExerciseId(undefined);
+      if (typeof window !== 'undefined') {
+        const newHash = `#/reader?book=${bookId}&page=${validPage}`;
+        if (window.location.hash !== newHash) {
+          window.history.replaceState(null, '', newHash);
+        }
+      }
+    },
+    [bookId, totalPages]
+  );
 
   // Handle zoom changes
   const handleZoomChange = useCallback((newZoom: number) => {
@@ -103,7 +141,6 @@ export const ReaderShell: React.FC = () => {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignore if user is currently typing in an input or textarea
       const target = e.target as HTMLElement;
       if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
         return;
@@ -116,8 +153,13 @@ export const ReaderShell: React.FC = () => {
         e.preventDefault();
         handlePageChange(currentPage + 1);
       } else if (e.key === 'Escape') {
-        setIsSidebarOpen(false);
-        audioPlayer.closePlayer();
+        if (isPresentationMode) {
+          setIsPresentationMode(false);
+        } else {
+          setIsSidebarOpen(false);
+          setActiveActivityId(null);
+          audioPlayer.closePlayer();
+        }
       } else if (e.ctrlKey && e.key.toLowerCase() === 'b') {
         e.preventDefault();
         toggleBookmark(currentPage);
@@ -126,7 +168,7 @@ export const ReaderShell: React.FC = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentPage, handlePageChange, toggleBookmark, audioPlayer]);
+  }, [currentPage, handlePageChange, toggleBookmark, audioPlayer, isPresentationMode]);
 
   // Theme application on body
   useEffect(() => {
@@ -134,17 +176,95 @@ export const ReaderShell: React.FC = () => {
     root.classList.remove('dark', 'paper', 'light');
     if (theme === 'dark') {
       root.classList.add('dark');
-      document.body.className = 'bg-slateDark-900 text-slate-100 antialiased selection:bg-sky-500 selection:text-white font-sans overflow-hidden';
+      document.body.className =
+        'bg-slateDark-900 text-slate-100 antialiased selection:bg-sky-500 selection:text-white font-sans overflow-hidden';
     } else if (theme === 'paper') {
       root.classList.add('paper');
-      document.body.className = 'bg-paper-100 text-paper-900 antialiased selection:bg-amber-500 selection:text-white font-sans overflow-hidden';
+      document.body.className =
+        'bg-paper-100 text-paper-900 antialiased selection:bg-amber-500 selection:text-white font-sans overflow-hidden';
     } else {
       root.classList.add('light');
-      document.body.className = 'bg-slate-100 text-slate-900 antialiased selection:bg-sky-500 selection:text-white font-sans overflow-hidden';
+      document.body.className =
+        'bg-slate-100 text-slate-900 antialiased selection:bg-sky-500 selection:text-white font-sans overflow-hidden';
     }
   }, [theme]);
 
-  const activeActivity = activeActivityId ? dataService.getActivity(activeActivityId) : null;
+  // Resolve page meta: from manifest if available, else dataService
+  const activePageData = activeManifest.pages[currentPage];
+  const pageMeta = useMemo(() => {
+    if (activePageData) {
+      return {
+        pdfPage: currentPage,
+        bookPage: currentPage,
+        title: `${activePageData.unitName} - ${activePageData.lessonName}`,
+        unit: null,
+        lesson: activePageData.lessonName,
+      };
+    }
+    return dataService.getPageMeta(currentPage);
+  }, [activePageData, currentPage]);
+
+  // Resolve page exercises for contextual panel
+  const pageExercises: ExerciseItem[] = useMemo(() => {
+    if (activePageData && activePageData.exercises.length > 0) {
+      const items: ExerciseItem[] = [];
+      activePageData.exercises.forEach((ex) => {
+        ex.questions.forEach((q, idx) => {
+          const isMc = ex.type === 'multiple-choice';
+          items.push({
+            id: q.id,
+            pageNum: currentPage,
+            bookPage: currentPage,
+            label: `${ex.title} (Q${idx + 1})`,
+            fieldType: isMc ? 'single_choice' : ex.type === 'open-response' ? 'textarea' : 'text',
+            x: 10,
+            y: 10 + idx * 8,
+            width: 80,
+            height: 6,
+            placeholder: ex.instructions,
+            hint: q.prompt,
+            explanation: Array.isArray(q.correctAnswer)
+              ? q.correctAnswer.join(', ')
+              : q.correctAnswer,
+            unitRef: ex.title,
+            gradingType: isMc ? 'multiple_choice' : 'normalized',
+            acceptedAnswers: Array.isArray(q.correctAnswer)
+              ? q.correctAnswer
+              : q.correctAnswer
+              ? [q.correctAnswer]
+              : [],
+            options: q.options,
+            audioTrack: ex.audioTrack,
+          });
+        });
+      });
+      return items;
+    }
+    if (bookId === 'english-file-pre-int') {
+      return dataService.getExercisesForPage(currentPage);
+    }
+    return [];
+  }, [activePageData, currentPage, bookId]);
+
+  // Resolve active interactive activity object
+  const activeActivity = useMemo(() => {
+    if (!activeActivityId) return null;
+
+    // Check page exercises in manifest
+    if (activePageData) {
+      const found = activePageData.exercises.find((e) => e.id === activeActivityId);
+      if (found) return found;
+    }
+
+    // Check all pages in manifest
+    for (const p of Object.values(activeManifest.pages)) {
+      const found = p.exercises.find((e) => e.id === activeActivityId);
+      if (found) return found;
+    }
+
+    // Fallback to Oxford Activity from dataService
+    return dataService.getActivity(activeActivityId);
+  }, [activeActivityId, activePageData, activeManifest]);
 
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden">
@@ -170,20 +290,36 @@ export const ReaderShell: React.FC = () => {
         isPanelOpen={isPanelOpen}
         onTogglePanel={() => setIsPanelOpen(!isPanelOpen)}
         onOpenBackupModal={() => setShowBackupModal(true)}
+        onBackToBookshelf={onBackToBookshelf}
+        bookManifest={activeManifest}
+        isPresentationMode={isPresentationMode}
+        onTogglePresentationMode={() => {
+          setIsPresentationMode((prev) => !prev);
+          if (!isPresentationMode) {
+            setIsSidebarOpen(false);
+            setIsPanelOpen(false);
+          }
+        }}
+        showTeacherKey={showTeacherKey}
+        onToggleTeacherKey={() => setShowTeacherKey((prev) => !prev)}
       />
 
       {/* Main Content Workspace */}
       <div className="flex flex-1 overflow-hidden relative">
         {/* Table of Contents Sidebar */}
-        {isSidebarOpen && (
+        {isSidebarOpen && !isPresentationMode && (
           <SidebarTOC
-            units={dataService.getUnits()}
-            referenceSections={dataService.getReferenceSections()}
+            units={bookId === 'english-file-pre-int' ? dataService.getUnits() : []}
+            referenceSections={
+              bookId === 'english-file-pre-int' ? dataService.getReferenceSections() : []
+            }
             currentPage={currentPage}
+            bookManifest={activeManifest}
             onSelectPage={(pageNum) => {
               handlePageChange(pageNum);
-              // Auto-close on mobile
-              if (typeof window !== 'undefined' && window.innerWidth < 768) setIsSidebarOpen(false);
+              if (typeof window !== 'undefined' && window.innerWidth < 768) {
+                setIsSidebarOpen(false);
+              }
             }}
             onClose={() => setIsSidebarOpen(false)}
           />
@@ -192,7 +328,7 @@ export const ReaderShell: React.FC = () => {
         {/* Central Reading Viewport */}
         <div
           className={`flex-1 h-full overflow-hidden transition-all duration-300 flex flex-col ${
-            activeActivity && isActivityDocked ? 'lg:mr-[520px]' : ''
+            activeActivity && isActivityDocked && !isPresentationMode ? 'lg:mr-[520px]' : ''
           }`}
         >
           <PageView
@@ -201,8 +337,11 @@ export const ReaderShell: React.FC = () => {
             zoom={zoom}
             answers={answers}
             completedActivities={completedActivities}
+            bookManifest={activeManifest}
+            isPresentationMode={isPresentationMode}
+            showTeacherKey={showTeacherKey}
             onAnswerChange={(exId, pageId, val) => {
-              const exItem = pageExercises.find(e => e.id === exId);
+              const exItem = pageExercises.find((e) => e.id === exId);
               setAnswerValue(exId, pageId, exItem?.unitRef || 'Unit', val);
             }}
             onSelectExercise={(id) => {
@@ -227,15 +366,19 @@ export const ReaderShell: React.FC = () => {
           />
         </div>
 
-        {/* Oxford-Style Interactive Activity Window (Split Drawer or Floating Modal) */}
+        {/* Oxford / MoEYS Interactive Activity Window */}
         {activeActivity && (
           <ActivityWindow
             activity={activeActivity}
             isOpen={!!activeActivity}
             onClose={() => setActiveActivityId(null)}
-            isDocked={isActivityDocked}
-            onToggleDocked={() => setIsActivityDocked(prev => !prev)}
+            isDocked={isActivityDocked && !isPresentationMode}
+            onToggleDocked={() => setIsActivityDocked((prev) => !prev)}
             mobileView={mobileView}
+            bookId={bookId}
+            currentPage={currentPage}
+            isPresentationMode={isPresentationMode}
+            showTeacherKey={showTeacherKey}
             onPlayAudioTrack={(trackId, title) => {
               audioPlayer.playTrack({
                 trackId,
@@ -244,21 +387,21 @@ export const ReaderShell: React.FC = () => {
                 page: currentPage,
               });
             }}
-            onCompleteActivity={(actId) => {
-              setCompletedActivities(prev => ({ ...prev, [actId]: true }));
+            onCompleteActivity={(actId, progress) => {
+              completeActivity(actId, progress);
             }}
           />
         )}
 
         {/* Contextual Side Exercise Panel */}
-        {isPanelOpen && (
+        {isPanelOpen && !isPresentationMode && (
           <ExercisePanel
             pageMeta={pageMeta}
             exercises={pageExercises}
             answers={answers}
             evaluations={evaluations}
             onAnswerChange={(exId, val) => {
-              const exItem = pageExercises.find(e => e.id === exId);
+              const exItem = pageExercises.find((e) => e.id === exId);
               setAnswerValue(exId, currentPage, exItem?.unitRef || 'Unit', val);
             }}
             onCheckAnswers={() => checkAnswers(pageExercises)}
@@ -280,7 +423,7 @@ export const ReaderShell: React.FC = () => {
       </div>
 
       {/* Floating Mobile/Tablet Toggle Pill between Book View and Exercise View */}
-      {activeActivity && (
+      {activeActivity && !isPresentationMode && (
         <div
           role="navigation"
           aria-label="Mobile View Switcher"

@@ -9,6 +9,9 @@ interface PageOverlayProps {
   completedActivities?: Record<string, boolean>;
   onOpenActivity?: (activityId: string) => void;
   onPlayAudioTrack?: (trackId: string, title: string) => void;
+  isPresentationMode?: boolean;
+  showTeacherKey?: boolean;
+  teacherAnswers?: Record<string, string>;
 }
 
 export const PageOverlay: React.FC<PageOverlayProps> = ({
@@ -17,6 +20,9 @@ export const PageOverlay: React.FC<PageOverlayProps> = ({
   completedActivities = {},
   onOpenActivity,
   onPlayAudioTrack,
+  isPresentationMode = false,
+  showTeacherKey = false,
+  teacherAnswers = {},
 }) => {
   const pageHotspots = hotspots || dataService.getHotspotsForPage(pageNum);
 
@@ -27,6 +33,8 @@ export const PageOverlay: React.FC<PageOverlayProps> = ({
           ? !!completedActivities[hotspot.activityId]
           : false;
 
+        const answerText = hotspot.activityId ? teacherAnswers[hotspot.activityId] : undefined;
+
         return (
           <ActivityHotspotBadge
             key={hotspot.id}
@@ -34,6 +42,9 @@ export const PageOverlay: React.FC<PageOverlayProps> = ({
             isCompleted={isCompleted}
             onOpenActivity={onOpenActivity}
             onPlayAudioTrack={onPlayAudioTrack}
+            isPresentationMode={isPresentationMode}
+            showTeacherKey={showTeacherKey}
+            teacherAnswerText={answerText}
           />
         );
       })}
