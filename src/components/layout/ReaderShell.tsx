@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { BookOpen, FileEdit } from 'lucide-react';
 import { TopBar } from './TopBar';
 import { SidebarTOC } from './SidebarTOC';
 import { PageView } from '../viewer/PageView';
@@ -23,6 +24,8 @@ export const ReaderShell: React.FC = () => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [activeExerciseId, setActiveExerciseId] = useState<string | undefined>();
   const [activeActivityId, setActiveActivityId] = useState<string | null>(null);
+  const [isActivityDocked, setIsActivityDocked] = useState<boolean>(true);
+  const [mobileView, setMobileView] = useState<'book' | 'exercise'>('exercise');
   const [completedActivities, setCompletedActivities] = useState<Record<string, boolean>>(() => {
     const all = StorageService.getAllActivityProgress();
     const map: Record<string, boolean> = {};
@@ -55,7 +58,7 @@ export const ReaderShell: React.FC = () => {
 
   const pageMeta = dataService.getPageMeta(currentPage);
   const pageExercises = dataService.getExercisesForPage(currentPage);
-  const totalPages = 169;
+  const totalPages = 168;
 
   // Sync URL hash for deep linking (e.g. #page=7)
   useEffect(() => {
@@ -187,35 +190,42 @@ export const ReaderShell: React.FC = () => {
         )}
 
         {/* Central Reading Viewport */}
-        <PageView
-          currentPage={currentPage}
-          viewMode={viewMode}
-          zoom={zoom}
-          answers={answers}
-          completedActivities={completedActivities}
-          onAnswerChange={(exId, pageId, val) => {
-            const exItem = pageExercises.find(e => e.id === exId);
-            setAnswerValue(exId, pageId, exItem?.unitRef || 'Unit', val);
-          }}
-          onSelectExercise={(id) => {
-            setActiveExerciseId(id);
-            if (!isPanelOpen) setIsPanelOpen(true);
-          }}
-          onOpenActivity={(actId) => {
-            setActiveActivityId(actId);
-            setIsPanelOpen(false);
-          }}
-          onPlayAudioTrack={(trackId, title) => {
-            audioPlayer.playTrack({
-              trackId,
-              title,
-              filename: trackId,
-              page: currentPage,
-            });
-          }}
-          activeExerciseId={activeExerciseId}
-          isCleanMode={isCleanMode}
-        />
+        <div
+          className={`flex-1 h-full overflow-hidden transition-all duration-300 flex flex-col ${
+            activeActivity && isActivityDocked ? 'lg:mr-[520px]' : ''
+          }`}
+        >
+          <PageView
+            currentPage={currentPage}
+            viewMode={viewMode}
+            zoom={zoom}
+            answers={answers}
+            completedActivities={completedActivities}
+            onAnswerChange={(exId, pageId, val) => {
+              const exItem = pageExercises.find(e => e.id === exId);
+              setAnswerValue(exId, pageId, exItem?.unitRef || 'Unit', val);
+            }}
+            onSelectExercise={(id) => {
+              setActiveExerciseId(id);
+              if (!isPanelOpen) setIsPanelOpen(true);
+            }}
+            onOpenActivity={(actId) => {
+              setActiveActivityId(actId);
+              setMobileView('exercise');
+              setIsPanelOpen(false);
+            }}
+            onPlayAudioTrack={(trackId, title) => {
+              audioPlayer.playTrack({
+                trackId,
+                title,
+                filename: trackId,
+                page: currentPage,
+              });
+            }}
+            activeExerciseId={activeExerciseId}
+            isCleanMode={isCleanMode}
+          />
+        </div>
 
         {/* Oxford-Style Interactive Activity Window (Split Drawer or Floating Modal) */}
         {activeActivity && (
@@ -223,6 +233,9 @@ export const ReaderShell: React.FC = () => {
             activity={activeActivity}
             isOpen={!!activeActivity}
             onClose={() => setActiveActivityId(null)}
+            isDocked={isActivityDocked}
+            onToggleDocked={() => setIsActivityDocked(prev => !prev)}
+            mobileView={mobileView}
             onPlayAudioTrack={(trackId, title) => {
               audioPlayer.playTrack({
                 trackId,
@@ -265,6 +278,42 @@ export const ReaderShell: React.FC = () => {
           />
         )}
       </div>
+
+      {/* Floating Mobile/Tablet Toggle Pill between Book View and Exercise View */}
+      {activeActivity && (
+        <div
+          role="navigation"
+          aria-label="Mobile View Switcher"
+          className={`lg:hidden fixed left-1/2 -translate-x-1/2 z-50 flex items-center bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-full shadow-2xl p-1 gap-1 transition-all duration-200 ${
+            audioPlayer.activeTrack ? 'bottom-24' : 'bottom-6'
+          }`}
+        >
+          <button
+            type="button"
+            onClick={() => setMobileView('book')}
+            className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+              mobileView === 'book'
+                ? 'bg-sky-600 text-white shadow-md'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Book View</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileView('exercise')}
+            className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+              mobileView === 'exercise'
+                ? 'bg-sky-600 text-white shadow-md'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <FileEdit className="w-3.5 h-3.5" />
+            <span>Exercise View</span>
+          </button>
+        </div>
+      )}
 
       {/* Persistent Docked Audio Player */}
       {audioPlayer.activeTrack && (

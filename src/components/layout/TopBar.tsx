@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageMeta, ThemeMode, ViewMode } from '../../types';
 import {
   Menu,
@@ -68,6 +68,10 @@ export const TopBar: React.FC<TopBarProps> = ({
 }) => {
   const [pageInput, setPageInput] = useState(currentPage.toString());
 
+  useEffect(() => {
+    setPageInput(currentPage.toString());
+  }, [currentPage]);
+
   const handlePageSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const num = parseInt(pageInput, 10);
@@ -100,9 +104,9 @@ export const TopBar: React.FC<TopBarProps> = ({
           <Menu className="w-5 h-5" />
         </button>
 
-        <div className="flex items-center gap-2 max-w-[200px] sm:max-w-[320px] lg:max-w-[420px]">
-          <span className="hidden sm:inline-block px-2 py-0.5 text-xs font-bold bg-sky-600 text-white rounded shadow-sm">
-            English File
+        <div className="flex items-center gap-2 max-w-[200px] sm:max-w-[340px] lg:max-w-[460px]">
+          <span className="hidden sm:inline-block px-2.5 py-0.5 text-xs font-bold bg-sky-600 text-white rounded shadow-sm flex-shrink-0">
+            English File Pre-Intermediate
           </span>
           <span className="text-xs md:text-sm font-semibold text-slate-200 truncate" title={pageMeta.title}>
             {pageMeta.title}

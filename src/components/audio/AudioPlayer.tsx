@@ -41,7 +41,11 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const progressPercent = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
 
   return (
-    <div className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-2xl bg-slateDark-900/95 backdrop-blur-md border border-slate-700/80 rounded-2xl shadow-2xl p-3 md:p-4 text-white animate-in slide-in-from-bottom duration-200">
+    <div
+      role="region"
+      aria-label="Audio Player"
+      className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-2xl bg-slateDark-900/95 backdrop-blur-md border border-slate-700/80 rounded-2xl shadow-2xl p-3 md:p-4 text-white animate-in slide-in-from-bottom duration-200"
+    >
       {/* Top track info bar */}
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2 truncate pr-2">

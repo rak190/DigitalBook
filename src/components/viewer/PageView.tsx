@@ -157,7 +157,7 @@ export const PageView: React.FC<PageViewProps> = ({
         {renderPageContent(leftPageNum, leftPageMeta, leftExercises)}
 
         {/* Right Page (Only in Spread Mode) */}
-        {rightPageNum && rightPageNum <= 169 && (
+        {rightPageNum && rightPageNum <= 168 && (
           renderPageContent(rightPageNum, rightPageMeta, rightExercises)
         )}
       </div>

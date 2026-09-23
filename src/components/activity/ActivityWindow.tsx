@@ -21,6 +21,9 @@ interface ActivityWindowProps {
   onClose: () => void;
   onPlayAudioTrack?: (trackId: string, title: string) => void;
   onCompleteActivity?: (activityId: string) => void;
+  isDocked?: boolean;
+  onToggleDocked?: () => void;
+  mobileView?: 'book' | 'exercise';
 }
 
 export const ActivityWindow: React.FC<ActivityWindowProps> = ({
@@ -29,8 +32,14 @@ export const ActivityWindow: React.FC<ActivityWindowProps> = ({
   onClose,
   onPlayAudioTrack,
   onCompleteActivity,
+  isDocked: controlledDocked,
+  onToggleDocked,
+  mobileView = 'exercise',
 }) => {
-  const [isDocked, setIsDocked] = useState<boolean>(true);
+  const [internalDocked, setInternalDocked] = useState<boolean>(true);
+  const isDocked = controlledDocked !== undefined ? controlledDocked : internalDocked;
+  const toggleDocked = onToggleDocked || (() => setInternalDocked((prev) => !prev));
+
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [evaluations, setEvaluations] = useState<Record<string, { isCorrect: boolean; acceptedAnswers: string[]; hint?: string }>>({});
   const [showAnswers, setShowAnswers] = useState<boolean>(false);
@@ -182,8 +191,12 @@ export const ActivityWindow: React.FC<ActivityWindowProps> = ({
       aria-label="Activity Window"
       className={
         isDocked
-          ? 'fixed top-14 right-0 bottom-0 w-full sm:w-[460px] lg:w-[520px] bg-slateDark-900 border-l border-slate-800 shadow-2xl flex flex-col z-50 animate-slide-in-right'
-          : 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in'
+          ? `fixed top-14 right-0 bottom-0 w-full sm:w-[460px] lg:w-[520px] bg-slateDark-900 border-l border-slate-800 shadow-2xl flex-col z-50 animate-slide-in-right ${
+              mobileView === 'book' ? 'hidden lg:flex' : 'flex'
+            }`
+          : `fixed inset-0 z-50 items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in ${
+              mobileView === 'book' ? 'hidden lg:flex' : 'flex'
+            }`
       }
     >
       <div
@@ -229,7 +242,7 @@ export const ActivityWindow: React.FC<ActivityWindowProps> = ({
             {/* Toggle Dock / Float */}
             <button
               type="button"
-              onClick={() => setIsDocked(!isDocked)}
+              onClick={toggleDocked}
               className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
               title={isDocked ? 'Float as Centered Modal' : 'Dock to Right Drawer'}
             >
