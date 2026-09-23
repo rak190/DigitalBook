@@ -133,22 +133,22 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             style={{ width: `${progressPercent}%` }}
           />
         </div>
-        <span className="text-[11px] font-mono text-slate-400 w-9">
-          {formatTime(duration)}
+        <span className="text-[11px] font-mono text-slate-400 w-12 text-left">
+          -{formatTime(Math.max(0, duration - currentTime))}
         </span>
       </div>
 
       {/* Player Controls */}
-      <div className="flex items-center justify-between">
-        {/* Playback speed presets */}
+      <div className="flex items-center justify-between gap-2">
+        {/* Playback speed presets: 0.8x, 1.0x, 1.2x */}
         <div className="flex items-center gap-1">
-          {[0.75, 1.0, 1.25, 1.5].map((rate) => (
+          {[0.8, 1.0, 1.2].map((rate) => (
             <button
               key={rate}
               onClick={() => onChangePlaybackRate(rate)}
-              className={`px-1.5 py-0.5 text-[10px] font-bold rounded ${
-                playbackRate === rate
-                  ? 'bg-sky-500 text-white'
+              className={`px-2 py-0.5 text-[10px] font-bold rounded transition-colors ${
+                Math.abs(playbackRate - rate) < 0.05
+                  ? 'bg-sky-500 text-white shadow-sm'
                   : 'bg-slate-800 text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -184,8 +184,19 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
           </button>
         </div>
 
-        {/* Spacer to balance layout */}
-        <div className="w-20" />
+        {/* Volume Slider */}
+        <div className="flex items-center gap-1.5 w-24">
+          <Volume2 className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.05"
+            defaultValue="1"
+            className="w-16 h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-sky-500"
+            title="Volume"
+          />
+        </div>
       </div>
     </div>
   );

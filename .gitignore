@@ -14,4 +14,4 @@ public/book_thumbnails/
 node_modules/
 dist/
 *.tsbuildinfo
-
+.agents/

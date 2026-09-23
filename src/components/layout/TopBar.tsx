@@ -137,15 +137,17 @@ export const TopBar: React.FC<TopBarProps> = ({
           <ChevronLeft className="w-5 h-5" />
         </button>
 
-        <form onSubmit={handlePageSubmit} className="flex items-center gap-1 text-xs">
+        <form onSubmit={handlePageSubmit} className="flex items-center gap-1.5 text-xs text-slate-300 font-medium select-none">
+          <span>Page</span>
           <input
             type="text"
             value={pageInput}
             onChange={(e) => setPageInput(e.target.value)}
             onBlur={() => setPageInput(currentPage.toString())}
-            className="w-11 py-1 text-center font-mono font-bold bg-slate-800 border border-slate-700 rounded text-white outline-none focus:border-sky-500"
+            className="w-12 py-1 text-center font-mono font-bold bg-slate-800 border border-slate-700 rounded-md text-white outline-none focus:border-sky-500 shadow-inner"
+            aria-label="Current Page Number"
           />
-          <span className="text-slate-400 font-mono">/ {totalPages}</span>
+          <span className="text-slate-400">of 168</span>
         </form>
 
         <button
@@ -184,7 +186,21 @@ export const TopBar: React.FC<TopBarProps> = ({
             className="px-1.5 py-0.5 text-[10px] font-bold text-slate-400 hover:text-white rounded hover:bg-slate-700"
             title="Reset Zoom to 100%"
           >
-            1:1
+            100%
+          </button>
+          <button
+            onClick={() => onZoomChange(140)}
+            className="px-1.5 py-0.5 text-[10px] font-bold text-slate-400 hover:text-white rounded hover:bg-slate-700"
+            title="Fit to Width"
+          >
+            Fit Width
+          </button>
+          <button
+            onClick={() => onZoomChange(90)}
+            className="px-1.5 py-0.5 text-[10px] font-bold text-slate-400 hover:text-white rounded hover:bg-slate-700"
+            title="Fit to Page"
+          >
+            Fit Page
           </button>
         </div>
 
@@ -200,6 +216,23 @@ export const TopBar: React.FC<TopBarProps> = ({
         >
           <BookMarked className="w-4 h-4" />
           <span className="hidden xl:inline">{viewMode === 'spread' ? '2 Pages' : '1 Page'}</span>
+        </button>
+
+        {/* Fullscreen Toggle */}
+        <button
+          type="button"
+          onClick={() => {
+            if (typeof document === 'undefined') return;
+            if (!document.fullscreenElement) {
+              document.documentElement.requestFullscreen().catch(() => {});
+            } else {
+              document.exitFullscreen().catch(() => {});
+            }
+          }}
+          className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+          title="Toggle Fullscreen Mode"
+        >
+          <Maximize2 className="w-4 h-4" />
         </button>
 
         {/* Clean Mode (Screen Share / Hide Answers) */}

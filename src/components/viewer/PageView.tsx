@@ -9,8 +9,10 @@ interface PageViewProps {
   viewMode: ViewMode;
   zoom: number;
   answers: Record<string, ExerciseAnswer>;
+  completedActivities?: Record<string, boolean>;
   onAnswerChange: (exerciseId: string, pageId: number, value: string) => void;
   onSelectExercise?: (exerciseId: string) => void;
+  onOpenActivity?: (activityId: string) => void;
   onPlayAudioTrack?: (trackId: string, title: string) => void;
   activeExerciseId?: string;
   isCleanMode?: boolean;
@@ -21,8 +23,10 @@ export const PageView: React.FC<PageViewProps> = ({
   viewMode,
   zoom,
   answers,
+  completedActivities = {},
   onAnswerChange,
   onSelectExercise,
+  onOpenActivity,
   onPlayAudioTrack,
   activeExerciseId,
   isCleanMode = false,
@@ -127,13 +131,10 @@ export const PageView: React.FC<PageViewProps> = ({
         )}
 
         <PageOverlay
-          exercises={exercises}
-          answers={answers}
-          onAnswerChange={(exId, val) => onAnswerChange(exId, pageNum, val)}
-          onSelectExercise={onSelectExercise}
+          pageNum={pageNum}
+          completedActivities={completedActivities}
+          onOpenActivity={onOpenActivity}
           onPlayAudioTrack={onPlayAudioTrack}
-          activeExerciseId={activeExerciseId}
-          isCleanMode={isCleanMode}
         />
       </div>
     );

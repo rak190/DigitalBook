@@ -3,6 +3,7 @@ import { TopBar } from './TopBar';
 import { SidebarTOC } from './SidebarTOC';
 import { PageView } from '../viewer/PageView';
 import { ExercisePanel } from '../panel/ExercisePanel';
+import { ActivityWindow } from '../activity/ActivityWindow';
 import { AudioPlayer } from '../audio/AudioPlayer';
 import { AudioUploadModal } from '../audio/AudioUploadModal';
 import { BackupModal } from '../tools/BackupModal';
@@ -19,8 +20,21 @@ export const ReaderShell: React.FC = () => {
   const [theme, setTheme] = useState<ThemeMode>(() => StorageService.getTheme());
   const [isCleanMode, setIsCleanMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isPanelOpen, setIsPanelOpen] = useState(true);
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [activeExerciseId, setActiveExerciseId] = useState<string | undefined>();
+  const [activeActivityId, setActiveActivityId] = useState<string | null>(null);
+  const [completedActivities, setCompletedActivities] = useState<Record<string, boolean>>(() => {
+    const all = StorageService.getAllActivityProgress();
+    const map: Record<string, boolean> = {};
+    Object.entries(all).forEach(([key, val]) => {
+      if (val.isCompleted) {
+        const parts = key.split('_');
+        const actId = parts.slice(2).join('_');
+        if (actId) map[actId] = true;
+      }
+    });
+    return map;
+  });
   const [showBackupModal, setShowBackupModal] = useState(false);
 
   const {
@@ -127,6 +141,8 @@ export const ReaderShell: React.FC = () => {
     }
   }, [theme]);
 
+  const activeActivity = activeActivityId ? dataService.getActivity(activeActivityId) : null;
+
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden">
       {/* Top Navigation Bar */}
@@ -176,6 +192,7 @@ export const ReaderShell: React.FC = () => {
           viewMode={viewMode}
           zoom={zoom}
           answers={answers}
+          completedActivities={completedActivities}
           onAnswerChange={(exId, pageId, val) => {
             const exItem = pageExercises.find(e => e.id === exId);
             setAnswerValue(exId, pageId, exItem?.unitRef || 'Unit', val);
@@ -183,6 +200,10 @@ export const ReaderShell: React.FC = () => {
           onSelectExercise={(id) => {
             setActiveExerciseId(id);
             if (!isPanelOpen) setIsPanelOpen(true);
+          }}
+          onOpenActivity={(actId) => {
+            setActiveActivityId(actId);
+            setIsPanelOpen(false);
           }}
           onPlayAudioTrack={(trackId, title) => {
             audioPlayer.playTrack({
@@ -195,6 +216,26 @@ export const ReaderShell: React.FC = () => {
           activeExerciseId={activeExerciseId}
           isCleanMode={isCleanMode}
         />
+
+        {/* Oxford-Style Interactive Activity Window (Split Drawer or Floating Modal) */}
+        {activeActivity && (
+          <ActivityWindow
+            activity={activeActivity}
+            isOpen={!!activeActivity}
+            onClose={() => setActiveActivityId(null)}
+            onPlayAudioTrack={(trackId, title) => {
+              audioPlayer.playTrack({
+                trackId,
+                title,
+                filename: trackId,
+                page: currentPage,
+              });
+            }}
+            onCompleteActivity={(actId) => {
+              setCompletedActivities(prev => ({ ...prev, [actId]: true }));
+            }}
+          />
+        )}
 
         {/* Contextual Side Exercise Panel */}
         {isPanelOpen && (

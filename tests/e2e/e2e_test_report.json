@@ -1,0 +1,30 @@
+{
+  "suite": "Oxford Learner's Bookshelf E2E Test Suite",
+  "timestamp": "2026-09-23T01:01:48Z",
+  "status": "PASSED",
+  "totalTests": 88,
+  "passedTests": 88,
+  "failedTests": 0,
+  "errorTests": 0,
+  "totalAssertions": 489,
+  "durationSeconds": 0.006,
+  "tierBreakdown": {
+    "Tier 1 (Feature Coverage)": {
+      "tests": 44,
+      "expected_assertions": 220
+    },
+    "Tier 2 (Boundary & Corner Cases)": {
+      "tests": 29,
+      "expected_assertions": 145
+    },
+    "Tier 3 (Cross-Feature Combinations)": {
+      "tests": 11,
+      "expected_assertions": 69
+    },
+    "Tier 4 (Real-World Scenarios)": {
+      "tests": 4,
+      "expected_assertions": 55
+    }
+  },
+  "featuresCovered": 44
+}

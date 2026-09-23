@@ -1,6 +1,8 @@
-import { ExerciseAnswer, UserBookmark, UserNote, ThemeMode } from '../types';
+import { ExerciseAnswer, UserBookmark, UserNote, ThemeMode, ScopedActivityState, BookProgressStore } from '../types';
 
-const STORAGE_KEYS = {
+export const STORAGE_KEYS = {
+  SCOPED_PROGRESS: 'oxford_activity_progress_v1',
+  OXFORD_ACTIVITIES: 'oxford_activity_progress_v1',
   ANSWERS: 'digital_textbook_answers_v2',
   BOOKMARKS: 'digital_textbook_bookmarks_v2',
   NOTES: 'digital_textbook_notes_v2',
@@ -123,6 +125,33 @@ export class StorageService {
       localStorage.setItem(STORAGE_KEYS.ANSWERS, JSON.stringify(answers));
     } catch (e) {
       console.warn('LocalStorage save failed:', e);
+    }
+  }
+
+  // Oxford Activity Progress
+  static getAllActivityProgress(): Record<string, ScopedActivityState> {
+    if (!hasLocalStorage) return {};
+    try {
+      const raw = localStorage.getItem(STORAGE_KEYS.OXFORD_ACTIVITIES);
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  }
+
+  static getActivityProgress(activityKey: string): ScopedActivityState | null {
+    const all = this.getAllActivityProgress();
+    return all[activityKey] || null;
+  }
+
+  static saveActivityProgress(activityKey: string, state: ScopedActivityState): void {
+    if (!hasLocalStorage) return;
+    try {
+      const all = this.getAllActivityProgress();
+      all[activityKey] = state;
+      localStorage.setItem(STORAGE_KEYS.OXFORD_ACTIVITIES, JSON.stringify(all));
+    } catch (e) {
+      console.warn('Failed to save activity progress:', e);
     }
   }
 
