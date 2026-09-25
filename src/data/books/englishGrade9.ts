@@ -13,8 +13,8 @@ export const englishGrade9: BookManifest = {
   gradeLabel: 'Grade 9',
   cefrLevel: 'A2',
   coverImage: `${BASE}moeys_g9_cover.jpg`,
-  totalPages: 275,
-  physicalTotalPages: 275,
+  totalPages: 22,           // Digitized pages currently available
+  physicalTotalPages: 22,   // Full book has 275 printed pages — expand as pages are added
   language: 'en-US / en-KH',
   description:
     'Official English textbook for Grade 9 secondary school students in Cambodia. Features communicative grammar, reading comprehension, pronunciation drills, and after-school topic discussions.',

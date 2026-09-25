@@ -13,7 +13,7 @@ export const englishFilePreIntermediate: BookManifest = {
   gradeLabel: 'Pre-Intermediate',
   cefrLevel: 'A2-B1',
   coverImage: `${BASE}book_thumbnails/thumb_1.jpg`,
-  totalPages: 169,
+  totalPages: 169,          // All 169 page images are present; 10 pages have interactive exercises
   physicalTotalPages: 169,
   language: 'en-GB',
   description:

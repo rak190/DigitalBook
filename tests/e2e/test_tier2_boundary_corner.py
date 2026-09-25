@@ -3,6 +3,9 @@ Tier 2: Boundary & Corner Cases Test Suite
 Covers edge cases, extreme bounds, error fallbacks, punctuation normalization,
 compound blanks, and storage resiliency.
 Total Test Checks: 150+ assertions.
+
+IMPORTANT: Python-variable simulation suite — no browser launched.
+For real browser verification, run: python test_comprehensive_platform_e2e.py
 """
 
 import unittest

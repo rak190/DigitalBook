@@ -169,15 +169,27 @@ export const PageView: React.FC<PageViewProps> = ({
         }}
       >
         {isError ? (
-          <div className="w-full aspect-[1/1.4] bg-slate-900 border border-slate-800 flex flex-col items-center justify-center p-6 text-center text-slate-400">
-            <AlertCircle className="w-12 h-12 text-amber-500 mb-3" />
-            <h3 className="text-sm font-bold text-white mb-1">Page Image Unavailable</h3>
-            <p className="text-xs text-slate-400 max-w-xs mb-3">
-              Unable to load visual for {titleText}.
-            </p>
-            <span className="text-[10px] font-mono text-slate-500">
-              Target: {imageSrc}
-            </span>
+          <div className="w-full aspect-[1/1.4] bg-slate-950 border border-slate-800 flex flex-col items-center justify-center p-8 text-center">
+            {!pData ? (
+              <>
+                <BookOpen className="w-14 h-14 text-slate-600 mb-4" />
+                <h3 className="text-base font-semibold text-slate-300 mb-2">Page Not Yet Digitized</h3>
+                <p className="text-sm text-slate-500 max-w-xs">
+                  Page {pageNum} has not been added to the digital edition yet. Please refer to your physical textbook for this page.
+                </p>
+              </>
+            ) : (
+              <>
+                <AlertCircle className="w-12 h-12 text-amber-500 mb-3" />
+                <h3 className="text-sm font-bold text-white mb-1">Page Image Unavailable</h3>
+                <p className="text-xs text-slate-400 max-w-xs mb-3">
+                  Unable to load the image for {titleText}.
+                </p>
+                <span className="text-[10px] font-mono text-slate-600">
+                  {imageSrc}
+                </span>
+              </>
+            )}
           </div>
         ) : (
           <div className="relative w-full">

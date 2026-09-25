@@ -3,14 +3,9 @@
 *.db
 __pycache__/
 /audio/
-/book_pages/
-/book_thumbnails/
 /sample_pages/
+# Audio files are large (~155 MB) and course-specific — keep excluded from git
 public/audio/
-public/book_pages/
-public/book_thumbnails/
-*.png
-*.jpg
 node_modules/
 dist/
 *.tsbuildinfo

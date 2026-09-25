@@ -13,8 +13,8 @@ export const englishGrade8: BookManifest = {
   gradeLabel: 'Grade 8',
   cefrLevel: 'A1-A2',
   coverImage: `${BASE}moeys_g8_cover.jpg`,
-  totalPages: 242,
-  physicalTotalPages: 242,
+  totalPages: 22,           // Digitized pages currently available
+  physicalTotalPages: 22,   // Full book has 242 printed pages — expand as pages are added
   language: 'en-US / en-KH',
   description:
     'Official English textbook for Grade 8 secondary school students in Cambodia. Includes classroom presentation activities, dialogue audio, review units, and interactive grammar and vocabulary practice.',

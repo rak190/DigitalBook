@@ -213,10 +213,14 @@ export class StorageService {
 
   static clearBookData(bookId: string): void {
     if (!hasLocalStorage) return;
+    // Remove the per-book scoped key
     const key = this.getScopedKey(bookId);
     localStorage.removeItem(key);
+    // Also clean up legacy global keys specific to english-file-pre-int
+    // (do NOT call clearAllData() — that would wipe all other books)
     if (bookId === 'english-file-pre-int') {
-      this.clearAllData();
+      localStorage.removeItem(STORAGE_KEYS.ANSWERS);
+      localStorage.removeItem(STORAGE_KEYS.OXFORD_ACTIVITIES);
     }
   }
 

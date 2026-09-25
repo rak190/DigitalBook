@@ -2,6 +2,11 @@
 Tier 1: Feature Coverage Test Suite (>=5 test cases per feature across R1-R6)
 Covers all 44 features identified in PROJECT.md and ORIGINAL_REQUEST.md.
 Total Test Checks: 220+ assertions.
+
+IMPORTANT: This is a Python-variable simulation suite, NOT a browser test.
+TestContext is initialized with page=None. No HTTP requests are made.
+No browser is launched. All assertions evaluate Python boolean expressions.
+For real browser verification, run: python test_comprehensive_platform_e2e.py
 """
 
 import unittest

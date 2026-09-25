@@ -5,6 +5,9 @@ Covers end-to-end student workflows on Unit 1C Page 11:
 - Scenario 2: Ex 5a Prepositions with Word Bank Chip Insertion, Compound Blanks, Grading, and Reset
 - Scenario 3: Two-Page Spread, Multi-Section Navigation, and Persistent Audio Dock
 Total Test Checks: 60+ assertions.
+
+IMPORTANT: Python-variable simulation suite — no browser launched.
+For real browser verification, run: python test_comprehensive_platform_e2e.py
 """
 
 import unittest

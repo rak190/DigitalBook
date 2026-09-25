@@ -9,6 +9,9 @@ Covers pairwise interactions between reader subsystems:
 - Docked drawer mode <-> Floating modal transition
 - URL hash deep linking + State synchronization
 Total Test Checks: 80+ assertions.
+
+IMPORTANT: Python-variable simulation suite — no browser launched.
+For real browser verification, run: python test_comprehensive_platform_e2e.py
 """
 
 import unittest

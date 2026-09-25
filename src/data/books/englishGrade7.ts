@@ -13,8 +13,8 @@ export const englishGrade7: BookManifest = {
   gradeLabel: 'Grade 7',
   cefrLevel: 'A1',
   coverImage: `${BASE}moeys_g7_cover.jpg`,
-  totalPages: 242,
-  physicalTotalPages: 242,
+  totalPages: 22,           // Digitized pages currently available
+  physicalTotalPages: 22,   // Full book has 242 printed pages — expand as pages are added
   language: 'en-US / en-KH',
   description:
     'Official English textbook for Grade 7 secondary school students in Cambodia. Published by MoEYS for national curriculum classrooms. Includes classroom presentation activities, dialogue audio, and interactive grammar exercises.',
