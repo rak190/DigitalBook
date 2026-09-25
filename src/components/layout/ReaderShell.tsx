@@ -8,12 +8,13 @@ import { ActivityWindow } from '../activity/ActivityWindow';
 import { AudioPlayer } from '../audio/AudioPlayer';
 import { AudioUploadModal } from '../audio/AudioUploadModal';
 import { BackupModal } from '../tools/BackupModal';
+import { ImageViewer } from '../image-viewer/ImageViewer';
 import { useBookProgress } from '../../hooks/useBookProgress';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import { dataService } from '../../services/dataService';
-import { ThemeMode, ViewMode, ExerciseItem } from '../../types';
+import { ThemeMode, ViewMode, ExerciseItem, ImageRegionDefinition } from '../../types';
 import { StorageService } from '../../services/storage';
-import { getBookManifest, DEFAULT_BOOK_ID, Exercise } from '../../data/booksRegistry';
+import { getBookManifest, DEFAULT_BOOK_ID } from '../../data/booksRegistry';
 
 interface ReaderShellProps {
   bookId?: string;
@@ -31,7 +32,6 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
   }, [propBookId]);
 
   const bookId = activeManifest.id;
-
   const totalPages = activeManifest.totalPages;
 
   const [currentPage, setCurrentPage] = useState<number>(() => {
@@ -42,7 +42,7 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
     if (saved && saved >= 1 && saved <= totalPages) {
       return saved;
     }
-    return bookId === 'english-file-pre-int' ? 7 : 1;
+    return activeManifest?.initialPage || 1;
   });
 
   const [zoom, setZoom] = useState<number>(() => StorageService.getZoom());
@@ -56,6 +56,9 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
   const [isActivityDocked, setIsActivityDocked] = useState<boolean>(true);
   const [mobileView, setMobileView] = useState<'book' | 'exercise'>('exercise');
   const [showBackupModal, setShowBackupModal] = useState(false);
+
+  // Full-screen Image Viewer (Lightbox) state
+  const [activeImageRegion, setActiveImageRegion] = useState<ImageRegionDefinition | null>(null);
 
   // Classroom Presentation Mode State
   const [isPresentationMode, setIsPresentationMode] = useState(false);
@@ -85,10 +88,11 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
     const validTarget =
       initialPage && initialPage >= 1 && initialPage <= totalPages
         ? initialPage
-        : StorageService.getBookData(bookId).lastPage || (bookId === 'english-file-pre-int' ? 7 : 1);
+        : StorageService.getBookData(bookId).lastPage || activeManifest?.initialPage || 1;
     setCurrentPage(validTarget);
     setActiveActivityId(null);
     setActiveExerciseId(undefined);
+    setActiveImageRegion(null);
   }, [bookId, initialPage, totalPages]);
 
   // Deep linking sync (e.g. #/reader?book=...&page=7)
@@ -152,23 +156,42 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
       } else if (e.key === 'ArrowRight' || e.key === 'PageDown') {
         e.preventDefault();
         handlePageChange(currentPage + 1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        handlePageChange(1);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        handlePageChange(totalPages);
       } else if (e.key === 'Escape') {
-        if (isPresentationMode) {
+        if (activeImageRegion) {
+          setActiveImageRegion(null);
+        } else if (isPresentationMode) {
           setIsPresentationMode(false);
         } else {
           setIsSidebarOpen(false);
           setActiveActivityId(null);
           audioPlayer.closePlayer();
         }
-      } else if (e.ctrlKey && e.key.toLowerCase() === 'b') {
+      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
         e.preventDefault();
         toggleBookmark(currentPage);
+      } else if (e.key === 'F11') {
+        e.preventDefault();
+        setIsPresentationMode((prev) => !prev);
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentPage, handlePageChange, toggleBookmark, audioPlayer, isPresentationMode]);
+  }, [
+    currentPage,
+    handlePageChange,
+    toggleBookmark,
+    audioPlayer,
+    isPresentationMode,
+    activeImageRegion,
+    totalPages,
+  ]);
 
   // Theme application on body
   useEffect(() => {
@@ -193,12 +216,19 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
   const activePageData = activeManifest.pages[currentPage];
   const pageMeta = useMemo(() => {
     if (activePageData) {
+      const uTitle =
+        activePageData.unit || activePageData.chapter || activePageData.unitName || 'Unit';
+      const lTitle =
+        activePageData.lesson ||
+        activePageData.lessonName ||
+        activePageData.title ||
+        `Page ${currentPage}`;
       return {
         pdfPage: currentPage,
-        bookPage: currentPage,
-        title: `${activePageData.unitName} - ${activePageData.lessonName}`,
+        bookPage: activePageData.printedPageNumber || currentPage,
+        title: `${uTitle} - ${lTitle}`.replace(/^ - |- $/g, ''),
         unit: null,
-        lesson: activePageData.lessonName,
+        lesson: lTitle,
       };
     }
     return dataService.getPageMeta(currentPage);
@@ -214,7 +244,7 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
           items.push({
             id: q.id,
             pageNum: currentPage,
-            bookPage: currentPage,
+            bookPage: activePageData.printedPageNumber || currentPage,
             label: `${ex.title} (Q${idx + 1})`,
             fieldType: isMc ? 'single_choice' : ex.type === 'open-response' ? 'textarea' : 'text',
             x: 10,
@@ -233,7 +263,7 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
               : q.correctAnswer
               ? [q.correctAnswer]
               : [],
-            options: q.options,
+            options: q.options?.map((opt) => (typeof opt === 'string' ? opt : opt.label)),
             audioTrack: ex.audioTrack,
           });
         });
@@ -265,6 +295,30 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
     // Fallback to Oxford Activity from dataService
     return dataService.getActivity(activeActivityId);
   }, [activeActivityId, activePageData, activeManifest]);
+
+  // Handle opening an interactive image region
+  const handleOpenImage = useCallback(
+    (regionId: string) => {
+      if (activePageData?.imageRegions) {
+        const found = activePageData.imageRegions.find((r) => r.id === regionId);
+        if (found) {
+          setActiveImageRegion(found);
+          return;
+        }
+      }
+
+      for (const p of Object.values(activeManifest.pages)) {
+        if (p.imageRegions) {
+          const found = p.imageRegions.find((r) => r.id === regionId);
+          if (found) {
+            setActiveImageRegion(found);
+            return;
+          }
+        }
+      }
+    },
+    [activePageData, activeManifest]
+  );
 
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden">
@@ -309,10 +363,6 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
         {/* Table of Contents Sidebar */}
         {isSidebarOpen && !isPresentationMode && (
           <SidebarTOC
-            units={bookId === 'english-file-pre-int' ? dataService.getUnits() : []}
-            referenceSections={
-              bookId === 'english-file-pre-int' ? dataService.getReferenceSections() : []
-            }
             currentPage={currentPage}
             bookManifest={activeManifest}
             onSelectPage={(pageNum) => {
@@ -361,6 +411,7 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
                 page: currentPage,
               });
             }}
+            onOpenImage={handleOpenImage}
             activeExerciseId={activeExerciseId}
             isCleanMode={isCleanMode}
           />
@@ -466,12 +517,38 @@ export const ReaderShell: React.FC<ReaderShellProps> = ({
           currentTime={audioPlayer.currentTime}
           duration={audioPlayer.duration}
           playbackRate={audioPlayer.playbackRate}
+          volume={audioPlayer.volume}
+          isMuted={audioPlayer.isMuted}
           onTogglePlay={audioPlayer.togglePlay}
           onSeek={audioPlayer.seek}
           onSkipTime={audioPlayer.skipTime}
           onChangePlaybackRate={audioPlayer.changePlaybackRate}
+          onSetVolume={audioPlayer.setVolume}
+          onToggleMute={audioPlayer.toggleMute}
           onClose={audioPlayer.closePlayer}
           onOpenUpload={() => audioPlayer.setShowUploadModal(true)}
+          onPlaySpeechSynthesis={() =>
+            audioPlayer.activeTrack &&
+            audioPlayer.playSpeechSynthesis(audioPlayer.activeTrack)
+          }
+          loopA={audioPlayer.loopA}
+          loopB={audioPlayer.loopB}
+          isLoopActive={audioPlayer.isLoopActive}
+          onSetLoopA={audioPlayer.setLoopPointA}
+          onSetLoopB={audioPlayer.setLoopPointB}
+          onClearLoop={audioPlayer.clearLoop}
+        />
+      )}
+
+      {/* Full-Screen Image Viewer (Lightbox) */}
+      {activeImageRegion && (
+        <ImageViewer
+          imageRegion={activeImageRegion}
+          allPageRegions={activePageData?.imageRegions || [activeImageRegion]}
+          isOpen={!!activeImageRegion}
+          onClose={() => setActiveImageRegion(null)}
+          onSelectRegion={(reg) => setActiveImageRegion(reg)}
+          initialPresentationMode={isPresentationMode}
         />
       )}
 

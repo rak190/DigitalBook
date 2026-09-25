@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { OxfordActivity, ScopedActivityState, OxfordBlank } from '../../types';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { OxfordActivity, ScopedActivityState, OxfordBlank, ExerciseDefinition, GenericExerciseType } from '../../types';
 import { Exercise } from '../../data/booksRegistry';
-import { MultipleChoiceCard } from './MultipleChoiceCard';
-import { GapFillCard } from './GapFillCard';
 import { StorageService } from '../../services/storage';
+import { ExerciseService } from '../../services/exerciseService';
+import { ExerciseRenderer } from '../activities/ExerciseRenderer';
 import {
   X,
   PanelRightClose,
@@ -36,13 +36,16 @@ function normalizeActivity(
   act: OxfordActivity | Exercise,
   bookId: string,
   pageNum: number
-): OxfordActivity {
+): OxfordActivity & { rawExercise?: Exercise } {
   if ('unitId' in act && 'pageId' in act && (act.questions || act.blanks)) {
     return act as OxfordActivity;
   }
 
   const exercise = act as Exercise;
-  const isMc = exercise.type === 'multiple-choice';
+  const isMc =
+    exercise.type === 'multiple-choice' ||
+    exercise.type === 'single-choice' ||
+    exercise.type === 'listening';
 
   if (isMc) {
     const questions = exercise.questions.map((q, idx) => {
@@ -70,14 +73,15 @@ function normalizeActivity(
       bookPage: pageNum,
       title: exercise.title,
       instructions: exercise.instructions,
-      type: 'multiple-choice',
+      type: exercise.type as any,
       audioTrack: exercise.audioTrack,
       hotspot: { x: 88, y: 10 },
       questions,
+      rawExercise: exercise,
     };
   }
 
-  // Gap fill or open-response or table-fill
+  // Gap fill or generic activities
   const blanks: Record<string, OxfordBlank> = {};
   const sentences = exercise.questions.map((q, idx) => {
     const bId = q.id;
@@ -85,7 +89,7 @@ function normalizeActivity(
       ? q.correctAnswer
       : q.correctAnswer
       ? [q.correctAnswer]
-      : [''];
+      : (q.acceptedAnswers || ['']);
 
     blanks[bId] = {
       id: bId,
@@ -113,12 +117,13 @@ function normalizeActivity(
     bookPage: pageNum,
     title: exercise.title,
     instructions: exercise.instructions,
-    type: 'gap-fill',
+    type: exercise.type as any,
     audioTrack: exercise.audioTrack,
     hotspot: { x: 88, y: 10 },
     wordBank: exercise.wordBank,
     blanks,
     sentences,
+    rawExercise: exercise,
   };
 }
 
@@ -153,6 +158,44 @@ export const ActivityWindow: React.FC<ActivityWindowProps> = ({
   } | null>(null);
 
   const normalized = normalizeActivity(activity, bookId, currentPage);
+
+  const effectiveExercise: ExerciseDefinition = useMemo(() => {
+    if (normalized.rawExercise) {
+      return normalized.rawExercise;
+    }
+    if (normalized.type === 'multiple-choice' && normalized.questions) {
+      return {
+        id: normalized.id,
+        title: normalized.title,
+        instructions: normalized.instructions || '',
+        type: 'multiple-choice',
+        audioTrack: normalized.audioTrack,
+        questions: normalized.questions.map((q) => ({
+          id: q.id || `q_${q.num}`,
+          num: q.num,
+          prompt: q.question,
+          options: q.options,
+          correctAnswer: q.correct,
+          acceptedAnswers: [q.correct],
+        })),
+      };
+    }
+    return {
+      id: normalized.id,
+      title: normalized.title,
+      instructions: normalized.instructions || '',
+      type: (normalized.type as GenericExerciseType) || 'gap-fill',
+      audioTrack: normalized.audioTrack,
+      wordBank: normalized.wordBank,
+      questions: Object.entries(normalized.blanks || {}).map(([bId, blank], idx) => ({
+        id: bId,
+        num: idx + 1,
+        prompt: blank.hint,
+        acceptedAnswers: blank.accepted,
+        correctAnswer: blank.accepted[0],
+      })),
+    };
+  }, [normalized]);
 
   // Sync teacher key visibility if presentation mode requested it
   useEffect(() => {
@@ -246,20 +289,65 @@ export const ActivityWindow: React.FC<ActivityWindowProps> = ({
         totalCount = blankEntries.length;
         blankEntries.forEach(([bKey, meta]) => {
           const rawVal = (currentAnswers[bKey] || '').trim();
-          const normalizedVal = rawVal.toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '').trim();
-          const acceptedNorm = meta.accepted.map((a) =>
-            a.toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '').trim()
-          );
-
-          const isCorrect =
-            acceptedNorm.includes(normalizedVal) ||
-            acceptedNorm.some((a) => a.length > 0 && normalizedVal.includes(a));
+          const isCorrect = ExerciseService.isAnswerCorrect(rawVal, meta.accepted);
           if (isCorrect) correctCount++;
           newEvals[bKey] = {
             isCorrect,
             acceptedAnswers: meta.accepted,
             hint: isCorrect ? undefined : meta.hint,
           };
+        });
+      } else if (effectiveExercise.questions && effectiveExercise.questions.length > 0) {
+        effectiveExercise.questions.forEach((q, idx) => {
+          if (effectiveExercise.type === 'matching' && q.matchingPairs) {
+            totalCount += q.matchingPairs.length;
+            q.matchingPairs.forEach((pair, pIdx) => {
+              const itemKey = pair.leftId || `${q.id || 'q'}_pair_${pIdx}`;
+              const userVal = (currentAnswers[itemKey] || '').trim();
+              const isCorrect = ExerciseService.isAnswerCorrect(userVal, [pair.right]);
+              if (isCorrect) correctCount++;
+              newEvals[itemKey] = {
+                isCorrect,
+                acceptedAnswers: [pair.right],
+                hint: isCorrect ? undefined : `Match for ${pair.left}`,
+              };
+            });
+          } else {
+            totalCount++;
+            const qKey = q.id || `q_${idx + 1}`;
+            const val = (currentAnswers[qKey] || '').trim();
+            const accepted =
+              q.acceptedAnswers ||
+              (q.correctAnswer
+                ? Array.isArray(q.correctAnswer)
+                  ? q.correctAnswer
+                  : [q.correctAnswer]
+                : []);
+            const isSelfCheck =
+              effectiveExercise.type === 'open-response' ||
+              effectiveExercise.type === 'speaking' ||
+              effectiveExercise.type === 'self-check' ||
+              effectiveExercise.type === 'teacher-led' ||
+              accepted.length === 0;
+
+            if (isSelfCheck) {
+              const isFilled = val.length > 0;
+              if (isFilled) correctCount++;
+              newEvals[qKey] = {
+                isCorrect: isFilled,
+                acceptedAnswers: accepted,
+                hint: q.hint,
+              };
+            } else {
+              const isCorrect = ExerciseService.isAnswerCorrect(val, accepted);
+              if (isCorrect) correctCount++;
+              newEvals[qKey] = {
+                isCorrect,
+                acceptedAnswers: accepted,
+                hint: isCorrect ? undefined : q.hint || 'Review instructions or question text',
+              };
+            }
+          }
         });
       }
 
@@ -480,29 +568,22 @@ export const ActivityWindow: React.FC<ActivityWindowProps> = ({
             </div>
           )}
 
-          {normalized.type === 'multiple-choice' && normalized.questions && (
-            <MultipleChoiceCard
-              questions={normalized.questions}
-              answers={answers}
-              onAnswerChange={handleAnswerChange}
-              evaluations={evaluations}
-              showAnswers={showAnswers}
-            />
-          )}
-
-          {normalized.type === 'gap-fill' && normalized.blanks && (
-            <GapFillCard
-              sentences={normalized.sentences || []}
-              blanks={normalized.blanks}
-              answers={answers}
-              onAnswerChange={handleAnswerChange}
-              evaluations={evaluations}
-              showAnswers={showAnswers}
-              wordBank={normalized.wordBank}
-              activeBlankId={activeBlankId}
-              onFocusBlank={setActiveBlankId}
-            />
-          )}
+          <ExerciseRenderer
+            exercise={effectiveExercise}
+            answers={answers}
+            onAnswerChange={handleAnswerChange}
+            evaluations={evaluations}
+            showAnswers={showAnswers}
+            activeBlankId={activeBlankId}
+            onFocusBlank={setActiveBlankId}
+            onPlayAudioTrack={
+              onPlayAudioTrack
+                ? (trackId, title) => onPlayAudioTrack(trackId, title || `Track ${trackId}`)
+                : undefined
+            }
+            sentences={normalized.sentences}
+            blanks={normalized.blanks}
+          />
         </div>
 
         {/* Footer Action Bar */}

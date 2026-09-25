@@ -1,12 +1,13 @@
 import React from 'react';
 import { ActivityHotspot } from '../../types';
-import { Headphones, Edit3, Check, KeyRound } from 'lucide-react';
+import { Headphones, Edit3, Check, KeyRound, Image as ImageIcon } from 'lucide-react';
 
 interface ActivityHotspotBadgeProps {
   hotspot: ActivityHotspot;
   isCompleted?: boolean;
   onOpenActivity?: (activityId: string) => void;
   onPlayAudioTrack?: (trackId: string, title: string) => void;
+  onOpenImage?: (regionId: string) => void;
   isPresentationMode?: boolean;
   showTeacherKey?: boolean;
   teacherAnswerText?: string;
@@ -17,11 +18,13 @@ export const ActivityHotspotBadge: React.FC<ActivityHotspotBadgeProps> = ({
   isCompleted = false,
   onOpenActivity,
   onPlayAudioTrack,
+  onOpenImage,
   isPresentationMode = false,
   showTeacherKey = false,
   teacherAnswerText,
 }) => {
   const isAudio = hotspot.type === 'audio';
+  const isImage = hotspot.type === 'image';
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -29,9 +32,15 @@ export const ActivityHotspotBadge: React.FC<ActivityHotspotBadgeProps> = ({
       if (hotspot.audioTrackId && onPlayAudioTrack) {
         onPlayAudioTrack(hotspot.audioTrackId, hotspot.title || `Track ${hotspot.audioTrackId}`);
       }
+    } else if (isImage) {
+      const imgId = hotspot.imageRegionId || hotspot.targetId || hotspot.id;
+      if (onOpenImage) {
+        onOpenImage(imgId);
+      }
     } else {
-      if (hotspot.activityId && onOpenActivity) {
-        onOpenActivity(hotspot.activityId);
+      const actId = hotspot.activityId || hotspot.exerciseId || hotspot.targetId || hotspot.id;
+      if (actId && onOpenActivity) {
+        onOpenActivity(actId);
       }
     }
   };
@@ -58,6 +67,8 @@ export const ActivityHotspotBadge: React.FC<ActivityHotspotBadgeProps> = ({
         } ${
           isAudio
             ? 'bg-emerald-600 hover:bg-emerald-500 text-white'
+            : isImage
+            ? 'bg-purple-600 hover:bg-purple-500 text-white ring-purple-400'
             : isCompleted
             ? 'bg-emerald-700 hover:bg-emerald-600 text-white ring-emerald-400'
             : 'bg-sky-600 hover:bg-sky-500 text-white'
@@ -69,6 +80,11 @@ export const ActivityHotspotBadge: React.FC<ActivityHotspotBadgeProps> = ({
           <>
             <Headphones className={isPresentationMode ? 'w-4 h-4' : 'w-3.5 h-3.5'} />
             <span className="font-mono text-[11px] font-bold">{hotspot.label}</span>
+          </>
+        ) : isImage ? (
+          <>
+            <ImageIcon className={isPresentationMode ? 'w-4 h-4' : 'w-3.5 h-3.5'} />
+            <span>{hotspot.label}</span>
           </>
         ) : (
           <>

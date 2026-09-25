@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { PageOverlay } from './PageOverlay';
-import { PageMeta, ExerciseItem, ExerciseAnswer, ViewMode, ActivityHotspot } from '../../types';
+import { ExerciseItem, ExerciseAnswer, ViewMode, ActivityHotspot } from '../../types';
 import { dataService } from '../../services/dataService';
+import { PageService } from '../../services/pageService';
 import { BookManifest, PageData } from '../../data/booksRegistry';
 import { BookOpen, AlertCircle } from 'lucide-react';
 
@@ -15,6 +16,7 @@ interface PageViewProps {
   onSelectExercise?: (exerciseId: string) => void;
   onOpenActivity?: (activityId: string) => void;
   onPlayAudioTrack?: (trackId: string, title: string) => void;
+  onOpenImage?: (regionId: string) => void;
   activeExerciseId?: string;
   isCleanMode?: boolean;
   bookManifest?: BookManifest;
@@ -32,6 +34,7 @@ export const PageView: React.FC<PageViewProps> = ({
   onSelectExercise,
   onOpenActivity,
   onPlayAudioTrack,
+  onOpenImage,
   activeExerciseId,
   isCleanMode = false,
   bookManifest,
@@ -40,6 +43,13 @@ export const PageView: React.FC<PageViewProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
+
+  const activeBookId = bookManifest?.id || 'english-file-pre-int';
+
+  // Preload adjacent pages whenever current page changes
+  useEffect(() => {
+    PageService.preloadNearbyPages(activeBookId, currentPage);
+  }, [activeBookId, currentPage]);
 
   const handleImageError = (pageNum: number) => {
     setImageErrors((prev) => ({ ...prev, [pageNum]: true }));
@@ -57,9 +67,6 @@ export const PageView: React.FC<PageViewProps> = ({
   const leftPageData = getPageData(leftPageNum);
   const rightPageData = rightPageNum ? getPageData(rightPageNum) : undefined;
 
-  const leftExercises = dataService.getExercisesForPage(leftPageNum);
-  const rightExercises = rightPageNum ? dataService.getExercisesForPage(rightPageNum) : [];
-
   const leftPageMeta = dataService.getPageMeta(leftPageNum);
   const rightPageMeta = rightPageNum ? dataService.getPageMeta(rightPageNum) : null;
 
@@ -68,19 +75,26 @@ export const PageView: React.FC<PageViewProps> = ({
     if (pData && pData.hotspots && pData.hotspots.length > 0) {
       return pData.hotspots.map((h) => ({
         id: h.id,
-        type: h.type,
+        type: (h.type === 'exercise' ? 'activity' : h.type) as any,
         label: h.badgeLabel,
-        title: `${h.badgeLabel}: ${
-          h.type === 'audio' ? `Audio Track ${h.audioTrack}` : 'Interactive Activity'
-        }`,
+        title:
+          h.title ||
+          `${h.badgeLabel}: ${
+            h.type === 'audio'
+              ? `Audio Track ${h.audioTrack}`
+              : h.type === 'image'
+              ? 'View Image'
+              : 'Interactive Activity'
+          }`,
         x: h.xPercent,
         y: h.yPercent,
-        activityId: h.exerciseId,
-        audioTrackId: h.audioTrack,
+        activityId: h.exerciseId || h.targetId,
+        audioTrackId: h.audioTrack || h.targetId,
+        imageRegionId: h.imageRegionId || h.targetId,
       }));
     }
-    // Fallback to dataService if english-file
-    if (!bookManifest || bookManifest.id === 'english-file-pre-int') {
+    // Fallback to legacy dataService if bookManifest is undefined
+    if (!bookManifest) {
       return dataService.getHotspotsForPage(pageNum);
     }
     return [];
@@ -99,8 +113,8 @@ export const PageView: React.FC<PageViewProps> = ({
         }
       });
     }
-    // Also resolve from dataService if english-file
-    if ((!bookManifest || bookManifest.id === 'english-file-pre-int') && pageNum) {
+    // Also resolve from dataService if manifest is not provided
+    if (!bookManifest && pageNum) {
       const pageExs = dataService.getExercisesForPage(pageNum);
       pageExs.forEach((ex) => {
         const accepted = dataService.getAcceptedAnswers(ex.id);
@@ -128,27 +142,13 @@ export const PageView: React.FC<PageViewProps> = ({
   };
 
   const resolveImageSrc = (pageNum: number, pData?: PageData): string => {
+    if (pData?.image) return pData.image;
     if (pData?.imageSrc) return pData.imageSrc;
-
-    const base = import.meta.env.BASE_URL || '/';
-
-    // If English File, default to book_pages/page_${pageNum}.jpg
-    if (!bookManifest || bookManifest.id === 'english-file-pre-int') {
-      return `${base}book_pages/page_${pageNum}.jpg`;
-    }
-
-    // MoEYS grade check
-    let grade = 7;
-    if (bookManifest.id.includes('8')) grade = 8;
-    else if (bookManifest.id.includes('9')) grade = 9;
-
-    return `${base}moeys_pages/g${grade}_p${pageNum}.jpg`;
+    return PageService.resolvePageImageSrc(activeBookId, pageNum);
   };
 
   const renderPageContent = (
     pageNum: number,
-    pageMeta: PageMeta | null,
-    exercises: ExerciseItem[],
     pData?: PageData
   ) => {
     const isError = imageErrors[pageNum];
@@ -157,116 +157,84 @@ export const PageView: React.FC<PageViewProps> = ({
     const teacherAnswers = resolveTeacherAnswers(pData, pageNum);
 
     const titleText = pData
-      ? `${pData.unitName} - ${pData.lessonName}`
-      : pageMeta?.title || `Page ${pageNum}`;
+      ? `${pData.unit || pData.unitName || ''} - ${pData.lesson || pData.lessonName || pData.title || ''}`.replace(/^ - |- $/g, '')
+      : `Page ${pageNum}`;
 
     return (
-      <div className="relative shadow-2xl rounded-sm bg-white flex-shrink-0 select-none border border-slate-700/30 min-w-[320px]">
+      <div
+        className="relative bg-white shadow-2xl rounded-sm overflow-hidden select-none transition-all duration-200"
+        style={{
+          width: '100%',
+          maxWidth: viewMode === 'spread' ? '700px' : '950px',
+        }}
+      >
         {isError ? (
-          <div className="w-[580px] h-[820px] bg-gradient-to-b from-slate-50 to-slate-100 text-slate-800 p-8 flex flex-col justify-between select-text relative border border-slate-200">
-            <div>
-              <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-6">
-                <div className="flex items-center gap-2 text-sky-700 font-bold text-sm tracking-wide uppercase">
-                  <BookOpen className="w-5 h-5 text-sky-600" />
-                  <span>{bookManifest?.title || 'Interactive Textbook'}</span>
-                </div>
-                <span className="px-2.5 py-1 bg-sky-600 text-white rounded text-xs font-bold font-mono">
-                  Page {pageNum}
-                </span>
-              </div>
-
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">{titleText}</h2>
-
-              {pData?.unitName && (
-                <p className="text-sm font-semibold text-sky-600 mb-4">{pData.lessonName}</p>
-              )}
-
-              <div className="bg-sky-50 border border-sky-200 rounded-xl p-4 mb-6 text-sm text-sky-900">
-                <div className="font-semibold flex items-center gap-1.5 mb-1 text-sky-800">
-                  <AlertCircle className="w-4 h-4 text-sky-600 flex-shrink-0" />
-                  <span>Digital Classroom Activity View</span>
-                </div>
-                <p className="text-xs text-sky-700 leading-relaxed">
-                  Interactive self-check exercises and listening badges are configured for this page. Use the interactive badges or open the side drawer to answer questions.
-                </p>
-              </div>
-
-              {pData && pData.exercises.length > 0 && (
-                <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-                    Available Page Activities ({pData.exercises.length})
-                  </h3>
-                  <div className="space-y-2">
-                    {pData.exercises.map((ex) => (
-                      <div
-                        key={ex.id}
-                        onClick={() => onOpenActivity && onOpenActivity(ex.id)}
-                        className="cursor-pointer p-3 rounded-lg bg-white border border-slate-200 hover:border-sky-400 hover:shadow-sm transition-all flex items-center justify-between text-xs"
-                      >
-                        <span className="font-medium text-slate-800">{ex.title}</span>
-                        <span className="text-[10px] uppercase font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">
-                          {ex.type}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <div className="text-center text-[11px] text-slate-400 pt-4 border-t border-slate-200">
-              {bookManifest?.subtitle || 'Digital Library Platform'} &bull; Interactive Edition
-            </div>
+          <div className="w-full aspect-[1/1.4] bg-slate-900 border border-slate-800 flex flex-col items-center justify-center p-6 text-center text-slate-400">
+            <AlertCircle className="w-12 h-12 text-amber-500 mb-3" />
+            <h3 className="text-sm font-bold text-white mb-1">Page Image Unavailable</h3>
+            <p className="text-xs text-slate-400 max-w-xs mb-3">
+              Unable to load visual for {titleText}.
+            </p>
+            <span className="text-[10px] font-mono text-slate-500">
+              Target: {imageSrc}
+            </span>
           </div>
         ) : (
-          <img
-            src={imageSrc}
-            alt={titleText}
-            className={`w-auto h-auto object-contain block pointer-events-none ${
-              isPresentationMode ? 'max-h-[92vh] max-w-[95vw]' : 'max-h-[85vh] max-w-[85vw]'
-            }`}
-            loading="eager"
-            onError={() => handleImageError(pageNum)}
-          />
-        )}
+          <div className="relative w-full">
+            <img
+              src={imageSrc}
+              alt={titleText}
+              onError={() => handleImageError(pageNum)}
+              className="w-full h-auto block select-none pointer-events-none"
+              loading="eager"
+            />
 
-        <PageOverlay
-          pageNum={pageNum}
-          hotspots={hotspots}
-          completedActivities={completedActivities}
-          onOpenActivity={onOpenActivity}
-          onPlayAudioTrack={onPlayAudioTrack}
-          isPresentationMode={isPresentationMode}
-          showTeacherKey={showTeacherKey}
-          teacherAnswers={teacherAnswers}
-        />
+            {/* Hotspots & Clickable Image Regions Overlay */}
+            {!isCleanMode && (
+              <PageOverlay
+                pageNum={pageNum}
+                hotspots={hotspots}
+                imageRegions={pData?.imageRegions}
+                completedActivities={completedActivities}
+                onOpenActivity={onOpenActivity}
+                onPlayAudioTrack={onPlayAudioTrack}
+                onOpenImage={onOpenImage}
+                isPresentationMode={isPresentationMode}
+                showTeacherKey={showTeacherKey}
+                teacherAnswers={teacherAnswers}
+              />
+            )}
+          </div>
+        )}
       </div>
     );
   };
 
-  const totalPages = bookManifest?.totalPages || 168;
-
   return (
     <div
       ref={containerRef}
-      className={`flex-1 h-full overflow-auto flex items-start justify-center relative ${
-        isPresentationMode ? 'p-2 md:p-4 bg-black/90' : 'p-4 md:p-8 bg-slateDark-950/80'
-      }`}
+      role="region"
+      aria-label="Textbook Page Canvas"
+      className="flex-1 w-full h-full overflow-auto bg-slateDark-950 p-4 md:p-8 flex items-start justify-center relative select-none"
     >
       <div
+        className="transition-transform duration-150 origin-top flex items-start justify-center gap-4"
         style={{
           transform: `scale(${zoom / 100})`,
-          transformOrigin: 'top center',
-          transition: 'transform 0.15s ease-out',
+          width: viewMode === 'spread' ? '100%' : 'auto',
+          maxWidth: viewMode === 'spread' ? '1500px' : '980px',
         }}
-        className="flex items-start justify-center gap-4 max-w-full my-auto"
       >
         {/* Left Page (or Single Page) */}
-        {renderPageContent(leftPageNum, leftPageMeta, leftExercises, leftPageData)}
+        <div className="flex-1 flex justify-center">
+          {renderPageContent(leftPageNum, leftPageData)}
+        </div>
 
-        {/* Right Page (Only in Spread Mode) */}
-        {rightPageNum && rightPageNum <= totalPages && (
-          renderPageContent(rightPageNum, rightPageMeta, rightExercises, rightPageData)
+        {/* Right Page (Spread View Mode) */}
+        {viewMode === 'spread' && rightPageNum && rightPageNum <= (bookManifest?.totalPages || 250) && (
+          <div className="flex-1 flex justify-center">
+            {renderPageContent(rightPageNum, rightPageData)}
+          </div>
         )}
       </div>
     </div>

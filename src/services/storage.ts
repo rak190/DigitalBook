@@ -237,6 +237,12 @@ export class StorageService {
       if (!data || typeof data !== 'object') {
         return { success: false, message: 'Invalid JSON file format.' };
       }
+      if (data.bookId && data.bookId !== bookId) {
+        return {
+          success: false,
+          message: `Cannot import: This backup file belongs to book "${data.bookId}", but you are importing into "${bookId}". Progress was kept separate to prevent data corruption.`,
+        };
+      }
       const answers = data.answers || {};
       const completedActivities = data.completedActivities || {};
       const activityProgress = data.activityProgress || {};

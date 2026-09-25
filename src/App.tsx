@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { BookshelfView } from './components/bookshelf/BookshelfView';
 import { ReaderShell } from './components/layout/ReaderShell';
 import { DEFAULT_BOOK_ID, getBookManifest } from './data/booksRegistry';
+import { StorageService } from './services/storage';
 
 export function App() {
   const [currentView, setCurrentView] = useState<'bookshelf' | 'reader'>('bookshelf');
@@ -14,13 +15,15 @@ export function App() {
 
     const hash = window.location.hash || '';
     const search = window.location.search || '';
+    const pathname = window.location.pathname || '';
 
-    // Check search query parameters first (e.g. ?book=moeys-english-grade-7&page=10)
+    // Check search query parameters first (e.g. ?book=english-grade-8&page=10)
     const searchParams = new URLSearchParams(search);
     if (searchParams.has('book')) {
       const bId = searchParams.get('book')!;
-      if (getBookManifest(bId)) {
-        setActiveBookId(bId);
+      const manifest = getBookManifest(bId);
+      if (manifest) {
+        setActiveBookId(manifest.id);
         const p = searchParams.get('page');
         setActivePage(p ? parseInt(p, 10) : undefined);
         setCurrentView('reader');
@@ -28,54 +31,70 @@ export function App() {
       }
     }
 
-    // Check direct pathname routing (e.g. /books/[bookId] or /DigitalBook/books/[bookId])
-    const pathname = window.location.pathname || '';
-    const booksMatch = pathname.match(/(?:^|\/)books\/([a-zA-Z0-9_-]+)/);
-    if (booksMatch && booksMatch[1]) {
-      const bId = booksMatch[1];
-      if (getBookManifest(bId)) {
-        setActiveBookId(bId);
-        const p = searchParams.get('page');
-        setActivePage(p ? parseInt(p, 10) : undefined);
+    // Check hash-based #/books/:bookId/page/:pageNum or #/books/:bookId?page=:pageNum or #/books/:bookId
+    const hashBooksMatch = hash.match(/^#\/?books\/([^/?#]+)(?:\/page\/(\d+))?(?:\?page=(\d+))?/i);
+    if (hashBooksMatch) {
+      const rawBookId = hashBooksMatch[1];
+      const pageStr = hashBooksMatch[2] || hashBooksMatch[3];
+      const manifest = getBookManifest(rawBookId);
+      if (manifest) {
+        setActiveBookId(manifest.id);
+        setActivePage(pageStr ? parseInt(pageStr, 10) : undefined);
+        setCurrentView('reader');
+        return;
+      }
+    }
+
+    // Check hash-based #/reader?book=:bookId&page=:pageNum
+    if (hash.startsWith('#/reader') || hash.startsWith('#reader')) {
+      const queryIdx = hash.indexOf('?');
+      const hashQuery = queryIdx >= 0 ? hash.slice(queryIdx + 1) : '';
+      const params = new URLSearchParams(hashQuery);
+      const rawBookId = params.get('book') || DEFAULT_BOOK_ID;
+      const pageStr = params.get('page');
+      const manifest = getBookManifest(rawBookId);
+      if (manifest) {
+        setActiveBookId(manifest.id);
+        setActivePage(pageStr ? parseInt(pageStr, 10) : undefined);
+        setCurrentView('reader');
+        return;
+      }
+    }
+
+    // Check legacy hash format: #page=11
+    const legacyHashMatch = hash.match(/^#page=(\d+)/i);
+    if (legacyHashMatch) {
+      setActiveBookId(DEFAULT_BOOK_ID);
+      setActivePage(parseInt(legacyHashMatch[1], 10));
+      setCurrentView('reader');
+      return;
+    }
+
+    // Check direct pathname routing: /books/:bookId/page/:pageNum or /DigitalBook/books/:bookId/page/:pageNum
+    const pathBooksMatch = pathname.match(/(?:^|\/)books\/([^/?#]+)(?:\/page\/(\d+))?/i);
+    if (pathBooksMatch) {
+      const rawBookId = pathBooksMatch[1];
+      const pageStr = pathBooksMatch[2] || searchParams.get('page');
+      const manifest = getBookManifest(rawBookId);
+      if (manifest) {
+        setActiveBookId(manifest.id);
+        setActivePage(pageStr ? parseInt(pageStr, 10) : undefined);
         setCurrentView('reader');
         return;
       }
     }
 
     // Check direct /reader pathname (e.g. /reader or /DigitalBook/reader)
-    if (/(?:^|\/)reader\/?$/.test(pathname)) {
-      const bId = searchParams.get('book') || DEFAULT_BOOK_ID;
-      setActiveBookId(bId);
-      const p = searchParams.get('page');
-      setActivePage(p ? parseInt(p, 10) : undefined);
-      setCurrentView('reader');
-      return;
-    }
-
-    // Check hash-based routing
-    if (hash.startsWith('#/reader') || hash.startsWith('#reader')) {
-      const queryIdx = hash.indexOf('?');
-      const hashQuery = queryIdx >= 0 ? hash.slice(queryIdx + 1) : '';
-      const params = new URLSearchParams(hashQuery);
-      const bId = params.get('book') || DEFAULT_BOOK_ID;
-      const p = params.get('page');
-
-      setActiveBookId(bId);
-      setActivePage(p ? parseInt(p, 10) : undefined);
-      setCurrentView('reader');
-      return;
-    }
-
-    if (hash.startsWith('#/books/')) {
-      const sub = hash.replace(/^#\/books\//, '');
-      const [bId, queryPart] = sub.split('?');
-      const params = new URLSearchParams(queryPart || '');
-      const p = params.get('page');
-
-      setActiveBookId(bId || DEFAULT_BOOK_ID);
-      setActivePage(p ? parseInt(p, 10) : undefined);
-      setCurrentView('reader');
-      return;
+    if (/(?:^|\/)reader\/?$/i.test(pathname)) {
+      const rawBookId = searchParams.get('book') || DEFAULT_BOOK_ID;
+      const pageStr = searchParams.get('page');
+      const manifest = getBookManifest(rawBookId);
+      if (manifest) {
+        setActiveBookId(manifest.id);
+        setActivePage(pageStr ? parseInt(pageStr, 10) : undefined);
+        setCurrentView('reader');
+        return;
+      }
     }
 
     // Default to Bookshelf dashboard
@@ -83,6 +102,9 @@ export function App() {
   }, []);
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      (window as any).StorageService = StorageService;
+    }
     resolveRoute();
     window.addEventListener('hashchange', resolveRoute);
     window.addEventListener('popstate', resolveRoute);

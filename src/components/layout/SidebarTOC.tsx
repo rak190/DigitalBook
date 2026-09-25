@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Unit, ReferenceSection } from '../../types';
+import { Unit, ReferenceSection, TOCNavigationSection } from '../../types';
 import { BookManifest } from '../../data/booksRegistry';
 import { BookOpen, ChevronRight, ChevronDown, Search, Layers, X, BookmarkCheck } from 'lucide-react';
 
@@ -12,17 +12,6 @@ interface SidebarTOCProps {
   bookManifest?: BookManifest;
 }
 
-interface ManifestUnitGroup {
-  id: string;
-  title: string;
-  startPage: number;
-  lessons: {
-    pageNumber: number;
-    title: string;
-    badge?: string;
-  }[];
-}
-
 export const SidebarTOC: React.FC<SidebarTOCProps> = ({
   units = [],
   referenceSections = [],
@@ -31,120 +20,87 @@ export const SidebarTOC: React.FC<SidebarTOCProps> = ({
   onClose,
   bookManifest,
 }) => {
-  const [expandedUnits, setExpandedUnits] = useState<Record<string, boolean>>({
-    u1: true,
-    manifest_u1: true,
-  });
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
   const [searchQuery, setSearchQuery] = useState('');
 
-  const toggleUnit = (uId: string) => {
-    setExpandedUnits((prev) => ({ ...prev, [uId]: !prev[uId] }));
+  const toggleSection = (id: string, defaultOpen = true) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [id]: prev[id] !== undefined ? !prev[id] : !defaultOpen,
+    }));
   };
 
-  // Build manifest groups if not using the legacy English File units array
-  const manifestGroups = useMemo<ManifestUnitGroup[]>(() => {
-    if (!bookManifest) return [];
-    if (bookManifest.id === 'english-file-pre-int' && units.length > 0) return [];
-
-    const grouped: Record<string, ManifestUnitGroup> = {};
-
-    // First, collect starter unit pages from bookManifest
-    Object.values(bookManifest.pages).forEach((page) => {
-      const uName = page.unitName || 'Front Matter';
-      if (!grouped[uName]) {
-        grouped[uName] = {
-          id: `u_${uName.replace(/\s+/g, '_')}`,
-          title: uName,
-          startPage: page.pageNumber,
-          lessons: [],
-        };
-      }
-      grouped[uName].lessons.push({
-        pageNumber: page.pageNumber,
-        title: page.lessonName,
-        badge: `p.${page.pageNumber}`,
-      });
-    });
-
-    // Add authentic curriculum units from MoEYS Cambodia syllabus
-    if (bookManifest.category === 'moeys-secondary') {
-      const isG7 = bookManifest.id.includes('7');
-      const isG8 = bookManifest.id.includes('8');
-      const additionalChapters = isG7
-        ? [
-            { title: 'Unit 2: Meeting old friends', startPage: 14 },
-            { title: "Unit 3: What's this? What's that?", startPage: 20 },
-            { title: 'Unit 4: My new school', startPage: 26 },
-            { title: 'Unit 5: Study habits', startPage: 32 },
-            { title: 'Unit 6: Talking with teachers', startPage: 38 },
-            { title: 'Unit 7: Getting ready for school', startPage: 44 },
-            { title: 'Unit 8: Going to school', startPage: 50 },
-            { title: 'Unit 9: After school', startPage: 56 },
-            { title: 'Unit 10: My family', startPage: 62 },
-            { title: "Unit 11: I'm the coolest in my family", startPage: 68 },
-            { title: 'Unit 12: Monsters', startPage: 74 },
-          ]
-        : isG8
-        ? [
-            { title: 'Unit 2: New routines', startPage: 20 },
-            { title: 'Unit 3: The morning ceremony', startPage: 26 },
-            { title: 'Unit 4: A family visit', startPage: 32 },
-            { title: 'Unit 5: A Homecoming', startPage: 38 },
-            { title: "Unit 6: Travelling to grandma's", startPage: 44 },
-            { title: 'Unit 7: Yum, yum, yum!', startPage: 50 },
-            { title: 'Unit 8: Helping family and friends', startPage: 56 },
-            { title: 'Unit 9: We all love to shop', startPage: 62 },
-            { title: 'Unit 10: Advice on how to stay well', startPage: 68 },
-            { title: 'Unit 11: We love to play sports', startPage: 74 },
-            { title: 'Unit 12: It can be fun to teach', startPage: 80 },
-          ]
-        : [
-            { title: 'Unit 2: Weekend activities', startPage: 20 },
-            { title: 'Unit 3: A day fishing', startPage: 26 },
-            { title: 'Unit 4: Working at a restaurant', startPage: 32 },
-            { title: 'Unit 5: Visiting a shop', startPage: 38 },
-            { title: 'Unit 6: The repair shop', startPage: 44 },
-            { title: 'Unit 7: Healthy eating', startPage: 50 },
-            { title: 'Unit 8: Healthy lifestyle', startPage: 56 },
-            { title: 'Unit 9: Village health volunteer', startPage: 62 },
-            { title: 'Unit 10: A trip to Phnom Penh', startPage: 68 },
-            { title: 'Unit 11: A crime at the shop', startPage: 74 },
-            { title: 'Unit 12: A traffic accident', startPage: 80 },
-          ];
-
-      additionalChapters.forEach((ch, idx) => {
-        if (!grouped[ch.title]) {
-          grouped[ch.title] = {
-            id: `moeys_u_${idx + 2}`,
-            title: ch.title,
-            startPage: ch.startPage,
-            lessons: [
-              { pageNumber: ch.startPage, title: `${ch.title} (Lesson A)` },
-              { pageNumber: ch.startPage + 1, title: `${ch.title} (Lesson B)` },
-            ],
-          };
-        }
-      });
+  // 1. Primary Manifest Navigation (Universal for all books)
+  const navigationSections = useMemo<TOCNavigationSection[]>(() => {
+    if (bookManifest?.navigation && bookManifest.navigation.length > 0) {
+      return bookManifest.navigation;
     }
 
-    return Object.values(grouped);
-  }, [bookManifest, units]);
+    // Auto-synthesize navigation from manifest pages if navigation array not present
+    if (bookManifest?.pages) {
+      const grouped: Record<string, TOCNavigationSection> = {};
+      Object.entries(bookManifest.pages).forEach(([pNumStr, page]) => {
+        const pNum = Number(pNumStr);
+        const groupTitle = page.chapter || page.unit || page.unitName || 'Front Matter';
+        const groupId = `nav_${groupTitle.toLowerCase().replace(/[^a-z0-9]+/g, '_')}`;
 
-  const filteredUnits = units.filter((u) => {
-    if (!searchQuery.trim()) return true;
-    const q = searchQuery.toLowerCase();
-    if (u.title.toLowerCase().includes(q)) return true;
-    return u.lessons.some(
-      (l) => l.title.toLowerCase().includes(q) || l.grammar?.toLowerCase().includes(q)
-    );
-  });
+        if (!grouped[groupId]) {
+          grouped[groupId] = {
+            id: groupId,
+            title: groupTitle,
+            startPage: pNum,
+            lessons: [],
+          };
+        }
+        grouped[groupId].lessons.push({
+          id: `lesson_${pNum}`,
+          title: page.lesson || page.lessonName || page.title || `Page ${pNum}`,
+          pageNumber: pNum,
+          badge: `p.${page.printedPageNumber || pNum}`,
+        });
+      });
+      return Object.values(grouped);
+    }
 
-  const filteredManifestGroups = manifestGroups.filter((g) => {
-    if (!searchQuery.trim()) return true;
+    return [];
+  }, [bookManifest]);
+
+  // Filter sections by search query
+  const filteredNavSections = useMemo(() => {
+    if (!searchQuery.trim()) return navigationSections;
     const q = searchQuery.toLowerCase();
-    if (g.title.toLowerCase().includes(q)) return true;
-    return g.lessons.some((l) => l.title.toLowerCase().includes(q));
-  });
+    return navigationSections
+      .map((sec) => {
+        const matchesTitle = sec.title.toLowerCase().includes(q);
+        const matchingLessons = sec.lessons.filter(
+          (l) =>
+            l.title.toLowerCase().includes(q) ||
+            l.grammar?.toLowerCase().includes(q) ||
+            l.vocabulary?.toLowerCase().includes(q)
+        );
+        if (matchesTitle || matchingLessons.length > 0) {
+          return {
+            ...sec,
+            lessons: matchesTitle ? sec.lessons : matchingLessons,
+          };
+        }
+        return null;
+      })
+      .filter(Boolean) as TOCNavigationSection[];
+  }, [navigationSections, searchQuery]);
+
+  // Legacy fallback units for backward compatibility with existing tests
+  const filteredLegacyUnits = useMemo(() => {
+    if (navigationSections.length > 0) return [];
+    if (!searchQuery.trim()) return units;
+    const q = searchQuery.toLowerCase();
+    return units.filter((u) => {
+      if (u.title.toLowerCase().includes(q)) return true;
+      return u.lessons.some(
+        (l) => l.title.toLowerCase().includes(q) || l.grammar?.toLowerCase().includes(q)
+      );
+    });
+  }, [units, navigationSections, searchQuery]);
 
   return (
     <aside className="w-72 md:w-80 bg-slateDark-900 border-r border-slate-800 flex flex-col h-full shadow-2xl z-20 flex-shrink-0 animate-in slide-in-from-left duration-200">
@@ -161,208 +117,141 @@ export const SidebarTOC: React.FC<SidebarTOCProps> = ({
         </div>
         <button
           onClick={onClose}
-          className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
-          title="Close sidebar"
+          className="p-1 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+          title="Close table of contents"
         >
           <X className="w-4 h-4" />
         </button>
       </div>
 
       {/* Search Input */}
-      <div className="p-3 border-b border-slate-800/80">
+      <div className="p-3 border-b border-slate-800/80 bg-slate-900/40">
         <div className="relative">
-          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search lessons & topics..."
-            className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg bg-slate-800 text-white placeholder-slate-500 border border-slate-700 outline-none focus:border-sky-500"
+            placeholder="Search units, grammar, vocabulary..."
+            className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg bg-slate-800/90 text-white placeholder-slate-400 border border-slate-700 outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all"
           />
         </div>
       </div>
 
-      {/* Units & Lessons List */}
-      <div className="flex-1 overflow-y-auto p-2 space-y-1">
-        {/* Dynamic Manifest Units (for MoEYS or custom books) */}
-        {manifestGroups.length > 0 ? (
-          <>
-            <div className="px-2 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-              Curriculum Units & Lessons
-            </div>
-            {filteredManifestGroups.map((g, idx) => {
-              const containsCurrent = g.lessons.some((l) => l.pageNumber === currentPage);
-              const isExpanded =
-                expandedUnits[g.id] ??
-                (containsCurrent || idx === 0 || searchQuery.trim().length > 0);
+      {/* Navigation Sections List */}
+      <div className="flex-1 overflow-y-auto p-3 space-y-2 select-none">
+        {/* Render Universal Manifest Navigation Sections */}
+        {filteredNavSections.map((sec) => {
+          const isExpanded = expandedSections[sec.id] ?? true;
+          const containsCurrent = sec.lessons.some((l) => l.pageNumber === currentPage);
 
-              return (
-                <div key={g.id} className="rounded-lg overflow-hidden border border-slate-800/60 mb-1">
-                  <button
-                    onClick={() => toggleUnit(g.id)}
-                    className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs font-semibold transition-colors cursor-pointer ${
+          return (
+            <div
+              key={sec.id}
+              className={`rounded-xl border transition-all duration-150 overflow-hidden ${
+                containsCurrent
+                  ? 'border-sky-500/40 bg-sky-950/20'
+                  : 'border-slate-800/80 bg-slate-850/60 hover:border-slate-700'
+              }`}
+            >
+              {/* Section Header */}
+              <button
+                type="button"
+                onClick={() => toggleSection(sec.id)}
+                className="w-full px-3 py-2.5 flex items-center justify-between text-left hover:bg-slate-800/50 transition-colors"
+              >
+                <div className="flex items-center gap-2 truncate pr-2">
+                  <span
+                    className={`p-1 rounded-md text-[10px] font-bold ${
                       containsCurrent
-                        ? 'bg-sky-500/10 text-sky-300'
-                        : 'bg-slate-850 hover:bg-slate-800 text-slate-200'
+                        ? 'bg-sky-500 text-white shadow-sm'
+                        : 'bg-slate-800 text-slate-400'
                     }`}
                   >
-                    <div className="flex items-center gap-2 truncate pr-2">
-                      <span className="w-5 h-5 rounded bg-slate-700/60 flex items-center justify-center text-[10px] text-sky-400 font-bold">
-                        {idx + 1}
-                      </span>
-                      <span className="truncate">{g.title}</span>
-                    </div>
-                    {isExpanded ? (
-                      <ChevronDown className="w-3.5 h-3.5 flex-shrink-0" />
-                    ) : (
-                      <ChevronRight className="w-3.5 h-3.5 flex-shrink-0" />
-                    )}
-                  </button>
-
-                  {isExpanded && (
-                    <div className="bg-slate-900/60 divide-y divide-slate-800/40 px-2 py-1">
-                      {g.lessons.map((l) => (
-                        <button
-                          key={`${g.id}_${l.pageNumber}_${l.title}`}
-                          onClick={() => onSelectPage(l.pageNumber)}
-                          className={`w-full px-2 py-1.5 text-left flex items-center justify-between text-xs rounded transition-colors cursor-pointer ${
-                            currentPage === l.pageNumber
-                              ? 'bg-sky-600 text-white font-semibold'
-                              : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
-                          }`}
-                        >
-                          <div className="truncate pr-2">
-                            <span className="truncate">{l.title}</span>
-                          </div>
-                          <span className="text-[10px] opacity-60 font-mono">p.{l.pageNumber}</span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
+                    <Layers className="w-3 h-3" />
+                  </span>
+                  <span
+                    className={`text-xs font-bold truncate ${
+                      containsCurrent ? 'text-sky-300' : 'text-slate-200'
+                    }`}
+                  >
+                    {sec.title}
+                  </span>
                 </div>
-              );
-            })}
-          </>
-        ) : (
-          /* Default Oxford English File units */
-          <>
-            <div className="px-2 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-              Student's Book Units
+                {isExpanded ? (
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                ) : (
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                )}
+              </button>
+
+              {/* Lessons Sublist */}
+              {isExpanded && (
+                <div className="border-t border-slate-800/60 bg-slate-900/40 divide-y divide-slate-800/40">
+                  {sec.lessons.map((lesson) => {
+                    const isSelected = lesson.pageNumber === currentPage;
+                    return (
+                      <button
+                        key={lesson.id}
+                        type="button"
+                        onClick={() => onSelectPage(lesson.pageNumber)}
+                        className={`w-full px-3 py-2 text-left flex items-center justify-between transition-colors cursor-pointer ${
+                          isSelected
+                            ? 'bg-sky-600/30 text-sky-200 font-bold'
+                            : 'text-slate-300 hover:bg-slate-800/60 hover:text-white'
+                        }`}
+                      >
+                        <div className="truncate pr-2">
+                          <span className="text-xs truncate block">{lesson.title}</span>
+                          {(lesson.grammar || lesson.vocabulary) && (
+                            <span className="text-[10px] text-slate-400 truncate block">
+                              {[lesson.grammar, lesson.vocabulary].filter(Boolean).join(' • ')}
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 flex-shrink-0">
+                          {lesson.badge || `p.${lesson.pageNumber}`}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
+          );
+        })}
 
-            {filteredUnits.map((u) => {
-              const isExpanded = expandedUnits[u.id] || searchQuery.trim().length > 0;
-              const containsCurrentPage =
-                u.lessons.some((l) => l.page === currentPage) ||
-                u.practical?.page === currentPage ||
-                u.review?.page === currentPage;
-
-              return (
-                <div key={u.id} className="rounded-lg overflow-hidden border border-slate-800/60">
-                  <button
-                    onClick={() => toggleUnit(u.id)}
-                    className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs font-semibold transition-colors cursor-pointer ${
-                      containsCurrentPage
-                        ? 'bg-sky-500/10 text-sky-300'
-                        : 'bg-slate-850 hover:bg-slate-800 text-slate-200'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 truncate pr-2">
-                      <span className="w-5 h-5 rounded bg-slate-700/60 flex items-center justify-center text-[10px] text-sky-400 font-bold">
-                        {u.unitNumber}
-                      </span>
-                      <span className="truncate">{u.title}</span>
-                    </div>
-                    {isExpanded ? (
-                      <ChevronDown className="w-3.5 h-3.5 flex-shrink-0" />
-                    ) : (
-                      <ChevronRight className="w-3.5 h-3.5 flex-shrink-0" />
-                    )}
-                  </button>
-
-                  {isExpanded && (
-                    <div className="bg-slate-900/60 divide-y divide-slate-800/40 px-2 py-1">
-                      {u.lessons.map((l) => (
-                        <button
-                          key={l.id}
-                          onClick={() => onSelectPage(l.page)}
-                          className={`w-full px-2 py-1.5 text-left flex items-center justify-between text-xs rounded transition-colors cursor-pointer ${
-                            currentPage === l.page
-                              ? 'bg-sky-600 text-white font-semibold'
-                              : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
-                          }`}
-                        >
-                          <div className="truncate pr-2">
-                            <span className="font-bold mr-1.5 text-sky-400">{l.id}</span>
-                            <span className="truncate">{l.title}</span>
-                          </div>
-                          <span className="text-[10px] opacity-60 font-mono">p.{l.bookPage}</span>
-                        </button>
-                      ))}
-
-                      {u.practical && (
-                        <button
-                          onClick={() => onSelectPage(u.practical!.page)}
-                          className={`w-full px-2 py-1.5 text-left flex items-center justify-between text-xs rounded transition-colors cursor-pointer ${
-                            currentPage === u.practical.page
-                              ? 'bg-sky-600 text-white font-semibold'
-                              : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
-                          }`}
-                        >
-                          <div className="truncate pr-2">
-                            <span className="font-bold mr-1.5 text-emerald-400">PE</span>
-                            <span className="truncate">{u.practical.title}</span>
-                          </div>
-                          <span className="text-[10px] opacity-60 font-mono">p.{u.practical.bookPage}</span>
-                        </button>
-                      )}
-
-                      {u.review && (
-                        <button
-                          onClick={() => onSelectPage(u.review!.page)}
-                          className={`w-full px-2 py-1.5 text-left flex items-center justify-between text-xs rounded transition-colors cursor-pointer ${
-                            currentPage === u.review.page
-                              ? 'bg-sky-600 text-white font-semibold'
-                              : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
-                          }`}
-                        >
-                          <div className="truncate pr-2">
-                            <span className="font-bold mr-1.5 text-amber-400">Rev</span>
-                            <span className="truncate">{u.review.title}</span>
-                          </div>
-                          <span className="text-[10px] opacity-60 font-mono">p.{u.review.bookPage}</span>
-                        </button>
-                      )}
-                    </div>
-                  )}
+        {/* Legacy Units Fallback if navigationSections empty */}
+        {filteredLegacyUnits.map((unit) => {
+          const isExpanded = expandedSections[`u_${unit.id}`] ?? false;
+          return (
+            <div key={unit.id} className="rounded-xl border border-slate-800 bg-slate-850/60 overflow-hidden">
+              <button
+                type="button"
+                onClick={() => toggleSection(`u_${unit.id}`)}
+                className="w-full px-3 py-2.5 flex items-center justify-between text-left hover:bg-slate-800/50"
+              >
+                <span className="text-xs font-bold text-slate-200 truncate">{unit.title}</span>
+                {isExpanded ? <ChevronDown className="w-3.5 h-3.5 text-slate-400" /> : <ChevronRight className="w-3.5 h-3.5 text-slate-400" />}
+              </button>
+              {isExpanded && (
+                <div className="border-t border-slate-800 bg-slate-900/40">
+                  {unit.lessons.map((lesson) => (
+                    <button
+                      key={lesson.id}
+                      type="button"
+                      onClick={() => onSelectPage(lesson.page)}
+                      className="w-full px-3 py-2 text-left flex items-center justify-between text-xs text-slate-300 hover:bg-slate-800"
+                    >
+                      <span className="truncate">{lesson.title}</span>
+                      <span className="text-[10px] font-mono text-slate-400">p.{lesson.page}</span>
+                    </button>
+                  ))}
                 </div>
-              );
-            })}
-
-            {referenceSections.length > 0 && (
-              <div className="mt-4 pt-3 border-t border-slate-800">
-                <div className="px-2 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                  <Layers className="w-3 h-3 text-sky-400" />
-                  Reference Material
-                </div>
-                {referenceSections.map((r) => (
-                  <button
-                    key={r.id}
-                    onClick={() => onSelectPage(r.startPage)}
-                    className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs rounded-lg transition-colors cursor-pointer ${
-                      currentPage >= r.startPage && currentPage <= r.endPage
-                        ? 'bg-sky-600 text-white font-semibold'
-                        : 'text-slate-300 hover:bg-slate-800'
-                    }`}
-                  >
-                    <span className="truncate">{r.title}</span>
-                    <span className="text-[10px] opacity-60 font-mono">p.{r.startBookPage}-{r.endBookPage}</span>
-                  </button>
-                ))}
-              </div>
-            )}
-          </>
-        )}
+              )}
+            </div>
+          );
+        })}
       </div>
     </aside>
   );

@@ -207,6 +207,7 @@ export const TopBar: React.FC<TopBarProps> = ({
               : 'text-slate-400 hover:text-white hover:bg-slate-800 border-transparent'
           }`}
           title="Toggle Table of Contents"
+          aria-label="Table of Contents"
         >
           <Menu className="w-5 h-5" />
         </button>
@@ -303,7 +304,7 @@ export const TopBar: React.FC<TopBarProps> = ({
           </button>
           <span className="text-[11px] font-mono text-slate-300 w-10 text-center">{zoom}%</span>
           <button
-            onClick={() => onZoomChange(Math.min(250, zoom + 15))}
+            onClick={() => onZoomChange(Math.min(300, zoom + 15))}
             className="p-1 text-slate-400 hover:text-white rounded hover:bg-slate-700 cursor-pointer"
             title="Zoom In"
           >
